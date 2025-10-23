@@ -1,0 +1,228 @@
+{
+  "Greek Islands 10-Day Cruise Package": {
+    "title": "Greek Islands 10-Day Cruise Package",
+    "image": "images/cruise-package.jpg",
+    "tag": "PACKAGE",
+    "route": "Piraeus,Greece|Mykonos,Greece|Santorini,Greece|Crete,Greece|Rhodes,Greece",
+    "duration": "10days / 9nights",
+    "frequency": "Every Sunday",
+    "departure": "Athens",
+    "arrival": "Athens",
+    "destinations": "Athens → Mykonos → Santorini → Crete → Rhodes",
+    "offer": "SAVE UP TO 20% ON EARLY BOOKINGS",
+    "priceOld": "2200€",
+    "priceNew": "1800€",
+    "smallText": "port taxes · gratuities included",
+    "dates": ["23 Mar 2026", "30 Mar 2026"],
+    "ship": "Celestyal Discovery",
+    "gallery": [
+      "images/mykonos.jpeg",
+      "images/santorini.jpg",
+      "images/crete.jpg",
+      "images/rhodes.jpg"
+    ],
+    "features": [
+  "Full board",
+  "50€ excursion voucher",
+  "251MB internet",
+  "Free Mykonos shuttle"
+],
+
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Athens (Piraeus), Greece",
+        "desc": "Departure at 18:00",
+        "arrival": "",
+        "departureTime": "18:00",
+        "image": "images/acropolis1.jpg"
+      },
+      {
+        "day": 2,
+        "title": "Mykonos, Greece",
+        "desc": "Discover the iconic windmills and Little Venice.",
+        "arrival": "07:00",
+        "departureTime": "19:00",
+        "image": "images/mykonos.jpeg"
+      },
+      {
+        "day": 3,
+        "title": "Santorini, Greece",
+        "desc": "Explore Oia’s sunset and the volcanic beaches.",
+        "arrival": "07:00",
+        "departureTime": "19:00",
+        "image": "images/santorini.jpg"
+      },
+      {
+        "day": 4,
+        "title": "Heraklion, Crete",
+        "desc": "Visit Knossos Palace & taste Cretan flavors.",
+        "arrival": "08:00",
+        "departureTime": "18:00",
+        "image": "images/crete.jpg"
+      },
+      {
+        "day": 5,
+        "title": "Rhodes & Patmos",
+        "desc": "Walk the medieval old town and relax by the sea.",
+        "arrival": "07:00",
+        "departureTime": "20:00",
+        "image": "images/rhodes.jpg"
+      },
+      {
+        "day": 6,
+        "title": "Return to Athens (Piraeus)",
+        "desc": "Arrival at 07:00 – Disembarkation after breakfast.",
+        "arrival": "07:00",
+        "departureTime": "",
+        "image": "images/acropolis1.jpg"
+      }
+    ]
+  },
+    "Greek Ionian 5-Day Cruise Package": {
+    "title": "Greek Ionian 5-Day Cruise Package",
+    "image": "images/paxoi.jpg",
+    "tag": "PACKAGE",
+    "route": "Piraeus,Greece|Zante,Greece|Ithaca,Greece|Paxoi,Greece|Corfu,Greece",
+    "duration": "10days / 9nights",
+    "frequency": "Every Sunday",
+    "departure": "Athens",
+    "arrival": "Athens",
+    "destinations": "Athens → Zante → Ithaca → Paxoi → Corfu",
+    "offer": "SAVE UP TO 20% ON EARLY BOOKINGS",
+    "priceOld": "2200€",
+    "priceNew": "1800€",
+    "smallText": "port taxes · gratuities included",
+    "dates": ["23 Mar 2026", "30 Mar 2026"],
+    "ship": "Celestyal Discovery",
+    "gallery": [
+      "images/zante1.jpg",
+      "images/ithaca.jpg",
+      "images/corfu.png",
+      "images/zante.jpg"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Athens (Piraeus)",
+        "desc": "Departure at 18:00",
+        "arrival": "",
+        "departureTime": "18:00",
+        "image": "images/acropolis1.jpg"
+      },
+      {
+        "day": 2,
+        "title": "Zante",
+        "desc": "Discover the iconic windmills and Little Venice.",
+        "arrival": "07:00",
+        "departureTime": "19:00",
+        "image": "images/mykonos.jpeg"
+      },
+      {
+        "day": 3,
+        "title": "Ithaca",
+        "desc": "Explore Oia’s sunset and the volcanic beaches.",
+        "arrival": "07:00",
+        "departureTime": "19:00",
+        "image": "images/santorini.jpg"
+      },
+      {
+        "day": 4,
+        "title": "Paxoi",
+        "desc": "Visit Knossos Palace & taste Cretan flavors.",
+        "arrival": "08:00",
+        "departureTime": "18:00",
+        "image": "images/crete.jpg"
+      },
+      {
+        "day": 5,
+        "title": "Corfu",
+        "desc": "Walk the medieval old town and relax by the sea.",
+        "arrival": "07:00",
+        "departureTime": "20:00",
+        "image": "images/rhodes.jpg"
+      },
+      {
+        "day": 6,
+        "title": "Return to Athens (Piraeus)",
+        "desc": "Arrival at 07:00 – Disembarkation after breakfast.",
+        "arrival": "07:00",
+        "departureTime": "",
+        "image": "images/acropolis1.jpg"
+      }
+    ]
+  },
+   "Greek Saronic Gulf Package": {
+    "title": "Greek Saronic Gulf Package",
+    "image": "images/paxoi.jpg",
+    "tag": "PACKAGE",
+    "route": "Piraeus,Greece|Zante,Greece|Ithaca,Greece|Paxoi,Greece|Corfu,Greece",
+    "duration": "10days / 9nights",
+    "frequency": "Every Sunday",
+    "departure": "Athens",
+    "arrival": "Athens",
+    "destinations": "Athens → Zante → Ithaca → Paxoi → Corfu",
+    "offer": "SAVE UP TO 20% ON EARLY BOOKINGS",
+    "priceOld": "2200€",
+    "priceNew": "1800€",
+    "smallText": "port taxes · gratuities included",
+    "dates": ["23 Mar 2026", "30 Mar 2026"],
+    "ship": "Celestyal Discovery",
+    "gallery": [
+      "images/zante1.jpg",
+      "images/ithaca.jpg",
+      "images/corfu.png",
+      "images/zante.jpg"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Athens (Piraeus)",
+        "desc": "Departure at 18:00",
+        "arrival": "",
+        "departureTime": "18:00",
+        "image": "images/acropolis1.jpg"
+      },
+      {
+        "day": 2,
+        "title": "Zante",
+        "desc": "Discover the iconic windmills and Little Venice.",
+        "arrival": "07:00",
+        "departureTime": "19:00",
+        "image": "images/mykonos.jpeg"
+      },
+      {
+        "day": 3,
+        "title": "Ithaca",
+        "desc": "Explore Oia’s sunset and the volcanic beaches.",
+        "arrival": "07:00",
+        "departureTime": "19:00",
+        "image": "images/santorini.jpg"
+      },
+      {
+        "day": 4,
+        "title": "Paxoi",
+        "desc": "Visit Knossos Palace & taste Cretan flavors.",
+        "arrival": "08:00",
+        "departureTime": "18:00",
+        "image": "images/crete.jpg"
+      },
+      {
+        "day": 5,
+        "title": "Corfu",
+        "desc": "Walk the medieval old town and relax by the sea.",
+        "arrival": "07:00",
+        "departureTime": "20:00",
+        "image": "images/rhodes.jpg"
+      },
+      {
+        "day": 6,
+        "title": "Return to Athens (Piraeus)",
+        "desc": "Arrival at 07:00 – Disembarkation after breakfast.",
+        "arrival": "07:00",
+        "departureTime": "",
+        "image": "images/acropolis1.jpg"
+      }
+    ]
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "Full-Day Tour to Delphi from Athens": {
+    "title": "Full-Day Tour to Delphi from Athens",
+    "imageMain": "images/tour.jpg",
+    "images": [
+      "images/tour1.jpg",
+      "images/tour2.jpg",
+      "images/tour3.jpg",
+      "images/tour4.jpg"
+    ],
+    "shortDesc": "Explore the ancient sanctuary of Delphi, the most important oracle in classical Greece. Enjoy a scenic drive through Mount Parnassus and visit the Archaeological Museum.",
+    "duration": "10 hours",
+    "startTime": "08:30 AM",
+    "language": "English",
+    "price": "€89",
+    "location": "Delphi, Greece",
+    "freeCancellation": true,
+    "about": [
+      "Explore the ancient sanctuary of Delphi, the most important oracle in classical Greece, on this full-day excursion from Athens.",
+      "Enjoy a scenic drive through Central Greece, passing Mount Parnassus and the picturesque village of Arachova.",
+      "Discover the Temple of Apollo, the Athenian Treasury, and the Delphi Archaeological Museum, home to the bronze Charioteer."
+    ],
+    "highlights": [
+      "Explore the UNESCO World Heritage site of Delphi with an expert guide",
+      "Visit the Temple of Apollo and the Archaeological Museum",
+      "Enjoy breathtaking views from Mount Parnassus",
+      "Stop at the traditional mountain village of Arachova",
+      "Air-conditioned round-trip transfer from Athens"
+    ],
+    "included": [
+      "Entrance fees to the Delphi Archaeological Site & Museum",
+      "Transport by luxury air-conditioned coach",
+      "Professional English-speaking guide",
+      "Free time in Arachova village",
+      "All taxes"
+    ],
+    "excluded": [
+      "Lunch (optional)",
+      "Personal expenses",
+      "Hotel pick-up/drop-off (unless selected)"
+    ],
+    "importantInfo": [
+      "Duration: approximately 10 hours including transfers",
+      "Departure: 08:30 AM from central Athens",
+      "Comfortable walking shoes and sun protection recommended"
+    ]
+  },
+
+  "Half-Day Tour to Cape Sounion": {
+    "title": "Half-Day Tour to Cape Sounion",
+    "imageMain": "images/cape.jpg",
+    "images": [
+      "images/sounion1.jpg",
+      "images/sounion2.jpg",
+      "images/sounion3.jpg"
+    ],
+    "shortDesc": "Enjoy a scenic coastal drive along the Athenian Riviera to the Temple of Poseidon at Cape Sounion.",
+    "duration": "5 hours",
+    "startTime": "14:30 PM",
+    "language": "English",
+    "price": "€65",
+    "location": "Cape Sounion, Greece",
+    "freeCancellation": true,
+    "about": [
+      "Travel along the picturesque Saronic Gulf and admire the sea views.",
+      "Visit the Temple of Poseidon, perched dramatically on the cliff edge.",
+      "Enjoy a breathtaking sunset over the Aegean Sea."
+    ],
+    "highlights": [
+      "Scenic drive along the Athenian Riviera",
+      "Guided visit to the Temple of Poseidon",
+      "Panoramic sunset views over the Aegean",
+      "Comfortable air-conditioned coach transfer"
+    ],
+    "included": [
+      "Transport by luxury coach",
+      "Professional English-speaking guide",
+      "Entrance fees to the Temple of Poseidon"
+    ],
+    "excluded": [
+      "Food and drinks",
+      "Hotel pick-up/drop-off"
+    ],
+    "importantInfo": [
+      "Duration: approx. 5 hours",
+      "Departure: 14:30 PM from central Athens",
+      "Bring a light jacket for the sea breeze"
+    ]
+  },
+   "Half-Day Tour to Cape Sounion1": {
+    "title": "Half-Day Tour to Cape Sounion",
+    "imageMain": "images/cape.jpg",
+    "images": [
+      "images/sounion1.jpg",
+      "images/sounion2.jpg",
+      "images/sounion3.jpg"
+    ],
+    "shortDesc": "Enjoy a scenic coastal drive along the Athenian Riviera to the Temple of Poseidon at Cape Sounion.",
+    "duration": "5 hours",
+    "startTime": "14:30 PM",
+    "language": "English",
+    "price": "€65",
+    "location": "Cape Sounion, Greece",
+    "freeCancellation": true,
+    "about": [
+      "Travel along the picturesque Saronic Gulf and admire the sea views.",
+      "Visit the Temple of Poseidon, perched dramatically on the cliff edge.",
+      "Enjoy a breathtaking sunset over the Aegean Sea."
+    ],
+    "highlights": [
+      "Scenic drive along the Athenian Riviera",
+      "Guided visit to the Temple of Poseidon",
+      "Panoramic sunset views over the Aegean",
+      "Comfortable air-conditioned coach transfer"
+    ],
+    "included": [
+      "Transport by luxury coach",
+      "Professional English-speaking guide",
+      "Entrance fees to the Temple of Poseidon"
+    ],
+    "excluded": [
+      "Food and drinks",
+      "Hotel pick-up/drop-off"
+    ],
+    "importantInfo": [
+      "Duration: approx. 5 hours",
+      "Departure: 14:30 PM from central Athens",
+      "Bring a light jacket for the sea breeze"
+    ]
+  },
+  "Full-Day Tour to Delphi from Athens1": {
+    "title": "Full-Day Tour to Delphi from Athens",
+    "imageMain": "images/tour.jpg",
+    "images": [
+      "images/tour1.jpg",
+      "images/tour2.jpg",
+      "images/tour3.jpg",
+      "images/tour4.jpg"
+    ],
+    "shortDesc": "Explore the ancient sanctuary of Delphi, the most important oracle in classical Greece. Enjoy a scenic drive through Mount Parnassus and visit the Archaeological Museum.",
+    "duration": "10 hours",
+    "startTime": "08:30 AM",
+    "language": "English",
+    "price": "€89",
+    "location": "Delphi, Greece",
+    "freeCancellation": true,
+    "about": [
+      "Explore the ancient sanctuary of Delphi, the most important oracle in classical Greece, on this full-day excursion from Athens.",
+      "Enjoy a scenic drive through Central Greece, passing Mount Parnassus and the picturesque village of Arachova.",
+      "Discover the Temple of Apollo, the Athenian Treasury, and the Delphi Archaeological Museum, home to the bronze Charioteer."
+    ],
+    "highlights": [
+      "Explore the UNESCO World Heritage site of Delphi with an expert guide",
+      "Visit the Temple of Apollo and the Archaeological Museum",
+      "Enjoy breathtaking views from Mount Parnassus",
+      "Stop at the traditional mountain village of Arachova",
+      "Air-conditioned round-trip transfer from Athens"
+    ],
+    "included": [
+      "Entrance fees to the Delphi Archaeological Site & Museum",
+      "Transport by luxury air-conditioned coach",
+      "Professional English-speaking guide",
+      "Free time in Arachova village",
+      "All taxes"
+    ],
+    "excluded": [
+      "Lunch (optional)",
+      "Personal expenses",
+      "Hotel pick-up/drop-off (unless selected)"
+    ],
+    "importantInfo": [
+      "Duration: approximately 10 hours including transfers",
+      "Departure: 08:30 AM from central Athens",
+      "Comfortable walking shoes and sun protection recommended"
+    ]
+  }
+}

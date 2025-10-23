@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>BlueSea Cruises</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-content">
+    <a href="tel:+302101234567" class="whatsapp-icon" title="Κλήση μέσω WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:+302101234567" class="phone-link">
+      <span class="phone">+30 210 123 4567</span>
+    </a>
+  </div>
+</div>
+
+
+
+  <!-- Header / Navigation -->
+<header>
+  <nav class="navbar">
+    <div class="logo">CruiseTheGreek.com</div>
+
+    <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="homepage.html">HOME</a></li>
+      <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+      <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+      <li><a href="tours.html">TOURS</a></li>
+      <li><a href="ships.html">CRUISE SHIPS</a></li>
+      <li><a href="destinations.html">DESTINATIONS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <!--  Banner Section -->
+  <section class="results-banner">
+    <img src="images/banner.jpg" alt="Cruise Banner">
+    <div class="banner-overlay">
+      <h1 id="resultsTitle"></h1>
+    </div>
+  </section>
+
+  <!--  Results Page Layout -->
+  <section class="results-page">
+    <!-- Left filter form -->
+
+    <aside class="search-filter">
+    <div class="filter-header">
+    <span id="filter-type-label">Cruise Only</span>
+    <button id="filter-toggle"><i class="fa-solid fa-sliders"></i> Filter</button>
+    </div>
+      <h3>Refine Your Search</h3>
+      <form class="filter-form">
+        <div class="form-group">
+          <label for="cruise-type">Cruise Type</label>
+          <select id="cruise-type">
+            <option value="">-- Select --</option>
+            <option value="cruise_only">Cruise Only</option>
+            <option value="cruise_package">Cruise Package</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="month">Month</label>
+          <select id="month">
+            <option value="">-- Select Month --</option>
+            <option>January</option><option>February</option><option>March</option>
+            <option>April</option><option>May</option><option>June</option>
+            <option>July</option><option>August</option><option>September</option>
+            <option>October</option><option>November</option><option>December</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="duration">Duration</label>
+          <select id="duration">
+            <option value="">-- Select Duration --</option>
+            <option>1 day</option>
+            <option>2–5 days</option>
+            <option>6–7 days</option>
+            <option>8–14 days</option>
+            <option>15–18 days</option>
+            <option>18+ days</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="company">Cruise Company</label>
+          <select id="company">
+            <option value="">-- Select Company --</option>
+            <option>MSC Cruises</option>
+            <option>Celestyal Cruises</option>
+            <option>Norwegian Cruise Line</option>
+            <option>Explora Journeys</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="ship">Cruise Ship</label>
+          <select id="ship">
+            <option value="">-- Select Ship --</option>
+          </select>
+        </div>
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </aside>
+
+    <div class="sort-bar">
+  <label for="sortSelect"><i class="fa-solid fa-sort"></i> Sort by:</label>
+  <select id="sortSelect">
+    <option value="">-- Select --</option>
+    <option value="low_high">Price: Low to High</option>
+    <option value="high_low">Price: High to Low</option>
+  </select>
+</div>
+
+    <!-- Right Results Grid -->
+    <div class="results-grid" id="resultsGrid"></div>
+  </section>
+
+
+  
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- 🔹 1η Στήλη: Logo + Επικοινωνία -->
+    <div class="footer-col">
+      <h3 class="footer-logo">CruiseTheGreek.com</h3>
+      <p class="footer-phone">+1 (415) 7957979</p>
+      <p><a href="mailto:info@cruisethegreek.com">info@cruisethegreek.com</a></p>
+      <p>8, Aggelou Vlachou st, Plaka, Athens</p>
+      <img src="images/gnto.png" alt="GNTO" class="footer-gnto">
+      <p class="footer-gnto-code">GNTO: 0206E60000362401</p>
+    </div>
+
+    <!-- 2η Στήλη: Navigation Menu -->
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul class="footer-nav">
+        <li><a href="homepage.html">HOME</a></li>
+        <li><a href="cruises.html">CRUISES</a></li>
+        <li><a href="packages.html">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 3η Στήλη: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">B2B Partnership</a></li>
+        <li><a href="#">Partners Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 🔸 Κάτω γραμμή -->
+  <div class="footer-bottom">
+    <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+  <!--------------------------------------------- SCRIPTS -------------------------------------->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+  const grid = document.getElementById("resultsGrid");
+
+  if (type !== "cruise_package") return;
+
+  fetch("data/packages.json")
+    .then(res => res.json())
+    .then(data => {
+      Object.values(data).forEach(pkg => {
+        // Δημιουργία dropdown επιλογών για departure dates
+        const dateOptions = pkg.dates
+          .map(date => `<option value="${date}">${date}</option>`)
+          .join("");
+
+        const cardHTML = `
+  <div class="card package-card" data-title="${pkg.title}">
+    
+    <!-- ✨ Εικόνα & features ως tags -->
+    <div class="destinations map-section" data-route="${pkg.route}">
+      <img src="${pkg.image}" alt="${pkg.title}" class="map-image">
+
+      <!-- Features πάνω στην εικόνα -->
+      <div class="image-features">
+        <span class="feature-tag"><i class="fa-solid fa-utensils"></i> Full board</span>
+        <span class="feature-tag"><i class="fa-solid fa-ticket"></i> 50€ excursion voucher</span>
+        <span class="feature-tag"><i class="fa-solid fa-wifi"></i> 250MB internet</span>
+        <span class="feature-tag"><i class="fa-solid fa-bus"></i> Free Mykonos shuttle</span>
+      </div>
+
+      <button class="map-btn" type="button" title="View Map">
+        <i class="fa-solid fa-map-location-dot"></i>
+      </button>
+      <div class="map-container"></div>
+    </div>
+
+    <!-- ✨ Τίτλος πακέτου -->
+    <h3 class="package-title">${pkg.title}</h3>
+
+    <!-- ✨ Duration / Frequency / Departure -->
+    <div class="card-top-info">
+      <div class="info-group">
+        <p><strong>${pkg.duration}</strong><br>${pkg.frequency}</p>
+      </div>
+      <div class="info-group">
+        <label for="dates-${pkg.title.replace(/\s+/g, '-')}">Departure:</label>
+        <select id="dates-${pkg.title.replace(/\s+/g, '-')}" class="date-select">
+          <option disabled selected>Select date</option>
+          ${dateOptions}
+        </select>
+      </div>
+    </div>
+
+    <!-- ✨ Λιμάνια -->
+    <div class="ports">
+      <div class="port">⚓ <strong>Departure Port:</strong> ${pkg.departure}</div>
+      <div class="port">⚓ <strong>Arrival Port:</strong> ${pkg.arrival}</div>
+    </div>
+
+    <!-- ✨ Προορισμοί -->
+    <div class="package-destinations">
+      <i class="fa-solid fa-location-dot"></i> ${pkg.destinations}
+    </div>
+
+    <div class="offer-banner">${pkg.offer}</div>
+
+    <!-- ✨ Τιμές -->
+    <div class="price-box">
+      <p class="old-price">from <span>${pkg.priceOld}</span></p>
+      <p class="new-price"><strong>${pkg.priceNew}</strong></p>
+      <p class="small-text">${pkg.smallText}</p>
+    </div>
+
+    <!-- ✨ Κουμπιά -->
+    <div class="buttons">
+      <button class="details-btn">DETAILS</button>
+      <button class="book-btn">BOOK NOW</button>
+    </div>
+  </div>
+`;
+
+        grid.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    })
+    .catch(err => console.error("Error loading packages:", err));
+});
+
+// Αποθήκευση στο localStorage για το package-details
+function openPackageDetails(title) {
+  localStorage.setItem("selectedPackage", title);
+  window.location.href = "package-details.html";
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+  const grid = document.getElementById("resultsGrid");
+
+  if (type !== "cruise_only") return;
+
+  fetch("data/cruises.json")
+    .then(res => res.json())
+    .then(data => {
+      Object.values(data).forEach(cruise => {
+        // Δημιουργία dropdown επιλογών για departure dates
+        const dateOptions = cruise.dates
+          .map(date => `<option value="${date}">${date}</option>`)
+          .join("");
+
+        const cardHTML = `
+  <div class="card cruise-card" data-title="${cruise.title}">
+    
+    <!-- Εικόνα & features ως tags -->
+    <div class="destinations map-section" data-route="${cruise.route}">
+      <img src="${cruise.image}" alt="${cruise.title}" class="map-image">
+
+      <div class="image-features">
+        <span class="feature-tag"><i class="fa-solid fa-utensils"></i> Full board</span>
+        <span class="feature-tag"><i class="fa-solid fa-ticket"></i> 50€ excursion voucher</span>
+        <span class="feature-tag"><i class="fa-solid fa-wifi"></i> 250MB internet</span>
+        <span class="feature-tag"><i class="fa-solid fa-bus"></i> Free Mykonos shuttle</span>
+      </div>
+
+      <button class="map-btn" type="button" title="View Map">
+        <i class="fa-solid fa-map-location-dot"></i>
+      </button>
+      <div class="map-container"></div>
+    </div>
+
+    <!--  Τίτλος κρουαζιέρας -->
+    <h3 class="cruise-title">${cruise.title}</h3>
+
+    <!-- ✨ Duration / Frequency / Departure -->
+    <div class="card-top-info">
+      <div class="info-group">
+        <p><strong>${cruise.duration}</strong><br>${cruise.frequency}</p>
+      </div>
+      <div class="info-group">
+        <label for="dates-${cruise.title.replace(/\s+/g, '-')}">Departure:</label>
+        <select id="dates-${cruise.title.replace(/\s+/g, '-')}" class="date-select">
+          <option disabled selected>Select date</option>
+          ${dateOptions}
+        </select>
+      </div>
+    </div>
+
+    <!-- ✨ Λιμάνια -->
+    <div class="ports">
+      <div class="port">⚓ <strong>Departure Port:</strong> ${cruise.departure}</div>
+      <div class="port">⚓ <strong>Arrival Port:</strong> ${cruise.arrival}</div>
+    </div>
+
+    <!-- ✨ Προορισμοί -->
+    <div class="package-destinations">
+      <i class="fa-solid fa-location-dot"></i> ${cruise.destinations}
+    </div>
+
+    <div class="offer-banner">${cruise.offer || ""}</div>
+
+    <!-- ✨ Τιμές -->
+    <div class="price-box">
+      <p class="old-price">from <span>${cruise.priceOld}</span></p>
+      <p class="new-price"><strong>${cruise.priceNew}</strong></p>
+      <p class="small-text">${cruise.smallText}</p>
+    </div>
+
+    <!-- ✨ Κουμπιά -->
+    <div class="buttons">
+     <button class="details-btn">DETAILS</button>
+      <button class="book-btn">BOOK NOW</button>
+    </div>
+  </div>
+`;
+
+        grid.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    })
+    .catch(err => console.error("Error loading cruises:", err));
+});
+
+// Αποθήκευση στο localStorage για το package-details
+function openCruiseDetails(title) {
+  localStorage.setItem("selectedCruise", title);
+  window.location.href = "cruise-details.html";
+}
+
+
+</script>
+
+
+
+<script>
+ 
+  const selectedType = type; // ήδη υπάρχει από πριν (const type = params.get("type");)
+
+  if (selectedType) {
+    const cruiseSelect = document.getElementById("cruise-type");
+    if (cruiseSelect) {
+      cruiseSelect.value = selectedType;
+    }
+  }
+</script>
+
+  <!-- === Map Toggle === -->
+  <script>
+const cityCoords = {
+  // 🇪🇸 Spain
+  "Barcelona,Spain": [41.3851, 2.1734],
+  "Alicante,Spain": [38.3452, -0.4810],
+  "Santa Cruz de Tenerife,Spain": [28.4636, -16.2518],
+
+  // 🇲🇦 Morocco
+  "Casablanca,Morocco": [33.5731, -7.5898],
+
+  // 🇹🇷 Turkey
+  "Istanbul,Turkey": [41.0082, 28.9784],
+  "Kusadasi,Turkey": [37.86, 27.2579],
+
+  // 🇬🇷 Greece — Mainland ports
+  "Piraeus,Greece": [37.943, 23.6465],
+  "Thessaloniki,Greece": [40.6401, 22.9444],
+  "Volos,Greece": [39.3622, 22.9428],
+  "Heraklion,Crete,Greece": [35.3387, 25.1442],
+
+  // 🇬🇷 Greek Islands
+  "Mykonos,Greece": [37.4467, 25.3289],
+  "Santorini,Greece": [36.3932, 25.4615],
+  "Rhodes,Greece": [36.4349, 28.2170],
+  "Patmos,Greece": [37.3080, 26.5469],
+  "Crete,Greece": [35.2401, 24.8093],
+  "Corfu,Greece": [39.6243, 19.9217],
+  "Paros,Greece": [37.0850, 25.1500],
+  "Naxos,Greece": [37.1030, 25.3760],
+  "Syros,Greece": [37.4450, 24.9420],
+  "Ios,Greece": [36.7213, 25.2829],
+  "Kos,Greece": [36.8937, 27.2877],
+  "Chios,Greece": [38.3678, 26.1359],
+  "Samos,Greece": [37.7543, 26.9784],
+  "Lesvos,Greece": [39.1077, 26.5553],
+  "Zakynthos,Greece": [37.7880, 20.8980],
+  "Kefalonia,Greece": [38.1754, 20.5692],
+  "Lefkada,Greece": [38.8333, 20.7000],
+  "Skiathos,Greece": [39.1620, 23.4900],
+  "Skopelos,Greece": [39.1242, 23.7247],
+  "Symi,Greece": [36.6167, 27.8333],
+  "Tinos,Greece": [37.5400, 25.1623],
+  "Milos,Greece": [36.7440, 24.4260],
+  "Folegandros,Greece": [36.6189, 24.9196],
+  "Amorgos,Greece": [36.8300, 25.9500],
+  "Hydra,Greece": [37.3500, 23.4667],
+  "Spetses,Greece": [37.2625, 23.1597],
+  "Poros,Greece": [37.4975, 23.4510]
+};
+
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest(".map-btn")) return;
+      const btn = e.target.closest(".map-btn");
+      const section = btn.closest(".map-section");
+      const img = section.querySelector(".map-image");
+      const mapDiv = section.querySelector(".map-container");
+      const route = section.dataset.route.split("|").map(r => r.trim());
+      let map = section._map;
+
+      if (!map) {
+        mapDiv.style.display = "block";
+        img.style.display = "none";
+        map = L.map(mapDiv).setView([38, 12], 5);
+        section._map = map;
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const coords = route.map(r => cityCoords[r]).filter(Boolean);
+        const smallIcon = L.icon({
+          iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+          iconSize: [20, 30],
+          iconAnchor: [10, 30],
+          popupAnchor: [1, -25],
+          shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+          shadowSize: [30, 30]
+        });
+        if (coords.length >= 2) {
+          const poly = L.polyline(coords, { color: '#ff6600', weight: 3 }).addTo(map);
+          map.fitBounds(poly.getBounds(), { padding: [20, 20] });
+        }
+        coords.forEach(c => L.marker(c, { icon: smallIcon }).addTo(map));
+        setTimeout(() => map.invalidateSize(), 100);
+        btn.innerHTML = '<i class="fa-solid fa-image"></i>';
+      } else {
+        const showingMap = mapDiv.style.display !== "none";
+        mapDiv.style.display = showingMap ? "none" : "block";
+        img.style.display = showingMap ? "block" : "none";
+        btn.innerHTML = showingMap
+          ? '<i class="fa-solid fa-map-location-dot"></i>'
+          : '<i class="fa-solid fa-image"></i>';
+        setTimeout(() => map.invalidateSize(), 100);
+      }
+    });
+  </script>
+
+  <script>
+  document.querySelector('.filter-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const selectedType = document.getElementById('cruise-type').value;
+    const newUrl = `results.html?type=${selectedType}`;
+    window.location.href = newUrl;
+  });
+</script>
+
+<script>
+  // ====== Δυναμική ενημέρωση πλοίων ανά εταιρία ======
+  const companyToShips = {
+    "MSC Cruises": ["MSC Musica", "MSC Opera", "MSC Splendida", "MSC Armonia"],
+    "Celestyal Cruises": ["Celestyal Journey", "Celestyal Discovery"],
+    "Norwegian Cruise Line": ["Norwegian Epic", "Norwegian Getaway", "Norwegian Escape"],
+    "Explora Journeys": ["Explora I", "Explora II"]
+  };
+
+  const companySelect = document.getElementById("company");
+  const shipSelect = document.getElementById("ship");
+
+  companySelect.addEventListener("change", () => {
+    const selectedCompany = companySelect.value;
+    const ships = companyToShips[selectedCompany] || [];
+
+    // Καθαρισμός προηγούμενων επιλογών
+    shipSelect.innerHTML = '<option value="">-- Select Ship --</option>';
+
+    // Προσθήκη νέων επιλογών
+    ships.forEach(ship => {
+      const opt = document.createElement("option");
+      opt.value = ship;
+      opt.textContent = ship;
+      shipSelect.appendChild(opt);
+    });
+  });
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const selectedType = params.get("type");
+  const cruiseSelect = document.getElementById("cruise-type");
+  const filterTypeLabel = document.getElementById("filter-type-label");
+
+  // === 1️⃣ Αν υπάρχει type στο URL, κάνε update το dropdown ===
+  if (cruiseSelect && selectedType) {
+    cruiseSelect.value = selectedType; // επιλέγει σωστό option
+  }
+
+  // === 2️⃣ Ενημέρωσε το label πάνω από το κουμπί Filter ===
+  if (filterTypeLabel) {
+    if (selectedType === "cruise_only") filterTypeLabel.textContent = "Cruise Only";
+    else if (selectedType === "cruise_package") filterTypeLabel.textContent = "Cruise Packages";
+    else filterTypeLabel.textContent = "All Cruises";
+  }
+
+  // === 3️⃣ Για mobile (όταν ο χρήστης ανοίγει τα φίλτρα) ===
+  const filterToggle = document.getElementById("filter-toggle");
+  const filterForm = document.querySelector(".filter-form");
+
+  if (filterToggle && filterForm) {
+    filterToggle.addEventListener("click", () => {
+      filterForm.classList.toggle("active");
+
+      // Όταν ανοίγει, βεβαιώσου ότι το select δείχνει σωστό type
+      if (filterForm.classList.contains("active") && cruiseSelect && selectedType) {
+        cruiseSelect.value = selectedType;
+      }
+    });
+  }
+});
+</script>
+
+
+
+<script>
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".details-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".card");
+  if (!card) return;
+
+  // ---- Αν η κάρτα είναι Package ----
+  if (card.classList.contains("package-card")) {
+  const packageData = {
+    image: card.querySelector(".map-image")?.src || "",
+    // ✅ Παίρνουμε σωστά τον τίτλο από το data-title attribute
+    title: card.dataset.title || "Cruise Package",
+    route: card.querySelector(".map-section")?.dataset.route || "",
+    duration:
+      card.querySelector(".card-top-info strong")?.textContent.trim() || "",
+    dates: Array.from(card.querySelectorAll("select option"))
+      .slice(1)
+      .map((o) => o.textContent.trim()),
+    departure:
+      card
+        .querySelector(".ports .port:nth-child(1)")
+        ?.textContent.replace("⚓", "")
+        .replace("Departure Port:", "")
+        .trim() || "",
+    arrival:
+      card
+        .querySelector(".ports .port:nth-child(2)")
+        ?.textContent.replace("⚓", "")
+        .replace("Arrival Port:", "")
+        .trim() || "",
+    offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
+    priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
+    priceNew:
+      card.querySelector(".new-price strong")?.textContent.trim() || "",
+  };
+
+  // ✅ Κράτα μόνο τον τίτλο για lookup στο JSON
+  localStorage.setItem("selectedPackage", packageData.title);
+
+  // ✅ Αν είναι Greek Islands, αποθήκευσε και το πλοίο (για deckplan & cabins)
+  if (packageData.title.includes("Greek Islands")) {
+    localStorage.setItem("selectedShip", "Celestyal Discovery");
+  }
+
+  // Μετάβαση στη σελίδα λεπτομερειών
+  window.location.href = "package-details.html";
+  return;
+}
+
+
+  // ---- Αν η κάρτα είναι Cruise Only ----
+  const cruiseData = {
+    image: card.querySelector(".map-image")?.src || "",
+    title: card.dataset.title || "Cruise Only",
+    route: card.querySelector(".map-section")?.dataset.route || "",
+    duration:
+      card.querySelector(".card-top-info strong")?.textContent.trim() || "",
+    dates: Array.from(card.querySelectorAll("select option"))
+      .slice(1)
+      .map((o) => o.textContent.trim()),
+    departure:
+      card
+        .querySelector(".ports .port:nth-child(1)")
+        ?.textContent.replace("⚓", "")
+        .replace("Departure Port:", "")
+        .trim() || "",
+    arrival:
+      card
+        .querySelector(".ports .port:nth-child(2)")
+        ?.textContent.replace("⚓", "")
+        .replace("Arrival Port:", "")
+        .trim() || "",
+    offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
+    priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
+    priceNew:
+      card.querySelector(".new-price strong")?.textContent.trim() || "",
+  };
+  localStorage.setItem("selectedCruise", cruiseData.title);
+  window.location.href = "cruise_details.html";
+});
+</script>
+
+<!-- functionality of sort by price button-->
+<script>
+document.getElementById("sortSelect").addEventListener("change", function () {
+  const sortValue = this.value;
+  const grid = document.getElementById("resultsGrid");
+  const cards = Array.from(grid.querySelectorAll(".card"));
+
+  if (!sortValue || cards.length === 0) return;
+
+  const getPrice = (card) => {
+    const priceText =
+      card.querySelector(".new-price strong")?.textContent.replace(/[^\d]/g, "") ||
+      "0";
+    return parseFloat(priceText);
+  };
+
+  cards.sort((a, b) => {
+    const priceA = getPrice(a);
+    const priceB = getPrice(b);
+
+    return sortValue === "low_high" ? priceA - priceB : priceB - priceA;
+  });
+
+  grid.innerHTML = "";
+  cards.forEach((card) => grid.appendChild(card));
+});
+</script>
+
+</body>
+</html>

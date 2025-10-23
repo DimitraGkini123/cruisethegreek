@@ -1,0 +1,1869 @@
+/* ----- General ----- */
+body {
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #f4f7fa;
+}
+/* ----- Top Bar (Phone + WhatsApp) ----- */
+.top-bar {
+  background-color: #001a33;
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.top-bar-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+}
+
+.phone-link {
+  text-decoration: none;
+}
+
+.phone {
+  color: #ff6600; /* Πορτοκαλί έντονο */
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.whatsapp-icon {
+  text-decoration: none;
+  color: #25D366; /* Πράσινο WhatsApp */
+  font-size: 22px;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-icon:hover {
+  transform: scale(1.2);
+}
+
+
+/* ===== NAVBAR GENERAL ===== */
+header {
+  top: 0;
+  z-index: 1000;       /* να είναι πάντα πάνω από τα υπόλοιπα */
+  background-color: #002b45; /* ίδιο χρώμα με το navbar */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #002b45;
+  padding: 6px 20px;
+  color: white;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+@media (max-width: 768px) {
+  header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff6600;
+}
+
+/* ===== MOBILE MENU ===== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    z-index: 1100;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: #002b45;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+  }
+}
+
+
+/* ----- Hero Section ----- */
+.hero {
+  background-image: url('images/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInHero 1.2s ease-out forwards;
+}
+
+/* 🔹 Gradient overlay για ευκρινέστερα γράμματα */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+/* ✨ Διακριτικό fade στο κάτω μέρος όπως πριν */
+.hero::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  z-index: 2;
+}
+
+/* 📍 Κείμενο πάνω από το overlay */
+.hero h1 {
+  position: relative;
+  z-index: 3;
+  font-size: 42px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+
+
+@keyframes fadeInHero {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-discover {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #ff6600;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.btn-discover:hover {
+  background-color: #e25500;
+}
+/* ===== SEARCH SECTION (λεπτή, minimal bar) ===== */
+.search-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0;                /* Απόσταση από το banner */
+  background: transparent;        /* ✅ Χωρίς φόντο */
+  margin-top: -10px;              /* Αν θες να τη φέρεις πιο κοντά στο banner */
+}
+
+/* ===== SEARCH FORM ===== */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 65%;                     /* ✅ Πιάνει αρκετό πλάτος */
+  max-width: 900px;
+  background: none;
+}
+
+/* ===== DROPDOWN ===== */
+.form-group {
+  flex: 1;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #ff6600;     /* Πορτοκαλί περίγραμμα */
+  border-radius: 8px;              /* Ελαφρώς στρογγυλεμένο */
+  font-size: 15px;
+  color: #002b45;
+  background: #fff;                /* Λευκό φόντο */
+  transition: all 0.3s ease;
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: #e25500;
+}
+
+/* ===== SEARCH BUTTON ===== */
+.search-btn {
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search-btn:hover {
+  background: #e25500;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+    width: 90%;
+    gap: 10px;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+}
+
+
+/* ===== Centered title with orange side lines (fixed baseline alignment) ===== */
+.section-list h2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; /* απόσταση γραμμών από το κείμενο */
+  font-size: 22px;
+  font-weight: 700;
+  color: #002b45;
+  text-transform: uppercase;
+  margin: 50px 0 10px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* πορτοκαλί γραμμές δεξιά & αριστερά */
+.section-list h2::before,
+.section-list h2::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  border-radius: 2px;
+  position: relative;
+  top: 0.4em; /* ✅ μετακινεί τη γραμμή χαμηλότερα ώστε να είναι κάτω από τα γράμματα */
+  max-width: 60px;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .section-list h2 {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .section-list h2::before,
+  .section-list h2::after {
+    max-width: 40px;
+    height: 2px;
+    top: 0.35em; /* μικρότερο offset σε μικρές οθόνες */
+  }
+}
+
+
+/* ----- Card Grid ----- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 🔹 ΠΑΝΤΑ 3 σε desktop */
+  gap: 25px;
+  justify-items: center;
+  align-items: stretch;
+  padding: 40px 80px;
+  max-width: 1400px;
+  row-gap: 45px; 
+  margin: 0 auto;
+}
+
+/* 🔸 Responsive breakpoints */
+@media (max-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 κάρτες σε μεσαίες οθόνες */
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr; /* 1 κάρτα σε κινητά */
+  }
+}
+
+
+/* ===== See More Button ===== */
+.see-more-container {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.see-more-btn {
+  display: inline-block;
+  background: #ff6600;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.see-more-btn:hover {
+  background: #e25500;
+  transform: translateY(-2px);
+}
+
+
+
+/* ======== FINAL CARD STYLE (fixed 520px height) ======== */
+.card {
+  width: 100%;
+  max-width: 380px;
+  height: 520px;                  /* ✅ σταθερό ύψος */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Poppins', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ----- TAG (BESTSELLER) ----- */
+.card-tag {
+  position: absolute;
+  background-color: #2ecc71;
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+}
+/* ----- DESTINATIONS (PHOTO/MAP) ----- */
+.destinations {
+  position: relative;
+  width: 100%;
+  height: 200px;                 /* ✅ πιο μεγάλο ύψος χάρτη/φωτογραφίας */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.destinations img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  display: none;                 
+}
+
+.map-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.95);
+  border: none;
+  color: #001a33;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 5000;             /* ✅ πολύ πιο ψηλό, ώστε να μένει πάνω από τον χάρτη */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.map-btn:hover {
+  background: #ff6600;
+  color: #fff;
+}
+
+/* ----- CARD TOP INFO (compact inline layout) ----- */
+.card-top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  gap: 10px;
+}
+
+.card-top-info p {
+  margin: 0;
+  text-align: left;
+}
+
+.card-top-info strong {
+  font-size: 12px;
+}
+
+.card-top-info select {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.image-features {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.feature-tag {
+  background: rgba(255, 255, 255, 0.9);
+  color: #ff6600;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.date-select {
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ----- PORTS ----- */
+.ports {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  padding: 10px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+  font-weight: 600;
+  color: #001a33;
+  margin-bottom: 2px;
+}
+
+.features {
+  margin-top: 0px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 στήλες */
+  gap: 2px 15px; /* κάθετο + οριζόντιο κενό */
+  padding: 8px 10px;
+  justify-content: space-between;
+}
+
+.feature {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 3px 8px;
+  font-size: 11px;
+  color: #002b45;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Πορτοκαλί εικονίδιο */
+.feature i {
+  color: #ff6600;
+  font-size: 16px;
+}
+
+
+/* Responsive: κάθετη διάταξη στα κινητά */
+@media (max-width: 600px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ----- OFFER ----- */
+.offer-banner {
+  background: #ff6600;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  padding: 8px 14px;
+  text-align: center;
+  border-radius: 20px;  
+}
+
+/* ----- PRICE BOX ----- */
+.price-box {
+  text-align: left;
+  padding: 10px 14px;
+  border-top: 1px solid #eee;
+  flex-grow: 1;
+}
+
+.old-price {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 12px;
+  margin: 0;
+}
+
+.new-price {
+  color: #ff6600;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 2px 0;
+}
+
+.small-text {
+  font-size: 11px;
+  color: #555;
+   margin-top: -4px;
+}
+/* ----- BUTTONS ----- */
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin-top: -10px;         /* 🔹 τα φέρνει λίγο πιο πάνω */
+  margin-bottom: 12px;      /* ✅ σταθερό περιθώριο από κάτω */
+}
+
+.details-btn,
+.book-btn {
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.details-btn {
+  background: #001a33;
+  color: white;
+}
+
+.book-btn {
+  background: #ff6600;
+  color: white;
+}
+
+.details-btn:hover {
+  background: #003b6f;
+}
+
+.book-btn:hover {
+  background: #ff8533;
+}
+
+
+
+@media (max-width: 600px) {
+  .card {
+    min-height: 560px !important;   /* ✅ Μεγαλύτερο ύψος κάρτας για κινητά */
+  }
+
+  .buttons {
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .details-btn,
+  .book-btn {
+    font-size: 13px;
+    padding: 10px 16px;
+    border-radius: 20px;
+  }
+}
+
+/* ===== SPECIAL CARD ===== */
+.special-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 20px;
+  margin: 20px auto 80px; /* ⬆️ 20px πάνω, ⬇️ 80px κάτω */
+  max-width: 1100px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.special-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.special-content {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  padding: 30px;
+  z-index: 5;  /* ✅ Ήταν 2, κάν’ το 5 για σιγουριά */
+}
+
+
+
+/*  Τίτλος ίδιος με Cruise Only 2026–2027 */
+.special-content h2 {
+  display: inline-block;
+  background: linear-gradient(90deg, #002b45 0%, #004466 100%);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+}
+
+/* Περιγραφή */
+.special-content p {
+  font-size: 15px;
+  max-width: 600px;
+  margin: 10px auto 25px;
+  line-height: 1.5;
+}
+
+/* Κουμπί — ίδιο στυλ με .book-btn */
+.special-content .book-btn {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.special-content .book-btn:hover {
+  background-color: #e25500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .special-card img {
+    height: 280px;
+  }
+
+  .special-content h2 {
+    font-size: 18px;
+    padding: 10px 18px;
+  }
+
+  .special-content p {
+    font-size: 13px;
+  }
+}
+
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: #001a33;
+  color: white;
+  padding: 50px 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  font-size: 22px;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.footer-phone {
+  color: #ff6600;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.footer-col h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+  border-bottom: 2px solid #ff6600;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin: 5px 0;
+}
+
+.footer-col ul li a {
+  color: #cdd9f0;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #ff6600;
+}
+
+/* Newsletter form */
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.newsletter-form input {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: none;
+  font-size: 13px;
+}
+
+.newsletter-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.newsletter-form button:hover {
+  background-color: #0056b3;
+}
+
+/* GNTO logo */
+.footer-gnto {
+  height: 40px;
+  margin-top: 10px;
+}
+
+.footer-gnto-code {
+  font-size: 12px;
+  color: #cdd9f0;
+  margin-top: 4px;
+}
+
+/* Κάτω γραμμή */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 15px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.footer-bottom span {
+  color: #ff6600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .newsletter-form {
+    align-items: center;
+  }
+}
+
+/* ========== RESULTS PAGE LAYOUT ========== */
+.results-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 40px 60px;
+  background-color: #f7f9fb;
+
+}
+
+/* ----- Left Filter Card ----- */
+.search-filter {
+  background: white;
+  border-radius: 16px;
+  padding: 25px 20px;
+  width: 280px;
+  min-width: 260px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 100px; /* για να μένει σταθερό καθώς κάνεις scroll */
+  height: fit-content;
+}
+
+.search-filter h3 {
+  color: #001a33;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 2px solid #ff6600;
+  padding-bottom: 8px;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-form label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #002b45;
+  margin-bottom: 4px;
+}
+
+.filter-form select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.search-btn {
+  margin-top: 10px;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: linear-gradient(90deg, #ff8533, #ffa366);
+}
+
+/* ----- Right Results Grid (2 per row) ----- */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 🔹 2 κάρτες ανά σειρά */
+  gap: 25px;
+  flex: 1;
+  align-items: stretch;
+  row-gap: 45px; 
+}
+
+/* Κεντράρισμα στο σύνολο */
+.results-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px 80px;
+  background-color: #f7f9fb;
+  flex-wrap: nowrap;
+}
+
+/* Κάρτες πιο "μαζεμένες" μέσα στο grid */
+.results-grid .card {
+  max-width: 100%;
+  height: 100%;
+}
+
+/* Responsive — 1 κάρτα ανά σειρά σε tablet/mobiles */
+@media (max-width: 1200px) {
+  .results-grid {
+    grid-template-columns: 1fr; /* 1 ανά σειρά */
+  }
+}
+
+@media (max-width: 992px) {
+  .results-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-filter {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    top: 0;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+}
+/* ===== Results Banner ===== */
+.results-banner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(1.03);
+  animation: fadeInBanner 1.2s ease-out forwards;
+}
+
+/* 🔹 Gradient overlay για να φαίνεται πιο καθαρό το κείμενο */
+.results-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+/* ✨ Λευκό fade στο κάτω μέρος για ομαλή μετάβαση στη σελίδα */
+.results-banner::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+  z-index: 2;
+}
+
+.results-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+  position: relative;
+  z-index: 0;
+}
+
+/* ===== Overlay & Title ===== */
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.banner-overlay h1 {
+  color: #fff;
+  font-size: 42px;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes fadeInBanner {
+  from {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* Decorative lines next to title */
+.title-line {
+  display: inline-block;
+  width: 60px;
+  height: 2px;
+  background: #ff6600;
+  vertical-align: middle;
+  margin: 0 12px;
+}
+/* ----- Filter responsive ----- */
+.filter-header {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  background: #002b45;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.filter-header button {
+  background: #ff6600;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .filter-header {
+    display: flex;
+  }
+
+  .filter-form {
+    display: none;
+    background: #f2f6fa;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  .filter-form.active {
+    display: block;
+  }
+
+  .search-filter {
+    width: 100%;
+  }
+}
+
+
+
+/* ============================ Tours Page Layout ===================================== */
+.tours-page {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px; /* απόσταση μεταξύ φίλτρου και καρτών */
+  padding: 40px 50px;
+  align-items: start;
+}
+.tours-content {
+  flex: 1;
+  position: relative;
+  padding-top: 40px; /* αφήνει λίγο χώρο για το sort κουμπί */
+}
+.tours-filter h3 {
+  color: #001a33;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 2px solid #ff6600;  /* ίδια πορτοκαλί γραμμή όπως στη search-filter */
+  padding-bottom: 8px;
+}
+
+.filter-group {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1.5px solid #ff6600;  /* γραμμή κάτω από κάθε κατηγορία */
+}
+.filter-group:last-child {
+  border-bottom: none; /* η τελευταία δεν χρειάζεται γραμμή */
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #002b45;
+  display: block;
+  margin-bottom: 8px;
+}
+.tours-filter {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  width: 280px;
+  min-width: 260px;
+}
+
+.filter-options li {
+  list-style: none;
+  margin: 6px 0;
+  color: #002b45;
+}
+
+.price-range {
+  width: 100%;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.sort-bar {
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid #ff6600;
+  font-size: 12px;
+  z-index: 10;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sort-bar label {
+  font-weight: 600;
+  color: #333;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sort-bar i {
+  font-size: 11px;
+  color: #ff6600;
+}
+
+.sort-bar select {
+  padding: 2px 6px;
+  border: 1px solid #ff8533;
+  border-radius: 8px;
+  font-size: 12px;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.sort-bar select:hover {
+  border-color: #ff6600;
+}
+
+/* ===== Tours Grid ===== */
+.tours-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+/* ===== MOBILE BUTTONS ===== */
+.mobile-controls {
+  display: none;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.mobile-btn {
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.3s ease;
+}
+
+.mobile-btn:hover {
+  background: #e65c00;
+}
+
+/* ===== RESPONSIVE FOR MOBILE ===== */
+@media (max-width: 768px) {
+
+  /* ===== SHOW MOBILE CONTROLS ===== */
+  .mobile-controls {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* ===== FILTER SIDEBAR (slide in from left) ===== */
+  .tours-filter {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85%;
+    height: 100%;
+    background: #fff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 20px;
+    padding-bottom: 90px;
+    animation: slideInLeft 0.3s ease;
+  }
+
+  .tours-filter.active {
+    display: block;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* ===== OVERLAY ===== */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+  /* ===== Sort dropdown styling ===== */
+  .sort-container.mobile-active label {
+    display: block;
+    font-weight: 700;
+    color: #002b45;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .sort-container.mobile-active select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: #f9f9f9;
+  }
+
+  /* ===== APPLY FILTER BUTTON ===== */
+  .tours-filter .search-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(90deg, #ff6600, #ff8533);
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 40px;
+    padding: 12px 0;
+    margin-top: 20px;
+    position: sticky;
+    bottom: 20px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+
+/* ===== Tour Card Styling ===== */
+.tour-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 520px; /* σταθερό ύψος */
+   max-width: 360px; /* πιο στενή κάρτα */
+   margin: 0 auto;
+}
+
+.tour-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.tour-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.tour-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px 20px;
+}
+
+.tour-info h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #002b45;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.tour-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.tour-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.tour-details i {
+  color: #ff6600;
+  margin-right: 4px;
+}
+
+.tour-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.tour-footer .price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ff6600;
+}
+
+.tour-footer .explore-btn {
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tour-footer .explore-btn:hover {
+  background: linear-gradient(90deg, #ff8533, #ffa366);
+}
+
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .tours-page {
+    grid-template-columns: 1fr;
+  }
+  .tours-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Sort By Dropdown ===== */
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff6600;
+}
+
+.sort-container label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #001a33;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.sort-container select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #002b45;
+  cursor: pointer;
+  background-color: #fff;
+  appearance: none; /* αφαιρεί το default βέλος */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D'12'%20height%3D'8'%20viewBox%3D'0%200%2012%208'%20xmlns%3D'http%3A//www.w3.org/2000/svg'%3E%3Cpath%20d%3D'M1%201l5%205%205-5'%20stroke%3D'%23002b45'%20stroke-width%3D'2'%20fill%3D'none'%20fill-rule%3D'evenodd'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px 8px;
+}
+
+.sort-container select:focus {
+  outline: none;
+  border-color: #ff6600;
+}
+
+
+/* ===== Collapsible Lists ===== */
+
+.filter-options {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+.filter-options li {
+  list-style: none;
+  margin: 6px 0;
+  color: #002b45;
+}
+
+/* Κρύβει τις επιπλέον επιλογές */
+.filter-options li.hidden {
+  display: none;
+}
+
+
+
+/* ===== Κουμπί Show More / Show Less ===== */
+.show-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  margin-left: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff6600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.3s;
+}
+
+.show-toggle i {
+  font-size: 11px;
+  transition: transform 0.3s ease;
+}
+
+.show-toggle:hover {
+  color: #e25500;
+  text-decoration: underline;
+}
+/*--CRUISE CARD-*/
+
+.cruise-card .package-destinations {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin: 10px 12px 6px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  color: #002b45;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.cruise-card .package-destinations i {
+  color: #ff6600;
+  font-size: 14px;
+}
+
+/* ----- PACKAGE CARD ----- */
+.package-card .package-destinations {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin: 10px 12px 6px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  color: #002b45;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.package-card .package-destinations i {
+  color: #ff6600;
+  font-size: 14px;
+}
+
+.package-card .offer-banner {
+  background: #ff6600;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  padding: 8px 14px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.package-card .package-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #002b45;
+  text-align: center;
+  padding: 10px 15px;
+  border-bottom: 2px solid #f0f0f0;
+  margin-top: 10px;
+  line-height: 1.3;
+  margin-bottom: 0px;
+}
+
+.cruise-card .cruise-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #002b45;
+  text-align: center;
+  padding: 10px 15px;
+  border-bottom: 2px solid #f0f0f0;
+  margin-top: 10px;
+  line-height: 1.3;
+  margin-bottom: 0px;
+}
+
+.cruise-card .card-top-info {
+  padding-top: 0;       /* ✅ κολλάει με τον τίτλο */
+  margin-top: -2px;     /* μικρή “συγκόλληση” */
+  text-align: center;
+}
+.package-card .card-top-info {
+  padding-top: 0;       /* ✅ κολλάει με τον τίτλο */
+  margin-top: -2px;     /* μικρή “συγκόλληση” */
+  text-align: center;
+}
+
+.package-card .features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px 10px;
+  margin-top: 0px;
+  font-size: 10px;
+  color: #333;
+}
+
+.package-card .feature {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.package-card .feature i {
+  color: #ff6600;
+  font-size: 14px;
+}
+.cruise-header {
+  margin-bottom: 25px;
+}
+
+.cruise-header-left h1 {
+  font-size: 28px;
+  color: #003b5c;
+  margin-bottom: 10px;
+}
+.cruise-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 στήλες με ίσο πλάτος */
+  gap: 10px 40px;
+  align-items: center;
+  margin: 15px 0 25px;
+  font-size: 16px;
+  color: #04344b;
+}
+
+.cruise-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+.cruise-meta i {
+  color: #ff6b00;
+  font-size: 18px;
+}
+
+.cruise-meta #packageRoute {
+  grid-column: 1 / -1; /* Το route να πιάνει όλο το πλάτος */
+  margin-top: 5px;
+  color: #003b5c;
+  line-height: 1.5;
+}
+
+.cruise-meta #cruiseShip {
+  font-weight: 600;
+  color: #003b5c;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cruise-meta {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .cruise-meta {
+    grid-template-columns: 1fr;
+  }
+}
+.deckplan {
+  position: relative;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.deck-image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 1200px; /* 🔸 Αυξάνει το μέγιστο πλάτος της εικόνας */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.deck-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+  border-radius: 12px;
+}
+
+
+
+/* --- Μεγεθυντικός φακός --- */
+.zoom-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.zoom-btn i {
+  color: #ff6600;
+  font-size: 18px;
+}
+
+.zoom-btn:hover {
+  background: #ff6600;
+}
+
+.zoom-btn:hover i {
+  color: #fff;
+}
+
+/* Κατά το zoom */
+.deck-image.zoomed {
+  transform: scale(2);
+  cursor: zoom-out;
+}
+
+
+/*sort button sto results.html*/
+/* ===== Sort dropdown πάνω από τα results ===== */
+/* ===== Μικρό Sort dropdown πάνω από τα results ===== */
+.sort-bar {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid #ff6600;
+  font-size: 12px;
+  z-index: 10;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sort-bar label {
+  font-weight: 600;
+  color: #333;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sort-bar i {
+  font-size: 11px;
+  color: #ff6600;
+}
+
+.sort-bar select {
+  padding: 2px 6px;
+  border: 1px solid #ff8533;
+  border-radius: 8px;
+  font-size: 12px;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.sort-bar select:hover {
+  border-color: #ff6600;
+}
+
+/* για να λειτουργεί το absolute positioning */
+.results-page {
+  position: relative;
+}

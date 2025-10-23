@@ -1,0 +1,100 @@
+{
+  "Celestyal Discovery": [
+    {
+      "name": "Interior Cabin",
+      "images": [
+        "images/cabins/interior.jpg",
+        "images/cabins/interior2.jpg"
+      ],
+      "desc": "Cozy interior cabins designed for comfort and style, featuring double or twin beds, ensuite bathroom, and smart TV.",
+      "details": {
+        "Size": "15 m²",
+        "Occupancy": "2 guests",
+        "Facilities": "AC, TV, Safe, Mini Fridge"
+      }
+    },
+    {
+      "name": "Balcony Cabin",
+      "images": [
+        "images/cabins/balcony.jpg",
+        "images/cabins/balcony1.jpg"
+      ],
+      "desc": "Spacious cabins with private balcony and sea views, perfect for relaxing moments.",
+      "details": {
+        "Size": "25 m²",
+        "Private Balcony": "Yes",
+        "Room Service": "Available"
+      }
+    },
+        {
+      "name": "Ocean View",
+      "images": [
+        "images/cabins/ocean-view.jpg",
+        "images/cabins/ocean-view1.jpg"
+      ],
+      "desc": "Spacious cabins with private balcony and sea views, perfect for relaxing moments.",
+      "details": {
+        "Size": "25 m²",
+        "Private Balcony": "Yes",
+        "Room Service": "Available"
+      }
+    }
+  ],
+
+  "MSC Opera": [
+    {
+      "name": "Oceanview Cabin",
+      "images": [
+        "images/cabins/oceanview1.jpg",
+        "images/cabins/oceanview2.jpg"
+      ],
+      "desc": "Cabins with large porthole windows offering sea views, modern interiors and private bathroom.",
+      "details": {
+        "Size": "18 m²",
+        "Occupancy": "2-3 guests",
+        "Facilities": "TV, Safe, Minibar"
+      }
+    },
+    {
+      "name": "Suite",
+      "images": [
+        "images/cabins/suite1.jpg",
+        "images/cabins/suite2.jpg"
+      ],
+      "desc": "Luxurious suite with spacious balcony, king-size bed, sitting area and exclusive amenities.",
+      "details": {
+        "Size": "35 m²",
+        "Occupancy": "2-4 guests",
+        "Facilities": "Jacuzzi, Mini Bar, Concierge"
+      }
+    }
+  ],
+    "MSC Musica": [
+    {
+      "name": "Oceanview Cabin",
+      "images": [
+        "images/cabins/musica-ocean.jpg",
+        "images/cabins/oceanview2.jpg"
+      ],
+      "desc": "Cabins with large porthole windows offering sea views, modern interiors and private bathroom.",
+      "details": {
+        "Size": "18 m²",
+        "Occupancy": "2-3 guests",
+        "Facilities": "TV, Safe, Minibar"
+      }
+    },
+    {
+      "name": "Suite",
+      "images": [
+        "images/cabins/suite-musica.jpg",
+        "images/cabins/suite2.jpg"
+      ],
+      "desc": "Luxurious suite with spacious balcony, king-size bed, sitting area and exclusive amenities.",
+      "details": {
+        "Size": "35 m²",
+        "Occupancy": "2-4 guests",
+        "Facilities": "Jacuzzi, Mini Bar, Concierge"
+      }
+    }
+  ]
+}

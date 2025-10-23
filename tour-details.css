@@ -1,0 +1,470 @@
+/* ================= TOUR DETAILS PAGE ================= */
+
+.tour-details-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 60px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+.breadcrumb a {
+  color: #004466;
+  text-decoration: none;
+  font-weight: 500;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+.tour-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+.tour-header-left h1 {
+  color: #002b45;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+.tour-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: #444;
+  font-size: 14px;
+}
+.tour-meta i {
+  margin-right: 5px;
+  color: #ff6600;
+}
+.tour-header-right {
+  text-align: right;
+}
+.tour-header-right .price {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 10px;
+}
+.tour-header-right .price span {
+  font-size: 24px;
+  color: #d92323;
+  font-weight: 700;
+}
+.book-btn {
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.book-btn:hover {
+  background: linear-gradient(90deg, #ff8533, #ffa366);
+}
+
+/* === Gallery Layout === */
+.tour-gallery {
+  margin-top: 30px;
+}
+
+.gallery-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.gallery-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gallery-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  position: relative;
+}
+
+
+
+/* Responsive fix */
+@media (max-width: 768px) {
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Description */
+.tour-content {
+  max-width: 900px;
+  line-height: 1.6;
+}
+.tour-content h2 {
+  font-size: 24px;
+  color: #002b45;
+  margin-bottom: 15px;
+}
+.tour-content h3 {
+  font-size: 18px;
+  color: #002b45;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.tour-content ul {
+  list-style: disc;
+  margin-left: 25px;
+  color: #444;
+}
+/* ========== IMAGE GALLERY (balanced layout) ========== */
+.tour-gallery {
+  position: relative;
+  margin: 40px 0;
+}
+
+.gallery-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr; /* πιο ισορροπημένο ratio */
+  gap: 10px;
+  align-items: stretch;
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.gallery-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gallery-side img {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-side img:hover,
+.gallery-main img:hover {
+  transform: scale(1.02);
+}
+
+
+/* ========== LIGHTBOX ========== */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.lightbox-content {
+  max-width: 85%;
+  max-height: 80vh;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.close {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Navigation arrows */
+.prev,
+.next {
+  color: #fff;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+  transition: 0.3s;
+}
+.prev { left: 50px; }
+.next { right: 50px; }
+.prev:hover, .next:hover { color: #ff8533; }
+
+@media (max-width: 768px) {
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
+  .gallery-side {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-main img {
+    height: 280px;
+  }
+}
+/* ---------- Included / Excluded ---------- */
+.included-section h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #002b45;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.included-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.included-list,
+.excluded-list {
+  list-style: none;
+  padding: 25px 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.included-list {
+  background-color: #e8f9e8;
+  border: 1px solid #bce5bc;
+}
+.excluded-list {
+  background-color: #ffe5e5;
+  border: 1px solid #f3b5b5;
+}
+.included-list li,
+.excluded-list li {
+  font-size: 16px;
+  color: #002b45;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+}
+.included-list i {
+  color: #2e8b57;
+}
+.excluded-list i {
+  color: #cc0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .included-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+
+/* ===== CENTERED TITLES WITH SIDE ORANGE LINES ===== */
+.tour-content h2,
+.included-section h2,
+.tour-content h3 {
+  position: relative;
+  text-align: center;
+  font-size: 22px;           /* μικρότερο για ισορροπία */
+  font-weight: 700;
+  color: #002b45;
+  text-transform: uppercase;
+  margin: 50px 0 25px;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Οι πορτοκαλί γραμμές */
+.tour-content h2::before,
+.tour-content h2::after,
+.included-section h2::before,
+.included-section h2::after,
+.tour-content h3::before,
+.tour-content h3::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  border-radius: 2px;
+  max-width: 60px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tour-content h2,
+  .included-section h2,
+  .tour-content h3 {
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .tour-content h2::before,
+  .tour-content h2::after,
+  .included-section h2::before,
+  .included-section h2::after,
+  .tour-content h3::before,
+  .tour-content h3::after {
+    max-width: 40px;
+    height: 2px;
+  }
+}
+
+
+/* ===== Floating Sticky Book Button ===== */
+.floating-book-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 15px 30px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10001;
+  animation: book-bounce 3s ease-in-out infinite;
+  animation-delay: 2s; /* ξεκινάει λίγο μετά */
+}
+.floating-book-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(255, 102, 0, 0.5);
+  background: linear-gradient(90deg, #ff8533, #ffa366);
+}
+.floating-book-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.3s ease;
+}
+
+@keyframes book-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-6px);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+}
+
+/* ====== Animated Floating Phone Button ====== */
+
+.floating-call-btn {
+  position: fixed;
+  bottom: 95px;
+  right: 32px;
+  background: #003b66;
+  color: white;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  animation: phone-swing 2s ease-in-out infinite;
+  animation-delay: 3s; /* αρχίζει λίγο μετά */
+}
+
+.floating-call-btn:hover {
+  background: #005a94;
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Κίνηση πέρα-δώθε (swing) */
+@keyframes phone-swing {
+  0%, 100% { transform: rotate(0deg); }
+  10% { transform: rotate(15deg); }
+  20% { transform: rotate(-15deg); }
+  30% { transform: rotate(10deg); }
+  40% { transform: rotate(-10deg); }
+  50% { transform: rotate(5deg); }
+  60% { transform: rotate(-5deg); }
+  70% { transform: rotate(0deg); }
+}
+
+/* Εμφάνιση μετά το scroll */
+.show-buttons .floating-call-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+@media (max-width: 768px) {
+  .sticky-menu {
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+
+  .sticky-menu ul {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .floating-book-btn {
+    bottom: 15px;
+    right: 15px;
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}

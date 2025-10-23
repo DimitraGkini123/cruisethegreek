@@ -1,0 +1,156 @@
+{
+  "Celestyal Discovery": {
+    "Santorini": [
+      {
+        "title": "Volcano & Hot Springs Tour",
+        "desc": "Boat trip to the volcanic islands and swim in the natural hot springs.",
+        "priceAdults": "€79",
+        "priceChildren": "€59",
+        "image": "images/excursions/volcano.jpg"
+      },
+      {
+        "title": "Oia Sunset Experience",
+        "desc": "Enjoy the famous Oia sunset from a private terrace with wine tasting.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/sunset.jpg"
+      },
+           {
+        "title": "Oia Sunset Experience",
+        "desc": "Enjoy the famous Oia sunset from a private terrace with wine tasting.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/sunset.jpg"
+      },
+           {
+        "title": "Oia Sunset Experience",
+        "desc": "Enjoy the famous Oia sunset from a private terrace with wine tasting.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/sunset.jpg"
+      },
+           {
+        "title": "Oia Sunset Experience",
+        "desc": "Enjoy the famous Oia sunset from a private terrace with wine tasting.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/sunset.jpg"
+      },
+           {
+        "title": "Oia Sunset Experience",
+        "desc": "Enjoy the famous Oia sunset from a private terrace with wine tasting.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/sunset.jpg"
+      },
+           {
+        "title": "Oia Sunset Experience",
+        "desc": "Enjoy the famous Oia sunset from a private terrace with wine tasting.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/sunset.jpg"
+      },
+           {
+        "title": "Oia Sunset Experience",
+        "desc": "Enjoy the famous Oia sunset from a private terrace with wine tasting.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/sunset.jpg"
+      }
+    ],
+    "Mykonos": [
+      {
+        "title": "Walking Tour of Mykonos Town",
+        "desc": "Discover Little Venice, the windmills, and the charm of Mykonos Town.",
+        "priceAdults": "€69",
+        "priceChildren": "€49",
+        "image": "images/excursions/walking.jpg"
+      },
+      {
+        "title": "Delos Island Archaeological Tour",
+        "desc": "Visit the sacred island of Delos, one of Greece’s most important ancient sites.",
+        "priceAdults": "€75",
+        "priceChildren": "€55",
+        "image": "images/excursions/delos.jpg"
+      }
+    ],
+        "Rhodes": [
+      {
+        "title": "Medieval Old Town Tour",
+        "desc": "Explore the UNESCO-listed city of Rhodes with a local guide.",
+        "priceAdults": "€69",
+        "priceChildren": "€49",
+        "image": "images/excursions/walking.jpg"
+      }
+    ],
+        "Crete": [
+      {
+        "title": "Knossos Palace & Heraklion Museum",
+        "desc": "Step into the world of the Minoans and explore Crete’s ancient history.",
+        "priceAdults": "€78",
+        "priceChildren": "€58",
+        "image": "images/excursions/knossos.jpg"
+      },
+      {
+        "title": "Rethymno & Chania Old Town",
+        "desc": "Stroll through Crete’s two most beautiful Venetian harbors.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/chania.jpg"
+      }
+    ]
+  },
+
+  "MSC Opera": {
+    "Rhodes": [
+      {
+        "title": "Medieval Old Town Tour",
+        "desc": "Explore the UNESCO-listed city of Rhodes with a local guide.",
+        "priceAdults": "€72",
+        "priceChildren": "€52",
+        "image": "images/excursions/rhodos.png"
+      },
+      {
+        "title": "Lindos Acropolis Excursion",
+        "desc": "Discover the ancient acropolis of Lindos and the picturesque village below.",
+        "priceAdults": "€80",
+        "priceChildren": "€60",
+        "image": "images/excursions/lindos.jpg"
+      }
+    ],
+    "Crete": [
+      {
+        "title": "Knossos Palace & Heraklion Museum",
+        "desc": "Step into the world of the Minoans and explore Crete’s ancient history.",
+        "priceAdults": "€78",
+        "priceChildren": "€58",
+        "image": "images/excursions/knossos.jpg"
+      },
+      {
+        "title": "Rethymno & Chania Old Town",
+        "desc": "Stroll through Crete’s two most beautiful Venetian harbors.",
+        "priceAdults": "€85",
+        "priceChildren": "€65",
+        "image": "images/excursions/chania.jpg"
+      }
+    ]
+  },
+    "MSC Musica": {
+    "Poros": [
+      {
+        "title": "Medieval Old Town Tour",
+        "desc": "Explore the UNESCO-listed city of Rhodes with a local guide.",
+        "priceAdults": "€72",
+        "priceChildren": "€52",
+        "image": "images/excursions/rhodos.png"
+      },
+      {
+        "title": "Lindos Acropolis Excursion",
+        "desc": "Discover the ancient acropolis of Lindos and the picturesque village below.",
+        "priceAdults": "€80",
+        "priceChildren": "€60",
+        "image": "images/excursions/lindos.jpg"
+      }
+    ]
+   }
+}

@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cruise Only Details | CruiseTheGreek</title>
+
+  <!-- Font Awesome & CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cruise-details.css">
+</head>
+
+<body>
+
+<!-- ===== Top Bar ===== -->
+<div class="top-bar">
+  <div class="top-bar-content">
+    <a href="tel:+302101234567" class="whatsapp-icon" title="Call via WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:+302101234567" class="phone-link">
+      <span class="phone">+30 210 123 4567</span>
+    </a>
+  </div>
+</div>
+
+<!-- ===== Navbar ===== -->
+<header>
+  <nav class="navbar">
+    <div class="logo">CruiseTheGreek.com</div>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <ul class="nav-links">
+      <li><a href="homepage.html">HOME</a></li>
+      <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+      <li><a href="results.html?type=cruise_package" class="active">CRUISE PACKAGES</a></li>
+      <li><a href="tours.html">TOURS</a></li>
+      <li><a href="ships.html">CRUISE SHIPS</a></li>
+      <li><a href="destinations.html">DESTINATIONS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== Main Page ===== -->
+<main class="cruise-details-page">
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="homepage.html"><i class="fa-solid fa-house"></i></a>
+    <span>›</span>
+    <a href="results.html?type=cruise_only">Cruise Only</a>
+    <span>›</span>
+    <span id="breadcrumbTitle">Cruise Details</span>
+  </nav>
+
+<!-- ===== Cruise Title ===== -->
+<section class="cruise-header">
+  <div class="cruise-header-left">
+    <h1 id="cruiseTitle" class="main-title">Cruise Title</h1>
+      <div class="itinerary-actions">
+  <button id="printBtn"><i class="fa-solid fa-print"></i> Print Itinerary</button>
+  <button id="emailBtn"><i class="fa-solid fa-envelope"></i> Send via Email</button>
+</div>
+
+  </div>
+
+
+
+  <div class="cruise-header-right">
+    <p class="price">from <span id="cruisePrice">—</span></p>
+    <button class="book-btn">Book Now</button>
+  </div>
+</section>
+
+<div class="cruise-actions">
+  <button class="floating-book-btn">Book Now</button>
+  <a href="tel:+302101234567" class="floating-call-btn" title="Call us">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+</div>
+
+
+<!-- ===== Gallery ===== -->
+<section class="cruise">
+  <div class="gallery-layout">
+    <!-- Κύρια εικόνα -->
+    <div class="gallery-main">
+      <img id="cruiseImage" src="" alt="Cruise Only" class="gallery-img">
+    </div>
+
+    <!-- Πλευρικές εικόνες -->
+    <div class="gallery-side" id="gallerySide">
+      <!-- JS θα βάλει εδώ τις εικόνες από cruises.json -->
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <a class="prev">&#10094;</a>
+    <a class="next">&#10095;</a>
+  </div>
+</section>
+
+<!-- ===== Sticky Menu ===== -->
+<nav class="sticky-menu">
+  <ul>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#ship">Cruise Ship - Cabins</a></li>
+    <li><a href="#pricelist">Pricelist</a></li>
+    <li><a href="#shore-excursions">Shore Excursions</a></li>
+    
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<!-- ===== Description Section ===== -->
+<section id="description" class="description-section">
+  <div class="description-left">
+    <h2>Description</h2>
+
+    <!-- Cruise Meta moved here -->
+    <div class="cruise-meta">
+      <span><i class="fa-solid fa-ship"></i> Departure: <span id="departurePort"></span></span>
+      <span><i class="fa-solid fa-flag"></i> Arrival: <span id="arrivalPort"></span></span>
+      <span><i class="fa-solid fa-hourglass-half"></i> <span id="cruiseDuration"></span></span>
+      <span><i class="fa-solid fa-map-location-dot"></i> Route: <span id="cruiseRoute"></span></span>
+      <span><i class="fa-solid fa-anchor"></i> Cruise Ship: <span id="cruiseShip"></span></span>
+    </div>
+
+    <!-- Description text -->
+    <div id="cruiseDescription"></div>
+  </div>
+
+  <div class="description-right">
+    <h3>Why choose <br><span>CruiseTheGreek.com?</span></h3>
+    <ul>
+      <li>✅ Best prices — based in Athens</li>
+      <li>✅ Final prices — no hidden fees</li>
+      <li>✅ Includes cruise, hotel & transfers</li>
+      <li>✅ Specialized travel consultants</li>
+    </ul>
+    <p class="call-text">Call us now:</p>
+    <p class="phone">+30 210 123 4567</p>
+  </div>
+</section>
+
+
+
+
+<section id="itinerary" class="section itinerary">
+  <h2>Itinerary</h2>
+  <div class="timeline">
+    <!-- Τα timeline items θα προστεθούν δυναμικά από το script -->
+  </div>
+</section>
+
+
+<!-- ===== Cruise Ship Section ===== -->
+<section id="ship" class="section cruise-ship">
+  <h2>Cruise Ship - Cabins</h2>
+
+  
+  <!-- 1️⃣ YouTube Video -->
+  <div class="ship-video">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n83LDnLwzgE?si=6oTD4YtByjmb9Ufj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+
+<div class="ship-info">
+  <h3>Ship Characteristics</h3>
+
+  <div class="ship-table" id="shipTable">
+    <!-- Τα δεδομένα θα μπουν εδώ -->
+  </div>
+</div>
+
+
+    <!-- 3️⃣ Παροχές Πλοίου -->
+    <div class="ship-facilities">
+      <h3>Onboard Facilities</h3>
+
+      <div class="facility-container">
+        <button class="facility-btn prev-facility"><i class="fa-solid fa-chevron-left"></i></button>
+
+        <div class="facility-content">
+          <div class="facility-image">
+            <img id="facilityImage" src="images/pool.jpg" alt="Facility">
+          </div>
+          <div class="facility-text">
+            <h4 id="facilityTitle">Outdoor Pool</h4>
+            <p id="facilityDescription">Relax at our panoramic sea-view pool with sunbeds and cocktail service.</p>
+          </div>
+        </div>
+
+        <button class="facility-btn next-facility"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+
+
+  <!-- 4️⃣ Deckplan -->
+<div class="deckplan">
+  <h3>Deck Plan</h3>
+
+  <div id="deckButtons" class="deck-buttons"></div>
+  <div class="deck-image-container">
+    <img id="deckImage" src="" alt="Deck Plan" class="deck-image">
+      <button class="zoom-btn" title="Zoom deck plan">
+    <i class="fa-solid fa-magnifying-glass-plus"></i>
+  </button>
+
+</div>
+
+
+
+  <!-- 5️⃣ Cabins -->
+<div class="cabins">
+  <h3>Cabins</h3>
+  <div id="cabinsContainer" class="cabins-container"></div>
+</div>
+
+<!-- Lightbox για gallery -->
+<div id="cabinLightbox" class="cabin-lightbox">
+  <span class="close-btn">&times;</span>
+  <img id="cabinLightboxImg" src="" alt="">
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+</div>
+
+</section>
+   <!-- ===== Pricelist ===== -->
+<section id="pricelist" class="section pricelist">
+  <h2>Pricelist</h2>
+
+  <table class="date-price-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Inside</th>
+        <th>Oceanview</th>
+        <th>Balcony</th>
+        <th>Suite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <label class="date-option">
+            <input type="radio" name="cruise-date">
+            <span>April 4 - 11, 2025</span>
+          </label>
+        </td>
+        <td>from <strong>€217</strong></td>
+        <td>from <strong>€317</strong></td>
+        <td>from <strong>€417</strong></td>
+        <td>from <strong>€517</strong></td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="date-option">
+            <input type="radio" name="cruise-date">
+            <span>April 11 - 18, 2025</span>
+          </label>
+        </td>
+        <td>from <strong>€299</strong></td>
+        <td>from <strong>€399</strong></td>
+        <td>from <strong>€499</strong></td>
+        <td>from <strong>€599</strong></td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="date-option">
+            <input type="radio" name="cruise-date">
+            <span>April 18 - 25, 2025</span>
+          </label>
+        </td>
+        <td>from <strong>€220</strong></td>
+        <td>from <strong>€320</strong></td>
+        <td>from <strong>€420</strong></td>
+        <td>from <strong>€520</strong></td>
+      </tr>
+
+      <tr>
+        <td>
+          <label class="date-option">
+            <input type="radio" name="cruise-date">
+            <span>April 25 - May 2, 2025</span>
+          </label>
+        </td>
+        <td>from <strong>€238</strong></td>
+        <td>from <strong>€338</strong></td>
+        <td>from <strong>€438</strong></td>
+        <td>from <strong>€538</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+    <!-- ===== Included / Not Included ===== -->
+    <section id="included" class="section included-section">
+      <div class="included-grid">
+        <ul class="included-list">
+          <h3>Price Includes</h3>
+          <li><i class="fa-solid fa-check"></i> 5-night cruise accommodation</li>
+          <li><i class="fa-solid fa-check"></i> Full board (breakfast, lunch, dinner)</li>
+          <li><i class="fa-solid fa-check"></i> Port taxes & service fees</li>
+          <li><i class="fa-solid fa-check"></i> Onboard entertainment</li>
+          <li><i class="fa-solid fa-check"></i> Access to pool & gym</li>
+        </ul>
+
+        <ul class="excluded-list">
+          <h3>Price Does Not Include</h3>
+          <li><i class="fa-solid fa-xmark"></i> Shore excursions</li>
+          <li><i class="fa-solid fa-xmark"></i> Alcoholic beverages</li>
+          <li><i class="fa-solid fa-xmark"></i> Personal expenses & gratuities</li>
+        </ul>
+      </div>
+    </section>
+
+
+<section id="shore-excursions" class="section shore-excursions">
+  <h2>Shore Excursions</h2>
+
+  <div id="tabs" class="tabs"></div>
+  <div id="tabContents" class="tab-contents"></div>
+
+  <!-- Modal -->
+  <div id="excursionModal" class="excursion-modal">
+    <div class="excursion-modal-content">
+      <span class="close-btn">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <img id="modalImage" src="" alt="Excursion Image">
+      <p id="modalText"></p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="section faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Do I need to bring my passport?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>No, this is a domestic tour within Greece. Only a valid ID card is required.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Are meals included?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Lunch is included only if you select the "Tour with Lunch" option during booking.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Can I cancel my booking for free?
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>Yes, cancellations up to 48 hours before departure are free of charge.</p>
+      </div>
+    </div>
+
+    <div class="faq-item active">
+  <button class="faq-question">
+    What are other similar cruises?
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
+
+  <div class="faq-answer">
+    <div class="similar-cruises">
+      <div class="cruise-box">
+        <img src="images/crete.jpg" alt="Aegean Highlights">
+        <p>Aegean Highlights Cruise</p>
+      </div>
+
+      <div class="cruise-box">
+        <img src="images/rhodes.jpg" alt="Greek Isles Discovery">
+        <p>Greek Isles Discovery</p>
+      </div>
+
+      <div class="cruise-box">
+        <img src="images/zante1.jpg" alt="Athens to Santorini">
+        <p>Athens to Santorini</p>
+      </div>
+
+      <div class="cruise-box">
+        <img src="images/paxoi.jpg" alt="Mediterranean Escape">
+        <p>Mediterranean Escape</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+</main>
+
+ <!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- 🔹 1η Στήλη: Logo + Επικοινωνία -->
+    <div class="footer-col">
+      <h3 class="footer-logo">CruiseTheGreek.com</h3>
+      <p class="footer-phone">+1 (415) 7957979</p>
+      <p><a href="mailto:info@cruisethegreek.com">info@cruisethegreek.com</a></p>
+      <p>8, Aggelou Vlachou st, Plaka, Athens</p>
+      <img src="images/gnto.png" alt="GNTO" class="footer-gnto">
+      <p class="footer-gnto-code">GNTO: 0206E60000362401</p>
+    </div>
+
+    <!-- 🔹 2η Στήλη: Navigation Menu -->
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul class="footer-nav">
+        <li><a href="homepage.html">HOME</a></li>
+        <li><a href="cruises.html">CRUISES</a></li>
+        <li><a href="packages.html">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 3η Στήλη: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">B2B Partnership</a></li>
+        <li><a href="#">Partners Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 🔸 Κάτω γραμμή -->
+  <div class="footer-bottom">
+    <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- ================================== Scripts ====================================== -->
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const selectedTitle = localStorage.getItem("selectedCruise");
+  if (!selectedTitle) {
+    console.warn("⚠️ No cruise title found in localStorage");
+    return;
+  }
+
+  console.log("Selected cruise title:", selectedTitle);
+
+  fetch("data/cruises.json")
+    .then(res => res.json())
+    .then(data => {
+      // Αν το αρχείο είναι object-of-objects, αλλιώς χρησιμοποίησε data.find(...)
+      const cruise = Object.values(data).find(p => p.title === selectedTitle);
+
+      if (!cruise) {
+        console.error("❌ Cruise not found in cruises.json:", selectedTitle);
+        return;
+      }
+
+      console.log("✅ Cruise loaded:", cruise);
+
+      // === Ενημέρωση βασικών στοιχείων ===
+      const $ = (id) => document.getElementById(id);
+      $("cruiseTitle").textContent = cruise.title;
+      $("breadcrumbTitle").textContent = cruise.title;
+      $("cruiseImage").src = cruise.image || "images/cruise-only.jpg";
+      $("departurePort").textContent = cruise.departure || "—";
+      $("arrivalPort").textContent = cruise.arrival || "—";
+      $("cruiseDuration").textContent = cruise.duration || "—";
+      $("cruiseRoute").textContent = (cruise.route || "").split("|").join(" → ");
+      $("cruisePrice").textContent = cruise.priceNew || "—";
+      $("cruiseShip").textContent = cruise.ship || "—";
+
+      // === Περιγραφή ===
+      $("cruiseDescription").innerHTML = `
+        <p><strong>${cruise.duration}</strong> cruise-only package.</p>
+        <p>Departure from <strong>${cruise.departure}</strong> and arrival at <strong>${cruise.arrival}</strong>.</p>
+        <p>Visit: ${(cruise.route || "").split("|").join(", ")}.</p>
+        <p><strong>Offer:</strong> ${cruise.offer || "—"}</p>
+      `;
+
+      // === Gallery ===
+      const sideGallery = document.querySelector(".gallery-side");
+      sideGallery.innerHTML = "";
+      (cruise.gallery || []).forEach((src, i) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `${cruise.title} photo ${i + 1}`;
+        img.className = "gallery-img";
+        img.addEventListener("click", () => openLightbox(i));
+        sideGallery.appendChild(img);
+      });
+
+      // === Itinerary ===
+      const itineraryContainer = document.querySelector("#itinerary .timeline");
+      if (Array.isArray(cruise.itinerary) && cruise.itinerary.length) {
+        itineraryContainer.innerHTML = cruise.itinerary.map(stop => `
+          <div class="timeline-item">
+            <div class="timeline-dot">${stop.day ?? ""}</div>
+            <div class="timeline-content">
+              <img src="${stop.image || "images/default.jpg"}" alt="${stop.title || ""}">
+              <div class="text">
+                <h3>Day ${stop.day ?? ""} – ${stop.title ?? ""}</h3>
+                <p>${stop.desc ?? ""}</p>
+                <span class="time">${stop.arrival || "—"} • ${stop.departureTime || "—"}</span>
+              </div>
+            </div>
+          </div>
+        `).join("");
+      } else {
+        itineraryContainer.innerHTML = "<p>No itinerary available for this cruise.</p>";
+      }
+      
+
+    
+        if (cruise.ship) {
+        loadShipDetails(cruise.ship);
+        loadExcursions(cruise.ship);
+      }
+    })
+    .catch(err => console.error("❌ Error loading cruises.json:", err));
+
+function loadShipDetails(shipName) {
+    const shipTable = document.getElementById("shipTable");
+    const deckButtonsContainer = document.getElementById("deckButtons");
+    const deckImage = document.getElementById("deckImage");
+    const cabinsContainer = document.getElementById("cabinsContainer");
+    const lightbox = document.getElementById("cabinLightbox");
+    const lightboxImg = document.getElementById("cabinLightboxImg");
+    const closeBtn = document.querySelector(".cabin-lightbox .close-btn");
+    const prevBtn = document.querySelector(".cabin-lightbox .prev");
+    const nextBtn = document.querySelector(".cabin-lightbox .next");
+
+    let cabins = [];
+    let currentCabinIndex = 0;
+    let currentImageIndex = 0;
+
+    // --- 1️⃣ Φόρτωση Ship Info & Decks ---
+    fetch("data/ships_data.json")
+      .then(res => res.json())
+      .then(data => {
+        const ship = data[shipName];
+        if (!ship) {
+          shipTable.innerHTML = `<p>No ship info found for <strong>${shipName}</strong>.</p>`;
+          return;
+        }
+
+        // Ship Info
+        shipTable.innerHTML = `
+          <div class="ship-row">
+            <div class="ship-col"><strong>Gross Tonnage:</strong> ${ship.tonnage}</div>
+            <div class="ship-col"><strong>Crew:</strong> ${ship.crew}</div>
+          </div>
+          <div class="ship-row">
+            <div class="ship-col"><strong>Passengers:</strong> ${ship.passengers}</div>
+            <div class="ship-col"><strong>Cabins:</strong> ${ship.cabins}</div>
+          </div>
+          <div class="ship-row">
+            <div class="ship-col"><strong>Length:</strong> ${ship.length}</div>
+            <div class="ship-col"><strong>Speed:</strong> ${ship.speed}</div>
+          </div>
+        `;
+
+        // Deck Buttons
+        if (ship.decks && ship.decks.length > 0) {
+          deckButtonsContainer.innerHTML = "";
+          ship.decks.forEach((deck, i) => {
+            const btn = document.createElement("button");
+            btn.className = `deck-btn ${i === 0 ? "active" : ""}`;
+            btn.textContent = deck.name;
+            btn.dataset.image = deck.image;
+
+            btn.addEventListener("click", () => {
+              document.querySelectorAll(".deck-btn").forEach(b => b.classList.remove("active"));
+              btn.classList.add("active");
+              deckImage.classList.add("fade");
+              setTimeout(() => {
+                deckImage.src = deck.image;
+                deckImage.alt = deck.name;
+                deckImage.classList.remove("fade");
+              }, 200);
+            });
+
+            deckButtonsContainer.appendChild(btn);
+          });
+
+          deckImage.src = ship.decks[0].image;
+          deckImage.alt = ship.decks[0].name;
+        } else {
+          deckButtonsContainer.innerHTML = "<p>No deck plan available.</p>";
+        }
+      })
+      .catch(err => console.error("❌ Error loading ship data:", err));
+
+    // --- 2️⃣ Φόρτωση Καμπινών + Gallery ---
+    fetch("data/cabins.json")
+      .then(res => res.json())
+      .then(data => {
+        cabins = data[shipName];
+        if (!cabins || !cabins.length) {
+          cabinsContainer.innerHTML = "<p>No cabin data available for this ship.</p>";
+          return;
+        }
+
+        cabinsContainer.innerHTML = cabins.map((cabin, i) => `
+          <div class="cabin-card">
+            <img src="${cabin.images[0]}" alt="${cabin.name}" data-cabin-index="${i}">
+            <div class="cabin-details">
+              <h4>${cabin.name}</h4>
+              <p>${cabin.desc}</p>
+              <ul>${Object.entries(cabin.details)
+                .map(([k, v]) => `<li><strong>${k}:</strong> ${v}</li>`)
+                .join("")}</ul>
+            </div>
+          </div>
+        `).join("");
+
+        // Click σε εικόνα -> Άνοιγμα lightbox
+        cabinsContainer.addEventListener("click", e => {
+          const img = e.target.closest("img[data-cabin-index]");
+          if (!img) return;
+
+          currentCabinIndex = parseInt(img.dataset.cabinIndex);
+          currentImageIndex = 0;
+          showImage();
+          lightbox.style.display = "flex";
+        });
+      })
+      .catch(err => console.error("❌ Error loading cabins:", err));
+
+    // --- Lightbox Λειτουργικότητα ---
+    function showImage() {
+      const cabin = cabins[currentCabinIndex];
+      if (!cabin) return;
+      lightboxImg.style.opacity = 0;
+      setTimeout(() => {
+        lightboxImg.src = cabin.images[currentImageIndex];
+        lightboxImg.alt = cabin.name;
+        lightboxImg.style.opacity = 1;
+      }, 200);
+    }
+
+    function changeImage(direction) {
+      const cabin = cabins[currentCabinIndex];
+      if (!cabin) return;
+      const total = cabin.images.length;
+      currentImageIndex = (currentImageIndex + direction + total) % total;
+      showImage();
+    }
+
+    prevBtn.addEventListener("click", () => changeImage(-1));
+    nextBtn.addEventListener("click", () => changeImage(1));
+    closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+    lightbox.addEventListener("click", e => {
+      if (e.target === lightbox) lightbox.style.display = "none";
+    });
+  }
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const printBtn = document.getElementById("printBtn");
+  const emailBtn = document.getElementById("emailBtn");
+
+  // PRINT SUMMARY
+  printBtn.addEventListener("click", () => {
+    const cruiseTitle = localStorage.getItem("selectedCruise");
+    const price = document.querySelector(".cruise-header-right .price span").innerText;
+    const itinerary = Array.from(document.querySelectorAll(".timeline-content h3"))
+      .map(h3 => "- " + h3.innerText)
+      .join("\n");
+
+const summary = `
+══════════════════════════════════════════════════════
+             ${cruiseTitle.toUpperCase()}              
+══════════════════════════════════════════════════════
+
+PRICE: ${price}
+
+────────────────────────────────────────────────────────
+OVERVIEW
+Embark on a luxurious voyage across the shimmering Aegean.
+Discover hidden harbors, ancient ruins, and world-famous islands.
+Enjoy fine dining, onboard entertainment, and true Greek hospitality.
+────────────────────────────────────────────────────────
+
+ITINERARY
+${itinerary || "- Detailed day-by-day itinerary coming soon -"}
+
+Each stop reveals something special — the charm of Mykonos,
+the breathtaking sunsets of Santorini, and the timeless beauty
+of Rhodes and Crete. Every sunrise is a new story to live.
+────────────────────────────────────────────────────────
+
+DEPARTURE INFORMATION
+Boarding from Athens Port — embarkation starts at 14:00.
+Final disembarkation takes place at the end of voyage.
+
+────────────────────────────────────────────────────────
+Book now at CruiseTheGreek.com
+or call +30 210 123 4567
+
+Generated on: ${new Date().toLocaleString()}
+────────────────────────────────────────────────────────
+`;
+
+
+
+    const printWindow = window.open("", "_blank");
+    printWindow.document.write(`<pre style="font-family: Arial; font-size: 15px;">${summary}</pre>`);
+    printWindow.document.close();
+    printWindow.print();
+  });
+
+  //  SEND EMAIL
+  emailBtn.addEventListener("click", () => {
+    const selectedTitle = localStorage.getItem("selectedCruise");
+    const subject = encodeURIComponent(`Cruise Itinerary: ${cruiseTitle}`);
+    const body = encodeURIComponent(`Hello,\n\nHere is the summary of your selected cruise from CruiseTheGreek.com.\n\n${cruiseTitle}\n\nBook now at: https://cruisethegreek.com\n\nBest regards,\nCruiseTheGreek Team`);
+    window.location.href = `mailto:?subject=${subject}&body=${body}`;
+  });
+});
+</script>
+
+ <!-- ===== Lightbox Script ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".close");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  const gallerySide = document.querySelector("#gallerySide");
+
+  let images = [];
+  let currentIndex = 0;
+
+  // ✅ Περιμένουμε να φορτωθούν οι εικόνες δυναμικά
+  const observer = new MutationObserver(() => {
+    images = Array.from(document.querySelectorAll(".gallery-img"));
+
+    images.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        currentIndex = index;
+        showImage(currentIndex);
+      });
+    });
+  });
+
+  // Παρακολουθεί αλλαγές στο gallerySide
+  observer.observe(gallerySide, { childList: true });
+
+  function showImage(index) {
+    if (images.length === 0) return;
+    lightboxImg.src = images[index].src;
+  }
+
+  closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+
+  prevBtn.addEventListener("click", () => {
+    if (images.length === 0) return;
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    if (images.length === 0) return;
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  });
+
+  // Κλείσιμο αν κάνεις click εκτός
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) lightbox.style.display = "none";
+  });
+});
+</script>
+
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach(item => {
+    const q = item.querySelector(".faq-question");
+    q.addEventListener("click", () => {
+      item.classList.toggle("active");
+    });
+  });
+});
+</script>
+
+<script>
+window.addEventListener("scroll", () => {
+  const btn = document.querySelector(".floating-book-btn");
+  btn.style.opacity = window.scrollY > 400 ? "1" : "0";
+});
+</script>
+
+<script>
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.target).classList.add("active");
+  });
+});
+</script>
+
+<script>
+document.querySelectorAll(".excursion-box").forEach(box => {
+  box.addEventListener("click", () => {
+    const title = box.querySelector("h4").innerText;
+    const description = box.querySelector("p").innerText;
+    const imageMap = {
+      "Volcano & Hot Springs Tour": "images/volcano.jpg",
+      "Oia Sunset Experience": "images/sunset.jpg",
+      "Walking Tour of Mykonos Town": "images/walking.jpg",
+      "Delos Island Archaeological Tour": "images/delos.jpg",
+      "Medieval Old Town Tour": "images/rhodos.png",
+      "Lindos Acropolis Excursion": "images/lindos.jpg",
+      "Knossos Palace & Heraklion Museum": "images/knossos.jpg",
+      "Rethymno & Chania Old Town": "images/chania.jpg"
+    };
+
+    document.getElementById("modalTitle").innerText = title;
+    document.getElementById("modalImage").src = imageMap[title] || "images/default.jpg";
+    document.getElementById("modalText").innerText = `
+${description}
+
+First, you’ll head to the village area with stunning views and local architecture.
+You’ll explore nearby settlements, visit historical landmarks, and enjoy free time for photos.
+Your guide will share stories about the culture and traditions of the island.
+    `;
+
+    document.getElementById("excursionModal").style.display = "flex";
+  });
+});
+
+document.querySelector(".close-btn").addEventListener("click", () => {
+  document.getElementById("excursionModal").style.display = "none";
+});
+
+window.addEventListener("click", e => {
+  if (e.target.id === "excursionModal") {
+    document.getElementById("excursionModal").style.display = "none";
+  }
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".sticky-menu li a");
+  const gallery = document.querySelector(".cruise, .tour-gallery"); // gallery section
+  const galleryBottom = gallery.offsetTop + gallery.offsetHeight;
+
+  function updateActiveLink() {
+    let scrollPos = window.scrollY + 150; // μικρή ανοχή
+
+    // Αν είμαστε πάνω από το gallery, κανένα active
+    if (scrollPos < galleryBottom) {
+      navLinks.forEach(link => link.classList.remove("active"));
+      return;
+    }
+
+    // Διαφορετικά, βρες σε ποιο section είμαστε
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 160;
+      const bottom = top + sec.offsetHeight;
+      const id = sec.getAttribute("id");
+
+      if (scrollPos >= top && scrollPos <= bottom) {
+        navLinks.forEach(link => link.classList.remove("active"));
+        document
+          .querySelector(`.sticky-menu li a[href="#${id}"]`)
+          ?.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveLink);
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const facilities = [
+    {
+      img: "images/pool.jpg",
+      title: "Outdoor Pool",
+      desc: "Relax at our panoramic sea-view pool with sunbeds and cocktail service."
+    },
+    {
+      img: "images/facility1.jpg",
+      title: "Gourmet Restaurant",
+      desc: "Enjoy authentic Mediterranean dishes prepared by world-class chefs."
+    },
+    {
+      img: "images/spa.jpg",
+      title: "Luxury Spa & Wellness",
+      desc: "Unwind with massages, sauna, and rejuvenating treatments onboard."
+    },
+    {
+      img: "images/theater.jpg",
+      title: "Evening Theater Shows",
+      desc: "Live performances and music every night for your entertainment."
+    }
+  ];
+
+  let index = 0;
+  const imgEl = document.getElementById("facilityImage");
+  const titleEl = document.getElementById("facilityTitle");
+  const descEl = document.getElementById("facilityDescription");
+
+  document.querySelector(".next-facility").addEventListener("click", () => {
+    index = (index + 1) % facilities.length;
+    updateFacility();
+  });
+
+  document.querySelector(".prev-facility").addEventListener("click", () => {
+    index = (index - 1 + facilities.length) % facilities.length;
+    updateFacility();
+  });
+
+  function updateFacility() {
+    imgEl.style.opacity = 0;
+    titleEl.style.opacity = 0;
+    descEl.style.opacity = 0;
+
+    setTimeout(() => {
+      imgEl.src = facilities[index].img;
+      titleEl.textContent = facilities[index].title;
+      descEl.textContent = facilities[index].desc;
+
+      imgEl.style.opacity = 1;
+      titleEl.style.opacity = 1;
+      descEl.style.opacity = 1;
+    }, 300);
+  }
+});
+</script>
+
+<script>
+function loadExcursions(shipName) {
+  const tabsContainer = document.getElementById("tabs");
+  const tabContents = document.getElementById("tabContents");
+  const modal = document.getElementById("excursionModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalImage = document.getElementById("modalImage");
+  const modalText = document.getElementById("modalText");
+  const closeBtn = modal.querySelector(".close-btn");
+
+  fetch("data/excursions.json")
+    .then(res => res.json())
+    .then(data => {
+      const excursions = data[shipName];
+      if (!excursions) {
+        tabsContainer.innerHTML = `<p style="text-align:center;">No excursions available for ${shipName}.</p>`;
+        return;
+      }
+
+      const islands = Object.keys(excursions);
+      tabsContainer.innerHTML = "";
+      tabContents.innerHTML = "";
+
+      islands.forEach((island, idx) => {
+        const tabBtn = document.createElement("button");
+        tabBtn.className = `tab ${idx === 0 ? "active" : ""}`;
+        tabBtn.textContent = island;
+        tabBtn.dataset.target = island.toLowerCase();
+        tabsContainer.appendChild(tabBtn);
+
+        const tabContent = document.createElement("div");
+        tabContent.className = `tab-content ${idx === 0 ? "active" : ""}`;
+        tabContent.id = island.toLowerCase();
+
+        const list = document.createElement("div");
+        list.className = "excursion-list";
+
+        excursions[island].forEach(exc => {
+          const box = document.createElement("div");
+          box.className = "excursion-box";
+          box.innerHTML = `
+            <h4>${exc.title}</h4>
+            <p>${exc.desc}</p>
+            <div class="excursion-prices">
+              <span><strong>Adults:</strong> ${exc.priceAdults}</span>
+              <span><strong>Children:</strong> ${exc.priceChildren}</span>
+            </div>
+          `;
+          box.addEventListener("click", () => openExcursionModal(exc));
+          list.appendChild(box);
+        });
+
+        tabContent.appendChild(list);
+        tabContents.appendChild(tabContent);
+      });
+
+      // tab switching
+      document.querySelectorAll(".tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+          document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById(tab.dataset.target).classList.add("active");
+        });
+      });
+    })
+    .catch(err => {
+      console.error("❌ Error loading excursions.json:", err);
+      tabsContainer.innerHTML = `<p>Error loading excursions data.</p>`;
+    });
+
+  // modal behavior
+  function openExcursionModal(exc) {
+    modalTitle.textContent = exc.title;
+    modalImage.src = exc.image || "images/default.jpg";
+    modalText.textContent = exc.desc;
+    modal.style.display = "flex";
+  }
+
+  closeBtn.addEventListener("click", () => (modal.style.display = "none"));
+  window.addEventListener("click", e => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  toggleBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    toggleBtn.querySelector("i").classList.toggle("fa-bars");
+    toggleBtn.querySelector("i").classList.toggle("fa-xmark"); // εναλλαγή εικονιδίου
+  });
+
+  // Κλείσιμο όταν πατηθεί σύνδεσμος
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      toggleBtn.querySelector("i").classList.add("fa-bars");
+      toggleBtn.querySelector("i").classList.remove("fa-xmark");
+    });
+  });
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tours - CruiseTheGreek</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+
+<div class="top-bar">
+  <div class="top-bar-content">
+    <a href="tel:+302101234567" class="whatsapp-icon" title="Κλήση μέσω WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:+302101234567" class="phone-link">
+      <span class="phone">+30 210 123 4567</span>
+    </a>
+  </div>
+</div>
+
+
+
+  <!-- Header / Navigation -->
+<header>
+  <nav class="navbar">
+    <div class="logo">CruiseTheGreek.com</div>
+
+    <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="homepage.html">HOME</a></li>
+      <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+      <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+      <li><a href="tours.html">TOURS</a></li>
+      <li><a href="ships.html">CRUISE SHIPS</a></li>
+      <li><a href="destinations.html">DESTINATIONS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+
+  <!-- Banner -->
+  <section class="results-banner">
+    <img src="images/banner.jpg" alt="Tours in Greece">
+    <div class="banner-overlay">
+      <h1>
+  <span class="title-line"></span>
+  TOURS
+  <span class="title-line"></span>
+</h1>
+
+    </div>
+  </section>
+
+
+  
+<div class="mobile-controls">
+  <button class="mobile-btn" id="openFilters">
+    <i class="fa-solid fa-sliders"></i> Filter
+  </button>
+  <button class="mobile-btn" id="openSort">
+    <i class="fa-solid fa-arrow-up-wide-short"></i> Sort by
+  </button>
+</div>
+
+
+<!-- ===== Tours Page ===== -->
+<section class="tours-page">
+
+  <!-- === Sidebar Filters === -->
+  <aside class="tours-filter">
+    <h3>Filter Your Tour</h3>
+
+    <div class="filter-group">
+      <label>Price</label>
+      <input type="range" min="0" max="1000" value="500" class="price-range">
+      <div class="price-values">
+        <span>€0</span>
+        <span>€1000</span>
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Duration</label>
+      <ul class="filter-options">
+        <li><input type="checkbox"> 0–3 hours</li>
+        <li><input type="checkbox"> 3–5 hours</li>
+        <li><input type="checkbox"> Full day (7+ hours)</li>
+        <li><input type="checkbox"> Multi-day</li>
+      </ul>
+    </div>
+
+    <div class="filter-group">
+      <label>Language</label>
+      <ul class="filter-options">
+        <li><input type="checkbox"> English</li>
+        <li><input type="checkbox"> Spanish</li>
+        <li><input type="checkbox"> French</li>
+        <li><input type="checkbox"> Italian</li>
+      </ul>
+    </div>
+
+    <div class="filter-group collapsible-group">
+      <label>Destinations</label>
+      <ul class="filter-options">
+        <li><input type="checkbox"> Athens</li>
+        <li><input type="checkbox"> Chalkidiki</li>
+        <li><input type="checkbox"> Chania</li>
+        <li><input type="checkbox"> Corfu</li>
+        <li><input type="checkbox"> Crete</li>
+        <li><input type="checkbox"> Thessaloniki</li>
+        <li><input type="checkbox"> Santorini</li>
+        <li><input type="checkbox"> Nafplio</li>
+      </ul>
+    </div>
+
+    <div class="filter-group collapsible-group">
+      <label>Attractions</label>
+      <ul class="filter-options">
+        <li><input type="checkbox"> Academy</li>
+        <li><input type="checkbox"> Achillion Palace</li>
+        <li><input type="checkbox"> Acropolis in Athens</li>
+        <li><input type="checkbox"> Acropolis Museum</li>
+        <li><input type="checkbox"> Aegina</li>
+        <li><input type="checkbox"> Ancient Agora</li>
+        <li><input type="checkbox"> Arachova</li>
+        <li><input type="checkbox"> Chania Town</li>
+      </ul>
+    </div>
+
+    <button class="search-btn">Apply Filters</button>
+  </aside>
+
+  <!-- === Sort + Results === -->
+  <div class="tours-content">
+
+    <div class="sort-bar">
+      <label for="sortSelect"><i class="fa-solid fa-sort"></i> Sort</label>
+      <select id="sortSelect">
+        <option value="">—</option>
+        <option value="low_high">Low → High</option>
+        <option value="high_low">High → Low</option>
+      </select>
+    </div>
+
+    <div class="tours-section">
+      <div id="toursContainer" class="tours-grid"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- 🔹 1η Στήλη: Logo + Επικοινωνία -->
+    <div class="footer-col">
+      <h3 class="footer-logo">CruiseTheGreek.com</h3>
+      <p class="footer-phone">+1 (415) 7957979</p>
+      <p><a href="mailto:info@cruisethegreek.com">info@cruisethegreek.com</a></p>
+      <p>8, Aggelou Vlachou st, Plaka, Athens</p>
+      <img src="images/gnto.png" alt="GNTO" class="footer-gnto">
+      <p class="footer-gnto-code">GNTO: 0206E60000362401</p>
+    </div>
+
+    <!-- 🔹 2η Στήλη: Navigation Menu -->
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul class="footer-nav">
+        <li><a href="homepage.html">HOME</a></li>
+        <li><a href="cruises.html">CRUISES</a></li>
+        <li><a href="packages.html">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 3η Στήλη: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">B2B Partnership</a></li>
+        <li><a href="#">Partners Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 🔸 Κάτω γραμμή -->
+  <div class="footer-bottom">
+    <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const filterBtn = document.getElementById("openFilters");
+  const sortBtn = document.getElementById("openSort");
+  const sidebar = document.querySelector(".tours-filter");
+  const sortContainer = document.querySelector(".sort-container");
+  const overlay = document.getElementById("overlay");
+
+  // === FILTER BUTTON ===
+  filterBtn.addEventListener("click", () => {
+    sidebar.classList.add("active");
+    overlay.classList.add("active");
+  });
+  // === SORT BUTTON ===
+  sortBtn.addEventListener("click", () => {
+    // κάνε toggle της κλάσης visible για να εμφανίζεται / κρύβεται
+    sortContainer.classList.toggle("visible");
+  });
+
+  // === OVERLAY CLOSE ===
+  overlay.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    sortContainer.classList.remove("mobile-active");
+    overlay.classList.remove("active");
+  });
+});
+</script>
+
+
+
+
+  <script>
+    //script for showing more results smoothly
+
+document.addEventListener("DOMContentLoaded", function() {
+  const groups = document.querySelectorAll(".collapsible-group");
+
+  groups.forEach(group => {
+    const list = group.querySelector(".filter-options");
+    const items = list.querySelectorAll("li");
+
+    if (items.length > 6) {
+      const visibleCount = 6;
+      const initialHeight = Array.from(items)
+        .slice(0, visibleCount)
+        .reduce((h, li) => h + li.scrollHeight + 6, 0); // 6px για margin
+
+      list.style.maxHeight = initialHeight + "px";
+      list.style.overflow = "hidden";
+      list.style.transition = "max-height 0.4s ease-in-out, opacity 0.3s ease-in-out";
+
+      // Δημιούργησε κουμπί
+      const btn = document.createElement("button");
+      btn.className = "show-toggle";
+      btn.innerHTML = `Show more <i class="fa-solid fa-chevron-down"></i>`;
+      group.appendChild(btn);
+
+      // Εναλλαγή εμφάνισης
+      btn.addEventListener("click", () => {
+        const expanded = btn.classList.toggle("expanded");
+
+        if (expanded) {
+          const fullHeight = Array.from(items)
+            .reduce((h, li) => h + li.scrollHeight + 6, 0);
+          list.style.maxHeight = fullHeight + "px";
+          btn.innerHTML = `Show less <i class="fa-solid fa-chevron-up"></i>`;
+        } else {
+          list.style.maxHeight = initialHeight + "px";
+          btn.innerHTML = `Show more <i class="fa-solid fa-chevron-down"></i>`;
+        }
+      });
+    }
+  });
+});
+</script>
+ 
+<script>
+    //hamburger menu
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+</script>
+
+<script>
+function openTourDetails(title) {
+  localStorage.setItem("selectedTour", title);
+  window.location.href = "tour_details.html";
+}
+
+// Φόρτωση δεδομένων tours.json και δημιουργία καρτών
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("data/tours.json")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("toursContainer");
+
+      Object.values(data).forEach(tour => {
+        const card = document.createElement("div");
+        card.className = "tour-card";
+
+        card.innerHTML = `
+          <img src="${tour.imageMain}" alt="${tour.title}">
+          <div class="tour-info">
+            <h3>${tour.title}</h3>
+            <p class="tour-description">${tour.shortDesc}</p>
+            <div class="tour-details">
+              <span class="duration"><i class="fa-regular fa-clock"></i> ${tour.duration}</span>
+              <span class="language"><i class="fa-solid fa-language"></i> ${tour.language}</span>
+            </div>
+            <div class="tour-footer">
+              <span class="price">From ${tour.price}</span>
+              <button class="explore-btn" onclick="openTourDetails('${tour.title.replace(/'/g, "\\'")}')">
+                View Details
+              </button>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Error loading tours:", err));
+});
+</script>
+
+<div id="overlay" class="overlay"></div>
+
+<!-- functionality of sort by price button-->
+<script>
+document.getElementById("sortSelect").addEventListener("change", function () {
+  const sortValue = this.value;
+  const grid = document.getElementById("resultsGrid");
+  const cards = Array.from(grid.querySelectorAll(".card"));
+
+  if (!sortValue || cards.length === 0) return;
+
+  const getPrice = (card) => {
+    const priceText =
+      card.querySelector(".new-price strong")?.textContent.replace(/[^\d]/g, "") ||
+      "0";
+    return parseFloat(priceText);
+  };
+
+  cards.sort((a, b) => {
+    const priceA = getPrice(a);
+    const priceB = getPrice(b);
+
+    return sortValue === "low_high" ? priceA - priceB : priceB - priceA;
+  });
+
+  grid.innerHTML = "";
+  cards.forEach((card) => grid.appendChild(card));
+});
+</script>
+</body>
+</html>

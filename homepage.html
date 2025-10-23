@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>CruiseTheGreek</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="top-bar-content">
+    <a href="tel:+302101234567" class="whatsapp-icon" title="Κλήση μέσω WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:+302101234567" class="phone-link">
+      <span class="phone">+30 210 123 4567</span>
+    </a>
+  </div>
+</div>
+
+
+
+  <!-- Header / Navigation -->
+<header>
+  <nav class="navbar">
+    <div class="logo">CruiseTheGreek.com</div>
+
+    <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="homepage.html">HOME</a></li>
+      <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+      <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+      <li><a href="tours.html">TOURS</a></li>
+      <li><a href="ships.html">CRUISE SHIPS</a></li>
+      <li><a href="destinations.html">DESTINATIONS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+  <!-- 🔹 Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explore the Greek Islands with us</h1>
+      <p>Unforgettable journeys across the seas — discover your next adventure today.</p>
+    </div>
+  </section>
+
+<section class="search-section">
+  <form id="searchForm" class="search-form">
+    <div class="form-group">
+      <label for="cruise-type">Cruise Type</label>
+      <select id="cruise-type" name="cruise_type" required>
+        <option value="">-- Select --</option>
+        <option value="cruise_only">Cruise Only</option>
+        <option value="cruise_package">Cruise Package</option>
+        <option value="cruise_excursion">Cruise Excursion</option>
+        <option value="athens_land_tours">Athens Land Tours</option>
+      </select>
+    </div>
+    <button type="submit" class="search-btn">Search</button>
+  </form>
+</section>
+
+
+
+ <!--  Cruise Only Section -->
+<section class="section-list">
+  <h2>Cruise Only 2026–2027</h2>
+  <div class="card-grid" id="cruiseOnlyGrid"></div>
+
+<div class="see-more-container">
+  <a href="results.html" class="see-more-btn">See More</a>
+</div>
+
+</section>
+
+
+<!--  Cruise Packages Section -->
+<section class="section-list">
+  <h2>Cruise Packages</h2>
+
+  <div class="card-grid" id="packagesGrid"></div>
+
+  <div class="see-more-container">
+    <a href="results.html?type=cruise_package" class="see-more-btn">See More</a>
+  </div>
+</section>
+
+<!-- 🔹 Greece Land Tours -->
+<section class="section-list">
+  <h2>Greece Land Tours</h2>
+  <div class="card-grid" id="landToursGrid"></div>
+  <div class="see-more-container">
+    <a href="tours.html" class="see-more-btn">See More</a>
+  </div>
+</section>
+
+
+
+<!-- 🔹 Athens Acropolis Cruise Tours -->
+<section class="special-card">
+  <img src="images/acropolis1.jpg" alt="Athens Acropolis Cruise">
+  <div class="special-content">
+    <h2>Athens Acropolis Cruise Tours</h2>
+    <p>Exclusive one-day tour combining the Acropolis and Athens Riviera Cruise.</p>
+    <button class="book-btn">BOOK NOW</button>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- 🔹 1η Στήλη: Logo + Επικοινωνία -->
+    <div class="footer-col">
+      <h3 class="footer-logo">CruiseTheGreek.com</h3>
+      <p class="footer-phone">+1 (415) 7957979</p>
+      <p><a href="mailto:info@cruisethegreek.com">info@cruisethegreek.com</a></p>
+      <p>8, Aggelou Vlachou st, Plaka, Athens</p>
+      <img src="images/gnto.png" alt="GNTO" class="footer-gnto">
+      <p class="footer-gnto-code">GNTO: 0206E60000362401</p>
+    </div>
+
+    <!-- 🔹 2η Στήλη: Navigation Menu -->
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul class="footer-nav">
+        <li><a href="homepage.html">HOME</a></li>
+        <li><a href="cruises.html">CRUISES</a></li>
+        <li><a href="packages.html">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 3η Στήλη: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">B2B Partnership</a></li>
+        <li><a href="#">Partners Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 🔸 Κάτω γραμμή -->
+  <div class="footer-bottom">
+    <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+  <!------------- SCRIPTS -------------->
+
+  <!--  JS για Leaflet και τον χάρτη -->
+<script>
+  // (1) Λεξικό με συντεταγμένες πόλεων
+const cityCoords = {
+  // 🇪🇸 Spain
+  "Barcelona,Spain": [41.3851, 2.1734],
+  "Alicante,Spain": [38.3452, -0.4810],
+  "Santa Cruz de Tenerife,Spain": [28.4636, -16.2518],
+
+  // 🇲🇦 Morocco
+  "Casablanca,Morocco": [33.5731, -7.5898],
+
+  // 🇹🇷 Turkey
+  "Istanbul,Turkey": [41.0082, 28.9784],
+  "Kusadasi,Turkey": [37.86, 27.2579],
+
+  // 🇬🇷 Greece — Mainland ports
+  "Piraeus,Greece": [37.943, 23.6465],
+  "Thessaloniki,Greece": [40.6401, 22.9444],
+  "Volos,Greece": [39.3622, 22.9428],
+  "Heraklion,Crete,Greece": [35.3387, 25.1442],
+
+  // 🇬🇷 Greek Islands
+  "Mykonos,Greece": [37.4467, 25.3289],
+  "Santorini,Greece": [36.3932, 25.4615],
+  "Rhodes,Greece": [36.4349, 28.2170],
+  "Patmos,Greece": [37.3080, 26.5469],
+  "Crete,Greece": [35.2401, 24.8093],
+  "Corfu,Greece": [39.6243, 19.9217],
+  "Paros,Greece": [37.0850, 25.1500],
+  "Naxos,Greece": [37.1030, 25.3760],
+  "Syros,Greece": [37.4450, 24.9420],
+  "Ios,Greece": [36.7213, 25.2829],
+  "Kos,Greece": [36.8937, 27.2877],
+  "Chios,Greece": [38.3678, 26.1359],
+  "Samos,Greece": [37.7543, 26.9784],
+  "Lesvos,Greece": [39.1077, 26.5553],
+  "Zakynthos,Greece": [37.7880, 20.8980],
+  "Kefalonia,Greece": [38.1754, 20.5692],
+  "Lefkada,Greece": [38.8333, 20.7000],
+  "Skiathos,Greece": [39.1620, 23.4900],
+  "Skopelos,Greece": [39.1242, 23.7247],
+  "Symi,Greece": [36.6167, 27.8333],
+  "Tinos,Greece": [37.5400, 25.1623],
+  "Milos,Greece": [36.7440, 24.4260],
+  "Folegandros,Greece": [36.6189, 24.9196],
+  "Amorgos,Greece": [36.8300, 25.9500],
+  "Hydra,Greece": [37.3500, 23.4667],
+  "Spetses,Greece": [37.2625, 23.1597],
+  "Poros,Greece": [37.4975, 23.4510]
+};
+
+  // (2) Script που φτιάχνει τους χάρτες όταν πατηθεί το κουμπί
+  document.addEventListener("click", function(e) {
+    // Ελέγχουμε αν πατήθηκε το κουμπί map-btn ή κάποιο child element (π.χ. το <i>)
+    const btn = e.target.closest(".map-btn");
+    if (!btn) return;
+
+    const section = btn.closest(".map-section");
+    const img = section.querySelector(".map-image");
+    const mapDiv = section.querySelector(".map-container");
+    const route = section.dataset.route.split("|").map(r => r.trim());
+    let map = section._map;
+
+    // Αν δεν έχει φτιαχτεί ακόμη, φτιάξ'το
+    if (!map) {
+      mapDiv.style.display = "block";
+      img.style.display = "none";
+      map = L.map(mapDiv).setView([38, 12], 5);
+      section._map = map;
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      const coords = route.map(r => cityCoords[r]).filter(Boolean);
+      if (coords.length >= 2) {
+        const poly = L.polyline(coords, { color: '#ff6600', weight: 3 }).addTo(map);
+        map.fitBounds(poly.getBounds(), { padding: [20, 20] });
+      }
+
+      // Μικρότερο marker icon
+      const smallIcon = L.icon({
+        iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+        iconSize: [20, 30],
+        iconAnchor: [10, 30],
+        popupAnchor: [1, -25],
+        shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+        shadowSize: [30, 30]
+      });
+
+      coords.forEach(c => L.marker(c, { icon: smallIcon }).addTo(map));
+      setTimeout(() => map.invalidateSize(), 100);
+
+      //  αλλαγή σε εικονίδιο κάμερας
+      btn.innerHTML = '<i class="fa-solid fa-image"></i>';
+    } else {
+      // Εναλλαγή photo ↔ map
+      const showingMap = mapDiv.style.display !== "none";
+      mapDiv.style.display = showingMap ? "none" : "block";
+      img.style.display = showingMap ? "block" : "none";
+
+      // εναλλαγή εικονιδίων
+      btn.innerHTML = showingMap
+        ? '<i class="fa-solid fa-map-location-dot"></i>'
+        : '<i class="fa-solid fa-image"></i>';
+
+      setTimeout(() => map.invalidateSize(), 100);
+    }
+  });
+</script>
+
+
+ <!-- === Φόρτωση Cruise Only Cards === -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const grid = document.getElementById("cruiseOnlyGrid");
+
+  fetch("data/cruises.json")
+    .then(res => res.json())
+    .then(data => {
+      Object.values(data)
+        .slice(0, 6) // 🔹 μόνο 6 κάρτες
+        .forEach(cruise => {
+          const dateOptions = cruise.dates
+            .map(date => `<option value="${date}">${date}</option>`)
+            .join("");
+
+          const cardHTML = `
+            <div class="card cruise-card" data-title="${cruise.title}">
+              <div class="destinations map-section" data-route="${cruise.route}">
+                <img src="${cruise.image}" alt="${cruise.title}" class="map-image">
+                <div class="image-features">
+                  <span class="feature-tag"><i class="fa-solid fa-utensils"></i> Full board</span>
+                  <span class="feature-tag"><i class="fa-solid fa-ticket"></i> 50€ excursion voucher</span>
+                </div>
+                <button class="map-btn" type="button" title="View Map">
+                  <i class="fa-solid fa-map-location-dot"></i>
+                </button>
+                <div class="map-container"></div>
+              </div>
+              <h3 class="cruise-title">${cruise.title}</h3>
+              <div class="card-top-info">
+                <div class="info-group">
+                  <p><strong>${cruise.duration}</strong><br>${cruise.frequency}</p>
+                </div>
+                <div class="info-group">
+                  <label>Departure:</label>
+                  <select class="date-select">
+                    <option disabled selected>Select date</option>
+                    ${dateOptions}
+                  </select>
+                </div>
+              </div>
+              <div class="ports">
+                <div class="port">⚓ <strong>Departure:</strong> ${cruise.departure}</div>
+                <div class="port">⚓ <strong>Arrival:</strong> ${cruise.arrival}</div>
+              </div>
+              <div class="package-destinations">
+                <i class="fa-solid fa-location-dot"></i> ${cruise.destinations}
+              </div>
+              <div class="offer-banner">${cruise.offer || ""}</div>
+              <div class="price-box">
+                <p class="old-price">from <span>${cruise.priceOld}</span></p>
+                <p class="new-price"><strong>${cruise.priceNew}</strong></p>
+              </div>
+              <div class="buttons">
+                <button class="details-btn">DETAILS</button>
+                <button class="book-btn">BOOK NOW</button>
+              </div>
+            </div>
+          `;
+          grid.insertAdjacentHTML("beforeend", cardHTML);
+        });
+    })
+    .catch(err => console.error("Error loading cruise-only cards:", err));
+});
+</script>
+
+
+<!-- === Φόρτωση Cruise Packages === -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const pkgGrid = document.getElementById("packagesGrid");
+
+  fetch("data/packages.json")
+    .then(res => res.json())
+    .then(data => {
+      Object.values(data)
+        .slice(0, 6)
+        .forEach(pkg => {
+          const dateOptions = pkg.dates
+            .map(date => `<option value="${date}">${date}</option>`)
+            .join("");
+
+          const cardHTML = `
+            <div class="card package-card" data-title="${pkg.title}">
+              
+              <!-- Εικόνα + Χάρτης -->
+              <div class="destinations map-section" data-route="${pkg.route}">
+                <img src="${pkg.image}" alt="${pkg.title}" class="map-image">
+                <div class="image-features">
+                  <span class="feature-tag"><i class="fa-solid fa-wifi"></i> 250MB internet</span>
+                  <span class="feature-tag"><i class="fa-solid fa-bus"></i> Free Mykonos shuttle</span>
+                </div>
+                <button class="map-btn" type="button" title="View Map">
+                  <i class="fa-solid fa-map-location-dot"></i>
+                </button>
+                <div class="map-container"></div>
+              </div>
+
+              <!-- Τίτλος -->
+              <h3 class="package-title">${pkg.title}</h3>
+
+              <!-- Duration + Dates -->
+              <div class="card-top-info">
+                <div class="info-group">
+                  <p><strong>${pkg.duration}</strong><br>${pkg.frequency}</p>
+                </div>
+                <div class="info-group">
+                  <label>Departure:</label>
+                  <select class="date-select">
+                    <option disabled selected>Select date</option>
+                    ${dateOptions}
+                  </select>
+                </div>
+              </div>
+
+              <!-- ⚓ Λιμάνια -->
+              <div class="ports">
+                <div class="port">⚓ <strong>Departure Port:</strong> ${pkg.departure}</div>
+                <div class="port">⚓ <strong>Arrival Port:</strong> ${pkg.arrival}</div>
+              </div>
+
+              <!-- 🧭 Διαδρομή -->
+              <div class="package-destinations">
+                <i class="fa-solid fa-location-dot"></i> ${pkg.destinations || pkg.route.replace(/\|/g, " → ")}
+              </div>
+
+              <!-- Προσφορά + Τιμές -->
+              <div class="offer-banner">${pkg.offer}</div>
+              <div class="price-box">
+                <p class="old-price">from <span>${pkg.priceOld}</span></p>
+                <p class="new-price"><strong>${pkg.priceNew}</strong></p>
+                <p class="small-text">${pkg.smallText || ""}</p>
+              </div>
+
+              <!-- Κουμπιά -->
+              <div class="buttons">
+                <button class="details-btn">DETAILS</button>
+                <button class="book-btn">BOOK NOW</button>
+              </div>
+            </div>
+          `;
+          
+          pkgGrid.insertAdjacentHTML("beforeend", cardHTML);
+        });
+    })
+    .catch(err => console.error("Error loading package cards:", err));
+});
+</script>
+
+
+
+<!-- === Φόρτωση Greece Land Tours === -->
+<script>
+fetch('tours_card.html')
+  .then(res => res.text())
+  .then(html => {
+    const grid = document.getElementById('landToursGrid');
+    for (let i = 0; i < 6; i++) {
+      grid.insertAdjacentHTML('beforeend', html);
+    }
+    requestAnimationFrame(() => {
+      grid.querySelectorAll('.tours_card').forEach(card => {
+        card.style.height = 'auto';
+      });
+    });
+  })
+  .catch(err => console.error('Error loading land tour cards:', err));
+</script>
+
+
+
+<script>
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const type = document.getElementById("cruise-type").value;
+  if (type) {
+    // ανακατεύθυνση με query parameter
+    window.location.href = `results.html?type=${type}`;
+  }
+});
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+</script>
+
+
+<script>
+document.addEventListener("click", function(e) {
+  const btn = e.target.closest(".details-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".card");
+
+  if (!card) return;
+
+  // Αν είναι package card → package-details.html
+  if (card.classList.contains("package-card")) {
+    const packageData = {
+      image: card.querySelector(".map-image")?.src || "",
+      title: card.querySelector(".card-tag")?.textContent.trim() || "Cruise Package",
+      route: card.querySelector(".map-section")?.dataset.route || "",
+      duration: card.querySelector(".card-top-info strong")?.textContent.trim() || "",
+      dates: Array.from(card.querySelectorAll("select option")).slice(1).map(o => o.textContent.trim()),
+      departure: card.querySelector(".ports .port:nth-child(1)")?.textContent.replace("⚓", "").trim() || "",
+      arrival: card.querySelector(".ports .port:nth-child(2)")?.textContent.replace("⚓", "").trim() || "",
+      offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
+      priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
+      priceNew: card.querySelector(".new-price strong")?.textContent.trim() || ""
+    };
+
+    localStorage.setItem("selectedPackage", JSON.stringify(packageData));
+    window.location.href = "package-details.html";
+    return;
+  }
+
+  // Αν είναι απλή cruise-only card → cruise_details.html
+  const cruiseData = {
+    image: card.querySelector(".map-image")?.src || "",
+    title: card.querySelector(".card-tag")?.textContent.trim() || "Cruise Details",
+    route: card.querySelector(".map-section")?.dataset.route || "",
+    duration: card.querySelector(".card-top-info strong")?.textContent.trim() || "",
+    dates: Array.from(card.querySelectorAll("select option")).slice(1).map(o => o.textContent.trim()),
+    departure: card.querySelector(".ports .port:nth-child(1)")?.textContent.replace("⚓", "").trim() || "",
+    arrival: card.querySelector(".ports .port:nth-child(2)")?.textContent.replace("⚓", "").trim() || "",
+    features: Array.from(card.querySelectorAll(".feature")).map(f => f.textContent.trim()),
+    offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
+    priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
+    priceNew: card.querySelector(".new-price strong")?.textContent.trim() || ""
+  };
+
+  localStorage.setItem("selectedCruise", JSON.stringify(cruiseData));
+  window.location.href = "cruise_details.html";
+});
+</script>
+<script>
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".details-btn");
+  if (!btn) return;
+
+  const card = btn.closest(".card, .tours_card");
+  if (!card) return;
+
+  const title =
+    card.dataset.title ||
+    card.querySelector(".package-title, .cruise-title, h3")?.textContent.trim() ||
+    "";
+
+  // --- Cruise Packages ---
+  if (card.classList.contains("package-card")) {
+    localStorage.setItem("selectedPackage", title);
+
+    // Αν θες να περνάει και πλοίο (όπως κάνεις στο results.html)
+    if (title.includes("Greek Islands")) {
+      localStorage.setItem("selectedShip", "Celestyal Discovery");
+    }
+
+    window.location.href = "package-details.html";
+    return;
+  }
+
+  // --- Cruise Only ---
+  if (card.classList.contains("cruise-card")) {
+    localStorage.setItem("selectedCruise", title);
+    window.location.href = "cruise_details.html";
+    return;
+  }
+
+  // --- Greece Land Tours (αν έχεις) ---
+  if (card.classList.contains("tours_card")) {
+    localStorage.setItem("selectedTour", title);
+    window.location.href = "tour-details.html";
+    return;
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+{
+  "Celestyal Journey": {
+    "image": "images/ships/celestyal_journey.jpg",
+    "gallery": [
+      "images/ships/celestyal_journey.jpeg",
+      "images/msc-opera-1.jpg",
+      "images/msc-opera-2.jpg",
+      "images/msc-opera-3.jpg"
+    ],
+    "tonnage": "55,877 GT",
+    "crew": "663",
+    "passengers": "1,260",
+    "cabins": "630",
+    "length": "220 m",
+    "speed": "21 knots",
+    "decks": [
+      { "name": "Deck 4", "image": "images/decks/journey-deck4.jpg" },
+      { "name": "Deck 5", "image": "images/decks/journey-deck5.jpg" },
+      { "name": "Deck 6", "image": "images/decks/journey-deck6.jpg" }
+    ]
+  },
+
+  "MSC Opera": {
+    "image": "images/ships/msc-opera.jpg",
+    "gallery": [
+      "images/ships/msc-opera.jpg",
+      "images/msc-opera-1.jpg",
+      "images/msc-opera-2.jpg",
+      "images/msc-opera-3.jpg"
+    ],
+    "tonnage": "65,542 GT",
+    "crew": "721",
+    "passengers": "2,620",
+    "cabins": "976",
+    "length": "274.9 m",
+    "speed": "20.1 knots",
+    "decks": [
+      { "name": "Deck 5", "image": "images/decks/opera-deck5.jpg" },
+      { "name": "Deck 6", "image": "images/decks/opera-deck6.jpg" },
+      { "name": "Deck 7", "image": "images/decks/opera-deck7.jpg" }
+    ]
+  },
+    "Celestyal Discovery": {
+    "image": "images/ships/celestyal_discovery.jpeg",
+    "gallery": [
+      "images/ships/celestyal_discovery.jpeg",
+      "images/msc-opera-1.jpg",
+      "images/msc-opera-2.jpg",
+      "images/msc-opera-3.jpg"
+    ],
+    "tonnage": "55,877 GT",
+    "crew": "663",
+    "passengers": "1,260",
+    "cabins": "630",
+    "length": "220 m",
+    "speed": "21 knots",
+    "decks": [
+      { "name": "Deck 4", "image": "images/decks/journey-deck4.jpg" },
+      { "name": "Deck 5", "image": "images/decks/journey-deck5.jpg" },
+      { "name": "Deck 6", "image": "images/decks/journey-deck6.jpg" },
+      { "name": "Deck 7", "image": "images/decks/journey-deck6.jpg" },
+      { "name": "Deck 8", "image": "images/decks/journey-deck6.jpg" },
+       { "name": "Deck 9", "image": "images/decks/journey-deck6.jpg" },
+        { "name": "Deck 10", "image": "images/decks/journey-deck6.jpg" },
+         { "name": "Deck 11", "image": "images/decks/journey-deck6.jpg" },
+          { "name": "Deck 12", "image": "images/decks/journey-deck6.jpg" },
+           { "name": "Deck 13", "image": "images/decks/journey-deck6.jpg" }
+    ]
+  },
+    "MSC Musica": {
+    "image": "images/ships/msc-musica.jpg",
+    "gallery": [
+      "images/ships/msc-musica.jpg",
+      "images/msc-opera-1.jpg",
+      "images/msc-opera-2.jpg",
+      "images/msc-opera-3.jpg"
+    ],
+    "tonnage": "55,877 GT",
+    "crew": "1014",
+    "passengers": "3,23",
+    "cabins": "12775",
+    "length": "220 m",
+    "speed": "22 knots",
+    "decks": [
+      { "name": "Deck 5", "image": "images/decks/musica-5.png" },
+      { "name": "Deck 6", "image": "images/decks/musica-6.png" },
+      { "name": "Deck 7", "image": "images/decks/musica-7.png" },
+      { "name": "Deck 8", "image": "images/decks/musica-7.png" }
+    ]
+  }
+}
