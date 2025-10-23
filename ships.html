@@ -465,5 +465,16 @@ document.getElementById("imageLightbox").addEventListener("click", e => {
       });
     });
   </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+</script>
 </body>
 </html>
