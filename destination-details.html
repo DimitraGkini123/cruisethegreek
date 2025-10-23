@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destination Details | CruiseTheGreek</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      color: #002b45;
+      background: #fff;
+      margin: 0;
+    }
+
+    .page-layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ----- ΚΥΡΙΟ ΠΕΡΙΕΧΟΜΕΝΟ ----- */
+    .destination-details {
+      flex: 3;
+      max-width: 750px;
+    }
+
+    .destination-details img.main-image {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      height: 280px;
+      margin-bottom: 20px;
+    }
+
+    .destination-details h1 {
+      text-align: center;
+      color: #002b45;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .destination-details p {
+      line-height: 1.7;
+      color: #333;
+      text-align: justify;
+    }
+
+    .info-box {
+      background: #f5f7fa;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 25px;
+      border-left: 4px solid #ff6600;
+    }
+
+    .info-box strong {
+      color: #ff6600;
+    }
+
+    /* --- Gallery --- */
+    .destination-gallery {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+      scroll-behavior: smooth;
+    }
+
+    .destination-gallery img {
+      width: 150px;
+      height: 95px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .destination-gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* --- Back Button --- */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #ff6600;
+      border: 2px solid #ff6600;
+      border-radius: 30px;
+      padding: 8px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 25px;
+    }
+    .back-btn:hover {
+      background: #ff6600;
+      color: white;
+      transform: translateX(-3px);
+    }
+
+    /* ----- ΠΛΑΙΝΟ PANEL "OTHER DESTINATIONS" ----- */
+    .side-panel {
+      flex: 1;
+      min-width: 220px;
+      background: #fff8f3;
+      border: 1px solid #ffd6b3;
+      border-radius: 14px;
+      padding: 20px 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      top: 100px;
+      height: fit-content;
+    }
+
+    .side-panel h3 {
+      text-align: center;
+      color: #ff6600;
+      font-size: 18px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #ffd6b3;
+      padding-bottom: 6px;
+    }
+
+    .side-destination {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .side-destination:hover {
+      transform: translateX(4px);
+    }
+
+    .side-destination img {
+      width: 60px;
+      height: 45px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .side-destination span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #002b45;
+    }
+
+    /* --- Lightbox --- */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .lightbox .close-lightbox {
+      position: absolute;
+      top: 20px; right: 40px;
+      font-size: 35px;
+      color: white;
+      cursor: pointer;
+    }
+    .lightbox .close-lightbox:hover {
+      color: #ff6600;
+    }
+
+    @media (max-width: 900px) {
+      .page-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .side-panel {
+        width: 100%;
+        position: static;
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">CruiseTheGreek.com</div>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+        <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-layout">
+    <section class="destination-details" id="destinationDetails"></section>
+    <aside class="side-panel" id="otherDestinations">
+      <h3>Other Destinations</h3>
+      <div id="sideList"></div>
+    </aside>
+  </div>
+
+  <!-- 🔹 Lightbox -->
+  <div id="imageLightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const selected = localStorage.getItem("selectedDestination");
+  const mainContainer = document.getElementById("destinationDetails");
+  const sideList = document.getElementById("sideList");
+  const sidePanel = document.getElementById("otherDestinations");
+
+  fetch("data/destinations.json")
+    .then(res => res.json())
+    .then(data => {
+      const allDest = Object.values(data);
+      const dest = allDest.find(d => d.name === selected);
+
+      if (!dest) {
+        mainContainer.innerHTML = "<p>Destination not found.</p>";
+        return;
+      }
+
+      // === Κύρια Ενότητα ===
+      const galleryHTML = dest.gallery && dest.gallery.length
+        ? `<div class="destination-gallery">${dest.gallery.map(src => `<img src="${src}" alt="${dest.name}">`).join("")}</div>`
+        : "";
+
+      mainContainer.innerHTML = `
+        <button class="back-btn" onclick="window.location.href='destinations.html'">
+          <i class='fa-solid fa-arrow-left'></i> Back to Destinations
+        </button>
+        <h1>${dest.name}</h1>
+        <img src="${dest.image}" alt="${dest.name}" class="main-image">
+        ${galleryHTML}
+        <p>${dest.description}</p>
+
+        <h2 style="margin-top:35px; color:#002b45; font-size:22px; border-bottom:2px solid #ff6600; display:inline-block;">
+          Destination Information
+        </h2>
+        <div class="info-box">
+          <p><strong>Region:</strong> ${dest.region || "—"}</p>
+          <p><strong>Best season:</strong> ${dest.bestSeason || "—"}</p>
+          <p><strong>Popular attractions:</strong> ${dest.attractions?.join(", ") || "—"}</p>
+        </div>
+      `;
+
+      // === OTHER DESTINATIONS ===
+      const others = allDest.filter(d => d.name !== dest.name);
+      sideList.innerHTML = others.map(o => `
+        <div class="side-destination" data-name="${o.name}">
+          <img src="${o.image}" alt="${o.name}">
+          <span>${o.name}</span>
+        </div>
+      `).join("");
+
+      sideList.querySelectorAll(".side-destination").forEach(el => {
+        el.addEventListener("click", () => {
+          localStorage.setItem("selectedDestination", el.dataset.name);
+          window.location.reload();
+        });
+      });
+
+const cruisesSection = document.createElement("div");
+cruisesSection.innerHTML = `
+  <h3 style="text-align:center; color:#ff6600; font-size:18px; margin:20px 0 10px; border-top:2px solid #ffd6b3; padding-top:15px;">
+    Cruises to this Destination
+  </h3>
+  <div id="sideCruises"></div>
+`;
+sidePanel.appendChild(cruisesSection);
+
+Promise.all([
+  fetch("data/cruises.json").then(res => res.json()).catch(() => ({})),
+  fetch("data/packages.json").then(res => res.json()).catch(() => ({}))
+]).then(([cruisesData, packagesData]) => {
+  const allCruises = [
+    ...Object.values(cruisesData).map(c => ({ ...c, type: "cruise" })),
+    ...Object.values(packagesData).map(p => ({ ...p, type: "package" }))
+  ];
+
+  // ✨ ΤΩΡΑ: φίλτρο ΜΟΝΟ για route που περιέχει τον προορισμό
+  const matching = allCruises.filter(item =>
+    item.route && item.route.toLowerCase().includes(dest.name.toLowerCase())
+  );
+
+  const sideCruises = document.getElementById("sideCruises");
+
+  if (matching.length === 0) {
+    sideCruises.innerHTML = "<p style='color:#666; font-size:14px; text-align:center;'>No cruises visiting this destination.</p>";
+    return;
+  }
+
+  sideCruises.innerHTML = `
+    ${matching
+      .slice(0, 4)
+      .map(c => `
+        <div class="side-destination" style="margin-bottom:10px;" data-type="${c.type}" data-title="${c.title}">
+          <img src="${c.image}" alt="${c.title}">
+          <span>${c.title}</span>
+        </div>
+      `).join("")}
+    <div style="text-align:center; margin-top:10px;">
+      <a href="results.html?destination=${encodeURIComponent(dest.name)}"
+         style="color:#ff6600; font-weight:600; text-decoration:none; font-size:14px;">
+         View all cruises →
+      </a>
+    </div>
+  `;
+
+  // Κλικ για άνοιγμα cruise ή package
+  sideCruises.querySelectorAll(".side-destination").forEach(el => {
+    el.addEventListener("click", () => {
+      if (el.dataset.type === "package") {
+        localStorage.setItem("selectedPackage", el.dataset.title);
+        window.location.href = "package-details.html";
+      } else {
+        localStorage.setItem("selectedCruise", el.dataset.title);
+        window.location.href = "cruise-details.html";
+      }
+    });
+  });
+});
+      // === LIGHTBOX ===
+      const lightbox = document.getElementById("imageLightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      const closeBtn = document.querySelector(".close-lightbox");
+
+      mainContainer.querySelectorAll(".destination-gallery img").forEach(img => {
+        img.addEventListener("click", () => {
+          lightboxImg.src = img.src;
+          lightbox.style.display = "flex";
+        });
+      });
+
+      closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+      lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) lightbox.style.display = "none";
+      });
+    });
+});
+</script>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+</script>
+
+</body>
+</html>

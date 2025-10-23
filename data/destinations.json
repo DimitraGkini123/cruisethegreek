@@ -1,0 +1,34 @@
+{
+  "Mykonos": {
+    "name": "Mykonos",
+    "image": "images/mykonos.jpeg",
+    "region": "Cyclades, Aegean Sea",
+    "bestSeason": "May – September",
+    "description": "Mykonos, one of Greece’s most famous islands, is known for its vibrant nightlife, whitewashed architecture, and iconic windmills. Visitors can explore charming alleys, enjoy crystal-clear beaches, and experience the unique Cycladic charm.",
+    "attractions": ["Little Venice", "Windmills", "Paradise Beach"]
+  },
+  "Santorini": {
+    "name": "Santorini",
+    "image": "images/santorini.jpg",
+    "region": "Cyclades, Aegean Sea",
+    "bestSeason": "April – October",
+    "description": "Santorini is world-renowned for its stunning sunsets, dramatic caldera cliffs, and picturesque villages. The island offers romantic views, archaeological sites, and luxurious resorts overlooking the Aegean.",
+    "attractions": ["Oia", "Fira", "Red Beach", "Akrotiri"]
+  },
+  "Rhodes": {
+    "name": "Rhodes",
+    "image": "images/rhodes.jpg",
+    "region": "Dodecanese, South Aegean",
+    "bestSeason": "May – October",
+    "description": "Rhodes blends medieval charm with beachside beauty. Explore the Old Town, ancient ruins, and the island’s lively seaside resorts.",
+    "attractions": ["Old Town", "Lindos Acropolis", "Butterfly Valley"]
+  },
+    "Hydra": {
+    "name": "Hydra",
+    "image": "images/hydra.jpg",
+    "region": "Saronic Gulf, South Aegean",
+    "bestSeason": "May – October",
+    "description": "Rhodes blends medieval charm with beachside beauty. Explore the Old Town, ancient ruins, and the island’s lively seaside resorts.",
+    "attractions": ["Old Town", "Lindos Acropolis", "Butterfly Valley"]
+  }
+}

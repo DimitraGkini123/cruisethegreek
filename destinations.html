@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destinations | CruiseTheGreek</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #fff;
+      color: #002b45;
+      margin: 0;
+    }
+
+    .destinations-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 30px;
+    }
+
+    .destinations-page h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #002b45;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      justify-items: center;
+    }
+
+    .destination-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .destination-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .destination-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .destination-card h3 {
+      margin: 0;
+      padding: 15px;
+      background: #002b45;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 🔹 HEADER -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">CruiseTheGreek.com</div>
+      <button class="menu-toggle" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+        <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="destinations-page">
+    <h1>Popular Greek Destinations</h1>
+    <div class="destinations-grid" id="destinationsGrid"></div>
+  </main>
+
+  <footer class="footer">
+    <!-- Μπορείς να κρατήσεις το ίδιο footer -->
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.getElementById("destinationsGrid");
+
+      fetch("data/destinations.json")
+        .then(res => res.json())
+        .then(data => {
+          Object.values(data).forEach(dest => {
+            const card = document.createElement("div");
+            card.className = "destination-card";
+            card.innerHTML = `
+              <img src="${dest.image}" alt="${dest.name}">
+              <h3>${dest.name}</h3>
+            `;
+            card.addEventListener("click", () => {
+              localStorage.setItem("selectedDestination", dest.name);
+              window.location.href = "destination-details.html";
+            });
+            grid.appendChild(card);
+          });
+        })
+        .catch(err => console.error("Error loading destinations:", err));
+    });
+
+    // Mobile menu
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+      toggleBtn.addEventListener("click", () => navLinks.classList.toggle("active"));
+    });
+  </script>
+</body>
+</html>
