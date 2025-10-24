@@ -63,14 +63,12 @@
   </section>
 
 
-  
 <div class="mobile-controls">
   <button class="mobile-btn" id="openFilters">
     <i class="fa-solid fa-sliders"></i> Filter
   </button>
-  <button class="mobile-btn" id="openSort">
-    <i class="fa-solid fa-arrow-up-wide-short"></i> Sort by
-  </button>
+
+
 </div>
 
 
@@ -144,15 +142,15 @@
   <!-- === Sort + Results === -->
   <div class="tours-content">
 
-    <div class="sort-bar">
-      <label for="sortSelect"><i class="fa-solid fa-sort"></i> Sort</label>
-      <select id="sortSelect">
-        <option value="">—</option>
-        <option value="low_high">Low → High</option>
-        <option value="high_low">High → Low</option>
-      </select>
-    </div>
-
+  <div class="sort-bar">
+    <label for="sortSelect"><i class="fa-solid fa-sort"></i> Sort by:</label>
+    <select id="sortSelect">
+      <option value="">-- Select --</option>
+      <option value="low_high">Price: Low to High</option>
+      <option value="high_low">Price: High to Low</option>
+    </select>
+  </div>
+  
     <div class="tours-section">
       <div id="toursContainer" class="tours-grid"></div>
     </div>
@@ -345,32 +343,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <div id="overlay" class="overlay"></div>
 
-<!-- functionality of sort by price button-->
+
+
 <script>
-document.getElementById("sortSelect").addEventListener("change", function () {
-  const sortValue = this.value;
-  const grid = document.getElementById("resultsGrid");
-  const cards = Array.from(grid.querySelectorAll(".card"));
+  //script for sort functionality
+document.addEventListener("DOMContentLoaded", () => {
+  const sortSelect = document.getElementById("sortSelect");
+  const grid = document.getElementById("toursContainer");
 
-  if (!sortValue || cards.length === 0) return;
+  if (!sortSelect || !grid) {
+    console.error("Sort dropdown or tours container not found.");
+    return;
+  }
 
-  const getPrice = (card) => {
-    const priceText =
-      card.querySelector(".new-price strong")?.textContent.replace(/[^\d]/g, "") ||
-      "0";
-    return parseFloat(priceText);
-  };
+  sortSelect.addEventListener("change", () => {
+    const value = sortSelect.value;
+    const cards = Array.from(grid.getElementsByClassName("tour-card"));
 
-  cards.sort((a, b) => {
-    const priceA = getPrice(a);
-    const priceB = getPrice(b);
+    if (!value) return; // αν δεν έχει επιλεγεί κάτι
 
-    return sortValue === "low_high" ? priceA - priceB : priceB - priceA;
+    // Ταξινόμηση ανάλογα με τιμή
+    cards.sort((a, b) => {
+      const priceA = parseFloat(
+        a.querySelector(".price").textContent.replace(/[^\d.]/g, "")
+      );
+      const priceB = parseFloat(
+        b.querySelector(".price").textContent.replace(/[^\d.]/g, "")
+      );
+
+      if (isNaN(priceA) || isNaN(priceB)) return 0;
+      return value === "low_high" ? priceA - priceB : priceB - priceA;
+    });
+
+    // Καθαρισμός και επανατοποθέτηση
+    grid.innerHTML = "";
+    cards.forEach(card => grid.appendChild(card));
   });
-
-  grid.innerHTML = "";
-  cards.forEach((card) => grid.appendChild(card));
 });
 </script>
+
+
 </body>
 </html>
