@@ -259,6 +259,14 @@
 .close-lightbox:hover {
   color: #ff6600;
 }
+.title-line {
+  display: inline-block;
+  width: 60px;
+  height: 2px;
+  background: #ff6600;
+  vertical-align: middle;
+  margin: 0 12px;
+}
 
 
   </style>
@@ -302,7 +310,11 @@
 
 <body>
   <main class="ships-page">
-    <h1>Cruise Ships</h1>
+   <h1>
+  <span class="title-line"></span>
+  Cruise Ships
+  <span class="title-line"></span>
+</h1>
 
     <div class="ships-grid" id="shipsGrid"></div>
   </main>

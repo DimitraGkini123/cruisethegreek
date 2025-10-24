@@ -47,13 +47,20 @@
   </nav>
 </header>
 
+
   <!--  Banner Section -->
-  <section class="results-banner">
-    <img src="images/banner.jpg" alt="Cruise Banner">
-    <div class="banner-overlay">
-      <h1 id="resultsTitle"></h1>
-    </div>
-  </section>
+<section class="results-banner">
+  <img src="images/banner.jpg" alt="Cruise Banner">
+  <div class="banner-overlay">
+    <h1>
+      <span class="title-line"></span>
+      <span id="resultsTitle"></span>
+      <span class="title-line"></span>
+    </h1>
+  </div>
+</section>
+
+
 
   <!--  Results Page Layout -->
   <section class="results-page">
@@ -586,7 +593,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (filterTypeLabel) {
     if (selectedType === "cruise_only") filterTypeLabel.textContent = "Cruise Only";
     else if (selectedType === "cruise_package") filterTypeLabel.textContent = "Cruise Packages";
-    else filterTypeLabel.textContent = "All Cruises";
+  
   }
 
   // === 3️⃣ Για mobile (όταν ο χρήστης ανοίγει τα φίλτρα) ===
@@ -717,6 +724,21 @@ document.getElementById("sortSelect").addEventListener("change", function () {
 
   grid.innerHTML = "";
   cards.forEach((card) => grid.appendChild(card));
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+  const title = document.getElementById("resultsTitle");
+
+  if (type === "cruise_only") {
+    title.textContent = "Cruise Only";
+  } else if (type === "cruise_package") {
+    title.textContent = "Cruise Packages";
+  } else {
+    title.textContent = "All Cruises";
+  }
 });
 </script>
 
