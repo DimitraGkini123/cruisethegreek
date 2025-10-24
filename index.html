@@ -475,23 +475,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <!-- === Φόρτωση Greece Land Tours === -->
+<!-- === Φόρτωση Greece Land Tours από tours.json === -->
 <script>
-fetch('tours_card.html')
-  .then(res => res.text())
-  .then(html => {
+fetch('data/tours.json')
+  .then(res => res.json())
+  .then(data => {
     const grid = document.getElementById('landToursGrid');
-    for (let i = 0; i < 6; i++) {
-      grid.insertAdjacentHTML('beforeend', html);
-    }
-    requestAnimationFrame(() => {
-      grid.querySelectorAll('.tours_card').forEach(card => {
-        card.style.height = 'auto';
-      });
+    grid.innerHTML = ''; // καθαρισμός
+
+    const tours = Object.values(data).slice(0, 6); // φόρτωσε τα 6 πρώτα tours
+
+    tours.forEach(tour => {
+      const cardHTML = `
+        <div class="tour-card">
+          <img src="${tour.imageMain}" alt="${tour.title}">
+
+          <div class="tour-info">
+            <div>
+              <h3>${tour.title}</h3>
+              <p class="tour-description">${tour.shortDesc}</p>
+
+              <div class="tour-details">
+                <span><i class="fa-regular fa-clock"></i>${tour.duration}</span>
+                <span><i class="fa-solid fa-language"></i>${tour.language}</span>
+                <span><i class="fa-solid fa-location-dot"></i>${tour.location}</span>
+              </div>
+            </div>
+
+            <div class="tour-footer">
+              <span class="price">${tour.price}</span>
+              <button class="explore-btn" onclick="openTourDetails('${tour.title}')">
+                Explore
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      grid.insertAdjacentHTML('beforeend', cardHTML);
     });
   })
-  .catch(err => console.error('Error loading land tour cards:', err));
-</script>
+  .catch(err => console.error('Error loading tours:', err));
 
+function openTourDetails(title) {
+  localStorage.setItem('selectedTour', title);
+  window.location.href = 'tour-details.html';
+}
+</script>
 
 
 <script>
