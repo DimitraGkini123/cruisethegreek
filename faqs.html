@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs | CruiseTheGreek</title>
+
+  <!-- Font Awesome & CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+/* ===== FAQ SECTION ===== */
+.faq {
+  text-align: center;
+  margin: 80px auto;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.faq h1 {
+  font-size: 28px;
+  color: #002b45;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.faq h1::before,
+.faq h1::after {
+  content: "";
+  flex: 1;
+  max-width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  border-radius: 2px;
+}
+
+/* ===== Container ===== */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ===== Each Item ===== */
+.faq-item {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  background: #fff;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+}
+
+/* ===== Question Button ===== */
+.faq-question {
+  width: 100%;
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  outline: none;
+  text-align: left;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #e65c00;
+}
+
+.faq-question i {
+  font-size: 18px;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+/* ===== Answer Content ===== */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #fff;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 0 20px;
+  border-left: 5px solid #ff6600;
+  border-right: 5px solid #ff6600;
+  transition: max-height 0.5s ease, padding 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+  padding: 18px 22px 22px;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Navbar ===== -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">CruiseTheGreek.com</div>
+      <button class="menu-toggle" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+        <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="faqs.html" class="active">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== FAQ SECTION ===== -->
+  <section class="faq">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-container">
+      <!-- Example FAQ items -->
+      <div class="faq-item active">
+        <button class="faq-question">1. How do I book a cruise? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">You can easily book online through our website by selecting your preferred cruise and completing the booking form.</div>
+      </div>
+
+      <div class="faq-item active">
+        <button class="faq-question">2. What payment methods do you accept? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">We accept Visa, Mastercard, American Express, and PayPal for secure payments.</div>
+      </div>
+
+      <div class="faq-item active">
+        <button class="faq-question">3. Can I modify or cancel my booking? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes, modifications or cancellations can be made through your account or by contacting our support team, depending on the policy of your selected cruise line.</div>
+      </div>
+
+      <div class="faq-item active">
+        <button class="faq-question">4. Are meals included in the cruise price? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Most cruises include breakfast, lunch, and dinner. Some premium restaurants may require an additional fee.</div>
+      </div>
+
+      <!-- Remaining FAQs -->
+      <div class="faq-item">
+        <button class="faq-question">5. Do I need a passport for Greek island cruises? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">EU citizens can travel with an ID card. Non-EU citizens need a valid passport.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">6. What should I pack for my cruise? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Pack light clothing, swimwear, sunscreen, and comfortable shoes for excursions.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">7. Do I need travel insurance? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Travel insurance is recommended for all passengers to cover unexpected events.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">8. Are airport transfers included? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Transfers may be included depending on the cruise package. Check your booking details.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">9. How early should I arrive before departure? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">We recommend arriving at least 2 hours before departure to complete boarding procedures.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">10. Is Wi-Fi available onboard? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes, most ships offer Wi-Fi for an additional fee. Some luxury cruises include it for free.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">11. Are excursions included? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Excursions are usually optional. You can book them in advance or onboard.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">12. Are drinks included in my cruise fare? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Basic drinks like water and coffee are included; alcohol or premium beverages may have an extra charge.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">13. Do I need vaccinations to travel? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Currently, there are no mandatory vaccinations for Greek cruises, but check the latest travel advisories.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">14. Can I travel with children? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes, most cruise lines welcome families and provide kids’ clubs and activities.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">15. Are there medical facilities on board? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">All ships are equipped with a medical center staffed by qualified doctors and nurses.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">16. Can I bring my own alcohol on board? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Most cruise lines restrict alcohol brought onboard. Check the policy before packing.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">17. Is there a dress code for dinner? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Smart casual is usually acceptable; some nights may require formal attire.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">18. Can I smoke on board? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Smoking is permitted only in designated areas of the ship.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">19. Are there ATMs onboard? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes, most large cruise ships have ATMs or offer onboard cash services.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">20. What currency is used onboard? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Transactions are usually in Euros or US Dollars, depending on the cruise line.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">21. Are there laundry services available? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes, laundry and dry-cleaning services are available on most ships.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">22. Can I book for a large group? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Absolutely! Contact our team for special group discounts and arrangements.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">23. How are cabins assigned? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Cabins are assigned based on availability and the category selected during booking.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">24. Do cruises operate year-round? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Greek island cruises mainly operate from April to October, during the best weather months.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">25. Can I travel solo? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes, solo travelers are welcome. Some cruise lines offer single cabins or discounts.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">26. Are pets allowed? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Pets are not allowed, except for certified service animals.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">27. Is there entertainment onboard? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes! Live shows, music, theater, and themed nights are included in your cruise experience.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">28. Are tips included? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Some cruise fares include gratuities, while others add them to your onboard account automatically.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">29. Can I get assistance for disabled passengers? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">Yes, all major cruise lines provide accessible cabins and onboard support for guests with reduced mobility.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">30. How can I contact customer support? <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="faq-answer">You can reach us anytime via our Contact page, phone number, or email support@cruisethegreek.com.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- 🔹 1η Στήλη: Logo + Επικοινωνία -->
+    <div class="footer-col">
+      <h3 class="footer-logo">CruiseTheGreek.com</h3>
+      <p class="footer-phone">+1 (415) 7957979</p>
+      <p><a href="mailto:info@cruisethegreek.com">info@cruisethegreek.com</a></p>
+      <p>8, Aggelou Vlachou st, Plaka, Athens</p>
+      <img src="images/gnto.png" alt="GNTO" class="footer-gnto">
+      <p class="footer-gnto-code">GNTO: 0206E60000362401</p>
+    </div>
+
+    <!-- 🔹 2η Στήλη: Navigation Menu -->
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul class="footer-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="cruises.html">CRUISES</a></li>
+        <li><a href="packages.html">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 3η Στήλη: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">B2B Partnership</a></li>
+        <li><a href="#">Partners Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 🔸 Κάτω γραμμή -->
+  <div class="footer-bottom">
+    <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+  <script>
+  // Toggle FAQ
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      item.classList.toggle('active');
+    });
+  });
+  </script>
+
+</body>
+</html>
