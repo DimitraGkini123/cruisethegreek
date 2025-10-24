@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ship Details | CruiseTheGreek</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #fff;
+      color: #002b45;
+      margin: 0;
+    }
+
+    .page-layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* === LEFT CONTENT === */
+    .ship-details {
+      flex: 3;
+      max-width: 750px;
+    }
+
+    .ship-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #ff6600;
+      border: 2px solid #ff6600;
+      border-radius: 30px;
+      padding: 8px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #ff6600;
+      color: white;
+      transform: translateX(-3px);
+    }
+
+    .ship-dropdown {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: "Poppins";
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .ship-details h1 {
+      text-align: center;
+      font-size: 30px;
+      color: #002b45;
+      margin: 20px 0 15px;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+    .ship-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background: #f5f7fa;
+      border-radius: 10px;
+      border-left: 4px solid #ff6600;
+      padding: 15px;
+    }
+
+    .ship-specs div {
+      background: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .ship-specs strong {
+      color: #ff6600;
+    }
+
+    /* === SIDE PANEL === */
+    .side-panel {
+      flex: 1.2;
+      position: sticky;
+      top: 40px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      height: fit-content;
+    }
+
+    .side-panel h3 {
+      text-align: center;
+      color: #ff6600;
+      font-size: 18px;
+      margin: 10px 0 18px;
+      border-bottom: 2px solid #ffd6b3;
+      padding-bottom: 6px;
+    }
+
+    .side-card {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1px solid #ffd6b3;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .side-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 14px rgba(255, 102, 0, 0.25);
+    }
+
+    .side-card img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+    }
+
+    .side-card span {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #002b45;
+      padding: 8px 6px 10px;
+      line-height: 1.3;
+    }
+
+    .view-all-btn {
+      display: block;
+      text-align: center;
+      color: #ff6600;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      margin-top: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .view-all-btn:hover {
+      color: #cc5200;
+    }
+
+    @media (max-width: 900px) {
+      .page-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+      .side-panel {
+        width: 100%;
+        position: static;
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">CruiseTheGreek.com</div>
+      <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+        <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-layout">
+    <!-- LEFT CONTENT -->
+    <section class="ship-details" id="shipDetails"></section>
+
+    <!-- RIGHT PANEL -->
+    <aside class="side-panel">
+      <div id="sideCruises"></div>
+      <div id="sidePackages"></div>
+    </aside>
+  </main>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const selectedShip = localStorage.getItem("selectedShip");
+    const shipContainer = document.getElementById("shipDetails");
+    const sideCruises = document.getElementById("sideCruises");
+    const sidePackages = document.getElementById("sidePackages");
+
+    // === Load ship info ===
+    fetch("data/ships_data.json")
+      .then(res => res.json())
+      .then(data => {
+        const allShips = Object.keys(data);
+        const info = data[selectedShip];
+        if (!info) {
+          shipContainer.innerHTML = "<p style='text-align:center;'>Ship not found.</p>";
+          return;
+        }
+
+        const dropdownHTML = `
+          <select id="shipSelect" class="ship-dropdown">
+            ${allShips.map(name => `
+              <option value="${name}" ${name === selectedShip ? "selected" : ""}>
+                ${name}
+              </option>`).join("")}
+          </select>
+        `;
+
+        shipContainer.innerHTML = `
+          <div class="ship-controls">
+            <button class="back-btn" onclick="window.location.href='ships.html'">
+              <i class='fa-solid fa-arrow-left'></i> Back to ships
+            </button>
+            ${dropdownHTML}
+          </div>
+
+          <h1>${selectedShip}</h1>
+          <img src="${info.image}" alt="${selectedShip}" class="main-image">
+
+          <div class="ship-specs">
+            <div><strong>Passengers:</strong> ${info.passengers || "N/A"}</div>
+            <div><strong>Cabins:</strong> ${info.cabins || "N/A"}</div>
+            <div><strong>Crew:</strong> ${info.crew || "N/A"}</div>
+            <div><strong>Year Built:</strong> ${info.year || "N/A"}</div>
+            <div><strong>Gross Tonnage:</strong> ${info.tonnage || "N/A"}</div>
+            <div><strong>Beam:</strong> ${info.beam || "N/A"}</div>
+            <div><strong>Speed:</strong> ${info.speed || "N/A"}</div>
+            <div><strong>Length:</strong> ${info.length || "N/A"}</div>
+            <div><strong>Refurbishment:</strong> ${info.refurbishment || "N/A"}</div>
+          </div>
+        `;
+
+        // Dropdown redirect
+        document.getElementById("shipSelect").addEventListener("change", e => {
+          localStorage.setItem("selectedShip", e.target.value);
+          window.location.reload();
+        });
+      });
+
+    // === Load Cruises with this ship ===
+    fetch("data/cruises.json")
+      .then(res => res.json())
+      .then(data => {
+        const allCruises = Object.values(data).filter(c => c.ship === selectedShip);
+        sideCruises.innerHTML = `
+          <h3>Cruises with this Ship</h3>
+          ${allCruises.slice(0, 3).map(c => `
+            <div class="side-card" data-title="${c.title}">
+              <img src="${c.image}" alt="${c.title}">
+              <span>${c.title}</span>
+            </div>
+          `).join("")}
+          <a href="results.html?type=cruise_only" class="view-all-btn">View all</a>
+        `;
+
+        sideCruises.querySelectorAll(".side-card").forEach(card => {
+          card.addEventListener("click", () => {
+            localStorage.setItem("selectedCruise", card.dataset.title);
+            window.location.href = "cruise_details.html";
+          });
+        });
+      });
+
+    // === Load Cruise Packages with this ship ===
+    fetch("data/packages.json")
+      .then(res => res.json())
+      .then(data => {
+        const allPackages = Object.values(data).filter(p => p.ship === selectedShip);
+        sidePackages.innerHTML = `
+          <h3>Cruise Packages with this Ship</h3>
+          ${allPackages.slice(0, 3).map(p => `
+            <div class="side-card" data-title="${p.title}">
+              <img src="${p.image}" alt="${p.title}">
+              <span>${p.title}</span>
+            </div>
+          `).join("")}
+          <a href="results.html?type=cruise_package" class="view-all-btn">View all</a>
+        `;
+
+        sidePackages.querySelectorAll(".side-card").forEach(card => {
+          card.addEventListener("click", () => {
+            localStorage.setItem("selectedCruise", card.dataset.title);
+            window.location.href = "cruise_details.html";
+          });
+        });
+      });
+  });
+  </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+  </script>
+
+</body>
+</html>

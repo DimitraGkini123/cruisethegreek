@@ -306,22 +306,6 @@
 
     <div class="ships-grid" id="shipsGrid"></div>
   </main>
-
-<!-- ===== MODAL ===== -->
-<div id="shipModal" class="ship-modal">
-  <div class="ship-modal-content">
-    <span class="close-btn">&times;</span>
-    <h2 id="modalShipName"></h2>
-    <div class="title-underline"></div>
-
-    <!-- 📸 Gallery -->
-    <div class="ship-gallery" id="modalShipGallery"></div>
-
-    <!-- 📊 Specifications -->
-    <div class="ship-specs" id="modalShipSpecs"></div>
-  </div>
-</div>
-
 <!-- ===== LIGHTBOX ===== -->
 <div id="imageLightbox" class="lightbox">
   <span class="close-lightbox">&times;</span>
@@ -398,7 +382,11 @@
               <img src="${info.image || 'images/default-ship.jpg'}" alt="${name}">
               <h3>${name}</h3>
             `;
-            card.addEventListener("click", () => openModal(name, info));
+            card.addEventListener("click", () => {
+            localStorage.setItem("selectedShip", name);
+            window.location.href = "ship-details.html";
+          });
+
             shipsGrid.appendChild(card);
           });
         });
