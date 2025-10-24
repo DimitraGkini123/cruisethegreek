@@ -347,7 +347,7 @@ mainContainer.innerHTML = `
 
       // === OTHER DESTINATIONS ===
 // δείξε μόνο 5 άλλους προορισμούς
-const others = allDest.filter(d => d.name !== dest.name).slice(0, 5);
+const others = allDest.filter(d => d.name !== dest.name).slice(0, 4);
 sideList.innerHTML = others.map(o => `
   <div class="side-destination" data-name="${o.name}">
     <img src="${o.image}" alt="${o.name}">
