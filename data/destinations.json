@@ -23,12 +23,46 @@
     "description": "Rhodes blends medieval charm with beachside beauty. Explore the Old Town, ancient ruins, and the island’s lively seaside resorts.",
     "attractions": ["Old Town", "Lindos Acropolis", "Butterfly Valley"]
   },
-    "Hydra": {
+ "Hydra": {
     "name": "Hydra",
     "image": "images/hydra.jpg",
-    "region": "Saronic Gulf, South Aegean",
-    "bestSeason": "May – October",
-    "description": "Rhodes blends medieval charm with beachside beauty. Explore the Old Town, ancient ruins, and the island’s lively seaside resorts.",
-    "attractions": ["Old Town", "Lindos Acropolis", "Butterfly Valley"]
+    "region": "Saronic Gulf, Attica",
+    "bestSeason": "April – October",
+    "description": "Hydra is one of the most elegant islands of Greece, known for its stone mansions, car-free streets, and artistic atmosphere. Visitors can stroll along the scenic harbor, explore historic monasteries, and enjoy crystal-clear waters in small hidden coves.",
+    "attractions": ["Hydra Port", "Historical Archives Museum", "Monastery of Profitis Ilias"]
+  },
+
+  "Spetses": {
+    "name": "Spetses",
+    "image": "images/spetses.jpg",
+    "region": "Saronic Gulf, Attica",
+    "bestSeason": "May – September",
+    "description": "Spetses combines aristocratic charm with a rich naval history. Horse-drawn carriages roll along the waterfront, while elegant neoclassical mansions and lush pine forests create a romantic setting perfect for short getaways.",
+    "attractions": ["Dapia Harbor", "Bouboulina Museum", "Old Harbor Lighthouse"]
+  },
+
+  "Crete": {
+    "name": "Crete",
+    "image": "images/crete.jpg",
+    "region": "Southern Aegean",
+    "bestSeason": "April – November",
+    "description": "Crete, the largest Greek island, offers an incredible blend of natural beauty, ancient history, and authentic culture. From the Minoan Palace of Knossos to the beaches of Elafonissi and Balos, Crete has something for every traveler.",
+    "attractions": ["Knossos Palace", "Elafonissi Beach", "Samaria Gorge", "Heraklion Archaeological Museum"]
+  },
+    "Zante": {
+    "name": "Zante",
+    "image": "images/zante.jpg",
+    "region": "Southern Aegean",
+    "bestSeason": "April – November",
+    "description": "Crete, the largest Greek island, offers an incredible blend of natural beauty, ancient history, and authentic culture. From the Minoan Palace of Knossos to the beaches of Elafonissi and Balos, Crete has something for every traveler.",
+    "attractions": ["Knossos Palace", "Elafonissi Beach", "Samaria Gorge", "Heraklion Archaeological Museum"]
+  },
+      "Paxoi": {
+    "name": "Paxoi",
+    "image": "images/paxoi.jpg",
+    "region": "Southern Aegean",
+    "bestSeason": "April – November",
+    "description": "Crete, the largest Greek island, offers an incredible blend of natural beauty, ancient history, and authentic culture. From the Minoan Palace of Knossos to the beaches of Elafonissi and Balos, Crete has something for every traveler.",
+    "attractions": ["Knossos Palace", "Elafonissi Beach", "Samaria Gorge", "Heraklion Archaeological Museum"]
   }
 }
