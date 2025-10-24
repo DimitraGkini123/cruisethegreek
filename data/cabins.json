@@ -95,6 +95,58 @@
         "Occupancy": "2-4 guests",
         "Facilities": "Jacuzzi, Mini Bar, Concierge"
       }
+    },
+        {
+      "name": "Suite",
+      "images": [
+        "images/cabins/suite-musica.jpg",
+        "images/cabins/suite2.jpg"
+      ],
+      "desc": "Luxurious suite with spacious balcony, king-size bed, sitting area and exclusive amenities.",
+      "details": {
+        "Size": "35 m²",
+        "Occupancy": "2-4 guests",
+        "Facilities": "Jacuzzi, Mini Bar, Concierge"
+      }
+    },
+        {
+      "name": "Suite",
+      "images": [
+        "images/cabins/suite-musica.jpg",
+        "images/cabins/suite2.jpg"
+      ],
+      "desc": "Luxurious suite with spacious balcony, king-size bed, sitting area and exclusive amenities.",
+      "details": {
+        "Size": "35 m²",
+        "Occupancy": "2-4 guests",
+        "Facilities": "Jacuzzi, Mini Bar, Concierge"
+      }
+    },
+     {
+      "name": "Suite",
+      "images": [
+        "images/cabins/suite-musica.jpg",
+        "images/cabins/suite2.jpg"
+      ],
+      "desc": "Luxurious suite with spacious balcony, king-size bed, sitting area and exclusive amenities.",
+      "details": {
+        "Size": "35 m²",
+        "Occupancy": "2-4 guests",
+        "Facilities": "Jacuzzi, Mini Bar, Concierge"
+      }
+    },
+        {
+      "name": "Suite",
+      "images": [
+        "images/cabins/suite-musica.jpg",
+        "images/cabins/suite2.jpg"
+      ],
+      "desc": "Luxurious suite with spacious balcony, king-size bed, sitting area and exclusive amenities.",
+      "details": {
+        "Size": "35 m²",
+        "Occupancy": "2-4 guests",
+        "Facilities": "Jacuzzi, Mini Bar, Concierge"
+      }
     }
   ]
 }

@@ -6,6 +6,7 @@
   <title>Ship Details | CruiseTheGreek</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+
   <style>
     body {
       font-family: "Poppins", sans-serif;
@@ -107,7 +108,6 @@
     /* === SIDE PANEL === */
     .side-panel {
       flex: 1.2;
-      position: sticky;
       top: 40px;
       background: #fff;
       padding: 15px;
@@ -185,6 +185,100 @@
         margin-top: 40px;
       }
     }
+/* ===== CABINS SECTION ===== */
+.cabins-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 120px; /* <- περισσότερο κενό κάτω */
+  padding: 0 20px;
+  text-align: center;
+}
+
+.cabins-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cabin-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cabin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(255,102,0,0.25);
+}
+
+.cabin-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.cabin-details {
+  padding: 10px;
+  text-align: left;
+}
+
+.cabin-details h4 {
+  margin: 0 0 5px;
+  color: #002b45;
+  font-size: 14px;
+}
+
+.cabin-details p {
+  color: #555;
+  font-size: 13px;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.cabin-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #555;
+}
+
+.cabin-details ul li::before {
+  content: "• ";
+  color: #ff6600;
+  font-weight: bold;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1000px) {
+  .cabins-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .cabins-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cabins-container {
+    grid-template-columns: 1fr;
+  }
+  .cabin-card img {
+    height: 160px;
+  }
+}
+
+
+    
   </style>
 </head>
 <body>
@@ -215,6 +309,71 @@
       <div id="sidePackages"></div>
     </aside>
   </main>
+
+  <section class="deckplan">
+  <h2>Deck Plans</h2>
+  <div id="deckButtonsContainer" class="deck-buttons"></div>
+  <div class="deck-image-container">
+    <img id="deckImage" src="" alt="Deck plan" class="deck-image">
+  </div>
+</section>
+<section class="cabins-section">
+  <h2 style="text-align:center; margin-top:50px;">Cabins</h2>
+  <div id="cabinsContainer" class="cabins-container"></div>
+</section>
+
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- 🔹 1η Στήλη: Logo + Επικοινωνία -->
+    <div class="footer-col">
+      <h3 class="footer-logo">CruiseTheGreek.com</h3>
+      <p class="footer-phone">+1 (415) 7957979</p>
+      <p><a href="mailto:info@cruisethegreek.com">info@cruisethegreek.com</a></p>
+      <p>8, Aggelou Vlachou st, Plaka, Athens</p>
+      <img src="images/gnto.png" alt="GNTO" class="footer-gnto">
+      <p class="footer-gnto-code">GNTO: 0206E60000362401</p>
+    </div>
+
+    <!-- 🔹 2η Στήλη: Navigation Menu -->
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul class="footer-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="cruises.html">CRUISES</a></li>
+        <li><a href="packages.html">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 3η Στήλη: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">B2B Partnership</a></li>
+        <li><a href="#">Partners Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 🔸 Κάτω γραμμή -->
+  <div class="footer-bottom">
+    <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
 
   <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -253,18 +412,20 @@
 
           <h1>${selectedShip}</h1>
           <img src="${info.image}" alt="${selectedShip}" class="main-image">
+         <h2 style="margin-top:35px; color:#002b45; font-size:22px; border-bottom:2px solid #ff6600; display:inline-block; margin-top: -10px;">
+          Ship Information
+        </h2>
 
           <div class="ship-specs">
             <div><strong>Passengers:</strong> ${info.passengers || "N/A"}</div>
             <div><strong>Cabins:</strong> ${info.cabins || "N/A"}</div>
             <div><strong>Crew:</strong> ${info.crew || "N/A"}</div>
-            <div><strong>Year Built:</strong> ${info.year || "N/A"}</div>
             <div><strong>Gross Tonnage:</strong> ${info.tonnage || "N/A"}</div>
-            <div><strong>Beam:</strong> ${info.beam || "N/A"}</div>
             <div><strong>Speed:</strong> ${info.speed || "N/A"}</div>
             <div><strong>Length:</strong> ${info.length || "N/A"}</div>
-            <div><strong>Refurbishment:</strong> ${info.refurbishment || "N/A"}</div>
           </div>
+
+          
         `;
 
         // Dropdown redirect
@@ -272,7 +433,87 @@
           localStorage.setItem("selectedShip", e.target.value);
           window.location.reload();
         });
+        const deckButtonsContainer = document.getElementById("deckButtonsContainer");
+        const deckImage = document.getElementById("deckImage");
+        fetch("data/ships_data.json")
+          .then(res => res.json())
+          .then(allShipsData => {
+            const ship = allShipsData[selectedShip];
+            if (!ship || !ship.decks) {
+              deckButtonsContainer.innerHTML = "<p style='color:#666;'>No deck plans available.</p>";
+              return;
+            }
+
+            deckButtonsContainer.innerHTML = "";
+            ship.decks.forEach((deck, i) => {
+              const btn = document.createElement("button");
+              btn.className = `deck-btn ${i === 0 ? "active" : ""}`;
+              btn.textContent = deck.name;
+              btn.dataset.image = deck.image;
+
+              btn.addEventListener("click", () => {
+                document.querySelectorAll(".deck-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                deckImage.classList.add("fade");
+                setTimeout(() => {
+                  deckImage.src = deck.image;
+                  deckImage.alt = deck.name;
+                  deckImage.classList.remove("fade");
+                }, 200);
+              });
+
+              deckButtonsContainer.appendChild(btn);
+            });
+
+            deckImage.src = ship.decks[0].image;
+            deckImage.alt = ship.decks[0].name;
+          });
+
+        // === Load Cabins ===
+        const cabinsContainer = document.getElementById("cabinsContainer");
+        fetch("data/cabins.json")
+          .then(res => res.json())
+          .then(data => {
+            const cabins = data[selectedShip];
+            if (!cabins || !cabins.length) {
+              cabinsContainer.innerHTML = "<p style='color:#666;'>No cabin data available for this ship.</p>";
+              return;
+            }
+
+            cabinsContainer.innerHTML = cabins.map((cabin, i) => `
+              <div class="cabin-card">
+                <img src="${cabin.images[0]}" alt="${cabin.name}" data-cabin-index="${i}">
+                <div class="cabin-details">
+                  <h4>${cabin.name}</h4>
+                  <p>${cabin.desc}</p>
+                  <ul>
+                    ${Object.entries(cabin.details)
+                      .map(([k, v]) => `<li><strong>${k}:</strong> ${v}</li>`)
+                      .join("")}
+                  </ul>
+                </div>
+              </div>
+            `).join("");
+
+            const lightbox = document.getElementById("cabinLightbox");
+            const lightboxImg = document.getElementById("cabinLightboxImg");
+            const closeLightbox = document.querySelector(".close-lightbox");
+
+            cabinsContainer.addEventListener("click", e => {
+              const img = e.target.closest("img[data-cabin-index]");
+              if (!img) return;
+              const i = parseInt(img.dataset.cabinIndex);
+              lightboxImg.src = cabins[i].images[0];
+              lightbox.style.display = "flex";
+            });
+
+            closeLightbox.addEventListener("click", () => (lightbox.style.display = "none"));
+            lightbox.addEventListener("click", e => {
+              if (e.target === lightbox) lightbox.style.display = "none";
+            });
+          });
       });
+  
 
     // === Load Cruises with this ship ===
     fetch("data/cruises.json")
@@ -281,7 +522,7 @@
         const allCruises = Object.values(data).filter(c => c.ship === selectedShip);
         sideCruises.innerHTML = `
           <h3>Cruises with this Ship</h3>
-          ${allCruises.slice(0, 3).map(c => `
+          ${allCruises.slice(0, 2).map(c => `
             <div class="side-card" data-title="${c.title}">
               <img src="${c.image}" alt="${c.title}">
               <span>${c.title}</span>
@@ -305,7 +546,7 @@
         const allPackages = Object.values(data).filter(p => p.ship === selectedShip);
         sidePackages.innerHTML = `
           <h3>Cruise Packages with this Ship</h3>
-          ${allPackages.slice(0, 3).map(p => `
+          ${allPackages.slice(0, 2).map(p => `
             <div class="side-card" data-title="${p.title}">
               <img src="${p.image}" alt="${p.title}">
               <span>${p.title}</span>
