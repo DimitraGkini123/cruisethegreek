@@ -828,15 +828,31 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Mobile */
+/* 📱 Mobile */
 @media (max-width: 768px) {
   .sticky-menu {
     flex-direction: column;
-    padding: 10px 0;
+    padding: 6px 0; /* λιγότερο padding για ύψος */
+    font-size: 13px; /* μικρότερα γράμματα */
   }
 
   .sticky-menu ul {
-    gap: 15px;
+    gap: 10px; /* μικρότερη απόσταση ανάμεσα στα κουμπιά */
+    flex-wrap: wrap; /* ώστε να σπάει σε 2 σειρές αν χρειάζεται */
+    justify-content: center;
+  }
+
+  .sticky-menu li {
+    margin: 2px 0;
+  }
+
+  .sticky-menu a {
+    font-size: 13px;
+    padding: 6px 10px; /* πιο μικρό padding στα links */
+  }
+
+  .sticky-menu i {
+    font-size: 14px; /* μικρότερα icons */
   }
 }
 
