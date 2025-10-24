@@ -1527,48 +1527,43 @@ html {
   color: #002b45;
   margin: 8px;
 }
+@media (max-width: 768px) {
+  .similar-cruises {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 
+  .cruise-box img {
+    height: 80px;
+  }
 
-/* Κάρτες */
-.cruise-box {
-  background: #fff8f3;
-  border: 1px solid #ffd6b3;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  width: 100%;
-  max-width: 230px; /* ✅ όριο μεγέθους */
+  .cruise-box p {
+    font-size: 12px;
+    padding: 4px;
+  }
 }
 
-.cruise-box:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.2);
+@media (max-width: 480px) {
+  .similar-cruises {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .cruise-box {
+    border-radius: 8px;
+  }
+
+  .cruise-box img {
+    height: 70px;
+  }
+
+  .cruise-box p {
+    font-size: 11px;
+  }
 }
 
-/* Εικόνες */
-.cruise-box img {
-  width: 100%;
-  aspect-ratio: 16 / 10;     /* ✅ διατηρεί σωστή αναλογία χωρίς fixed height */
-  object-fit: cover;
-  border-bottom: 1px solid #ffd6b3;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
 
-.cruise-box:hover img {
-  transform: scale(1.03);
-}
 
-/* Κείμενο */
-.cruise-box p {
-  font-size: 14px;
-  font-weight: 600;
-  color: #002b45;
-  padding: 10px 8px 12px;
-  text-align: center;
-  line-height: 1.3;
-}
 
 /* ===== Μόνο για την τελευταία ερώτηση (similar cruises) ===== */
 .faq-item:last-child .faq-question {
@@ -1582,29 +1577,7 @@ html {
 .faq-item:last-child .faq-question i {
   color: #fff;
 }
-/* ===== Responsive Fixes ===== */
-@media (max-width: 768px) {
-  .similar-cruises {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-  .cruise-box img {
-    aspect-ratio: 4 / 3;     /* λίγο πιο τετράγωνη για tablets */
-  }
-}
 
-@media (max-width: 480px) {
-  .similar-cruises {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .cruise-box {
-    max-width: 100%;
-  }
-  .cruise-box img {
-    aspect-ratio: 3 / 2;     /* ✅ πιο “ψηλή” σε κινητά */
-  }
-}
 
  /* ===== Shore Excursions Tabs ===== */
 .shore-excursions {
