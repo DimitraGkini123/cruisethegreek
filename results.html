@@ -199,6 +199,24 @@ document.addEventListener("DOMContentLoaded", () => {
           .map(date => `<option value="${date}">${date}</option>`)
           .join("");
 
+           const featuresHTML = pkg.features
+          ? pkg.features
+              .map(f => {
+                // Προσπαθούμε να αναγνωρίσουμε το κατάλληλο εικονίδιο
+                const lower = f.toLowerCase();
+                let icon = "fa-star";
+                if (lower.includes("board")) icon = "fa-utensils";
+                else if (lower.includes("voucher")) icon = "fa-ticket";
+                else if (lower.includes("internet") || lower.includes("wifi")) icon = "fa-wifi";
+                else if (lower.includes("transfer") || lower.includes("shuttle") || lower.includes("bus")) icon = "fa-bus";
+                else if (lower.includes("drink") || lower.includes("bar")) icon = "fa-glass-cheers";
+                else if (lower.includes("spa")) icon = "fa-spa";
+                return `<span class="feature-tag"><i class="fa-solid ${icon}"></i> ${f}</span>`;
+              })
+              .join("")
+          : "";
+
+
         const cardHTML = `
   <div class="card package-card" data-title="${pkg.title}">
     
@@ -207,11 +225,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <img src="${pkg.image}" alt="${pkg.title}" class="map-image">
 
       <!-- Features πάνω στην εικόνα -->
+
       <div class="image-features">
-        <span class="feature-tag"><i class="fa-solid fa-utensils"></i> Full board</span>
-        <span class="feature-tag"><i class="fa-solid fa-ticket"></i> 50€ excursion voucher</span>
-        <span class="feature-tag"><i class="fa-solid fa-wifi"></i> 250MB internet</span>
-        <span class="feature-tag"><i class="fa-solid fa-bus"></i> Free Mykonos shuttle</span>
+        ${featuresHTML}
       </div>
 
       <button class="map-btn" type="button" title="View Map">
@@ -295,6 +311,25 @@ document.addEventListener("DOMContentLoaded", () => {
           .map(date => `<option value="${date}">${date}</option>`)
           .join("");
 
+          
+           const featuresHTML = cruise.features
+          ? cruise.features
+              .map(f => {
+                // Προσπαθούμε να αναγνωρίσουμε το κατάλληλο εικονίδιο
+                const lower = f.toLowerCase();
+                let icon = "fa-star";
+                if (lower.includes("board")) icon = "fa-utensils";
+                else if (lower.includes("voucher")) icon = "fa-ticket";
+                else if (lower.includes("internet") || lower.includes("wifi")) icon = "fa-wifi";
+                else if (lower.includes("transfer") || lower.includes("shuttle") || lower.includes("bus")) icon = "fa-bus";
+                else if (lower.includes("drink") || lower.includes("bar")) icon = "fa-glass-cheers";
+                else if (lower.includes("spa")) icon = "fa-spa";
+                return `<span class="feature-tag"><i class="fa-solid ${icon}"></i> ${f}</span>`;
+              })
+              .join("")
+          : "";
+
+
         const cardHTML = `
   <div class="card cruise-card" data-title="${cruise.title}">
     
@@ -303,11 +338,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <img src="${cruise.image}" alt="${cruise.title}" class="map-image">
 
       <div class="image-features">
-        <span class="feature-tag"><i class="fa-solid fa-utensils"></i> Full board</span>
-        <span class="feature-tag"><i class="fa-solid fa-ticket"></i> 50€ excursion voucher</span>
-        <span class="feature-tag"><i class="fa-solid fa-wifi"></i> 250MB internet</span>
-        <span class="feature-tag"><i class="fa-solid fa-bus"></i> Free Mykonos shuttle</span>
+        ${featuresHTML}
       </div>
+
 
       <button class="map-btn" type="button" title="View Map">
         <i class="fa-solid fa-map-location-dot"></i>

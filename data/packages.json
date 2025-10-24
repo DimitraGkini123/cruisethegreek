@@ -101,6 +101,12 @@
       "images/corfu.png",
       "images/zante.jpg"
     ],
+        "features": [
+  "Full board",
+  "50€ excursion voucher",
+  "251MB internet",
+  "Free Paxoi shuttle"
+],
     "itinerary": [
       {
         "day": 1,
@@ -174,6 +180,12 @@
       "images/corfu.png",
       "images/zante.jpg"
     ],
+        "features": [
+  "Full board",
+  "50€ excursion voucher",
+  "251MB internet",
+  "Free Mykonos shuttle"
+],
     "itinerary": [
       {
         "day": 1,

@@ -387,27 +387,11 @@
   </button>
 
   <div class="faq-answer">
-    <div class="similar-cruises">
-      <div class="cruise-box">
-        <img src="images/crete.jpg" alt="Aegean Highlights">
-        <p>Aegean Highlights Cruise</p>
-      </div>
+  <div class="similar-cruises" id="similarCruisesContainer">
+    <p style="text-align:center; color:#666;">Loading similar cruises...</p>
+  </div>
+</div>
 
-      <div class="cruise-box">
-        <img src="images/rhodes.jpg" alt="Greek Isles Discovery">
-        <p>Greek Isles Discovery</p>
-      </div>
-
-      <div class="cruise-box">
-        <img src="images/zante1.jpg" alt="Athens to Santorini">
-        <p>Athens to Santorini</p>
-      </div>
-
-      <div class="cruise-box">
-        <img src="images/paxoi.jpg" alt="Mediterranean Escape">
-        <p>Mediterranean Escape</p>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -1082,6 +1066,57 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+<script>
+
+  //script for similar cruises
+document.addEventListener("DOMContentLoaded", () => {
+  const currentCruise = localStorage.getItem("selectedCruise");
+
+  fetch("data/cruises.json")
+    .then(res => res.json())
+    .then(data => {
+      const allCruises = Object.values(data);
+
+      // Βρες 4 παρόμοια packages (διαφορετικά από το τρέχον)
+      const similar = allCruises
+        .filter(p => p.title !== currentCruise)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 4);
+
+      const container = document.getElementById("similarCruisesContainer");
+      if (!container) return;
+
+      if (similar.length === 0) {
+        container.innerHTML = "<p style='color:#666; text-align:center;'>No similar cruises available.</p>";
+        return;
+      }
+
+      container.innerHTML = similar
+        .map(cruise => `
+          <div class="cruise-box" data-title="${cruise.title}">
+            <img src="${cruise.image || 'images/default.jpg'}" alt="${cruise.title}">
+            <p>${cruise.title}</p>
+          </div>
+        `)
+        .join("");
+
+      // Κλικ → μετάβαση στη σελίδα του package
+      container.querySelectorAll(".cruise-box").forEach(box => {
+        box.addEventListener("click", () => {
+          localStorage.setItem("selectedCruise", box.dataset.title);
+          window.location.href = "cruise_details.html";
+        });
+      });
+    })
+    .catch(err => {
+      console.error("Error loading similar cruises:", err);
+      const container = document.getElementById("similarCruisesContainer");
+      container.innerHTML = "<p style='color:#666; text-align:center;'>Could not load similar cruises.</p>";
+    });
+});
+</script>
+
 
 
 </body>
