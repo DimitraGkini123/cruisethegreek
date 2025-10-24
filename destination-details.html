@@ -7,106 +7,114 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      color: #002b45;
-      background: #fff;
-      margin: 0;
-    }
+body {
+  font-family: "Poppins", sans-serif;
+  color: #002b45;
+  background: #fff;
+  margin: 0;
+}
 
-    .page-layout {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
+/* ----- Κεντρική Διάταξη ----- */
+.page-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
 
-    /* ----- ΚΥΡΙΟ ΠΕΡΙΕΧΟΜΕΝΟ ----- */
-    .destination-details {
-      flex: 3;
-      max-width: 750px;
-    }
+/* ----- ΚΥΡΙΟ ΠΕΡΙΕΧΟΜΕΝΟ ----- */
+.destination-details {
+  flex: 3;
+  max-width: 740px;
+}
 
-    .destination-details img.main-image {
-      width: 100%;
-      border-radius: 14px;
-      object-fit: cover;
-      height: 280px;
-      margin-bottom: 20px;
-    }
+.destination-details img.main-image {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  height: 280px;
+  margin-bottom: 20px;
+}
 
-    .destination-details h1 {
-      text-align: center;
-      color: #002b45;
-      font-size: 28px;
-      margin-bottom: 15px;
-    }
+.destination-details h1 {
+  text-align: center;
+  color: #002b45;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
 
-    .destination-details p {
-      line-height: 1.7;
-      color: #333;
-      text-align: justify;
-    }
+.destination-details p {
+  line-height: 1.7;
+  color: #333;
+  text-align: justify;
+}
 
-    .info-box {
-      background: #f5f7fa;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 25px;
-      border-left: 4px solid #ff6600;
-    }
+.info-box {
+  background: #f5f7fa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 25px;
+  border-left: 4px solid #ff6600;
+}
 
-    .info-box strong {
-      color: #ff6600;
-    }
+.info-box strong {
+  color: #ff6600;
+}
 
-    /* --- Gallery --- */
-    .destination-gallery {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 25px;
-      scroll-behavior: smooth;
-    }
+/* --- Gallery --- */
+.destination-gallery {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 25px;
+  scroll-behavior: smooth;
+}
 
-    .destination-gallery img {
-      width: 150px;
-      height: 95px;
-      object-fit: cover;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.destination-gallery img {
+  width: 150px;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .destination-gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
+.destination-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
 
-    /* --- Back Button --- */
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: #ff6600;
-      border: 2px solid #ff6600;
-      border-radius: 30px;
-      padding: 8px 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 25px;
-    }
-    .back-btn:hover {
-      background: #ff6600;
-      color: white;
-      transform: translateX(-3px);
-    }
+/* --- Back Button --- */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #ff6600;
+  border: 2px solid #ff6600;
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 25px;
+}
+.back-btn:hover {
+  background: #ff6600;
+  color: white;
+  transform: translateX(-3px);
+}
+
+/* ===== SIDE PANEL ===== */
+.side-panel {
+  flex: 1;
+  max-width: 320px;
+  width: 100%;
+}
 
 /* ===== COMPACT STYLE για Other Destinations ===== */
 .side-destination {
@@ -122,20 +130,17 @@
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 .side-destination:hover {
   transform: translateY(-2px);
   box-shadow: 0 3px 8px rgba(255, 102, 0, 0.25);
 }
-
 .side-destination img {
-  width: 70px;
+  width: 65px;
   height: 45px;
   object-fit: cover;
   border-radius: 8px;
   flex-shrink: 0;
 }
-
 .side-destination span {
   font-size: 13px;
   font-weight: 600;
@@ -144,35 +149,82 @@
   text-align: left;
 }
 
-/* ===== CRUISES & PACKAGES PANEL CARD STYLE ===== */
+/* ===== CRUISES, PACKAGES & TOURS CARD STYLE ===== */
 .side-cruise-card {
   display: flex;
   flex-direction: column;
   background: #fff;
   border: 1px solid #ffd6b3;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   cursor: pointer;
 }
+
 .side-cruise-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 5px 14px rgba(255, 102, 0, 0.25);
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.25);
 }
+
 .side-cruise-card img {
   width: 100%;
-  height: 130px;
+  height: 110px;
   object-fit: cover;
 }
 
 .side-cruise-card span {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: #002b45;
   padding: 10px 8px 12px;
+  line-height: 1.3;
+}
+
+/* ===== TOURS CARD STYLE ===== */
+#sideTours .side-destination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ffd6b3;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+#sideTours .side-destination:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(255, 102, 0, 0.25);
+}
+
+#sideTours .side-destination img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-bottom: 1px solid #ffd6b3;
+}
+
+#sideTours .side-destination span {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #002b45;
+  margin-top: 6px;
+}
+
+#sideTours .side-destination p {
+  margin: 4px 8px;
+  font-size: 12px;
+  color: #555;
   line-height: 1.3;
 }
 
@@ -183,77 +235,70 @@
   background: none;
   color: #ff6600;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   text-decoration: none;
   margin-top: 5px;
   transition: color 0.3s ease;
 }
-
 .view-all-btn:hover {
   color: #cc5200;
 }
 
-/* --- Αν είναι πιο φαρδύ (σε desktop), κάνε 2 σε σειρά --- */
-@media (min-width: 1100px) {
-  #sideList, 
-  #sideCruises {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/* ===== HEADERS (Other Destinations / Cruises to this Destination) ===== */
+/* ===== HEADERS (Other Destinations / Cruises / Packages / TOURS) ===== */
 .side-panel h3 {
   text-align: center;
   color: #ff6600;
-  font-size: 18px;
-  margin: 10px 0 18px;
+  font-size: 17px;
+  margin: 15px 0 15px;
   border-bottom: 2px solid #ffd6b3;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
 }
 
+/* --- Lightbox --- */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+.lightbox .close-lightbox {
+  position: absolute;
+  top: 20px; right: 40px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
+}
+.lightbox .close-lightbox:hover {
+  color: #ff6600;
+}
 
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .page-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+  .side-panel {
+    max-width: 100%;
+    margin-top: 40px;
+  }
+  .side-cruise-card img {
+    height: 160px;
+  }
+}
+</style>
 
-    /* --- Lightbox --- */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
-    .lightbox .close-lightbox {
-      position: absolute;
-      top: 20px; right: 40px;
-      font-size: 35px;
-      color: white;
-      cursor: pointer;
-    }
-    .lightbox .close-lightbox:hover {
-      color: #ff6600;
-    }
-
-    @media (max-width: 900px) {
-      .page-layout {
-        flex-direction: column;
-        align-items: center;
-      }
-      .side-panel {
-        width: 100%;
-        position: static;
-        margin-top: 40px;
-      }
-    }
 
     
-  </style>
 </head>
 <body>
   <header>
@@ -288,8 +333,6 @@
     <img id="lightboxImg" src="" alt="">
   </div>
 
-
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const selected = localStorage.getItem("selectedDestination");
@@ -313,151 +356,332 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `<div class="destination-gallery">${dest.gallery.map(src => `<img src="${src}" alt="${dest.name}">`).join("")}</div>`
         : "";
 
-mainContainer.innerHTML = `
-  <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
-    <div>
-      <button class="back-btn" onclick="window.location.href='destinations.html'">
-        <i class='fa-solid fa-arrow-left'></i> Back to destinations
-      </button>
-    </div>
-    <div>
-      <select id="destinationSelect" style="padding:8px 12px; border:1px solid #ccc; border-radius:8px; font-family:'Poppins'; font-size:14px; cursor:pointer;">
-        ${allDest.map(d => `
-          <option value="${d.name}" ${d.name === dest.name ? "selected" : ""}>${d.name}</option>
-        `).join("")}
-      </select>
-    </div>
-  </div>
+      mainContainer.innerHTML = `
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+          <div>
+            <button class="back-btn" onclick="window.location.href='destinations.html'">
+              <i class='fa-solid fa-arrow-left'></i> Back to destinations
+            </button>
+          </div>
+          <div>
+            <select id="destinationSelect" style="padding:8px 12px; border:1px solid #ccc; border-radius:8px; font-family:'Poppins'; font-size:14px; cursor:pointer;">
+              ${allDest.map(d => `
+                <option value="${d.name}" ${d.name === dest.name ? "selected" : ""}>${d.name}</option>
+              `).join("")}
+            </select>
+          </div>
+        </div>
 
-  <h1>${dest.name}</h1>
-  <img src="${dest.image}" alt="${dest.name}" class="main-image">
-  ${galleryHTML}
-  <p>${dest.description}</p>
+        <h1>${dest.name}</h1>
+        <img src="${dest.image}" alt="${dest.name}" class="main-image">
+        ${galleryHTML}
+        
+        <h2 style="margin-top:35px; color:#002b45; font-size:22px; border-bottom:2px solid #ff6600; display:inline-block;">
+          Destination Information
+        </h2>
+        <p>${dest.description}</p>
 
-  <h2 style="margin-top:35px; color:#002b45; font-size:22px; border-bottom:2px solid #ff6600; display:inline-block;">
-    Destination Information
-  </h2>
-  <div class="info-box">
-    <p><strong>Region:</strong> ${dest.region || "—"}</p>
-    <p><strong>Best season:</strong> ${dest.bestSeason || "—"}</p>
-    <p><strong>Popular attractions:</strong> ${dest.attractions?.join(", ") || "—"}</p>
-  </div>
-`;
+        <div class="info-box">
+          <p><strong>Region:</strong> ${dest.region || "—"}</p>
+          <p><strong>Best season:</strong> ${dest.bestSeason || "—"}</p>
+          <p><strong>Popular attractions:</strong> ${dest.attractions?.join(", ") || "—"}</p>
+        </div>
 
+        <h2 style="margin-top:40px; color:#002b45; font-size:22px; border-bottom:2px solid #ff6600; display:inline-block;">
+      Shore Excursions
+      </h2>
+<div id="shoreExcursions"></div>
 
-      // === OTHER DESTINATIONS ===
-// δείξε μόνο 5 άλλους προορισμούς
-const others = allDest.filter(d => d.name !== dest.name).slice(0, 4);
-sideList.innerHTML = others.map(o => `
-  <div class="side-destination" data-name="${o.name}">
-    <img src="${o.image}" alt="${o.name}">
-    <span>${o.name}</span>
-  </div>
-`).join("");
+      `;
 
+      // === OTHER DESTINATIONS (δείξε μόνο 4 άλλους) ===
+      const others = allDest.filter(d => d.name !== dest.name).slice(0, 4);
+      sideList.innerHTML = others.map(o => `
+        <div class="side-destination" data-name="${o.name}">
+          <img src="${o.image}" alt="${o.name}">
+          <span>${o.name}</span>
+        </div>
+      `).join("");
 
       sideList.querySelectorAll(".side-destination").forEach(el => {
         el.addEventListener("click", () => {
           localStorage.setItem("selectedDestination", el.dataset.name);
           window.location.reload();
-          
         });
       });
 
       // === Dropdown αλλαγή προορισμού ===
-const dropdown = document.getElementById("destinationSelect");
-if (dropdown) {
-  dropdown.addEventListener("change", (e) => {
-    const selectedName = e.target.value;
-    localStorage.setItem("selectedDestination", selectedName);
-    window.location.reload();
-  });
-}
+      const dropdown = document.getElementById("destinationSelect");
+      if (dropdown) {
+        dropdown.addEventListener("change", (e) => {
+          const selectedName = e.target.value;
+          localStorage.setItem("selectedDestination", selectedName);
+          window.location.reload();
+        });
+      }
 
-// === ΠΡΟΣΘΗΚΗ ΤΩΝ 2 ΕΝΟΤΗΤΩΝ: CRUISES + PACKAGES ===
-const cruisesSection = document.createElement("div");
-cruisesSection.innerHTML = `
-  <h3 style="text-align:center; color:#ff6600; font-size:18px; margin:20px 0 10px; border-top:2px solid #ffd6b3; padding-top:15px;">
-     Cruises including this destination
-  </h3>
-  <div id="sideCruises"></div>
-`;
-sidePanel.appendChild(cruisesSection);
+      // === ΠΡΟΣΘΗΚΗ ΤΩΝ 3 ΕΝΟΤΗΤΩΝ: CRUISES + PACKAGES + TOURS ===
+      const cruisesSection = document.createElement("div");
+      cruisesSection.innerHTML = `
+        <h3 style="text-align:center; color:#ff6600; font-size:18px; margin:20px 0 10px; border-top:2px solid #ffd6b3; padding-top:15px;">
+          Cruises including this destination
+        </h3>
+        <div id="sideCruises"></div>
+      `;
+      sidePanel.appendChild(cruisesSection);
 
-const packagesSection = document.createElement("div");
-packagesSection.innerHTML = `
-  <h3 style="text-align:center; color:#ff6600; font-size:18px; margin:25px 0 10px; border-top:2px solid #ffd6b3; padding-top:15px;">
-     Packages including this destination
-  </h3>
-  <div id="sidePackages"></div>
-`;
-sidePanel.appendChild(packagesSection);
+      const packagesSection = document.createElement("div");
+      packagesSection.innerHTML = `
+        <h3 style="text-align:center; color:#ff6600; font-size:18px; margin:25px 0 10px; border-top:2px solid #ffd6b3; padding-top:15px;">
+          Packages including this destination
+        </h3>
+        <div id="sidePackages"></div>
+      `;
+      sidePanel.appendChild(packagesSection);
 
+      const toursSection = document.createElement("div");
+      toursSection.innerHTML = `
+        <h3 style="text-align:center; color:#ff6600; font-size:18px; margin:25px 0 10px; border-top:2px solid #ffd6b3; padding-top:15px;">
+          Tours in this destination
+        </h3>
+        <div id="sideTours"></div>
+      `;
+      sidePanel.appendChild(toursSection);
 
-// === Φόρτωση δεδομένων και φιλτράρισμα ===
-Promise.all([
-  fetch("data/cruises.json").then(res => res.json()).catch(() => ({})),
-  fetch("data/packages.json").then(res => res.json()).catch(() => ({}))
-]).then(([cruisesData, packagesData]) => {
-  const sideCruises = document.getElementById("sideCruises");
-  const sidePackages = document.getElementById("sidePackages");
+      // === Φόρτωση δεδομένων και φιλτράρισμα ===
+      Promise.all([
+        fetch("data/cruises.json").then(res => res.json()).catch(() => ({})),
+        fetch("data/packages.json").then(res => res.json()).catch(() => ({})),
+        fetch("data/tours.json").then(res => res.json()).catch(() => ({}))
+      ]).then(([cruisesData, packagesData, toursData]) => {
+        const sideCruises = document.getElementById("sideCruises");
+        const sidePackages = document.getElementById("sidePackages");
+        const sideTours = document.getElementById("sideTours");
 
-  // --- Φίλτρο μόνο για cruise only που περιέχουν το destination ---
-  const matchingCruises = Object.values(cruisesData).filter(c =>
-    c.route && c.route.toLowerCase().includes(dest.name.toLowerCase())
-  );
+        // --- Φίλτρο μόνο για cruise only που περιέχουν το destination ---
+        const matchingCruises = Object.values(cruisesData).filter(c =>
+          c.route && c.route.toLowerCase().includes(dest.name.toLowerCase())
+        );
 
-  // --- Φίλτρο μόνο για packages που περιέχουν το destination ---
-  const matchingPackages = Object.values(packagesData).filter(p =>
-    p.route && p.route.toLowerCase().includes(dest.name.toLowerCase())
-  );
+        // --- Φίλτρο μόνο για packages που περιέχουν το destination ---
+        const matchingPackages = Object.values(packagesData).filter(p =>
+          p.route && p.route.toLowerCase().includes(dest.name.toLowerCase())
+        );
 
- // ======= RENDER CRUISES =======
-if (matchingCruises.length === 0) {
-  sideCruises.innerHTML = "<p style='color:#666; font-size:14px; text-align:center;'>No cruises visiting this destination.</p>";
-} else {
-  sideCruises.innerHTML = `
-    ${matchingCruises.slice(0, 3).map(c => `
-      <div class="side-cruise-card" data-type="cruise" data-title="${c.title}">
-        <img src="${c.image}" alt="${c.title}">
-        <span>${c.title}</span>
-      </div>
-    `).join("")}
-    <a href="results.html?type=cruise_only&destination=${encodeURIComponent(dest.name)}"
-       class="view-all-btn">View all cruises →</a>
-  `;
-}
-
-// ======= RENDER PACKAGES =======
-if (matchingPackages.length === 0) {
-  sidePackages.innerHTML = "<p style='color:#666; font-size:14px; text-align:center;'>No packages visiting this destination.</p>";
-} else {
-  sidePackages.innerHTML = `
-    ${matchingPackages.slice(0, 3).map(p => `
-      <div class="side-cruise-card" data-type="package" data-title="${p.title}">
-        <img src="${p.image}" alt="${p.title}">
-        <span>${p.title}</span>
-      </div>
-    `).join("")}
-    <a href="results.html?type=cruise_package&destination=${encodeURIComponent(dest.name)}"
-       class="view-all-btn">View all packages →</a>
-  `;
-}
-
-  // === Κλικ για να ανοίγουν οι λεπτομέρειες ===
-  [...sideCruises.querySelectorAll(".side-destination"), ...sidePackages.querySelectorAll(".side-destination")]
-    .forEach(el => {
-      el.addEventListener("click", () => {
-        if (el.dataset.type === "package") {
-          localStorage.setItem("selectedPackage", el.dataset.title);
-          window.location.href = "package-details.html";
+        // ======= RENDER CRUISES =======
+        if (matchingCruises.length === 0) {
+          sideCruises.innerHTML = "<p style='color:#666; font-size:14px; text-align:center;'>No cruises visiting this destination.</p>";
         } else {
-          localStorage.setItem("selectedCruise", el.dataset.title);
-          window.location.href = "cruise-details.html";
+          sideCruises.innerHTML = `
+            ${matchingCruises.slice(0, 3).map(c => `
+              <div class="side-cruise-card" data-type="cruise" data-title="${c.title}">
+                <img src="${c.image}" alt="${c.title}">
+                <span>${c.title}</span>
+              </div>
+            `).join("")}
+            <a href="results.html?type=cruise_only&destination=${encodeURIComponent(dest.name)}"
+               class="view-all-btn">View all cruises →</a>
+          `;
         }
+
+        // ======= RENDER PACKAGES =======
+        if (matchingPackages.length === 0) {
+          sidePackages.innerHTML = "<p style='color:#666; font-size:14px; text-align:center;'>No packages visiting this destination.</p>";
+        } else {
+          sidePackages.innerHTML = `
+            ${matchingPackages.slice(0, 3).map(p => `
+              <div class="side-cruise-card" data-type="package" data-title="${p.title}">
+                <img src="${p.image}" alt="${p.title}">
+                <span>${p.title}</span>
+              </div>
+            `).join("")}
+            <a href="results.html?type=cruise_package&destination=${encodeURIComponent(dest.name)}"
+               class="view-all-btn">View all packages →</a>
+          `;
+        }
+
+        // ======= RENDER TOURS =======
+        let matchingTours = [];
+          matchingTours = Object.values(toursData).filter(tour =>
+      tour.location && tour.location.toLowerCase().includes(dest.name.toLowerCase())
+    );
+
+     if (matchingTours.length === 0) {
+      sideTours.innerHTML = `
+        <p style='color:#666; font-size:14px; text-align:center;'>
+          No tours available for this destination.
+        </p>`;
+    } else {
+      sideTours.innerHTML = `
+        ${matchingTours.slice(0, 3).map(t => `
+          <div class="side-destination" data-title="${t.title}">
+            <img src="${t.imageMain}" alt="${t.title}">
+            <span style="color:#002b45; font-weight:600;">${t.title}</span>
+            <p style="font-size:13px; color:#555; margin:4px 0;">${t.shortDesc}</p>
+            <p style="font-size:13px; color:#ff6600; margin:0;">
+              <strong>${t.price}</strong> &nbsp;|&nbsp; ${t.duration}
+            </p>
+          </div>
+        `).join("")}
+        <a href="tours.html?destination=${encodeURIComponent(dest.name)}"
+           class="view-all-btn">View all tours →</a>
+      `;
+
+      // Όταν πατάς πάνω σε tour
+      sideTours.querySelectorAll(".side-destination").forEach(el => {
+        el.addEventListener("click", () => {
+          localStorage.setItem("selectedTour", el.dataset.title);
+          window.location.href = "tour-details.html";
+        });
+      });
+    }
+
+        // === Κλικ για να ανοίγουν οι λεπτομέρειες ===
+        [...sideCruises.querySelectorAll(".side-cruise-card"), ...sidePackages.querySelectorAll(".side-cruise-card")]
+          .forEach(el => {
+            el.addEventListener("click", () => {
+              if (el.dataset.type === "package") {
+                localStorage.setItem("selectedPackage", el.dataset.title);
+                window.location.href = "package-details.html";
+              } else {
+                localStorage.setItem("selectedCruise", el.dataset.title);
+                window.location.href = "cruise-details.html";
+              }
+            });
+          });
+      });
+// ======= ADD NEWSLETTER BOX =======
+const newsletterSection = document.createElement("div");
+newsletterSection.innerHTML = `
+  <h3 style="text-align:center; color:#002b45; font-size:18px; margin:25px 0 10px; border-top:2px solid #002b45; padding-top:15px;">
+    Stay Updated
+  </h3>
+  <div id="newsletterBox" style="
+    background:linear-gradient(135deg, #003d6b, #005b8f);
+    border:1px solid #003d6b;
+    border-radius:14px;
+    padding:18px 14px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    color:#fff;
+  ">
+    <p style="font-size:14px; color:#e9f3ff; margin-bottom:14px;">
+      Subscribe to get <strong>exclusive cruise deals</strong> and travel updates!
+    </p>
+    <input type="email" id="newsletterEmail" placeholder="Enter your email" style="
+      width:90%;
+      padding:10px 12px;
+      border:none;
+      border-radius:8px;
+      font-family:'Poppins';
+      font-size:13px;
+      margin-bottom:10px;
+      outline:none;
+      background:#ffffff;
+      color:#002b45;
+    ">
+    <button id="newsletterBtn" style="
+      background:#ff6600;
+      color:#fff;
+      border:none;
+      border-radius:20px;
+      padding:9px 18px;
+      cursor:pointer;
+      font-weight:600;
+      transition:background 0.3s ease;
+      font-size:13px;
+    ">Subscribe</button>
+    <p id="newsletterMsg" style="font-size:13px; margin-top:8px; color:#fff; display:none;">
+      Thank you for subscribing!
+    </p>
+  </div>
+`;
+sidePanel.appendChild(newsletterSection);
+
+document.addEventListener("click", e => {
+  if (e.target && e.target.id === "newsletterBtn") {
+    const emailInput = document.getElementById("newsletterEmail");
+    const msg = document.getElementById("newsletterMsg");
+
+    if (emailInput.value.trim() === "" || !emailInput.value.includes("@")) {
+      msg.textContent = "Please enter a valid email.";
+      msg.style.color = "#cc0000";
+      msg.style.display = "block";
+    } else {
+      msg.textContent = "Thank you for subscribing!";
+      msg.style.color = "#008000";
+      msg.style.display = "block";
+      emailInput.value = "";
+    }
+  }
+});
+
+      // ======= RENDER SHORE EXCURSIONS =======
+fetch("data/excursions.json")
+  .then(res => res.json())
+  .then(excursionsData => {
+    const excursionsContainer = document.getElementById("shoreExcursions");
+    let matchingExcursions = [];
+
+    // Αναζήτηση εκδρομών που αντιστοιχούν στο τρέχον destination
+    for (const [ship, destinations] of Object.entries(excursionsData || {})) {
+      if (destinations[dest.name]) {
+        matchingExcursions.push(...destinations[dest.name]);
+      }
+    }
+
+    if (matchingExcursions.length === 0) {
+      excursionsContainer.innerHTML = `
+        <p style="color:#666; font-size:15px; margin-top:10px;">
+          No shore excursions available for this destination.
+        </p>`;
+      return;
+    }
+
+    // Δημιουργία grid cards
+    excursionsContainer.innerHTML = `
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:15px;">
+        ${matchingExcursions.map(e => `
+          <div style="
+            background:#fff;
+            border:1px solid #ffd6b3;
+            border-radius:10px;
+            box-shadow:0 2px 6px rgba(0,0,0,0.05);
+            overflow:hidden;
+            transition:transform 0.3s ease, box-shadow 0.3s ease;
+            cursor:pointer;
+          " class="excursion-card">
+            <img src="${e.image}" alt="${e.title}" style="width:100%; height:140px; object-fit:cover;">
+            <div style="padding:10px;">
+              <h4 style="color:#002b45; font-size:15px; margin:0 0 6px;">${e.title}</h4>
+              <p style="font-size:13px; color:#555; margin:0 0 8px;">${e.desc}</p>
+              <p style="font-size:13px; color:#ff6600; margin:0;">
+                <strong>${e.priceAdults}</strong> Adults &nbsp;|&nbsp; ${e.priceChildren} Children
+              </p>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+
+    // Hover εφέ
+    excursionsContainer.querySelectorAll(".excursion-card").forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        card.style.transform = "translateY(-3px)";
+        card.style.boxShadow = "0 4px 10px rgba(255,102,0,0.25)";
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "translateY(0)";
+        card.style.boxShadow = "0 2px 6px rgba(0,0,0,0.05)";
       });
     });
-});
+  })
+  .catch(err => {
+    console.error("Error loading excursions:", err);
+    document.getElementById("shoreExcursions").innerHTML =
+      `<p style="color:#666; font-size:15px;">Could not load excursions.</p>`;
+  });
+
 
       // === LIGHTBOX ===
       const lightbox = document.getElementById("imageLightbox");
@@ -477,18 +701,6 @@ if (matchingPackages.length === 0) {
       });
     });
 });
-</script>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    toggleBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  });
 </script>
 
 </body>
