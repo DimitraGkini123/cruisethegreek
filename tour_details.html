@@ -66,38 +66,28 @@
 </a>
 
     <!-- Header Info -->
-    <section class="tour-header">
-      <div class="tour-header-left">
-        <h1>Full-Day Tour to Delphi from Athens</h1>
-        <div class="tour-meta">
-          <span><i class="fa-regular fa-clock"></i> 08:30</span>
-          <span><i class="fa-solid fa-hourglass-half"></i> 10 hours</span>
-          <span><i class="fa-solid fa-location-dot"></i> Delphi, Greece</span>
-          <span><i class="fa-solid fa-check"></i> Free Cancellation</span>
-        </div>
-      </div>
+<section class="tour-header">
+  <div class="tour-header-left">
+    <h1 class="tour-title">
+      <span class="title-line"></span>
+      <span id="tourTitle"></span>
+      <span class="title-line"></span>
+    </h1>
+    <div class="tour-meta"></div>
+  </div>
 
-      <div class="tour-header-right">
-        <p class="price">from <span>€89.00</span></p>
-        <button class="book-btn">Book Now</button>
-      </div>
-    </section>
-
+  <div class="tour-header-right">
+    <p class="price">from <span id="tourPrice"></span></p>
+    <button class="book-btn">Book Now</button>
+  </div>
+</section>
     <!-- Gallery -->
 <section class="tour-gallery">
   <div class="gallery-layout">
     <div class="gallery-main">
-      <img src="images/tour.jpg" alt="Temple of Apollo" class="gallery-img">
+      <img id="mainImage" src="" alt="Main Tour Image" class="gallery-img">
     </div>
-    <div class="gallery-side">
-      <img src="images/tour1.jpg" alt="Ancient Theatre of Delphi" class="gallery-img">
-      <img src="images/tour2.jpg" alt="Delphi Archaeological Museum" class="gallery-img">
-      <img src="images/tour3.jpg" alt="Scenic road to Mount Parnassus" class="gallery-img">
-
-      <div class="photo-overlay">
-        <img src="images/tour4.jpg" alt="Tour group exploring Delphi" class="gallery-img">
-      </div>
-    </div>
+    <div class="gallery-side" id="sideGallery"></div>
   </div>
 
   <!-- Lightbox -->
@@ -109,60 +99,20 @@
   </div>
 </section>
 
-    <!-- About -->
-    <section class="tour-content">
-      <h2>About this tour</h2>
-      <p>
-        Explore the ancient sanctuary of Delphi, the most important oracle in classical Greece, on this full-day excursion from Athens. 
-        Enjoy a scenic drive through the lush landscapes of Central Greece, passing by Mount Parnassus and charming villages like Arachova. 
-        Discover the spiritual heart of the ancient world, where kings and philosophers once sought the wisdom of the Oracle of Apollo.
-      </p>
-      <p>
-        Walk among the ruins of the Temple of Apollo, admire the Athenian Treasury, and visit the Delphi Archaeological Museum, 
-        home to iconic artifacts such as the bronze Charioteer and the Sphinx of Naxos.
-      </p>
 
-      <h3>Highlights</h3>
-      <ul>
-        <li>Explore the UNESCO World Heritage site of Delphi with an expert guide</li>
-        <li>Visit the Temple of Apollo and the Delphi Archaeological Museum</li>
-        <li>Enjoy breathtaking views from Mount Parnassus</li>
-        <li>Stop at the traditional mountain village of Arachova</li>
-        <li>Air-conditioned transfer from and to Athens</li>
-      </ul>
-    </section>
+<section class="tour-content" id="aboutSection"></section>
 
     <!-- What's Included -->
-    <section class="included-section">
-      <h2>What’s included</h2>
-
-      <div class="included-grid">
-        <ul class="included-list">
-          <li><i class="fa-solid fa-check"></i> Entrance fees to the Delphi Archaeological Site & Museum</li>
-          <li><i class="fa-solid fa-check"></i> Transport by luxury air-conditioned coach</li>
-          <li><i class="fa-solid fa-check"></i> Professional licensed English-speaking guide</li>
-          <li><i class="fa-solid fa-check"></i> Free time in Arachova village</li>
-          <li><i class="fa-solid fa-check"></i> All taxes</li>
-        </ul>
-
-        <ul class="excluded-list">
-          <li><i class="fa-regular fa-circle-xmark"></i> Lunch (optional)</li>
-          <li><i class="fa-regular fa-circle-xmark"></i> Personal expenses</li>
-          <li><i class="fa-regular fa-circle-xmark"></i> Hotel pick-up/drop-off (unless selected)</li>
-        </ul>
-      </div>
-    </section>
+   <section class="included-section">
+  <h2>What’s included</h2>
+  <div class="included-grid">
+    <ul class="included-list"></ul>
+    <ul class="excluded-list"></ul>
+  </div>
+</section>
 
     <!-- Important Info -->
-    <section class="tour-content">
-      <h3>Important Information</h3>
-      <ul>
-        <li>Duration: approximately 10 hours including transfers</li>
-        <li>Departure: 08:30 AM from central Athens</li>
-        <li>Comfortable walking shoes and sun protection recommended</li>
-      </ul>
-    </section>
-
+<section class="tour-content" id="infoSection"></section>
   </main>
 
   <!-- ======== FOOTER ======== -->
@@ -286,46 +236,101 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const tourTitle = localStorage.getItem("selectedTour");
-  if (!tourTitle) return;
+  if (!tourTitle) {
+    console.error("No tour selected.");
+    return;
+  }
 
   fetch("data/tours.json")
     .then(res => res.json())
     .then(data => {
       const tour = data[tourTitle];
-      if (!tour) return;
+      if (!tour) {
+        console.error("Tour not found:", tourTitle);
+        return;
+      }
 
-      document.querySelector("h1").textContent = tour.title;
-      document.querySelector(".tour-header-right .price span").textContent = tour.price;
-      document.querySelector(".tour-meta").innerHTML = `
-        <span><i class="fa-regular fa-clock"></i> ${tour.startTime}</span>
-        <span><i class="fa-solid fa-hourglass-half"></i> ${tour.duration}</span>
-        <span><i class="fa-solid fa-location-dot"></i> ${tour.location}</span>
-        <span><i class="fa-solid fa-check"></i> Free Cancellation</span>
-      `;
-      document.querySelector(".gallery-main img").src = tour.imageMain;
+      // === HEADER ===
+      document.getElementById("tourTitle").textContent = tour.title;
+      document.getElementById("tourPrice").textContent = tour.price;
 
-      // Fill "About this tour"
-      const aboutSec = document.querySelector(".tour-content");
-      aboutSec.innerHTML = `
-        <h2>About this tour</h2>
-        ${tour.about.map(p => `<p>${p}</p>`).join("")}
-        <h3>Highlights</h3>
-        <ul>${tour.highlights.map(h => `<li>${h}</li>`).join("")}</ul>
-      `;
+      // === GALLERY ===
+      const mainImage = document.getElementById("mainImage");
+      mainImage.src = tour.imageMain;
+      const sideGallery = document.getElementById("sideGallery");
+      sideGallery.innerHTML = tour.images
+        .map(img => `<img src="${img}" alt="${tour.title}" class="gallery-img">`)
+        .join("");
 
-      // Fill "What's included"
-      document.querySelector(".included-list").innerHTML = tour.included.map(i => `<li><i class="fa-solid fa-check"></i> ${i}</li>`).join("");
-      document.querySelector(".excluded-list").innerHTML = tour.excluded.map(i => `<li><i class="fa-regular fa-circle-xmark"></i> ${i}</li>`).join("");
+// === ABOUT SECTION ===
+const aboutSection = document.getElementById("aboutSection");
+aboutSection.innerHTML = `
+  <h2>About this tour</h2>
+  <div class="tour-meta">
+    <span><i class="fa-regular fa-clock"></i> ${tour.startTime}</span>
+    <span><i class="fa-solid fa-hourglass-half"></i> ${tour.duration}</span>
+    <span><i class="fa-solid fa-location-dot"></i> ${tour.location}</span>
+    ${
+      tour.freeCancellation
+        ? `<span><i class="fa-solid fa-check"></i> Free Cancellation</span>`
+        : ""
+    }
+  </div>
+  ${tour.about.map(p => `<p>${p}</p>`).join("")}
+  <h2>Highlights</h2>
+  <ul>${tour.highlights.map(h => `<li>${h}</li>`).join("")}</ul>
+`;
+      // === INCLUDED / EXCLUDED ===
+      document.querySelector(".included-list").innerHTML = tour.included
+        .map(i => `<li><i class="fa-solid fa-check"></i> ${i}</li>`)
+        .join("");
 
-      // Fill "Important Info"
-      const infoSection = document.querySelectorAll(".tour-content")[1];
+      document.querySelector(".excluded-list").innerHTML = tour.excluded
+        .map(i => `<li><i class="fa-regular fa-circle-xmark"></i> ${i}</li>`)
+        .join("");
+
+      // === IMPORTANT INFO ===
+      const infoSection = document.getElementById("infoSection");
       infoSection.innerHTML = `
-        <h3>Important Information</h3>
+        <h2>Important Information</h2>
         <ul>${tour.importantInfo.map(i => `<li>${i}</li>`).join("")}</ul>
       `;
-    });
+
+      // === LIGHTBOX LOGIC ===
+      const images = document.querySelectorAll(".gallery-img");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const closeBtn = document.querySelector(".close");
+      const prevBtn = document.querySelector(".prev");
+      const nextBtn = document.querySelector(".next");
+
+      let currentIndex = 0;
+      const showImage = i => (lightboxImg.src = images[i].src);
+
+      images.forEach((img, i) =>
+        img.addEventListener("click", () => {
+          currentIndex = i;
+          lightbox.style.display = "flex";
+          showImage(currentIndex);
+        })
+      );
+      closeBtn.addEventListener("click", () => (lightbox.style.display = "none"));
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(currentIndex);
+      });
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+      lightbox.addEventListener("click", e => {
+        if (e.target === lightbox) lightbox.style.display = "none";
+      });
+    })
+    .catch(err => console.error("Error loading tour:", err));
 });
 </script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const toggleBtn = document.querySelector(".menu-toggle");

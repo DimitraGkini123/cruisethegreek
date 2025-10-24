@@ -1396,7 +1396,10 @@ header {
 
 
 
+
 /* ===== Tour Card Styling ===== */
+
+
 .tour-card {
   background: #fff;
   border-radius: 16px;
@@ -1445,19 +1448,20 @@ header {
   flex-grow: 1;
 }
 
+
+
 .tour-details {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13px;
+  flex-wrap: wrap;
+  gap: 18px;
   color: #444;
-  margin-bottom: 15px;
+  font-size: 14px;
+}
+.tour-details i {
+  margin-right: 5px;
+  color: #ff6600;
 }
 
-.tour-details i {
-  color: #ff6600;
-  margin-right: 4px;
-}
 
 .tour-footer {
   display: flex;
