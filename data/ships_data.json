@@ -137,5 +137,24 @@
       { "name": "Deck 7", "image": "images/decks/explora-7.png" },
       { "name": "Deck 8", "image": "images/decks/explora-8.png" }
     ]
+  },
+  "MSC 2": {
+    "image": "images/ships/explora1.jpg",
+    "gallery": [
+      "images/ships/explora_1.jpg",
+      "images/ships/explora_1_pool.jpg",
+      "images/ships/explora_1_restaurant.jpg"
+    ],
+    "tonnage": "63,900 GT",
+    "crew": "640",
+    "passengers": "922",
+    "cabins": "461 suites",
+    "length": "248 m",
+    "speed": "18 knots",
+    "decks": [
+      { "name": "Deck 6", "image": "images/decks/explora-6.png" },
+      { "name": "Deck 7", "image": "images/decks/explora-7.png" },
+      { "name": "Deck 8", "image": "images/decks/explora-8.png" }
+    ]
   }
 }
