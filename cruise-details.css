@@ -1172,13 +1172,14 @@ html {
   background: #ff6600;
   border: none;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 50%;
-  width: 45px;
+  width: 40px;
   height: 45px;
   cursor: pointer;
   transition: 0.3s;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 5; /* πάντα πάνω από την εικόνα */
 }
 
 .facility-btn:hover {
@@ -1186,32 +1187,45 @@ html {
 }
 
 .prev-facility {
-  left: -20px;
+  left: 15px;
 }
 
 .next-facility {
-  right: -20px;
+  right: 15px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .facility-container {
     flex-direction: column;
     height: auto;
     padding: 20px;
+    position: relative;
   }
+
   .facility-content {
     flex-direction: column;
     gap: 20px;
   }
+
   .facility-btn {
-    top: unset;
-    bottom: -25px;
+    position: absolute;
+    bottom: 8px;          /* χαμηλώνει λίγο */
+    top: auto;
+    width: 30px;           /* μικρότερο */
+    height: 30px;
+    font-size: 13px;
     transform: none;
   }
-  .prev-facility { left: 35%; }
-  .next-facility { right: 35%; }
+
+  .prev-facility {
+    left: calc(50% - 40px); /* 40px αριστερά από το κέντρο */
+  }
+
+  .next-facility {
+    right: calc(50% - 40px); /* 40px δεξιά από το κέντρο */
+  }
 }
+
 
 
 /* ===== DECK PLAN SECTION ===== */

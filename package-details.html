@@ -814,63 +814,73 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", updateActiveLink);
 });
-</script>
 
+</script>
+<!-- === Script για λειτουργία facilities(κουμπιά + swipe) === -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const facilities = [
     {
-      img: "images/pool.jpg",
+      image: "images/pool.jpg",
       title: "Outdoor Pool",
-      desc: "Relax at our panoramic sea-view pool with sunbeds and cocktail service."
+      description: "Relax at our panoramic sea-view pool with sunbeds and cocktail service."
     },
     {
-      img: "images/facility1.jpg",
-      title: "Gourmet Restaurant",
-      desc: "Enjoy authentic Mediterranean dishes prepared by world-class chefs."
-    },
-    {
-      img: "images/spa.jpg",
+      image: "images/spa.jpg",
       title: "Luxury Spa & Wellness",
-      desc: "Unwind with massages, sauna, and rejuvenating treatments onboard."
+      description: "Unwind with massages, sauna, and rejuvenating treatments onboard."
     },
     {
-      img: "images/theater.jpg",
-      title: "Evening Theater Shows",
-      desc: "Live performances and music every night for your entertainment."
+      image: "images/restaurant.jpg",
+      title: "Gourmet Dining",
+      description: "Enjoy Mediterranean and international cuisine prepared by world-class chefs."
+    },
+    {
+      image: "images/theater.jpg",
+      title: "Evening Entertainment",
+      description: "From live music to cultural performances, enjoy vibrant nights at sea."
     }
   ];
 
-  let index = 0;
-  const imgEl = document.getElementById("facilityImage");
-  const titleEl = document.getElementById("facilityTitle");
-  const descEl = document.getElementById("facilityDescription");
+  let currentIndex = 0;
+  const image = document.getElementById("facilityImage");
+  const title = document.getElementById("facilityTitle");
+  const desc = document.getElementById("facilityDescription");
 
-  document.querySelector(".next-facility").addEventListener("click", () => {
-    index = (index + 1) % facilities.length;
-    updateFacility();
-  });
+  const prevBtn = document.querySelector(".prev-facility");
+  const nextBtn = document.querySelector(".next-facility");
 
-  document.querySelector(".prev-facility").addEventListener("click", () => {
-    index = (index - 1 + facilities.length) % facilities.length;
-    updateFacility();
-  });
-
-  function updateFacility() {
-    imgEl.style.opacity = 0;
-    titleEl.style.opacity = 0;
-    descEl.style.opacity = 0;
-
-    setTimeout(() => {
-      imgEl.src = facilities[index].img;
-      titleEl.textContent = facilities[index].title;
-      descEl.textContent = facilities[index].desc;
-
-      imgEl.style.opacity = 1;
-      titleEl.style.opacity = 1;
-      descEl.style.opacity = 1;
-    }, 300);
+  function updateFacility(index) {
+    const item = facilities[index];
+    image.src = item.image;
+    title.textContent = item.title;
+    desc.textContent = item.description;
   }
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + facilities.length) % facilities.length;
+    updateFacility(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % facilities.length;
+    updateFacility(currentIndex);
+  });
+
+  // Swipe για κινητά
+  let startX = 0, endX = 0;
+  const container = document.querySelector(".facility-container");
+
+  container.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+  container.addEventListener("touchmove", e => endX = e.touches[0].clientX);
+  container.addEventListener("touchend", () => {
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) currentIndex = (currentIndex + 1) % facilities.length;
+      else currentIndex = (currentIndex - 1 + facilities.length) % facilities.length;
+      updateFacility(currentIndex);
+    }
+  });
 });
 </script>
 
