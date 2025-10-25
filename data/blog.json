@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "5 Hidden Gems in the Greek Islands",
+    "image": "images/blog/hidden-gems.jpg",
+    "date": "2025-10-01",
+    "excerpt": "Discover lesser-known islands of Greece where you can enjoy serene beaches, local cuisine, and authentic Greek charm.",
+    "category": "Destinations"
+  },
+  {
+    "id": 2,
+    "title": "Cruising with Celestyal: What to Expect",
+    "image": "images/blog/celestyal-experience.jpg",
+    "date": "2025-09-12",
+    "excerpt": "From onboard entertainment to island excursions, here’s everything you should know before your Celestyal adventure begins.",
+    "category": "Cruises"
+  },
+  {
+    "id": 3,
+    "title": "Top 10 Shore Excursions to Try in 2026",
+    "image": "images/blog/shore-excursions.jpg",
+    "date": "2025-08-24",
+    "excerpt": "Whether it’s volcanoes in Santorini or ancient ruins in Rhodes, these excursions will elevate your cruise experience.",
+    "category": "Excursions"
+  },
+  {
+    "id": 4,
+    "title": "A Week in the Aegean: The Perfect 7-Day Cruise",
+    "image": "images/blog/aegean-week.jpg",
+    "date": "2025-07-30",
+    "excerpt": "Explore how to make the most out of your week-long Aegean cruise adventure.",
+    "category": "Cruises"
+  },
+  {
+    "id": 5,
+    "title": "How to Choose the Perfect Cruise Package",
+    "image": "images/blog/choose-package.jpg",
+    "date": "2025-07-10",
+    "excerpt": "Not sure which cruise fits you best? Here’s a guide to selecting the ideal itinerary, ship, and season.",
+    "category": "Tips"
+  }
+]
