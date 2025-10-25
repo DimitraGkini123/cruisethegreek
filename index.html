@@ -128,34 +128,8 @@
     <span class="title-line"></span>
   </h2>
 
-  <div class="partners-container">
-    <div class="partner-card">
-      <img src="images/partners/msc.png" alt="MSC Cruises">
-      <p>MSC Cruises</p>
-    </div>
-    <div class="partner-card">
-      <img src="images/partners/celestyal.png" alt="Celestyal Cruises">
-      <p>Celestyal Cruises</p>
-    </div>
-    <div class="partner-card">
-      <img src="images/partners/ncl.png" alt="Norwegian Cruise Line">
-      <p>Norwegian Cruise Line</p>
-    </div>
-    <div class="partner-card">
-      <img src="images/partners/explora.png" alt="Explora Journeys">
-      <p>Explora Journeys</p>
-    </div>
-    <div class="partner-card">
-      <img src="images/partners/aegean.png" alt="Aegean Airlines">
-      <p>Aegean Airlines</p>
-    </div>
-    <div class="partner-card">
-      <img src="images/partners/hertz.png" alt="Hertz Greece">
-      <p>Hertz Greece</p>
-    </div>
-  </div>
+  <div class="partners-container" id="partnersContainer"></div>
 </section>
-
 
 <!-- ======== FOOTER ======== -->
 <footer class="footer">
@@ -683,6 +657,49 @@ document.addEventListener("click", function (e) {
   }
 });
 </script>
+
+<script>
+  // ------ script for partners
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".partner-card");
+  if (!card) return;
+
+  const name = card.dataset.name;
+  localStorage.setItem("selectedPartner", name);
+  window.location.href = "partner_details.html";
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("partnersContainer");
+
+  // === Φόρτωση δεδομένων εταιριών ===
+  fetch("data/companies.json")
+    .then(res => res.json())
+    .then(data => {
+      Object.values(data).forEach(company => {
+        const card = document.createElement("div");
+        card.className = "partner-card";
+        card.dataset.name = company.name;
+
+        card.innerHTML = `
+          <img src="${company.logo}" alt="${company.name}">
+          <p>${company.name}</p>
+        `;
+
+        // Όταν κάνεις click σε εταιρία → redirect στη σελίδα της
+        card.addEventListener("click", () => {
+          window.location.href = `partner.html?name=${encodeURIComponent(company.name)}`;
+        });
+
+        container.appendChild(card);
+      });
+    })
+    .catch(err => console.error("Error loading partners:", err));
+});
+</script>
+
 
 </body>
 </html>

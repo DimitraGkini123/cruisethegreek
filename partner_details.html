@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner Details - CruiseTheGreek</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+<header>
+  <nav class="navbar">
+    <div class="logo">CruiseTheGreek.com</div>
+
+    <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+      <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+      <li><a href="tours.html">TOURS</a></li>
+      <li><a href="ships.html">CRUISE SHIPS</a></li>
+      <li><a href="destinations.html">DESTINATIONS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="faqs.html" class="active">FAQ</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<main class="partner-details-page">
+  <div id="partnerContent" class="partner-details"></div>
+
+  <section class="partner-cruises">
+  <div class="partner-cruises-header">
+    <h2 id="cruisesTitle"></h2>
+    <a id="viewAllBtn" class="view-all-btn" href="#">View All</a>
+  </div>
+  <div id="partnerCruisesGrid" class="partner-cruises-grid"></div>
+</section>
+<section class="partner-packages">
+  <div class="partner-cruises-header">
+    <h2 id="packagesTitle"></h2>
+    <a id="viewAllPackagesBtn" class="view-all-btn" href="#">View All</a>
+  </div>
+  <div id="partnerPackagesGrid" class="partner-cruises-grid"></div>
+</section>
+
+
+</main>
+
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer-container">
+    
+    <!-- 🔹 1η Στήλη: Logo + Επικοινωνία -->
+    <div class="footer-col">
+      <h3 class="footer-logo">CruiseTheGreek.com</h3>
+      <p class="footer-phone">+1 (415) 7957979</p>
+      <p><a href="mailto:info@cruisethegreek.com">info@cruisethegreek.com</a></p>
+      <p>8, Aggelou Vlachou st, Plaka, Athens</p>
+      <img src="images/gnto.png" alt="GNTO" class="footer-gnto">
+      <p class="footer-gnto-code">GNTO: 0206E60000362401</p>
+    </div>
+
+    <!-- 🔹 2η Στήλη: Navigation Menu -->
+    <div class="footer-col">
+      <h4>Menu</h4>
+      <ul class="footer-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="cruises.html">CRUISES</a></li>
+        <li><a href="packages.html">CRUISE PACKAGES</a></li>
+        <li><a href="tours.html">TOURS</a></li>
+        <li><a href="ships.html">CRUISE SHIPS</a></li>
+        <li><a href="destinations.html">DESTINATIONS</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="faqs.html" class="active">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- 🔹 3η Στήλη: Newsletter -->
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email" required>
+        <button type="submit">REGISTER</button>
+      </form>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">B2B Partnership</a></li>
+        <li><a href="#">Partners Login</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 🔸 Κάτω γραμμή -->
+  <div class="footer-bottom">
+    <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const partnerName = localStorage.getItem("selectedPartner");
+  if (!partnerName) return;
+
+  fetch("data/companies.json")
+    .then(res => res.json())
+    .then(data => {
+      const partner = data[partnerName];
+      if (!partner) return;
+
+      const container = document.getElementById("partnerContent");
+      container.innerHTML = `
+        <div class="partner-header">
+          <img src="${partner.logo}" alt="${partner.name}" class="partner-logo">
+          <div>
+            <h1>${partner.name}</h1>
+            <p><a href="${partner.website}" target="_blank">${partner.website}</a></p>
+          </div>
+        </div>
+
+        <p class="partner-description">${partner.description}</p>
+
+        <ul class="partner-info">
+          <li><strong>Founded:</strong> ${partner.founded}</li>
+          <li><strong>Headquarters:</strong> ${partner.headquarters}</li>
+        </ul>
+
+        <h3>Services</h3>
+        <ul class="partner-services">
+          ${partner.services.map(s => `<li>${s}</li>`).join("")}
+        </ul>
+      `;
+    })
+    .catch(err => console.error("Error loading partner data:", err));
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const partnerName = localStorage.getItem("selectedPartner");
+  if (!partnerName) return;
+
+  // === Load Partner Info (όπως έχεις ήδη) ===
+  fetch("data/companies.json")
+    .then(res => res.json())
+    .then(data => {
+      const partner = data[partnerName];
+      if (!partner) return;
+
+      const container = document.getElementById("partnerContent");
+      container.innerHTML = `
+        <div class="partner-header">
+          <img src="${partner.logo}" alt="${partner.name}" class="partner-logo">
+          <div>
+            <h1>${partner.name}</h1>
+            <p><a href="${partner.website}" target="_blank">${partner.website}</a></p>
+          </div>
+        </div>
+
+        <p class="partner-description">${partner.description}</p>
+
+        <ul class="partner-info">
+          <li><strong>Founded:</strong> ${partner.founded}</li>
+          <li><strong>Headquarters:</strong> ${partner.headquarters}</li>
+        </ul>
+
+        <h3>Services</h3>
+        <ul class="partner-services">
+          ${partner.services.map(s => `<li>${s}</li>`).join("")}
+        </ul>
+      `;
+
+      // === Τίτλος + κουμπί για Cruises ===
+      document.getElementById("cruisesTitle").textContent = `Cruises with ${partner.name}`;
+      const viewAllBtn = document.getElementById("viewAllBtn");
+      viewAllBtn.href = `results.html?type=cruise_only&company=${encodeURIComponent(partner.name)}`;
+
+      // === Φόρτωση κρουαζιερών για αυτή την εταιρία ===
+      fetch("data/cruises.json")
+        .then(res => res.json())
+        .then(cruiseData => {
+          const cruises = Object.values(cruiseData).filter(c => c.company === partner.name);
+          const grid = document.getElementById("partnerCruisesGrid");
+
+          if (cruises.length === 0) {
+            grid.innerHTML = `<p>No cruises available for this company.</p>`;
+            return;
+          }
+
+          cruises.slice(0, 3).forEach(cruise => {
+            const card = document.createElement("div");
+            card.className = "partner-cruise-card";
+            card.innerHTML = `
+              <img src="${cruise.image}" alt="${cruise.title}">
+              <h4>${cruise.title}</h4>
+              <p>${cruise.duration}</p>
+              <p class="price">${cruise.priceNew || ""}</p>
+              <button class="details-btn">Details</button>
+            `;
+
+            // Πατώντας -> άνοιγμα λεπτομερειών
+            card.querySelector(".details-btn").addEventListener("click", () => {
+              localStorage.setItem("selectedCruise", cruise.title);
+              window.location.href = "cruise_details.html";
+            });
+
+            grid.appendChild(card);
+          });
+        });
+    })
+    .catch(err => console.error("Error loading partner data:", err));
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const partnerName = localStorage.getItem("selectedPartner");
+  if (!partnerName) return;
+
+  fetch("data/packages.json")
+    .then(res => res.json())
+    .then(data => {
+      const packages = Object.values(data).filter(p => p.company === partnerName);
+      const grid = document.getElementById("partnerPackagesGrid");
+      const title = document.getElementById("packagesTitle");
+      const viewAll = document.getElementById("viewAllPackagesBtn");
+
+      if (packages.length === 0) {
+        document.querySelector(".partner-packages").style.display = "none";
+        return;
+      }
+
+      title.textContent = `Cruise Packages with ${partnerName}`;
+      viewAll.href = `results.html?type=cruise_package&company=${encodeURIComponent(partnerName)}`;
+
+      packages.slice(0, 3).forEach(pkg => {
+        const cardHTML = `
+          <div class="partner-cruise-card" data-title="${pkg.title}">
+            <img src="${pkg.image}" alt="${pkg.title}">
+            <h4>${pkg.title}</h4>
+            <p>${pkg.duration || ""}</p>
+            <p class="price">${pkg.priceNew || ""}</p>
+            <button class="details-btn">Details</button>
+        `;
+        grid.insertAdjacentHTML("beforeend", cardHTML);
+      });
+
+      // ✅ Προσθέτουμε listener για όλα τα κουμπιά Details
+      grid.addEventListener("click", e => {
+        const btn = e.target.closest(".details-btn");
+        if (!btn) return;
+
+        const card = btn.closest(".partner-cruise-card");
+        if (!card) return;
+
+        const title = card.dataset.title;
+        if (!title) return;
+
+        // Αποθήκευση του πακέτου στο localStorage
+        localStorage.setItem("selectedPackage", title);
+
+        // Μετάβαση στη σελίδα λεπτομερειών
+        window.location.href = "package-details.html";
+      });
+    })
+    .catch(err => console.error("Error loading partner packages:", err));
+});
+</script>
+
+
+
+
+<style>
+  .partner-cruises {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.partner-cruises-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.partner-cruises-header h2 {
+  color: #002b45;
+  font-size: 22px;
+}
+
+.view-all-btn {
+  background: #ff6600;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.view-all-btn:hover {
+  background: #e65c00;
+}
+
+.partner-cruises-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.partner-cruise-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-cruise-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.partner-cruise-card h4 {
+  margin: 10px 0 5px;
+  font-size: 16px;
+  color: #002b45;
+}
+
+.partner-cruise-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.partner-cruise-card .price {
+  color: #ff6600;
+  font-weight: bold;
+}
+
+.partner-cruise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.partner-details-page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 20px;
+}
+.partner-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+.partner-logo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+.partner-description {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+}
+.partner-info {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.partner-info li {
+  margin-bottom: 6px;
+  color: #002b45;
+}
+.partner-services {
+  list-style: disc;
+  margin-left: 25px;
+  color: #444;
+}
+</style>
+
+</body>
+</html>

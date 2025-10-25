@@ -15,6 +15,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "Celestyal Discovery",
+     "company": "Celestyal Cruises",
     "gallery": [
       "images/mykonos.jpeg",
       "images/santorini.jpg",
@@ -95,6 +96,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "Celestyal Discovery",
+     "company": "Celestyal Cruises",
     "gallery": [
       "images/zante1.jpg",
       "images/ithaca.jpg",
@@ -174,6 +176,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "MSC Opera",
+     "company": "MSC Cruises",
     "gallery": [
       "images/zante1.jpg",
       "images/ithaca.jpg",
@@ -235,6 +238,67 @@
         "departureTime": "",
         "image": "images/acropolis1.jpg"
       }
+    ]
+  },
+  "Celestyal Iconic Aegean Package": {
+    "title": "Celestyal Iconic Aegean Cruise + Athens Stay",
+    "image": "images/packages/iconic_aegean_package.jpg",
+    "tag": "CRUISE PACKAGE",
+    "route": "Athens,Greece|Mykonos,Greece|Kusadasi,Turkey|Patmos,Greece|Heraklion,Greece|Santorini,Greece",
+    "duration": "4 nights cruise + 2 nights hotel",
+    "frequency": "Every Monday",
+    "departure": "Piraeus, Greece",
+    "arrival": "Piraeus, Greece",
+    "destinations": "Athens → Mykonos → Kusadasi → Patmos → Santorini",
+    "offer": "EARLY BOOKING DISCOUNT 10%",
+    "priceOld": "1250€",
+    "priceNew": "980€",
+    "smallText": "hotel stay · transfers included",
+    "dates": ["14 Apr 2025", "21 Apr 2025", "28 Apr 2025"],
+    "ship": "Celestyal Journey",
+    "company": "Celestyal Cruises",
+    "gallery": [
+      "images/mykonos.jpeg",
+      "images/patmos.jpg",
+      "images/heraklion.jpg",
+      "images/santorini.jpg"
+    ],
+    "features": [
+      "2 nights hotel stay in Athens",
+      "Breakfast included",
+      "Airport transfers",
+      "Full board on cruise"
+    ]
+  },
+
+  "Celestyal Heavenly Mediterranean": {
+    "title": "Celestyal Heavenly Mediterranean Package",
+    "image": "images/packages/heavenly_mediterranean.jpg",
+    "tag": "CRUISE PACKAGE",
+    "route": "Athens,Greece|Heraklion,Greece|Santorini,Greece|Kusadasi,Turkey|Thessaloniki,Greece",
+    "duration": "7 nights cruise + 1 night hotel",
+    "frequency": "Every Friday",
+    "departure": "Piraeus, Greece",
+    "arrival": "Thessaloniki, Greece",
+    "destinations": "Athens → Crete → Santorini → Kusadasi → Thessaloniki",
+    "offer": "FREE CITY TOUR IN ATHENS",
+    "priceOld": "1420€",
+    "priceNew": "1180€",
+    "smallText": "oceanview cabin · all inclusive",
+    "dates": ["05 Jul 2025", "12 Jul 2025", "19 Jul 2025"],
+    "ship": "Celestyal Discovery",
+    "company": "Celestyal Cruises",
+    "gallery": [
+      "images/crete.jpg",
+      "images/santorini.jpg",
+      "images/kusadasi.jpg",
+      "images/thessaloniki.jpg"
+    ],
+    "features": [
+      "All-inclusive drinks",
+      "1-night hotel stay",
+      "Airport transfers",
+      "City tour in Athens"
     ]
   }
 }

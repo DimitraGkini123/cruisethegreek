@@ -1,0 +1,45 @@
+{
+  "Celestyal Cruises": {
+    "name": "Celestyal Cruises",
+    "logo": "images/logos/celestyal.png",
+    "website": "https://celestyal.com",
+    "description": "Celestyal Cruises offers unique itineraries across the Aegean and Eastern Mediterranean with authentic Greek hospitality.",
+    "founded": "1986",
+    "headquarters": "Piraeus, Greece",
+    "services": ["Aegean Cruises", "Mediterranean Voyages", "Onboard Experiences"],
+    "ships": ["Celestyal Journey", "Celestyal Discovery"]
+  },
+
+  "MSC Cruises": {
+    "name": "MSC Cruises",
+    "logo": "images/logos/msc.png",
+    "website": "https://www.msccruises.com",
+    "description": "MSC Cruises is the world’s largest privately-owned cruise line, known for elegant ships and global itineraries.",
+    "founded": "1987",
+    "headquarters": "Geneva, Switzerland",
+    "services": ["World Cruises", "Luxury Voyages", "Family Packages"],
+    "ships": ["MSC Musica", "MSC Opera", "MSC Splendida", "MSC Armonia"]
+  },
+
+  "Norwegian Cruise Line": {
+    "name": "Norwegian Cruise Line",
+    "logo": "images/logos/ncl.png",
+    "website": "https://www.ncl.com",
+    "description": "Norwegian Cruise Line redefines freedom at sea with award-winning dining and onboard entertainment.",
+    "founded": "1966",
+    "headquarters": "Miami, USA",
+    "services": ["Caribbean Cruises", "Mediterranean Voyages", "Entertainment Experiences"],
+    "ships": ["Norwegian Epic", "Norwegian Getaway", "Norwegian Escape"]
+  },
+
+  "Explora Journeys": {
+    "name": "Explora Journeys",
+    "logo": "images/logos/explora.png",
+    "website": "https://explorajourneys.com",
+    "description": "Explora Journeys offers ocean journeys that inspire exploration and discovery in ultimate luxury.",
+    "founded": "2021",
+    "headquarters": "Geneva, Switzerland",
+    "services": ["Luxury Voyages", "Ocean Discoveries", "Cultural Experiences"],
+    "ships": ["Explora I", "Explora II"]
+  }
+}

@@ -15,6 +15,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "MSC Musica",
+    "company": "MSC Cruises",
        "gallery": [
       "images/cape.jpg",
       "images/santorini.jpg",
@@ -87,6 +88,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "MSC Opera",
+    "company": "MSC Cruises",
      "gallery": [
       "images/cape.jpg",
       "images/santorini.jpg",
@@ -167,6 +169,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "Celestyal Discovery",
+    "company": "Celestyal Cruises",
      "gallery": [
       "images/cape.jpg",
       "images/santorini.jpg",
@@ -247,6 +250,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "Celestyal Discovery",
+     "company": "Celestyal Cruises",
      "gallery": [
       "images/cape.jpg",
       "images/santorini.jpg",
@@ -303,6 +307,183 @@
       },
       {
         "day": 6,
+        "title": "Return to Athens (Piraeus)",
+        "desc": "Arrival at 07:00 – Disembarkation after breakfast.",
+        "arrival": "07:00",
+        "departureTime": "",
+        "image": "images/acropolis1.jpg"
+      }
+    ]
+  },
+  "Celestyal Idyllic Aegean": {
+    "title": "Celestyal Idyllic Aegean Cruise",
+    "image": "images/cruises/idyllic_aegean.jpg",
+    "tag": "CRUISE ONLY",
+    "route": "Piraeus,Greece|Mykonos,Greece|Kusadasi,Turkey|Patmos,Greece|Rhodes,Greece|Santorini,Greece",
+    "duration": "7 days / 6 nights",
+    "frequency": "Every Saturday",
+    "departure": "Piraeus, Greece",
+    "arrival": "Piraeus, Greece",
+    "destinations": "Athens → Mykonos → Kusadasi → Patmos → Rhodes → Santorini → Athens",
+    "offer": "SAVE UP TO 15% ON EARLY BOOKINGS",
+    "priceOld": "1450€",
+    "priceNew": "1230€",
+    "smallText": "port taxes · Wi-Fi included",
+    "dates": ["14 Jun 2025", "21 Jun 2025", "28 Jun 2025"],
+    "ship": "Celestyal Journey",
+    "company": "Celestyal Cruises",
+    "gallery": [
+      "images/mykonos.jpeg",
+      "images/santorini.jpg",
+      "images/rhodes.jpg",
+      "images/kusadasi.jpg"
+    ],
+    "features": [
+      "All-inclusive drinks",
+      "50€ excursion voucher",
+      "Free Wi-Fi",
+      "Shuttle to old town in Rhodes"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Athens (Piraeus)",
+        "desc": "Departure from Piraeus at 17:00.",
+        "arrival": "",
+        "departureTime": "17:00",
+        "image": "images/acropolis1.jpg"
+      },
+      {
+        "day": 2,
+        "title": "Mykonos",
+        "desc": "Experience the Cycladic nightlife and stunning beaches.",
+        "arrival": "07:00",
+        "departureTime": "23:00",
+        "image": "images/mykonos.jpeg"
+      },
+      {
+        "day": 3,
+        "title": "Kusadasi (Turkey)",
+        "desc": "Excursion to the ancient city of Ephesus.",
+        "arrival": "07:00",
+        "departureTime": "13:00",
+        "image": "images/kusadasi.jpg"
+      },
+      {
+        "day": 4,
+        "title": "Patmos",
+        "desc": "Visit the Monastery of St. John the Theologian.",
+        "arrival": "16:00",
+        "departureTime": "21:00",
+        "image": "images/patmos.jpg"
+      },
+      {
+        "day": 5,
+        "title": "Rhodes",
+        "desc": "Explore the medieval old town and Lindos Acropolis.",
+        "arrival": "07:00",
+        "departureTime": "18:00",
+        "image": "images/rhodes.jpg"
+      },
+      {
+        "day": 6,
+        "title": "Santorini",
+        "desc": "Enjoy the breathtaking views of the caldera and Oia sunset.",
+        "arrival": "07:00",
+        "departureTime": "20:00",
+        "image": "images/santorini.jpg"
+      },
+      {
+        "day": 7,
+        "title": "Return to Athens (Piraeus)",
+        "desc": "Arrival at 06:00 – Disembarkation after breakfast.",
+        "arrival": "06:00",
+        "departureTime": "",
+        "image": "images/acropolis1.jpg"
+      }
+    ]
+  },
+
+  "Celestyal Three Continents": {
+    "title": "Celestyal Three Continents Cruise",
+    "image": "images/cruises/three_continents.jpg",
+    "tag": "CRUISE ONLY",
+    "route": "Piraeus,Greece|Alexandria,Egypt|Limassol,Cyprus|Rhodes,Greece|Kusadasi,Turkey|Athens,Greece",
+    "duration": "7 days / 6 nights",
+    "frequency": "Every Monday",
+    "departure": "Piraeus, Greece",
+    "arrival": "Piraeus, Greece",
+    "destinations": "Athens → Egypt → Cyprus → Rhodes → Kusadasi → Athens",
+    "offer": "2 FOR 1 EARLY SUMMER OFFER",
+    "priceOld": "1600€",
+    "priceNew": "1290€",
+    "smallText": "shore excursions · all drinks included",
+    "dates": ["02 Jun 2025", "09 Jun 2025", "16 Jun 2025"],
+    "ship": "Celestyal Discovery",
+    "company": "Celestyal Cruises",
+    "gallery": [
+      "images/alexandria.jpg",
+      "images/limassol.jpg",
+      "images/rhodes.jpg",
+      "images/kusadasi.jpg"
+    ],
+    "features": [
+      "Cultural shore excursions",
+      "All-inclusive drinks",
+      "Onboard entertainment",
+      "Free Wi-Fi"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Athens (Piraeus)",
+        "desc": "Embarkation at 14:00 – Departure at 17:00.",
+        "arrival": "",
+        "departureTime": "17:00",
+        "image": "images/acropolis1.jpg"
+      },
+      {
+        "day": 2,
+        "title": "Alexandria, Egypt",
+        "desc": "Excursion to the Great Pyramids of Giza and the Sphinx.",
+        "arrival": "07:00",
+        "departureTime": "22:00",
+        "image": "images/egypt.jpg"
+      },
+      {
+        "day": 3,
+        "title": "Limassol, Cyprus",
+        "desc": "Explore the medieval castle and local wineries.",
+        "arrival": "10:00",
+        "departureTime": "18:00",
+        "image": "images/cyprus.jpg"
+      },
+      {
+        "day": 4,
+        "title": "Rhodes, Greece",
+        "desc": "Discover the Old Town and Acropolis of Lindos.",
+        "arrival": "08:00",
+        "departureTime": "18:00",
+        "image": "images/rhodes.jpg"
+      },
+      {
+        "day": 5,
+        "title": "Kusadasi, Turkey",
+        "desc": "Visit the House of Virgin Mary and Ancient Ephesus.",
+        "arrival": "08:00",
+        "departureTime": "13:00",
+        "image": "images/kusadasi.jpg"
+      },
+      {
+        "day": 6,
+        "title": "At Sea",
+        "desc": "Relax onboard and enjoy the Mediterranean views.",
+        "arrival": "",
+        "departureTime": "",
+        "image": "images/sea.jpg"
+      },
+      {
+        "day": 7,
         "title": "Return to Athens (Piraeus)",
         "desc": "Arrival at 07:00 – Disembarkation after breakfast.",
         "arrival": "07:00",

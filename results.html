@@ -104,22 +104,20 @@
             <option>18+ days</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="company">Cruise Company</label>
-          <select id="company">
-            <option value="">-- Select Company --</option>
-            <option>MSC Cruises</option>
-            <option>Celestyal Cruises</option>
-            <option>Norwegian Cruise Line</option>
-            <option>Explora Journeys</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="ship">Cruise Ship</label>
-          <select id="ship">
-            <option value="">-- Select Ship --</option>
-          </select>
-        </div>
+<div class="form-group">
+  <label for="company">Cruise Company</label>
+  <select id="company">
+    <option value="">-- Select Company --</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="ship">Cruise Ship</label>
+  <select id="ship">
+    <option value="">-- Select Ship --</option>
+  </select>
+</div>
+
         <button type="submit" class="search-btn">Search</button>
       </form>
     </aside>
@@ -539,33 +537,42 @@ const cityCoords = {
 </script>
 
 <script>
-  // ====== Δυναμική ενημέρωση πλοίων ανά εταιρία ======
-  const companyToShips = {
-    "MSC Cruises": ["MSC Musica", "MSC Opera", "MSC Splendida", "MSC Armonia"],
-    "Celestyal Cruises": ["Celestyal Journey", "Celestyal Discovery"],
-    "Norwegian Cruise Line": ["Norwegian Epic", "Norwegian Getaway", "Norwegian Escape"],
-    "Explora Journeys": ["Explora I", "Explora II"]
-  };
-
+document.addEventListener("DOMContentLoaded", () => {
   const companySelect = document.getElementById("company");
   const shipSelect = document.getElementById("ship");
 
-  companySelect.addEventListener("change", () => {
-    const selectedCompany = companySelect.value;
-    const ships = companyToShips[selectedCompany] || [];
+  // === Φόρτωση companies.json ===
+  fetch("data/companies.json")
+    .then(res => res.json())
+    .then(data => {
+      // Γέμισμα dropdown εταιριών
+      Object.values(data).forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c.name;
+        opt.textContent = c.name;
+        companySelect.appendChild(opt);
+      });
 
-    // Καθαρισμός προηγούμενων επιλογών
-    shipSelect.innerHTML = '<option value="">-- Select Ship --</option>';
+      // === Όταν αλλάζει εταιρία, γέμισε τα πλοία ===
+      companySelect.addEventListener("change", () => {
+        const selected = companySelect.value;
+        shipSelect.innerHTML = '<option value="">-- Select Ship --</option>';
 
-    // Προσθήκη νέων επιλογών
-    ships.forEach(ship => {
-      const opt = document.createElement("option");
-      opt.value = ship;
-      opt.textContent = ship;
-      shipSelect.appendChild(opt);
-    });
-  });
+        if (!selected || !data[selected]) return;
+
+        const ships = data[selected].ships || [];
+        ships.forEach(ship => {
+          const opt = document.createElement("option");
+          opt.value = ship;
+          opt.textContent = ship;
+          shipSelect.appendChild(opt);
+        });
+      });
+    })
+    .catch(err => console.error("Error loading companies.json:", err));
+});
 </script>
+
 
 
 <script>
@@ -744,6 +751,177 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type") || "cruise_only";
+  const company = params.get("company");
+  const grid = document.getElementById("resultsGrid");
+  const companyField = document.getElementById("company");
+
+  // Αν έρχεται από partner.html, απόκρυψε το πεδίο εταιρίας
+  if (company && companyField) {
+    const formGroup = companyField.closest(".form-group");
+    if (formGroup) formGroup.style.display = "none";
+  }
+
+  // Επιλογή JSON αρχείου
+  const file = type === "cruise_package" ? "data/packages.json" : "data/cruises.json";
+
+  fetch(file)
+    .then(res => res.json())
+    .then(data => {
+      let items = Object.values(data);
+
+      // --- Αν υπάρχει "company" στο URL, φιλτράρουμε ---
+      if (company) {
+        items = items.filter(item => item.company === company);
+      }
+
+      // --- Ενημέρωση τίτλου ---
+      const title = document.getElementById("resultsTitle");
+      if (title) {
+        if (company) {
+          title.textContent = `${type === "cruise_package" ? "Cruise Packages" : "Cruises"} with ${company}`;
+        } else {
+          title.textContent = type === "cruise_package" ? "Cruise Packages" : "Cruise Only";
+        }
+      }
+
+      grid.innerHTML = "";
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p style="text-align:center; color:#666;">No results found.</p>`;
+        return;
+      }
+
+      // === Δημιουργία καρτών με το ίδιο template που έχεις ===
+      items.forEach(cruise => {
+        const dateOptions = cruise.dates
+          ? cruise.dates.map(date => `<option value="${date}">${date}</option>`).join("")
+          : "";
+
+        const featuresHTML = cruise.features
+          ? cruise.features
+              .map(f => {
+                const lower = f.toLowerCase();
+                let icon = "fa-star";
+                if (lower.includes("board")) icon = "fa-utensils";
+                else if (lower.includes("voucher")) icon = "fa-ticket";
+                else if (lower.includes("internet") || lower.includes("wifi")) icon = "fa-wifi";
+                else if (lower.includes("transfer") || lower.includes("bus")) icon = "fa-bus";
+                else if (lower.includes("drink") || lower.includes("bar")) icon = "fa-glass-cheers";
+                else if (lower.includes("spa")) icon = "fa-spa";
+                return `<span class="feature-tag"><i class="fa-solid ${icon}"></i> ${f}</span>`;
+              })
+              .join("")
+          : "";
+
+        const cardHTML = `
+          <div class="card cruise-card" data-title="${cruise.title}">
+            <div class="destinations map-section" data-route="${cruise.route || ""}">
+              <img src="${cruise.image}" alt="${cruise.title}" class="map-image">
+              <div class="image-features">${featuresHTML}</div>
+              <button class="map-btn" type="button" title="View Map">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </button>
+              <div class="map-container"></div>
+            </div>
+
+            <h3 class="cruise-title">${cruise.title}</h3>
+
+            <div class="card-top-info">
+              <div class="info-group">
+                <p><strong>${cruise.duration || ""}</strong><br>${cruise.frequency || ""}</p>
+              </div>
+              <div class="info-group">
+                <label for="dates-${cruise.title.replace(/\s+/g, '-')}">Departure:</label>
+                <select id="dates-${cruise.title.replace(/\s+/g, '-')}" class="date-select">
+                  <option disabled selected>See dates</option>
+                  ${dateOptions}
+                </select>
+              </div>
+            </div>
+
+            <div class="ports">
+              <div class="port">⚓ <strong>Departure Port:</strong> ${cruise.departure || ""}</div>
+              <div class="port">⚓ <strong>Arrival Port:</strong> ${cruise.arrival || ""}</div>
+            </div>
+
+            <div class="package-destinations">
+              <i class="fa-solid fa-location-dot"></i> ${cruise.destinations || ""}
+            </div>
+
+            <div class="offer-banner">${cruise.offer || ""}</div>
+
+            <div class="price-box">
+              <p class="old-price">from <span>${cruise.priceOld || ""}</span></p>
+              <p class="new-price"><strong>${cruise.priceNew || ""}</strong></p>
+              <p class="small-text">${cruise.smallText || ""}</p>
+            </div>
+
+            <div class="buttons">
+              <button class="details-btn">DETAILS</button>
+              <button class="book-btn">BOOK NOW</button>
+            </div>
+          </div>
+        `;
+
+        grid.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    })
+    .catch(err => console.error("Error loading company cruises:", err));
+});
+</script>
+
+<script>
+document.querySelector('.filter-form').addEventListener('submit', e => {
+  e.preventDefault();
+
+  const selectedType = document.getElementById('cruise-type').value;
+  const params = new URLSearchParams(window.location.search);
+  const company = params.get("company"); // διαβάζει την εταιρία αν υπάρχει
+
+  // Αν υπάρχει εταιρία, τη διατηρούμε
+  let newUrl = `results.html?type=${selectedType}`;
+  if (company) newUrl += `&company=${encodeURIComponent(company)}`;
+
+  window.location.href = newUrl;
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const company = params.get("company"); // π.χ. "Celestyal Cruises"
+  const shipSelect = document.getElementById("ship");
+
+  // Αν δεν υπάρχει πεδίο "company" στο URL, δεν κάνουμε τίποτα
+  if (!company || !shipSelect) return;
+
+  fetch("data/companies.json")
+    .then(res => res.json())
+    .then(data => {
+      const partner = data[company];
+      if (!partner || !partner.ships) return;
+
+      // Καθαρίζουμε το dropdown
+      shipSelect.innerHTML = '<option value="">-- Select Ship --</option>';
+
+      // Προσθήκη πλοίων αυτής της εταιρίας
+      partner.ships.forEach(ship => {
+        const opt = document.createElement("option");
+        opt.value = ship;
+        opt.textContent = ship;
+        shipSelect.appendChild(opt);
+      });
+    })
+    .catch(err => console.error("Error loading ships from companies.json:", err));
+});
+</script>
+
+
 
 </body>
 </html>
