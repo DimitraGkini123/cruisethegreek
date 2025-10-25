@@ -57,7 +57,7 @@
       <span>›</span>
       <a href="tours.html">Athens</a>
       <span>›</span>
-      <span>Full-Day Tour to Delphi from Athens</span>
+      <span id="breadcrumbTitle">Tour Details</span>
     </nav>
     <!-- Floating sticky button -->
 <button class="floating-book-btn">Book Now</button>
@@ -237,6 +237,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const tourTitle = localStorage.getItem("selectedTour");
+   document.getElementById("breadcrumbTitle").textContent = tourTitle || "Cruise Package";
   if (!tourTitle) {
     console.error("No tour selected.");
     return;

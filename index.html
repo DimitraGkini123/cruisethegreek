@@ -505,7 +505,7 @@ fetch('data/tours.json')
             <div class="tour-footer">
               <span class="price">${tour.price}</span>
               <button class="explore-btn" onclick="openTourDetails('${tour.title}')">
-                Explore
+                View details
               </button>
             </div>
           </div>
@@ -518,7 +518,7 @@ fetch('data/tours.json')
 
 function openTourDetails(title) {
   localStorage.setItem('selectedTour', title);
-  window.location.href = 'tour-details.html';
+  window.location.href = 'tour_details.html';
 }
 </script>
 
@@ -526,13 +526,21 @@ function openTourDetails(title) {
 <script>
 document.getElementById("searchForm").addEventListener("submit", function(e) {
   e.preventDefault();
+
   const type = document.getElementById("cruise-type").value;
-  if (type) {
-    // ανακατεύθυνση με query parameter
+
+  if (!type) return;
+
+  if (type === "athens_land_tours") {
+    // ➤ Αν είναι Athens Land Tours → πήγαινε στη σελίδα tours.html
+    window.location.href = "tours.html";
+  } else {
+    // ➤ Για όλα τα υπόλοιπα πήγαινε στο results.html με query
     window.location.href = `results.html?type=${type}`;
   }
 });
 </script>
+
 
 
 <script>
@@ -595,6 +603,7 @@ document.addEventListener("click", function(e) {
   window.location.href = "cruise_details.html";
 });
 </script>
+
 <script>
 document.addEventListener("click", function (e) {
   const btn = e.target.closest(".details-btn");
@@ -631,7 +640,7 @@ document.addEventListener("click", function (e) {
   // --- Greece Land Tours (αν έχεις) ---
   if (card.classList.contains("tours_card")) {
     localStorage.setItem("selectedTour", title);
-    window.location.href = "tour-details.html";
+    window.location.href = "tour_details.html";
     return;
   }
 });
