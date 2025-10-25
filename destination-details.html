@@ -296,6 +296,89 @@ body {
   }
 }
 
+/* ===== Modal (Popup) for Excursions ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.55);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.modal-content h2 {
+  color: #002b45;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  color: #444;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.modal-prices {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+.close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  color: #444;
+  transition: all 0.25s ease;
+}
+
+.close-btn:hover {
+  color: #ff6600;
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
 
 </style>
 
@@ -335,6 +418,21 @@ body {
     <span class="close-lightbox">&times;</span>
     <img id="lightboxImg" src="" alt="">
   </div>
+
+  <!-- 🔹 Shore Excursion Modal -->
+<div id="excursionModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <img id="modalImage" src="" alt="">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <div class="modal-prices">
+      <span id="modalPriceAdults"></span>
+      <span id="modalPriceChildren"></span>
+    </div>
+  </div>
+</div>
+
 
   
 <!-- ======== FOOTER ======== -->
@@ -694,30 +792,58 @@ fetch("data/excursions.json")
     }
 
     // Δημιουργία grid cards
-    excursionsContainer.innerHTML = `
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:15px;">
-        ${matchingExcursions.map(e => `
-          <div style="
-            background:#fff;
-            border:1px solid #ffd6b3;
-            border-radius:10px;
-            box-shadow:0 2px 6px rgba(0,0,0,0.05);
-            overflow:hidden;
-            transition:transform 0.3s ease, box-shadow 0.3s ease;
-            cursor:pointer;
-          " class="excursion-card">
-            <img src="${e.image}" alt="${e.title}" style="width:100%; height:140px; object-fit:cover;">
-            <div style="padding:10px;">
-              <h4 style="color:#002b45; font-size:15px; margin:0 0 6px;">${e.title}</h4>
-              <p style="font-size:13px; color:#555; margin:0 0 8px;">${e.desc}</p>
-              <p style="font-size:13px; color:#ff6600; margin:0;">
-                <strong>${e.priceAdults}</strong> Adults &nbsp;|&nbsp; ${e.priceChildren} Children
-              </p>
-            </div>
-          </div>
-        `).join("")}
+excursionsContainer.innerHTML = `
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:15px;">
+    ${matchingExcursions.map(e => `
+      <div 
+        class="excursion-card"
+        data-title="${e.title}"
+        data-desc="${encodeURIComponent(e.desc || '')}"
+        data-image="${e.image}"
+        data-adults="${e.priceAdults}"
+        data-children="${e.priceChildren}"
+        style="
+          background:#fff;
+          border:1px solid #ffd6b3;
+          border-radius:10px;
+          box-shadow:0 2px 6px rgba(0,0,0,0.05);
+          overflow:hidden;
+          transition:transform 0.3s ease, box-shadow 0.3s ease;
+          cursor:pointer;
+        ">
+        <img src="${e.image}" alt="${e.title}" style="width:100%; height:140px; object-fit:cover;">
+        <div style="padding:10px;">
+          <h4 style="color:#002b45; font-size:15px; margin:0 0 6px;">${e.title}</h4>
+          <p style="font-size:13px; color:#ff6600; margin:0;">
+            <strong>${e.priceAdults}</strong> Adults &nbsp;|&nbsp; ${e.priceChildren} Children
+          </p>
+        </div>
       </div>
-    `;
+    `).join("")}
+  </div>
+`;
+
+    // --- Ενέργεια click για άνοιγμα modal ---
+excursionsContainer.querySelectorAll(".excursion-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const title = card.querySelector("h4").textContent;
+    const desc = card.querySelector("p").textContent;
+    const img = card.querySelector("img").src;
+    const priceLine = card.querySelector("strong")?.textContent || "";
+    const childrenLine = card.innerHTML.includes("Children")
+      ? card.innerHTML.split("Children")[0].split("|").pop().trim()
+      : "";
+
+    showExcursionModal({
+      title,
+      desc: decodeURIComponent(card.dataset.desc),
+      image: img,
+      priceAdults: priceLine,
+      priceChildren: childrenLine
+    });
+  });
+});
+
 
     // Hover εφέ
     excursionsContainer.querySelectorAll(".excursion-card").forEach(card => {
@@ -756,6 +882,35 @@ fetch("data/excursions.json")
       });
     });
 });
+
+// ===== Function to show excursion modal =====
+function showExcursionModal(exc) {
+  // Καθαρισμός HTML entities & extra spaces
+  const clean = text => text
+    ? text.replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim()
+    : "-";
+
+  document.getElementById("modalImage").src = exc.image || "";
+  document.getElementById("modalTitle").textContent = exc.title || "Excursion Details";
+  document.getElementById("modalDesc").textContent = exc.desc || "No description available.";
+
+  const adults = clean(exc.priceAdults);
+  const children = clean(exc.priceChildren);
+
+  document.getElementById("modalPriceAdults").textContent = `Adults: ${adults}`;
+  document.getElementById("modalPriceChildren").textContent = `Children: ${children}`;
+  document.getElementById("excursionModal").style.display = "flex";
+
+  // Κλείσιμο Modal
+  document.querySelector(".close-btn").onclick = () => {
+    document.getElementById("excursionModal").style.display = "none";
+  };
+  window.onclick = e => {
+    if (e.target === document.getElementById("excursionModal"))
+      document.getElementById("excursionModal").style.display = "none";
+  };
+}
+
 </script>
 
 </body>
