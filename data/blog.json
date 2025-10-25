@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "5 Hidden Gems in the Greek Islands",
-    "image": "images/blog/hidden-gems.jpg",
+    "image": "images/blog/hidden_gems.jpg",
     "date": "2025-10-01",
     "excerpt": "Discover lesser-known islands of Greece where you can enjoy serene beaches, local cuisine, and authentic Greek charm.",
     "category": "Destinations"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "title": "Top 10 Shore Excursions to Try in 2026",
-    "image": "images/blog/shore-excursions.jpg",
+    "image": "images/blog/shore-excursions.png",
     "date": "2025-08-24",
     "excerpt": "Whether it’s volcanoes in Santorini or ancient ruins in Rhodes, these excursions will elevate your cruise experience.",
     "category": "Excursions"
