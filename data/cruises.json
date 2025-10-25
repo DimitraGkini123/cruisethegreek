@@ -33,7 +33,7 @@
       {
         "day": 1,
         "title": "Athens (Piraeus), Greece",
-        "desc": "Departure at 18:00",
+         "desc": "Embarkation at 14:00 – Departure at 17:00. Experience the warmth of the Aegean breeze as you step aboard our elegant cruise ship and settle into your cabin. Enjoy a welcome cocktail on deck while the gentle rhythm of the waves sets the tone for an unforgettable journey through the Greek islands. As we set sail, the horizon comes alive with shades of gold and pink, painting the sea with reflections of the sun’s final glow. Our friendly crew will guide you through the ship’s amenities and evening entertainment program, ensuring you feel at home from the very first moment. Relax at the lounge bar, explore the open-air decks, or simply gaze at the endless blue that surrounds you. Tonight’s dinner features traditional Mediterranean flavors accompanied by local wines, while soft live music creates the perfect ambiance for the start of your adventure.",
         "arrival": "",
         "departureTime": "18:00",
         "image": "images/acropolis1.jpg"
@@ -75,7 +75,7 @@
     "Greek Ionian 5-Day Cruise": {
     "title": "Greek Ionian 5-Day Cruise",
     "image": "images/cruise-package-1.jpg",
-    "tag": "PACKAGE",
+    "tag": "CRUISE ONLY",
     "route": "Piraeus,Greece|Zante,Greece|Ithaca,Greece|Paxoi,Greece|Corfu,Greece",
     "duration": "10days / 9nights",
     "frequency": "Every Sunday",
@@ -317,7 +317,7 @@
   },
   "Celestyal Idyllic Aegean": {
     "title": "Celestyal Idyllic Aegean Cruise",
-    "image": "images/cruises/idyllic_aegean.jpg",
+    "image": "images/aegean.jpg",
     "tag": "CRUISE ONLY",
     "route": "Piraeus,Greece|Mykonos,Greece|Kusadasi,Turkey|Patmos,Greece|Rhodes,Greece|Santorini,Greece",
     "duration": "7 days / 6 nights",
@@ -405,7 +405,7 @@
   },
 
   "Celestyal Three Continents": {
-    "title": "Celestyal Three Continents Cruise",
+    "title": "Celestyal Three Continents",
     "image": "images/cruises/three_continents.jpg",
     "tag": "CRUISE ONLY",
     "route": "Piraeus,Greece|Alexandria,Egypt|Limassol,Cyprus|Rhodes,Greece|Kusadasi,Turkey|Athens,Greece",
@@ -437,7 +437,7 @@
       {
         "day": 1,
         "title": "Athens (Piraeus)",
-        "desc": "Embarkation at 14:00 – Departure at 17:00.",
+       "desc": "Embarkation at 14:00 – Departure at 17:00. Experience the warmth of the Aegean breeze as you step aboard our elegant cruise ship and settle into your cabin. Enjoy a welcome cocktail on deck while the gentle rhythm of the waves sets the tone for an unforgettable journey through the Greek islands. As we set sail, the horizon comes alive with shades of gold and pink, painting the sea with reflections of the sun’s final glow. Our friendly crew will guide you through the ship’s amenities and evening entertainment program, ensuring you feel at home from the very first moment. Relax at the lounge bar, explore the open-air decks, or simply gaze at the endless blue that surrounds you. Tonight’s dinner features traditional Mediterranean flavors accompanied by local wines, while soft live music creates the perfect ambiance for the start of your adventure.",
         "arrival": "",
         "departureTime": "17:00",
         "image": "images/acropolis1.jpg"

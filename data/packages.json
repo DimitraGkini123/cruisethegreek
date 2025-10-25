@@ -33,7 +33,7 @@
       {
         "day": 1,
         "title": "Athens (Piraeus), Greece",
-        "desc": "Departure at 18:00",
+         "desc": "Embarkation at 14:00 – Departure at 17:00. Experience the warmth of the Aegean breeze as you step aboard our elegant cruise ship and settle into your cabin. Enjoy a welcome cocktail on deck while the gentle rhythm of the waves sets the tone for an unforgettable journey through the Greek islands. As we set sail, the horizon comes alive with shades of gold and pink, painting the sea with reflections of the sun’s final glow. Our friendly crew will guide you through the ship’s amenities and evening entertainment program, ensuring you feel at home from the very first moment. Relax at the lounge bar, explore the open-air decks, or simply gaze at the endless blue that surrounds you. Tonight’s dinner features traditional Mediterranean flavors accompanied by local wines, while soft live music creates the perfect ambiance for the start of your adventure.",
         "arrival": "",
         "departureTime": "18:00",
         "image": "images/acropolis1.jpg"
@@ -241,8 +241,8 @@
     ]
   },
   "Celestyal Iconic Aegean Package": {
-    "title": "Celestyal Iconic Aegean Cruise + Athens Stay",
-    "image": "images/packages/iconic_aegean_package.jpg",
+    "title": "Celestyal Iconic Aegean Package",
+    "image": "images/aegean.jpg",
     "tag": "CRUISE PACKAGE",
     "route": "Athens,Greece|Mykonos,Greece|Kusadasi,Turkey|Patmos,Greece|Heraklion,Greece|Santorini,Greece",
     "duration": "4 nights cruise + 2 nights hotel",
@@ -272,8 +272,8 @@
   },
 
   "Celestyal Heavenly Mediterranean": {
-    "title": "Celestyal Heavenly Mediterranean Package",
-    "image": "images/packages/heavenly_mediterranean.jpg",
+    "title": "Celestyal Heavenly Mediterranean",
+    "image": "images/mediterranean.jpg",
     "tag": "CRUISE PACKAGE",
     "route": "Athens,Greece|Heraklion,Greece|Santorini,Greece|Kusadasi,Turkey|Thessaloniki,Greece",
     "duration": "7 nights cruise + 1 night hotel",

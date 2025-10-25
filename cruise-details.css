@@ -564,6 +564,15 @@ body {
   font-weight: 600;
   font-size: 14px;
 }
+.timeline-content .text p {
+  display: -webkit-box;
+  -webkit-line-clamp: 7;       /* περίπου 150 λέξεις ≈ 7-8 γραμμές */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 10.5em;          /* εναλλακτική προστασία */
+}
+
 
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
