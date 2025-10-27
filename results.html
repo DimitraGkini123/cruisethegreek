@@ -194,7 +194,7 @@
     <h2 id="bookingTitle">Επιλέξτε ημερομηνία αναχώρησης</h2>
     <p>Βρείτε τις διαθέσιμες αναχωρήσεις με <strong style="color:#ff6600;">πορτοκαλί</strong> ένδειξη.</p>
     <div id="calendarContainer"></div>
-    <button id="continueBooking" class="book-btn">Συνέχεια</button>
+    <button id="continueBooking" class="book-btn">Continue</button>
   </div>
 </div>
 
@@ -995,11 +995,11 @@ function showCalendarModal(title, availableDates) {
     container.innerHTML = "";
 
     const monthNames = [
-      "Ιανουάριος","Φεβρουάριος","Μάρτιος","Απρίλιος",
-      "Μάιος","Ιούνιος","Ιούλιος","Αύγουστος",
-      "Σεπτέμβριος","Οκτώβριος","Νοέμβριος","Δεκέμβριος"
+      "January","February","March","April",
+      "May","June","July","August",
+      "September","October","November","December"
     ];
-    const days = ["ΚΥΡ","ΔΕΥ","ΤΡΙ","ΤΕΤ","ΠΕΜ","ΠΑΡ","ΣΑΒ"];
+    const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
 
     // === HEADER ===
     const header = document.createElement("div");
@@ -1074,7 +1074,7 @@ function showCalendarModal(title, availableDates) {
   document.getElementById("continueBooking").onclick = () => {
   const selected = document.querySelector(".calendar-grid .selected");
   if (!selected) {
-    alert("Παρακαλώ επιλέξτε ημερομηνία!");
+    alert("please choose a date!");
     return;
   }
 
