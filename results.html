@@ -187,6 +187,68 @@
   </div>
 </footer>
 
+<!-- ======== BOOKING CALENDAR MODAL ======== -->
+<div id="bookingModal" class="modal">
+  <div class="modal-content booking-box">
+    <span class="close-btn">&times;</span>
+    <h2 id="bookingTitle">Επιλέξτε ημερομηνία αναχώρησης</h2>
+    <p>Βρείτε τις διαθέσιμες αναχωρήσεις με <strong style="color:#ff6600;">πορτοκαλί</strong> ένδειξη.</p>
+    <div id="calendarContainer"></div>
+    <button id="continueBooking" class="book-btn">Συνέχεια</button>
+  </div>
+</div>
+
+<style>
+.modal {
+  display: none; position: fixed; z-index: 9999;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center; align-items: center;
+}
+.modal-content {
+  background: white; padding: 30px;
+  border-radius: 16px; width: 420px;
+  text-align: center; position: relative;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.close-btn {
+  position: absolute; top: 15px; right: 20px;
+  font-size: 22px; cursor: pointer; color: #333;
+}
+.calendar-header {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #ff6600; color: white; padding: 10px; border-radius: 6px 6px 0 0;
+}
+.calendar-header button {
+  background: none; border: none; color: white; font-size: 18px; cursor: pointer;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 10px;
+}
+.calendar-grid div {
+  padding: 8px; border-radius: 6px; cursor: default;
+}
+.calendar-grid .day-name {
+  font-weight: bold; background: #f0f0f0;
+}
+.calendar-grid .day {
+  background: #f9f9f9;
+}
+.calendar-grid .available {
+  background: #ff6600; color: white; cursor: pointer;
+}
+.calendar-grid .available:hover {
+  background: #ff8533;
+}
+.calendar-grid .selected {
+  outline: 3px solid #002b45;
+}
+</style>
+
+
   <!--------------------------------------------- SCRIPTS -------------------------------------->
 
 <script>
@@ -282,7 +344,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <!-- ✨ Κουμπιά -->
     <div class="buttons">
-      <button class="details-btn">DETAILS</button>
+     <button class="details-btn">
+  DETAILS
+</button>
+
       <button class="book-btn">BOOK NOW</button>
     </div>
   </div>
@@ -294,11 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Error loading packages:", err));
 });
 
-// Αποθήκευση στο localStorage για το package-details
-function openPackageDetails(title) {
-  localStorage.setItem("selectedPackage", title);
-  window.location.href = "package-details.html";
-}
 </script>
 
 <script>
@@ -393,11 +453,13 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <!-- ✨ Κουμπιά -->
-    <div class="buttons">
-     <button class="details-btn">DETAILS</button>
-      <button class="book-btn">BOOK NOW</button>
-    </div>
-  </div>
+<div class="buttons">
+  <button class="details-btn">
+    DETAILS
+  </button>
+  <button class="book-btn">BOOK NOW</button>
+</div>
+
 `;
 
         grid.insertAdjacentHTML("beforeend", cardHTML);
@@ -406,21 +468,15 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Error loading cruises:", err));
 });
 
-// Αποθήκευση στο localStorage για το package-details
-function openCruiseDetails(title) {
-  localStorage.setItem("selectedCruise", title);
-  window.location.href = "cruise-details.html";
-}
-
-
 </script>
 
 
-
 <script>
- 
-  const selectedType = type; // ήδη υπάρχει από πριν (const type = params.get("type");)
+  // ✅ Πάρε το query parameter από το URL
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");  // π.χ. "cruise_package"
 
+  const selectedType = type; // τώρα υπάρχει
   if (selectedType) {
     const cruiseSelect = document.getElementById("cruise-type");
     if (cruiseSelect) {
@@ -428,6 +484,7 @@ function openCruiseDetails(title) {
     }
   }
 </script>
+
 
   <!-- === Map Toggle === -->
   <script>
@@ -574,137 +631,95 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    toggleBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  });
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const selectedType = params.get("type");
-  const cruiseSelect = document.getElementById("cruise-type");
-  const filterTypeLabel = document.getElementById("filter-type-label");
-
-  // === 1️⃣ Αν υπάρχει type στο URL, κάνε update το dropdown ===
-  if (cruiseSelect && selectedType) {
-    cruiseSelect.value = selectedType; // επιλέγει σωστό option
-  }
-
-  // === 2️⃣ Ενημέρωσε το label πάνω από το κουμπί Filter ===
-  if (filterTypeLabel) {
-    if (selectedType === "cruise_only") filterTypeLabel.textContent = "Cruise Only";
-    else if (selectedType === "cruise_package") filterTypeLabel.textContent = "Cruise Packages";
-  
-  }
-
-  // === 3️⃣ Για mobile (όταν ο χρήστης ανοίγει τα φίλτρα) ===
-  const filterToggle = document.getElementById("filter-toggle");
-  const filterForm = document.querySelector(".filter-form");
-
-  if (filterToggle && filterForm) {
-    filterToggle.addEventListener("click", () => {
-      filterForm.classList.toggle("active");
-
-      // Όταν ανοίγει, βεβαιώσου ότι το select δείχνει σωστό type
-      if (filterForm.classList.contains("active") && cruiseSelect && selectedType) {
-        cruiseSelect.value = selectedType;
-      }
-    });
-  }
-});
-</script>
-
-
-
 <script>
 document.addEventListener("click", function (e) {
   const btn = e.target.closest(".details-btn");
   if (!btn) return;
+  console.log("🟠 [DEBUG] DETAILS button clicked:", btn);
 
   const card = btn.closest(".card");
-  if (!card) return;
+  if (!card) {
+    console.warn("⚠️ [DEBUG] No card element found around the button!");
+    return;
+  }
+  console.log("🔹 [DEBUG] Card classes:", card.className);
 
   // ---- Αν η κάρτα είναι Package ----
   if (card.classList.contains("package-card")) {
-  const packageData = {
-    image: card.querySelector(".map-image")?.src || "",
-    // ✅ Παίρνουμε σωστά τον τίτλο από το data-title attribute
-    title: card.dataset.title || "Cruise Package",
-    route: card.querySelector(".map-section")?.dataset.route || "",
-    duration:
-      card.querySelector(".card-top-info strong")?.textContent.trim() || "",
-    dates: Array.from(card.querySelectorAll("select option"))
-      .slice(1)
-      .map((o) => o.textContent.trim()),
-    departure:
-      card
-        .querySelector(".ports .port:nth-child(1)")
-        ?.textContent.replace("⚓", "")
-        .replace("Departure Port:", "")
-        .trim() || "",
-    arrival:
-      card
-        .querySelector(".ports .port:nth-child(2)")
-        ?.textContent.replace("⚓", "")
-        .replace("Arrival Port:", "")
-        .trim() || "",
-    offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
-    priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
-    priceNew:
-      card.querySelector(".new-price strong")?.textContent.trim() || "",
-  };
+    console.log("📦 [DEBUG] Package card detected!");
 
-  // ✅ Κράτα μόνο τον τίτλο για lookup στο JSON
-  localStorage.setItem("selectedPackage", packageData.title);
+    const packageData = {
+      image: card.querySelector(".map-image")?.src || "",
+      title: card.dataset.title || "Cruise Package",
+      route: card.querySelector(".map-section")?.dataset.route || "",
+      duration: card.querySelector(".card-top-info strong")?.textContent.trim() || "",
+      dates: Array.from(card.querySelectorAll("select option")).slice(1).map((o) => o.textContent.trim()),
+      departure:
+        card.querySelector(".ports .port:nth-child(1)")?.textContent
+          .replace("⚓", "")
+          .replace("Departure Port:", "")
+          .trim() || "",
+      arrival:
+        card.querySelector(".ports .port:nth-child(2)")?.textContent
+          .replace("⚓", "")
+          .replace("Arrival Port:", "")
+          .trim() || "",
+      offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
+      priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
+      priceNew: card.querySelector(".new-price strong")?.textContent.trim() || "",
+    };
 
-  // ✅ Αν είναι Greek Islands, αποθήκευσε και το πλοίο (για deckplan & cabins)
-  if (packageData.title.includes("Greek Islands")) {
-    localStorage.setItem("selectedShip", "Celestyal Discovery");
+    console.log("✅ [DEBUG] Package data to save:", packageData);
+
+    // Κράτα μόνο τον τίτλο
+    localStorage.setItem("selectedPackage", packageData.title);
+    console.log("💾 [DEBUG] Saved selectedPackage:", localStorage.getItem("selectedPackage"));
+
+    if (packageData.title.includes("Greek Islands")) {
+      localStorage.setItem("selectedShip", "Celestyal Discovery");
+      console.log("⛴️ [DEBUG] Saved selectedShip: Celestyal Discovery");
+    }
+
+    console.log("➡️ [DEBUG] Redirecting to package-details.html...");
+    window.location.href = "package-details.html";
+    return;
   }
 
-  // Μετάβαση στη σελίδα λεπτομερειών
-  window.location.href = "package-details.html";
-  return;
-}
-
-
   // ---- Αν η κάρτα είναι Cruise Only ----
-  const cruiseData = {
-    image: card.querySelector(".map-image")?.src || "",
-    title: card.dataset.title || "Cruise Only",
-    route: card.querySelector(".map-section")?.dataset.route || "",
-    duration:
-      card.querySelector(".card-top-info strong")?.textContent.trim() || "",
-    dates: Array.from(card.querySelectorAll("select option"))
-      .slice(1)
-      .map((o) => o.textContent.trim()),
-    departure:
-      card
-        .querySelector(".ports .port:nth-child(1)")
-        ?.textContent.replace("⚓", "")
-        .replace("Departure Port:", "")
-        .trim() || "",
-    arrival:
-      card
-        .querySelector(".ports .port:nth-child(2)")
-        ?.textContent.replace("⚓", "")
-        .replace("Arrival Port:", "")
-        .trim() || "",
-    offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
-    priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
-    priceNew:
-      card.querySelector(".new-price strong")?.textContent.trim() || "",
-  };
-  localStorage.setItem("selectedCruise", cruiseData.title);
-  window.location.href = "cruise_details.html";
+  if (card.classList.contains("cruise-card")) {
+    console.log("🚢 [DEBUG] Cruise card detected!");
+
+    const cruiseData = {
+      image: card.querySelector(".map-image")?.src || "",
+      title: card.dataset.title || "Cruise Only",
+      route: card.querySelector(".map-section")?.dataset.route || "",
+      duration: card.querySelector(".card-top-info strong")?.textContent.trim() || "",
+      dates: Array.from(card.querySelectorAll("select option")).slice(1).map((o) => o.textContent.trim()),
+      departure:
+        card.querySelector(".ports .port:nth-child(1)")?.textContent
+          .replace("⚓", "")
+          .replace("Departure Port:", "")
+          .trim() || "",
+      arrival:
+        card.querySelector(".ports .port:nth-child(2)")?.textContent
+          .replace("⚓", "")
+          .replace("Arrival Port:", "")
+          .trim() || "",
+      offer: card.querySelector(".offer-banner")?.textContent.trim() || "",
+      priceOld: card.querySelector(".old-price span")?.textContent.trim() || "",
+      priceNew: card.querySelector(".new-price strong")?.textContent.trim() || "",
+    };
+
+    console.log("✅ [DEBUG] Cruise data to save:", cruiseData);
+
+    localStorage.setItem("selectedCruise", cruiseData.title);
+    console.log("💾 [DEBUG] Saved selectedCruise:", localStorage.getItem("selectedCruise"));
+
+    console.log("➡️ [DEBUG] Redirecting to cruise_details.html...");
+    window.location.href = "cruise_details.html";
+  } else {
+    console.warn("⚠️ [DEBUG] Unknown card type clicked!");
+  }
 });
 </script>
 
@@ -819,7 +834,8 @@ document.addEventListener("DOMContentLoaded", () => {
           : "";
 
         const cardHTML = `
-          <div class="card cruise-card" data-title="${cruise.title}">
+  <div class="card ${type === "cruise_package" ? "package-card" : "cruise-card"}" data-title="${cruise.title}">
+
             <div class="destinations map-section" data-route="${cruise.route || ""}">
               <img src="${cruise.image}" alt="${cruise.title}" class="map-image">
               <div class="image-features">${featuresHTML}</div>
@@ -871,6 +887,7 @@ document.addEventListener("DOMContentLoaded", () => {
         grid.insertAdjacentHTML("beforeend", cardHTML);
       });
     })
+    
     .catch(err => console.error("Error loading company cruises:", err));
 });
 </script>
@@ -920,6 +937,161 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(err => console.error("Error loading ships from companies.json:", err));
 });
 </script>
+
+<script>
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".book-btn");
+  if (!btn) return; // Αν δεν πατήθηκε Book Now, σταμάτα
+
+  const card = btn.closest(".card");
+  if (!card) return;
+
+  const title =
+    card.querySelector(".package-title, .cruise-title")?.textContent.trim() || "Cruise";
+
+  // Παίρνουμε τις ημερομηνίες αναχώρησης από το dropdown της κάρτας
+  const availableDates = Array.from(card.querySelectorAll(".date-select option"))
+    .slice(1)
+    .map(o => o.textContent.trim())
+    .filter(Boolean);
+
+  if (availableDates.length === 0) {
+    alert("Δεν υπάρχουν διαθέσιμες ημερομηνίες για αυτό το cruise.");
+    return;
+  }
+
+  // ✅ Κλήση της συνάρτησης για να εμφανίσει το ημερολόγιο
+  showCalendarModal(title, availableDates);
+});
+</script>
+
+<script>
+  //script for book calendar
+function showCalendarModal(title, availableDates) {
+  const modal = document.getElementById("bookingModal");
+  const container = document.getElementById("calendarContainer");
+  const titleEl = document.getElementById("bookingTitle");
+  titleEl.textContent = `Book: ${title}`;
+  modal.style.display = "flex";
+
+  // 🔸 Αντιστοίχιση συντομογραφιών μηνών
+  const monthMap = {
+    Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+    Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
+  };
+
+  // 🔹 Μετατροπή των διαθέσιμων ημερομηνιών σε αντικείμενα Date
+  const parsedDates = availableDates.map(d => {
+    const [day, mon, year] = d.split(" ");
+    const month = monthMap[mon];
+    if (month === undefined) return null;
+    return new Date(year, month, parseInt(day));
+  }).filter(Boolean);
+
+  // 🔹 Αν υπάρχει διαθέσιμη ημερομηνία → ξεκίνα από εκείνον τον μήνα
+  let current = parsedDates.length > 0 ? new Date(parsedDates[0]) : new Date();
+
+  function renderCalendar(month, year) {
+    container.innerHTML = "";
+
+    const monthNames = [
+      "Ιανουάριος","Φεβρουάριος","Μάρτιος","Απρίλιος",
+      "Μάιος","Ιούνιος","Ιούλιος","Αύγουστος",
+      "Σεπτέμβριος","Οκτώβριος","Νοέμβριος","Δεκέμβριος"
+    ];
+    const days = ["ΚΥΡ","ΔΕΥ","ΤΡΙ","ΤΕΤ","ΠΕΜ","ΠΑΡ","ΣΑΒ"];
+
+    // === HEADER ===
+    const header = document.createElement("div");
+    header.className = "calendar-header";
+    header.innerHTML = `
+      <button id="prevMonth">&#10094;</button>
+      <div><strong>${monthNames[month]} ${year}</strong></div>
+      <button id="nextMonth">&#10095;</button>
+    `;
+    container.appendChild(header);
+
+    // === GRID ===
+    const grid = document.createElement("div");
+    grid.className = "calendar-grid";
+
+    // Ονόματα ημερών
+    days.forEach(d => {
+      const dayName = document.createElement("div");
+      dayName.className = "day-name";
+      dayName.textContent = d;
+      grid.appendChild(dayName);
+    });
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    // Κενά πριν την 1η του μήνα
+    for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement("div"));
+
+    // Ημέρες του μήνα
+    for (let day = 1; day <= totalDays; day++) {
+      const cell = document.createElement("div");
+      cell.className = "day";
+      cell.textContent = day;
+
+      // Έλεγχος αν είναι διαθέσιμη ημερομηνία
+      const isAvailable = parsedDates.some(d =>
+        d.getDate() === day && d.getMonth() === month && d.getFullYear() === year
+      );
+
+      if (isAvailable) {
+        cell.classList.add("available");
+        cell.addEventListener("click", () => {
+          document.querySelectorAll(".calendar-grid .available").forEach(c => c.classList.remove("selected"));
+          cell.classList.add("selected");
+          cell.dataset.selectedDate = `${day} ${monthNames[month]} ${year}`;
+        });
+      }
+
+      grid.appendChild(cell);
+    }
+
+    container.appendChild(grid);
+
+    // Εναλλαγή μηνών
+    document.getElementById("prevMonth").onclick = () => {
+      current.setMonth(current.getMonth() - 1);
+      renderCalendar(current.getMonth(), current.getFullYear());
+    };
+    document.getElementById("nextMonth").onclick = () => {
+      current.setMonth(current.getMonth() + 1);
+      renderCalendar(current.getMonth(), current.getFullYear());
+    };
+  }
+
+  renderCalendar(current.getMonth(), current.getFullYear());
+
+  // === Κλείσιμο modal ===
+  document.querySelector(".close-btn").onclick = () => (modal.style.display = "none");
+  window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+
+  document.getElementById("continueBooking").onclick = () => {
+  const selected = document.querySelector(".calendar-grid .selected");
+  if (!selected) {
+    alert("Παρακαλώ επιλέξτε ημερομηνία!");
+    return;
+  }
+
+  const chosen = selected.dataset.selectedDate;
+  const cruiseTitle = document.getElementById("bookingTitle").textContent.replace("Book: ", "");
+
+  // ✅ Αποθήκευση στοιχείων για χρήση στο booking.html
+  localStorage.setItem("selectedDate", chosen);
+  localStorage.setItem("selectedCruise", cruiseTitle);
+
+  // Μετάβαση στη σελίδα κράτησης
+  window.location.href = "booking.html";
+};
+}
+</script>
+
+
 
 
 

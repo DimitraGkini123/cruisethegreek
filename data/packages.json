@@ -15,7 +15,7 @@
     "smallText": "port taxes · gratuities included",
     "dates": ["23 Mar 2026", "30 Mar 2026"],
     "ship": "Celestyal Discovery",
-     "company": "Celestyal Cruises",
+    "company": "Celestyal Cruises",
     "gallery": [
       "images/mykonos.jpeg",
       "images/santorini.jpg",
@@ -271,8 +271,8 @@
     ]
   },
 
-  "Celestyal Heavenly Mediterranean": {
-    "title": "Celestyal Heavenly Mediterranean",
+  "Celestyal Heavenly Mediterranean Package": {
+    "title": "Celestyal Heavenly Mediterranean Package",
     "image": "images/mediterranean.jpg",
     "tag": "CRUISE PACKAGE",
     "route": "Athens,Greece|Heraklion,Greece|Santorini,Greece|Kusadasi,Turkey|Thessaloniki,Greece",

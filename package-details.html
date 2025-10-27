@@ -1418,16 +1418,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const printBtn = document.getElementById("printBtn");
   const emailBtn = document.getElementById("emailBtn");
 
-  // PRINT SUMMARY
+  // === PRINT SUMMARY ===
   printBtn.addEventListener("click", () => {
-    const cruiseTitle = localStorage.getItem("selectedCruise");
+    const packageTitle = localStorage.getItem("selectedPackage");
     const price = document.querySelector(".cruise-header-right .price span").innerText;
     const itinerary = Array.from(document.querySelectorAll(".timeline-content h3"))
       .map(h3 => "- " + h3.innerText)
       .join("\n");
-const summary = `
+
+    const summary = `
 ══════════════════════════════════════════════════════
-             ${cruiseTitle.toUpperCase()}              
+             ${packageTitle?.toUpperCase() || "CRUISE PACKAGE"}              
 ══════════════════════════════════════════════════════
 
 PRICE: ${price}
@@ -1465,15 +1466,16 @@ Generated on: ${new Date().toLocaleString()}
     printWindow.print();
   });
 
-  //  SEND EMAIL
+  // === SEND EMAIL ===
   emailBtn.addEventListener("click", () => {
-    const selectedTitle = localStorage.getItem("selectedCruise");
-    const subject = encodeURIComponent(`Cruise Itinerary: ${cruiseTitle}`);
-    const body = encodeURIComponent(`Hello,\n\nHere is the summary of your selected cruise from CruiseTheGreek.com.\n\n${cruiseTitle}\n\nBook now at: https://cruisethegreek.com\n\nBest regards,\nCruiseTheGreek Team`);
+    const packageTitle = localStorage.getItem("selectedPackage") || "Cruise Package";
+    const subject = encodeURIComponent(`Cruise Package Itinerary: ${packageTitle}`);
+    const body = encodeURIComponent(`Hello,\n\nHere is the summary of your selected cruise package from CruiseTheGreek.com.\n\n${packageTitle}\n\nBook now at: https://cruisethegreek.com\n\nBest regards,\nCruiseTheGreek Team`);
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   });
 });
 </script>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
