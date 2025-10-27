@@ -1864,3 +1864,34 @@ html {
     padding: 10px 0;
   }
 }
+.calendar-header {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #ff6600; color: white; padding: 10px; border-radius: 6px 6px 0 0;
+}
+.calendar-header button {
+  background: none; border: none; color: white; font-size: 18px; cursor: pointer;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 10px;
+}
+.calendar-grid div {
+  padding: 8px; border-radius: 6px; cursor: default;
+}
+.calendar-grid .day-name {
+  font-weight: bold; background: #f0f0f0;
+}
+.calendar-grid .day {
+  background: #f9f9f9;
+}
+.calendar-grid .available {
+  background: #ff6600; color: white; cursor: pointer;
+}
+.calendar-grid .available:hover {
+  background: #ff8533;
+}
+.calendar-grid .selected {
+  outline: 3px solid #002b45;
+}

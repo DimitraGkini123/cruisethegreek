@@ -38,5 +38,85 @@
     "date": "2025-07-10",
     "excerpt": "Not sure which cruise fits you best? Here’s a guide to selecting the ideal itinerary, ship, and season.",
     "category": "Tips"
+  },
+   {
+    "id": 6,
+    "title": "Santorini vs Mykonos: Which Island Should You Visit?",
+    "image": "images/blog/santorini-vs-mykonos.jpg",
+    "date": "2025-10-14",
+    "excerpt": "Two iconic Greek islands, each with its unique charm. Find out whether Santorini’s sunsets or Mykonos’ nightlife suits you best.",
+    "category": "Destinations"
+  },
+  {
+    "id": 7,
+    "title": "Greek Cuisine at Sea: What to Eat on Your Cruise",
+    "image": "images/blog/greek-cuisine.jpg",
+    "date": "2025-09-27",
+    "excerpt": "From moussaka to baklava, explore authentic Greek dishes served onboard and in port towns.",
+    "category": "Lifestyle"
+  },
+  {
+    "id": 8,
+    "title": "Why Autumn Is the Best Season for Cruising Greece",
+    "image": "images/blog/autumn-cruise.jpg",
+    "date": "2025-09-05",
+    "excerpt": "Fewer crowds, pleasant weather, and affordable prices — discover why fall is the perfect time to sail the Aegean.",
+    "category": "Tips"
+  },
+  {
+    "id": 9,
+    "title": "Exploring Ancient Greece: The Must-See Archaeological Sites",
+    "image": "images/blog/ancient-sites.jpg",
+    "date": "2025-08-22",
+    "excerpt": "From the Acropolis of Athens to the Palace of Knossos, uncover Greece’s most breathtaking ancient landmarks.",
+    "category": "Culture"
+  },
+  {
+    "id": 10,
+    "title": "Family Cruises in Greece: Fun for All Ages",
+    "image": "images/blog/family-cruise.jpg",
+    "date": "2025-08-08",
+    "excerpt": "Planning a family getaway? Here’s how to make the most of your Greek cruise with kids — from onboard activities to family-friendly ports.",
+    "category": "Family"
+  },
+  {
+    "id": 11,
+    "title": "The Ultimate Packing List for a Greek Cruise",
+    "image": "images/blog/packing-list.jpg",
+    "date": "2025-07-22",
+    "excerpt": "Sunhats, swimsuits, and smart casual wear — here’s everything you should pack for a smooth sailing experience.",
+    "category": "Tips"
+  },
+  {
+    "id": 12,
+    "title": "Eco-Friendly Cruising: How to Travel Sustainably in Greece",
+    "image": "images/blog/eco-cruise.jpg",
+    "date": "2025-07-05",
+    "excerpt": "Learn how cruise lines and travelers are making greener choices to protect Greece’s crystal-clear waters and islands.",
+    "category": "Sustainability"
+  },
+  {
+    "id": 13,
+    "title": "Nightlife on the Waves: Evening Entertainment on Board",
+    "image": "images/blog/nightlife.jpg",
+    "date": "2025-06-20",
+    "excerpt": "Live music, themed parties, and starlit decks — experience Greece’s famous nightlife while at sea.",
+    "category": "Lifestyle"
+  },
+  {
+    "id": 14,
+    "title": "Best Day Trips from Athens by Sea",
+    "image": "images/blog/day-trips-athens.jpg",
+    "date": "2025-06-02",
+    "excerpt": "Short on time? Take a one-day cruise to nearby gems like Aegina, Poros, and Hydra — all just a few hours away from Athens.",
+    "category": "Destinations"
+  },
+  {
+    "id": 15,
+    "title": "Greek Island Hopping Made Easy: A Cruise Traveler’s Guide",
+    "image": "images/blog/island-hopping.jpg",
+    "date": "2025-05-18",
+    "excerpt": "Discover how to explore multiple islands in one trip, effortlessly connecting iconic and hidden Greek destinations by sea.",
+    "category": "Guides"
   }
 ]

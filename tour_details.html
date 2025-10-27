@@ -345,5 +345,147 @@ aboutSection.innerHTML = `
 </script>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Όταν πατάς Book Now
+  document.querySelectorAll(".book-btn, .floating-book-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const selectedTour = localStorage.getItem("selectedTour");
+      if (!selectedTour) {
+        alert("No tour selected!");
+        return;
+      }
+
+      fetch("data/tours.json")
+        .then(res => res.json())
+        .then(data => {
+          const tour = data[selectedTour];
+          if (!tour) {
+            alert("Tour not found!");
+            return;
+          }
+
+          showCalendarPopup(tour);
+        })
+        .catch(err => console.error("Error loading tours.json:", err));
+    });
+  });
+});
+
+function showCalendarPopup(tour) {
+  // Δημιουργία Modal
+  const modal = document.createElement("div");
+  modal.className = "modal";
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h3>Select Date for:</h3>
+      <p style="font-weight:600;color:#ff6600;margin-top:-5px;margin-bottom:15px;">${tour.title}</p>
+      <div class="calendar-header">
+        <button id="prevMonth">&#10094;</button>
+        <div id="monthYear"></div>
+        <button id="nextMonth">&#10095;</button>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <button id="continueBooking" class="calendar-continue">Continue</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.style.display = "flex";
+
+  // Απόδοση ημερομηνιών
+  const availableDates = tour.dates?.map(d => new Date(d)) || [];
+  const grid = modal.querySelector("#calendarGrid");
+  const monthYear = modal.querySelector("#monthYear");
+
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  const dayNames = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+  let current = availableDates[0] || new Date();
+
+  function renderCalendar(month, year) {
+    grid.innerHTML = "";
+
+    // Header με μέρες
+    dayNames.forEach(d => {
+      const dn = document.createElement("div");
+      dn.textContent = d;
+      dn.className = "day-name";
+      grid.appendChild(dn);
+    });
+
+    monthYear.textContent = `${monthNames[month]} ${year}`;
+    const firstDay = new Date(year, month, 1).getDay();
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    // Κενά πριν τις πρώτες μέρες
+    for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement("div"));
+
+    // Ημέρες του μήνα
+    for (let day = 1; day <= totalDays; day++) {
+      const cell = document.createElement("div");
+      cell.className = "day";
+      cell.textContent = day;
+
+      const isAvailable = availableDates.some(d =>
+        d.getDate() === day && d.getMonth() === month && d.getFullYear() === year
+      );
+      if (isAvailable) {
+        cell.classList.add("available");
+        cell.addEventListener("click", () => {
+          grid.querySelectorAll(".available").forEach(c => c.classList.remove("selected"));
+          cell.classList.add("selected");
+          cell.dataset.selectedDate = `${day} ${monthNames[month]} ${year}`;
+        });
+      }
+      grid.appendChild(cell);
+    }
+  }
+
+  // Απόδοση αρχικού μήνα
+  renderCalendar(current.getMonth(), current.getFullYear());
+
+  // Προεπιλογή πρώτης διαθέσιμης ημερομηνίας
+  if (availableDates.length > 0) {
+    const first = availableDates[0];
+    const selected = Array.from(grid.children).find(
+      el => el.textContent == first.getDate() && el.classList.contains("available")
+    );
+    if (selected) {
+      selected.classList.add("selected");
+      selected.dataset.selectedDate = `${first.getDate()} ${monthNames[first.getMonth()]} ${first.getFullYear()}`;
+    }
+  }
+
+  // Πλοήγηση μηνών
+  modal.querySelector("#prevMonth").onclick = () => {
+    current.setMonth(current.getMonth() - 1);
+    renderCalendar(current.getMonth(), current.getFullYear());
+  };
+  modal.querySelector("#nextMonth").onclick = () => {
+    current.setMonth(current.getMonth() + 1);
+    renderCalendar(current.getMonth(), current.getFullYear());
+  };
+
+  // Συνέχεια στην κράτηση
+  modal.querySelector("#continueBooking").onclick = () => {
+    const selected = grid.querySelector(".selected");
+    if (!selected) {
+      alert("Please select a date!");
+      return;
+    }
+    const chosenDate = selected.dataset.selectedDate;
+    tour.selectedDate = chosenDate;
+    localStorage.setItem("selectedTourDetails", JSON.stringify(tour));
+    modal.remove();
+    window.location.href = "tour-booking.html";
+  };
+
+  // Κλείσιμο modal
+  modal.querySelector(".close-btn").onclick = () => modal.remove();
+  window.onclick = e => { if (e.target === modal) modal.remove(); };
+}
+</script>
+
+
 </body>
 </html>

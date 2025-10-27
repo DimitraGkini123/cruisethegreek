@@ -668,6 +668,35 @@ input[type="date"]:invalid {
   </div>
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const bookButtons = document.querySelectorAll(".book-btn, .floating-book-btn");
+
+  bookButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Κρατά μόνο το όνομα του πακέτου
+      const selected = localStorage.getItem("selectedPackage");
+      if (selected) localStorage.setItem("bookingPackage", selected);
+
+      // 🧹 Καθαρισμός παλιών δεδομένων κράτησης
+      const keysToClear = [
+        "selectedCabin",
+        "selectedExcursions",
+        "bookingPassengers",
+        "bookingSummary",
+        "selectedDeck",
+        "selectedShip"
+      ];
+      keysToClear.forEach(k => localStorage.removeItem(k));
+
+      // Μετάβαση στη σελίδα κράτησης
+      window.location.href = "booking.html";
+    });
+  });
+});
+</script>
+
+
 
 <script>
 // === Passenger form logic ===
