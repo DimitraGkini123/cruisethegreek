@@ -276,41 +276,13 @@
   background: #ff8533;
 }
 
-/* ===== Right sticky summary inside cabin section ===== */
-.cabin-summary {
-  flex: 1;
-  position: sticky;
-  top: 100px;
-  align-self: flex-start;
-  background: linear-gradient(180deg, #f9fafb 0%, #eef3f8 100%);
-  border-radius: 16px;
-  padding: 20px 22px;
-  box-shadow: 0 4px 16px rgba(0, 43, 69, 0.15);
-}
 
-.cabin-summary h3 {
-  font-size: 20px;
-  text-align: center;
-  border-bottom: 2px solid #ff6600;
-  padding-bottom: 6px;
-  color: #002b45;
-}
-
-.cabin-summary p {
-  font-size: 14px;
-  color: #003e5a;
-  margin: 8px 0;
-}
 
 @media (max-width: 900px) {
   .cabin-section {
     flex-direction: column;
   }
-  .cabin-summary {
-    position: relative;
-    top: 0;
-    margin-top: 20px;
-  }
+
 }
 
   </style>
@@ -390,12 +362,6 @@
     <h2>Επιλέξτε Καμπίνα</h2>
     <div id="cabinsContainer" class="cabins-grid"></div>
   </div>
-
-  <div class="cabin-summary" id="cabinSummaryBox">
-    <h3>Πληροφορίες Καμπίνας</h3>
-    <p id="selectedCabinName">Καμία επιλογή</p>
-    <p id="selectedCabinDesc">Επιλέξτε μία καμπίνα για να δείτε τις λεπτομέρειες εδώ.</p>
-  </div>
 </section>
 
 <script>
@@ -442,66 +408,76 @@ adultsSelect.addEventListener("change", generatePassengerFields);
 childrenSelect.addEventListener("change", generatePassengerFields);
 generatePassengerFields();
 </script>
-
 <script>
-// === Load cruise info into summary ===
+// === Load cruise info & initialize summary ===
 document.addEventListener("DOMContentLoaded", () => {
   const selectedTitle = localStorage.getItem("selectedCruise") || localStorage.getItem("selectedPackage");
   const selectedDate = localStorage.getItem("selectedDate") || "–";
+  const summaryEls = {
+    title: document.getElementById("summaryTitle"),
+    date: document.getElementById("summaryDate"),
+    duration: document.getElementById("summaryDuration"),
+    departure: document.getElementById("summaryDeparture"),
+    arrival: document.getElementById("summaryArrival"),
+    destinations: document.getElementById("summaryDestinations"),
+    base: document.getElementById("summaryBase"),
+    adults: document.getElementById("summaryAdults"),
+    children: document.getElementById("summaryChildren"),
+    total: document.getElementById("summaryTotal")
+  };
 
   if (!selectedTitle) return;
 
   const isPackage = selectedTitle.toLowerCase().includes("package");
   const jsonFile = isPackage ? "data/packages.json" : "data/cruises.json";
 
+  let basePrice = 0;
+  let cabinPrice = 0;
+
+  // === Load cruise data ===
   fetch(jsonFile)
     .then(res => res.json())
     .then(data => {
       const cruise = Object.values(data).find(item => item.title === selectedTitle);
       if (!cruise) return;
 
-      // === Ενημέρωση Summary ===
-      document.getElementById("summaryTitle").textContent = cruise.title;
-      document.getElementById("summaryDate").textContent = selectedDate;
-      document.getElementById("summaryDuration").textContent = cruise.duration || "–";
-      document.getElementById("summaryDeparture").textContent = cruise.departure || "–";
-      document.getElementById("summaryArrival").textContent = cruise.arrival || "–";
-      document.getElementById("summaryDestinations").textContent = cruise.destinations || "–";
-      document.getElementById("summaryBase").textContent = cruise.priceNew || "–";
+      summaryEls.title.textContent = cruise.title;
+      summaryEls.date.textContent = selectedDate;
+      summaryEls.duration.textContent = cruise.duration || "–";
+      summaryEls.departure.textContent = cruise.departure || "–";
+      summaryEls.arrival.textContent = cruise.arrival || "–";
+      summaryEls.destinations.textContent = cruise.destinations || "–";
+      summaryEls.base.textContent = cruise.priceNew || "–";
 
       if (cruise.image) {
-        document.querySelector(".summary-image").innerHTML = `<img src="${cruise.image}" alt="${cruise.title}">`;
+        document.querySelector(".summary-image").innerHTML =
+          `<img src="${cruise.image}" alt="${cruise.title}">`;
       }
 
-      // === Τιμή βάσης για υπολογισμό ===
-      const basePrice = parseFloat((cruise.priceNew || "0").replace(/[^\d.]/g, "")) || 0;
-
-      function updateTotal() {
-        const adults = parseInt(document.getElementById("adults").value);
-        const children = parseInt(document.getElementById("children").value);
-        const total = basePrice * (adults + children);
-        document.getElementById("summaryTotal").textContent = `€${total.toFixed(2)}`;
-      }
-
-      document.getElementById("adults").addEventListener("change", updateTotal);
-      document.getElementById("children").addEventListener("change", updateTotal);
+      basePrice = parseFloat((cruise.priceNew || "0").replace(/[^\d.]/g, "")) || 0;
       updateTotal();
-    })
-    .catch(err => console.error("Error loading booking data:", err));
-});
+    });
 
+  // === Update total dynamically ===
+  function updateTotal() {
+    const adults = parseInt(document.getElementById("adults").value);
+    const children = parseInt(document.getElementById("children").value);
+    const total = basePrice * (adults + children) + cabinPrice;
+    summaryEls.adults.textContent = adults;
+    summaryEls.children.textContent = children;
+    summaryEls.total.textContent = `€${total.toFixed(2)}`;
+  }
 
-// === Show cabins + update right box ===
-document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("adults").addEventListener("change", updateTotal);
+  document.getElementById("children").addEventListener("change", updateTotal);
+
+  // === Continue button -> Show cabins ===
   const continueBtn = document.querySelector(".next-btn");
   const cabinSection = document.getElementById("cabinSection");
   const cabinsContainer = document.getElementById("cabinsContainer");
-  const cabinSummaryBox = document.getElementById("cabinSummaryBox");
-  const selectedCabinName = document.getElementById("selectedCabinName");
-  const selectedCabinDesc = document.getElementById("selectedCabinDesc");
 
   continueBtn.addEventListener("click", () => {
-    cabinSection.style.display = "flex";
+    cabinSection.style.display = "block";
     setTimeout(() => cabinSection.classList.add("visible"), 50);
     cabinSection.scrollIntoView({ behavior: "smooth" });
 
@@ -526,7 +502,9 @@ document.addEventListener("DOMContentLoaded", () => {
             .map(([k, v]) => `<li><strong>${k}:</strong> ${v}</li>`)
             .join("");
 
-          const images = cabin.images.map(src => `<img src="${src}" alt="${cabin.name}">`).join("");
+          const images = cabin.images
+            .map(src => `<img src="${src}" alt="${cabin.name}">`)
+            .join("");
 
           const card = document.createElement("div");
           card.className = "cabin-card";
@@ -536,7 +514,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <h3>${cabin.name}</h3>
               <p>${cabin.desc}</p>
               <ul class="cabin-details">${details}</ul>
-              <button class="select-cabin-btn">Επιλογή</button>
+              <button class="select-cabin-btn" data-cabin='${JSON.stringify(cabin)}'>Επιλογή</button>
             </div>
           `;
           cabinsContainer.appendChild(card);
@@ -544,28 +522,39 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  // === Event: Select cabin ===
+  // === Select cabin & update main summary ===
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".select-cabin-btn");
     if (!btn) return;
 
-    document.querySelectorAll(".cabin-card").forEach(card => {
-      card.style.outline = "none";
-    });
-
+    document.querySelectorAll(".cabin-card").forEach(c => c.style.outline = "none");
     const card = btn.closest(".cabin-card");
     card.style.outline = "3px solid #ff6600";
 
-    const name = card.querySelector("h3").textContent;
-    const desc = card.querySelector("p").textContent;
+    const cabin = JSON.parse(btn.dataset.cabin);
+    localStorage.setItem("selectedCabin", cabin.name);
 
-    selectedCabinName.textContent = name;
-    selectedCabinDesc.textContent = desc;
+    // --- Προσθήκη στο summary ---
+    let cabinRow = document.getElementById("summaryCabin");
+    if (!cabinRow) {
+      const hr = document.createElement("hr");
+      const row = document.createElement("div");
+      row.className = "summary-item";
+      row.id = "summaryCabin";
+      row.innerHTML = `<span class="summary-label">Καμπίνα:</span> <span>${cabin.name}</span>`;
+      document.querySelector(".booking-summary hr").insertAdjacentElement("afterend", hr);
+      document.querySelector(".booking-summary hr").insertAdjacentElement("afterend", row);
+    } else {
+      cabinRow.querySelector("span:last-child").textContent = cabin.name;
+    }
 
-    localStorage.setItem("selectedCabin", name);
+    // --- Αν έχει τιμή στο cabin.json, πρόσθεσέ τη ---
+    cabinPrice = parseFloat((cabin.price || "0").replace(/[^\d.]/g, "")) || 0;
+    updateTotal();
   });
 });
 </script>
+
 
 
 </body>
