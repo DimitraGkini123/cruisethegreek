@@ -546,6 +546,10 @@ input[type="date"]:invalid {
 <header>
   <nav class="navbar">
     <div class="logo">CruiseTheGreek.com</div>
+        <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <ul class="nav-links">
       <li><a href="index.html">HOME</a></li>
       <li><a href="results.html?type=cruise_only">CRUISES</a></li>
@@ -1211,7 +1215,16 @@ document.addEventListener("click", (e) => {
 
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
 
+    toggleBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  });
+</script>
 
 
 
