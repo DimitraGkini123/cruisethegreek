@@ -133,7 +133,57 @@
         "priceChildren": "€65",
         "image": "images/excursions/chania.jpg"
       }
-    ]
+    ],
+    "Zante": [
+  {
+    "title": "Navagio Beach & Blue Caves Cruise",
+    "desc": "Sail along the stunning coast of Zakynthos to the famous Navagio Shipwreck Beach. Enjoy swimming in turquoise waters and explore the majestic Blue Caves, known for their surreal reflections and vivid colors.",
+    "priceAdults": "€78",
+    "priceChildren": "€58",
+    "image": "images/excursions/navagio.jpg"
+  },
+  {
+    "title": "Zakynthos Town & Bochali Panorama",
+    "desc": "Discover the charming capital of Zakynthos, visit St. Dionysios Church, and admire the breathtaking panoramic view from Bochali Hill over the Ionian Sea.",
+    "priceAdults": "€59",
+    "priceChildren": "€45",
+    "image": "images/excursions/bochali.jpg"
+  }
+],
+
+"Corfu": [
+  {
+    "title": "Achilleion Palace & Corfu Town",
+    "desc": "Visit the imperial Achilleion Palace built for Empress Elisabeth of Austria and enjoy a guided walk through the UNESCO-listed old town of Corfu with its Venetian architecture and narrow alleys.",
+    "priceAdults": "€72",
+    "priceChildren": "€52",
+    "image": "images/excursions/achilleion.jpg"
+  },
+  {
+    "title": "Paleokastritsa & Theotokos Monastery",
+    "desc": "Explore one of Corfu’s most beautiful coastal villages. Visit the 13th-century Theotokos Monastery and enjoy a short boat ride among Paleokastritsa’s sea caves.",
+    "priceAdults": "€68",
+    "priceChildren": "€50",
+    "image": "images/excursions/paleokastritsa.jpg"
+  }
+],
+
+"Paxoi": [
+  {
+    "title": "Antipaxos & Blue Caves Boat Trip",
+    "desc": "Sail from Gaios to discover the hidden paradise of Antipaxos with its crystal waters, then explore the breathtaking Blue Caves along the rugged west coast of Paxos.",
+    "priceAdults": "€84",
+    "priceChildren": "€62",
+    "image": "images/excursions/antipaxos.jpg"
+  },
+  {
+    "title": "Paxos Island Stroll & Olive Museum",
+    "desc": "Enjoy a guided stroll through Gaios, the picturesque capital of Paxos, and visit the Olive Museum to learn about the island’s long tradition of olive oil production.",
+    "priceAdults": "€55",
+    "priceChildren": "€40",
+    "image": "images/excursions/paxos-olive.jpg"
+  }
+]
   },
     "MSC Musica": {
     "Santorini": [
