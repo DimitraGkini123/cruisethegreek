@@ -39,20 +39,54 @@
 
     .form-group {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
-      margin: 15px 0;
+      margin: 18px 0;
     }
 
     label {
+      display: block;
       font-weight: 600;
       color: #002b45;
+      margin-bottom: 6px;
     }
 
     input, select {
       width: 100%;
-      padding: 8px 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 10px 12px;
+      border: 1px solid #ccd6dd;
+      border-radius: 8px;
+      font-size: 15px;
+      background: #fff;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #ff6600;
+      box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+    }
+
+    input[type="date"] {
+      appearance: none;
+      -webkit-appearance: none;
+      background-color: #fff;
+      padding-right: 10px;
+      height: 42px;
+    }
+
+    .passenger-section {
+      background: #f8f9fb;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+
+    .passenger-section h4 {
+      color: #ff6600;
+      margin-top: 0;
     }
 
     .next-btn {
@@ -72,7 +106,7 @@
       background: #e05500;
     }
 
-    /* === Summary (right side) === */
+    /* === Summary === */
     .booking-right {
       flex: 1;
       max-width: 380px;
@@ -112,147 +146,28 @@
       border-top: 2px solid #ff6600;
       padding-top: 10px;
     }
-#summaryDate {
-  font-weight: 600;
-  color: #004c70;
-}
 
-/* ======= RESPONSIVE ======= */
-
-/* Tablet */
-@media (max-width: 992px) {
-  .booking-layout {
-    flex-direction: column;
-    padding: 30px 6%;
-    gap: 30px;
-  }
-
-  .booking-content {
-    width: 100%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-
-  .booking-right {
-    position: static;
-    max-width: 100%;
-    width: 100%;
-  }
-
-  .booking-summary {
-    margin-top: 20px;
-    padding: 20px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  body {
-    font-size: 15px;
-  }
-
-  .booking-layout {
-    padding: 20px 5%;
-  }
-
-  .booking-content {
-    padding: 20px;
-  }
-
-  .booking-content h2 {
-    font-size: 18px;
-  }
-
-  .form-group {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  label {
-    font-size: 14px;
-  }
-
-  input, select {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .next-btn {
-    width: 100%;
-    padding: 14px;
-    font-size: 15px;
-  }
-
-  .booking-summary {
-    padding: 18px;
-    border-radius: 14px;
-  }
-
-  .summary-image img {
-    height: 130px;
-  }
-
-  .summary-item {
-    font-size: 13.5px;
-  }
-
-  .total {
-    font-size: 16px;
-  }
-
-  /* Navbar για κινητά */
-  .navbar {
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 10px 5%;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: #002b45;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: 999;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links li {
-    text-align: center;
-    padding: 12px 0;
-  }
-
-  .menu-toggle {
-    display: block;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 22px;
-    cursor: pointer;
-  }
-
-  .logo {
-    font-size: 18px;
-  }
-}
-
-
+    @media (max-width: 992px) {
+      .booking-layout {
+        flex-direction: column;
+        padding: 30px 6%;
+        gap: 30px;
+      }
+      .booking-right {
+        position: static;
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-    <header>
+
+<header>
   <nav class="navbar">
     <div class="logo">CruiseTheGreek.com</div>
-
-    <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
     <button class="menu-toggle" aria-label="Toggle Menu">
       <i class="fa-solid fa-bars"></i>
     </button>
-
     <ul class="nav-links">
       <li><a href="index.html">HOME</a></li>
       <li><a href="results.html?type=cruise_only">CRUISES</a></li>
@@ -261,122 +176,141 @@
       <li><a href="ships.html">CRUISE SHIPS</a></li>
       <li><a href="destinations.html">DESTINATIONS</a></li>
       <li><a href="contact.html">CONTACT</a></li>
-      <li><a href="faqs.html" class="active">FAQ</a></li>
-      <li><a href="blog.html" class="active">BLOG</a></li>
+      <li><a href="faqs.html">FAQ</a></li>
+      <li><a href="blog.html">BLOG</a></li>
     </ul>
   </nav>
 </header>
 
-  <main class="booking-layout">
+<main class="booking-layout">
+  <div class="booking-content">
+    <h2>Passengers</h2>
 
-    <!-- Left: Passenger Info -->
-    <div class="booking-content">
-      <h2>Passenger Details</h2>
-
-      <div id="passengerForms"></div>
-
-      <button class="next-btn" id="confirmBookingBtn">Confirm Booking</button>
-    </div>
-
-    <!-- Right: Summary -->
-    <div class="booking-right">
-      <div class="booking-summary" id="tourSummary">
-        <h3 style="text-align:center; border-bottom:2px solid #ff6600; padding-bottom:6px;">Your Tour Summary</h3>
-        <div class="summary-image"><img id="summaryImg" src="" alt="Tour Image"></div>
-        <div class="summary-item"><span class="summary-label">Tour:</span> <span id="summaryTitle"></span></div>
-        <div class="summary-item"><span class="summary-label">Duration:</span> <span id="summaryDuration"></span></div>
-        <div class="summary-item"><span class="summary-label">Start Time:</span> <span id="summaryStart"></span></div>
-        <div class="summary-item"><span class="summary-label">Location:</span> <span id="summaryLocation"></span></div>
-        <div class="summary-item"><span class="summary-label">Selected Date:</span> <span id="summaryDate">–</span></div>
-
-        <div class="total">Total: <span id="summaryPrice"></span></div>
+    <div class="form-group">
+      <div style="flex:1;">
+        <label for="adults">Adults</label>
+        <select id="adults">
+          <option value="1">1 Adult</option>
+          <option value="2" selected>2 Adults</option>
+          <option value="3">3 Adults</option>
+          <option value="4">4 Adults</option>
+        </select>
+      </div>
+      <div style="flex:1;">
+        <label for="children">Children</label>
+        <select id="children">
+          <option value="0" selected>0 Children</option>
+          <option value="1">1 Child</option>
+          <option value="2">2 Children</option>
+          <option value="3">3 Children</option>
+        </select>
       </div>
     </div>
 
-  </main>
+    <div id="passengerForms"></div>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Φόρτωση στοιχείων tour από localStorage
-    const data = localStorage.getItem("selectedTourDetails");
-    if (!data) {
-      alert("No tour data found.");
-      window.location.href = "tours.html";
-      return;
-    }
+    <button class="next-btn" id="confirmBookingBtn">Confirm Booking</button>
+  </div>
 
-    const tour = JSON.parse(data);
+  <div class="booking-right">
+    <div class="booking-summary" id="tourSummary">
+      <h3 style="text-align:center; border-bottom:2px solid #ff6600; padding-bottom:6px;">Your Tour Summary</h3>
+      <div class="summary-image"><img id="summaryImg" src="" alt="Tour Image"></div>
+      <div class="summary-item"><span class="summary-label">Tour:</span> <span id="summaryTitle"></span></div>
+      <div class="summary-item"><span class="summary-label">Duration:</span> <span id="summaryDuration"></span></div>
+      <div class="summary-item"><span class="summary-label">Start Time:</span> <span id="summaryStart"></span></div>
+      <div class="summary-item"><span class="summary-label">Location:</span> <span id="summaryLocation"></span></div>
+      <div class="summary-item"><span class="summary-label">Selected Date:</span> <span id="summaryDate">–</span></div>
+<div class="summary-item"><span class="summary-label">Price per person:</span> <span id="summaryPricePer">–</span></div>
+<div class="summary-item"><span class="summary-label">Adults:</span> <span id="summaryAdults">2</span></div>
+<div class="summary-item"><span class="summary-label">Children:</span> <span id="summaryChildren">0</span></div>
+<div class="total">Total: <span id="summaryTotal">–</span></div>
 
-    // === Γέμισε το summary ===
-    document.getElementById("summaryImg").src = tour.imageMain;
-    document.getElementById("summaryTitle").textContent = tour.title;
-    document.getElementById("summaryDuration").textContent = tour.duration;
-    document.getElementById("summaryStart").textContent = tour.startTime;
-    document.getElementById("summaryLocation").textContent = tour.location;
-    document.getElementById("summaryDate").textContent = tour.selectedDate || "–";
+    </div>
+  </div>
+</main>
 
-    document.getElementById("summaryPrice").textContent = tour.price;
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const data = localStorage.getItem("selectedTourDetails");
+  if (!data) {
+    alert("No tour data found.");
+    window.location.href = "tours.html";
+    return;
+  }
 
-    // === Δημιούργησε φόρμες επιβατών ===
-    const passengerCount = 1; // προς το παρόν 1 (θα μπορείς να αλλάξεις σε πολλαπλούς later)
-    const container = document.getElementById("passengerForms");
+  const tour = JSON.parse(data);
 
-    for (let i = 1; i <= passengerCount; i++) {
+  // === DOM elements ===
+  const adultsSelect = document.getElementById("adults");
+  const childrenSelect = document.getElementById("children");
+  const container = document.getElementById("passengerForms");
+
+  const summaryAdults = document.getElementById("summaryAdults");
+  const summaryChildren = document.getElementById("summaryChildren");
+  const summaryPricePer = document.getElementById("summaryPricePer");
+  const summaryTotal = document.getElementById("summaryTotal");
+
+  // === Fill static info ===
+  document.getElementById("summaryImg").src = tour.imageMain;
+  document.getElementById("summaryTitle").textContent = tour.title;
+  document.getElementById("summaryDuration").textContent = tour.duration;
+  document.getElementById("summaryStart").textContent = tour.startTime;
+  document.getElementById("summaryLocation").textContent = tour.location;
+  document.getElementById("summaryDate").textContent = tour.selectedDate || "–";
+
+  // === Extract numeric price ===
+  const basePrice = parseFloat((tour.price || "0").replace(/[^\d.]/g, "")) || 0;
+  summaryPricePer.textContent = `€${basePrice.toFixed(2)}`;
+
+  function updateSummary() {
+    const adults = parseInt(adultsSelect.value);
+    const children = parseInt(childrenSelect.value);
+    const total = adults + children;
+
+    summaryAdults.textContent = adults;
+    summaryChildren.textContent = children;
+
+    // total price (same for adults & children)
+    const totalPrice = basePrice * total;
+    summaryTotal.textContent = `€${totalPrice.toFixed(2)}`;
+
+    // regenerate passenger forms
+    container.innerHTML = "";
+    for (let i = 1; i <= total; i++) {
+      const type = i <= adults ? "Adult" : "Child";
       const div = document.createElement("div");
       div.className = "passenger-section";
       div.innerHTML = `
-        <h4>Passenger ${i}</h4>
+        <h4>${type} ${i}</h4>
         <div class="form-group">
-          <div>
-            <label>First Name</label>
-            <input type="text" required>
-          </div>
-          <div>
-            <label>Last Name</label>
-            <input type="text" required>
-          </div>
+          <div><label>First Name</label><input type="text" required></div>
+          <div><label>Last Name</label><input type="text" required></div>
         </div>
         <div class="form-group">
-          <div>
-            <label>Nationality</label>
-            <input type="text" required>
-          </div>
-          <div>
-            <label>Date of Birth</label>
-            <input type="date" required>
-          </div>
+          <div><label>Nationality</label><input type="text" required></div>
+          <div><label>Date of Birth</label><input type="date" required></div>
         </div>
         <div class="form-group">
-          <div>
-            <label>Phone</label>
-            <input type="tel" placeholder="+30 ..." required>
-          </div>
-          <div>
-            <label>Email</label>
-            <input type="email" required>
-          </div>
+          <div><label>Phone</label><input type="tel" placeholder="+30 ..." required></div>
+          <div><label>Email</label><input type="email" required></div>
         </div>
       `;
       container.appendChild(div);
     }
+  }
 
-    document.getElementById("confirmBookingBtn").addEventListener("click", () => {
-      alert("✅ Booking confirmed for: " + tour.title);
-      localStorage.removeItem("selectedTourDetails");
-      window.location.href = "index.html";
-    });
+  updateSummary();
+  adultsSelect.addEventListener("change", updateSummary);
+  childrenSelect.addEventListener("change", updateSummary);
+
+  document.getElementById("confirmBookingBtn").addEventListener("click", () => {
+    alert("✅ Booking confirmed for: " + tour.title);
+    localStorage.removeItem("selectedTourDetails");
+    window.location.href = "index.html";
   });
-  </script>
+});
 
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    toggleBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-    });
-  });
 </script>
 
 </body>

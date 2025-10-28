@@ -890,11 +890,7 @@ html {
   box-shadow: 0 6px 25px rgba(255, 102, 0, 0.5);
   background: linear-gradient(90deg, #ff8533, #ffa366);
 }
-.floating-book-btn {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.3s ease;
-}
+
 
 @keyframes book-bounce {
   0%, 100% {
@@ -1043,69 +1039,6 @@ html {
   margin-bottom: 40px;
 }
 
-/* ===== SHIP CHARACTERISTICS ===== */
-.ship-info {
-  margin: 60px auto;
-  max-width: 900px;
-  text-align: center;
-}
-
-
-/* Container */
-.ship-table {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
-/* Κάθε γραμμή */
-.ship-row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(0, 43, 69, 0.15);
-  transition: background 0.3s ease;
-}
-
-.ship-row:hover {
-  background: rgba(255, 102, 0, 0.05);
-}
-
-/* Στήλες */
-.ship-col {
-  width: 48%;
-  text-align: left;
-}
-
-/* Ετικέτα (κατηγορία) */
-.ship-col .label {
-  display: block;
-  font-weight: 800;
-  color: #ff6600; /* 🔸 Πορτοκαλί */
-  font-size: 17px;
-  margin-bottom: 6px;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
-}
-
-/* Τιμή */
-.ship-col .value {
-  font-size: 17px;
-  color: #002b45; /* 🔹 Navy blue για αντίθεση */
-  font-weight: 600;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .ship-row {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .ship-col {
-    width: 100%;
-  }
-}
 
 
 /* ===== ONBOARD FACILITIES ===== */
@@ -1277,24 +1210,64 @@ html {
   box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
 }
 
-/* Deck image */
 .deck-image-container {
   position: relative;
-}
-
-.deck-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  margin: 15px auto;
   width: 100%;
-  max-width: 850px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 43, 69, 0.15);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: opacity 0.3s ease;
+  max-width: 900px;   /* 🔸 πιο στενό πλαίσιο */
+  height: 300px;      /* 🔸 πολύ πιο κοντό ύψος */
+  overflow: hidden;
 }
 
-.deck-image.fade {
-  opacity: 0.3;
+/* Περιστροφή + scaling */
+.deck-image {
+  height: auto;
+  width: 90%;
+  transform: rotate(90deg) scale(0.2); /* 🔸 μικρότερη κλίμακα */
+  transform-origin: center center;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
 }
 
+/* Zoom effect */
+.deck-image-container:hover .deck-image {
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* Κουμπί φακού */
+.zoom-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #002b45;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.zoom-btn:hover {
+  background: #ff6600;
+  color: white;
+}
+
+/* =====CABINS ===== */
 .cabins-container {
   display: flex;
   flex-wrap: wrap;
@@ -1376,29 +1349,32 @@ html {
 .cabin-lightbox .prev { left: 60px; }
 .cabin-lightbox .next { right: 60px; }
 
-
 /* ===== SHIP CHARACTERISTICS ===== */
 .ship-info {
   margin: 50px auto;
   max-width: 900px;
   text-align: left;
   border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 43, 69, 0.1);
+  overflow: hidden;
+  padding-bottom: 10px;
 }
 
-/* Κεντρικός τίτλος */
+/* Κεντρικός τίτλος (όπως ήταν πριν) */
 .ship-info h3 {
   color: #002b45;
   font-size: 24px;
   text-align: center;
   margin-bottom: 25px;
   position: relative;
-  text-transform: uppercase;
+
 }
 
-/* Στυλ για πίνακα */
+/* Πίνακας desktop */
 .ship-table {
   width: 100%;
-  border: 1px solid #ddd;
   border-collapse: collapse;
   display: table;
 }
@@ -1407,55 +1383,96 @@ html {
 .ship-row {
   display: table-row;
   background: #f9f9f9;
+  transition: background 0.2s;
 }
 
 .ship-row:nth-child(even) {
-  background: #f0f2f4;
+  background: #f2f5f7;
 }
 
-/* Κάθε κελί */
+.ship-row:hover {
+  background: #fcefe6;
+}
+
+/* Κελιά */
 .ship-col {
   display: table-cell;
   width: 50%;
-  padding: 10px 15px;
+  padding: 12px 18px;
   vertical-align: top;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid #e4e4e4;
 }
 
-/* Ετικέτες (τίτλοι) */
+/* Ετικέτες */
 .ship-col .label {
-  font-weight: 700;
+  font-weight: 600;
   color: #002b45;
   font-size: 15px;
+  display: block;
+  margin-bottom: 3px;
 }
 
 /* Τιμές */
 .ship-col .value {
-  color: #001f3d;
+  color: #004c70;
   font-size: 15px;
+  font-weight: 500;
 }
 
-/* Mobile responsive */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
+  .ship-info {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 43, 69, 0.08);
+  }
+
+  .ship-info h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
   .ship-table {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
+
   .ship-row {
-    display: block;
-    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    padding: 12px 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   }
+
   .ship-col {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border: none;
-    border-bottom: 1px solid #ddd;
-    padding: 8px 0;
+    padding: 6px 0;
   }
+
   .ship-col .label {
+    color: #002b45;
     font-weight: 600;
+    font-size: 14px;
+  }
+
+  .ship-col .value {
+    font-size: 14px;
+    color: #004c70;
+    font-weight: 500;
+  }
+
+  /* Κάθε row σαν "κάρτα" */
+  .ship-row:not(:last-child) {
+    margin-bottom: 8px;
   }
 }
-
 
 /* ===== FAQ SECTION ===== */
 .faq {

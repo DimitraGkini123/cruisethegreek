@@ -450,6 +450,15 @@
     <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
   </div>
 </footer>
+<!-- === Booking Calendar Modal === -->
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3 id="bookingTitle"></h3>
+    <div id="calendarContainer"></div>
+    <button id="continueBooking">Continue Booking</button>
+  </div>
+</div>
 
 <!-- ================================== Scripts ====================================== -->
 
@@ -911,7 +920,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desc: "Relax at our panoramic sea-view pool with sunbeds and cocktail service."
     },
     {
-      img: "images/facility1.jpg",
+      img: "images/restaurant.jpg",
       title: "Gourmet Restaurant",
       desc: "Enjoy authentic Mediterranean dishes prepared by world-class chefs."
     },
@@ -1118,6 +1127,155 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+
+<script>
+document.addEventListener("click", async e => {
+  const btn = e.target.closest(".book-btn, .floating-book-btn");
+  if (!btn) return;
+
+  // Εύρεση τίτλου κρουαζιέρας
+  let cruiseTitle = "Cruise";
+  const card = btn.closest(".card");
+  if (card) {
+    cruiseTitle =
+      card.querySelector(".cruise-title, .package-title")?.textContent.trim() || "Cruise";
+  } else {
+    // Αν πατήθηκε το floating κουμπί στο details page
+    cruiseTitle =
+      document.querySelector(".cruise-title, .package-title")?.textContent.trim() ||
+      localStorage.getItem("selectedCruise") ||
+      "Cruise";
+  }
+
+  // === Φόρτωσε cruises.json ===
+  try {
+    const res = await fetch("data/cruises.json");
+    const data = await res.json();
+
+    // Εύρεση αντικειμένου με βάση τον τίτλο
+    const cruise = Object.values(data).find(
+      c => c.title.trim().toLowerCase() === cruiseTitle.trim().toLowerCase()
+    );
+
+    if (!cruise || !cruise.dates || cruise.dates.length === 0) {
+      alert("Δεν υπάρχουν διαθέσιμες ημερομηνίες για αυτή την κρουαζιέρα.");
+      return;
+    }
+
+    // Αποθήκευση προσωρινά για πιθανή μελλοντική χρήση
+    localStorage.setItem("selectedCruise", cruise.title);
+    localStorage.setItem("availableDates", JSON.stringify(cruise.dates));
+
+    // Εμφάνιση ημερολογίου
+    showCalendarModal(cruise.title, cruise.dates);
+
+  } catch (err) {
+    console.error("Σφάλμα φόρτωσης cruises.json:", err);
+    alert("Σφάλμα κατά τη φόρτωση των διαθέσιμων ημερομηνιών.");
+  }
+});
+
+
+// === Συνάρτηση για εμφάνιση ημερολογίου ===
+function showCalendarModal(title, availableDates) {
+  const modal = document.getElementById("bookingModal");
+  const container = document.getElementById("calendarContainer");
+  const titleEl = document.getElementById("bookingTitle");
+  titleEl.textContent = `Book: ${title}`;
+  modal.style.display = "flex";
+
+  const monthMap = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5,
+                     Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+
+  const parsedDates = availableDates.map(d => {
+    const [day, mon, year] = d.split(" ");
+    const month = monthMap[mon];
+    if (month === undefined) return null;
+    return new Date(year, month, parseInt(day));
+  }).filter(Boolean);
+
+  let current = parsedDates.length > 0 ? new Date(parsedDates[0]) : new Date();
+
+  function renderCalendar(month, year) {
+    container.innerHTML = "";
+    const monthNames = [
+      "January","February","March","April","May","June",
+      "July","August","September","October","November","December"
+    ];
+    const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+
+    const header = document.createElement("div");
+    header.className = "calendar-header";
+    header.innerHTML = `
+      <button id="prevMonth">&#10094;</button>
+      <div><strong>${monthNames[month]} ${year}</strong></div>
+      <button id="nextMonth">&#10095;</button>
+    `;
+    container.appendChild(header);
+
+    const grid = document.createElement("div");
+    grid.className = "calendar-grid";
+    days.forEach(d => {
+      const dn = document.createElement("div");
+      dn.className = "day-name";
+      dn.textContent = d;
+      grid.appendChild(dn);
+    });
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const totalDays = new Date(year, month + 1, 0).getDate();
+    for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement("div"));
+
+    for (let day = 1; day <= totalDays; day++) {
+      const cell = document.createElement("div");
+      cell.className = "day";
+      cell.textContent = day;
+
+      const isAvailable = parsedDates.some(d =>
+        d.getDate() === day && d.getMonth() === month && d.getFullYear() === year
+      );
+
+      if (isAvailable) {
+        cell.classList.add("available");
+        cell.addEventListener("click", () => {
+          document.querySelectorAll(".calendar-grid .available").forEach(c => c.classList.remove("selected"));
+          cell.classList.add("selected");
+          cell.dataset.selectedDate = `${day} ${monthNames[month]} ${year}`;
+        });
+      }
+      grid.appendChild(cell);
+    }
+
+    container.appendChild(grid);
+
+    document.getElementById("prevMonth").onclick = () => {
+      current.setMonth(current.getMonth() - 1);
+      renderCalendar(current.getMonth(), current.getFullYear());
+    };
+    document.getElementById("nextMonth").onclick = () => {
+      current.setMonth(current.getMonth() + 1);
+      renderCalendar(current.getMonth(), current.getFullYear());
+    };
+  }
+
+  renderCalendar(current.getMonth(), current.getFullYear());
+
+  document.querySelector(".close-btn").onclick = () => (modal.style.display = "none");
+  window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+
+  document.getElementById("continueBooking").onclick = () => {
+    const selected = document.querySelector(".calendar-grid .selected");
+    if (!selected) {
+      alert("Please choose a date!");
+      return;
+    }
+
+    const chosen = selected.dataset.selectedDate;
+    localStorage.setItem("selectedDate", chosen);
+    window.location.href = "booking.html";
+  };
+}
+</script>
 
 
 </body>

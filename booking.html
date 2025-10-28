@@ -538,6 +538,25 @@ input[type="date"]:invalid {
   transform: translateY(-2px);
 }
 
+/* === FIX: Date input να μη ξεχειλίζει === */
+input[type="date"] {
+  box-sizing: border-box;     /* μετρά padding και border στο συνολικό πλάτος */
+  width: 100%;                /* δεν θα ξεπερνά ποτέ το container */
+  padding-right: 8px;         /* μικρό περιθώριο δεξιά για το εικονίδιο */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+/* Προαιρετικά, για να μικρύνει λίγο το εικονίδιο του ημερολογίου */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  padding: 0;
+  margin-right: 4px;
+  cursor: pointer;
+}
+
+
 
   </style>
 </head>

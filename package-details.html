@@ -221,7 +221,6 @@
 </div>
 
 
-
   <!-- 5️⃣ Cabins -->
 <div class="cabins">
   <h3>Cabins</h3>
@@ -706,17 +705,6 @@
     <p>© 2016 - 2025 <span>CruiseTheGreek.com</span>. All Rights Reserved.</p>
   </div>
 </footer>
-
-<!-- ======== BOOKING CALENDAR MODAL ======== -->
-<div id="bookingModal" class="modal">
-  <div class="modal-content booking-box">
-    <span class="close-btn">&times;</span>
-    <h2 id="bookingTitle">Επιλέξτε ημερομηνία αναχώρησης</h2>
-    <p>Βρείτε τις διαθέσιμες αναχωρήσεις με <strong style="color:#ff6600;">πορτοκαλί</strong> ένδειξη.</p>
-    <div id="calendarContainer"></div>
-    <button id="continueBooking" class="book-btn">Continue</button>
-  </div>
-</div>
 
 <!-- ================================== Scripts ====================================== -->
  <!-- ===== Lightbox Script ===== -->
@@ -1558,146 +1546,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const container = document.getElementById("similarCruisesContainer");
       container.innerHTML = "<p style='color:#666; text-align:center;'>Could not load similar cruises.</p>";
     });
-});
-</script>
-
-<script>
-// --- Καθαρισμός δεδομένων προηγούμενης κράτησης ---
-document.addEventListener("DOMContentLoaded", () => {
-  ["selectedCabin", "selectedExcursions", "bookingPassengers"].forEach(k => localStorage.removeItem(k));
-});
-
-// --- Συνάρτηση που εμφανίζει το ημερολόγιο ---
-function showCalendarModal(title, availableDates) {
-  const modal = document.getElementById("bookingModal");
-  const container = document.getElementById("calendarContainer");
-  const titleEl = document.getElementById("bookingTitle");
-  titleEl.textContent = `Book: ${title}`;
-  modal.style.display = "flex";
-
-  const monthNames = ["January","February","March","April","May","June","July",
-    "August","September","October","November","December"];
-
-  // Αν δεν υπάρχουν διαθέσιμες ημερομηνίες
-  if (!availableDates || availableDates.length === 0) {
-    availableDates = ["April 4 2025", "April 11 2025", "April 18 2025"];
-  }
-
-  const parsedDates = availableDates.map(d => new Date(d));
-  let current = parsedDates[0] || new Date();
-
-  function renderCalendar(month, year) {
-    container.innerHTML = "";
-    const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
-
-    // === HEADER ===
-    const header = document.createElement("div");
-    header.className = "calendar-header";
-    header.innerHTML = `
-      <button id="prevMonth">&#10094;</button>
-      <div><strong>${monthNames[month]} ${year}</strong></div>
-      <button id="nextMonth">&#10095;</button>
-    `;
-    container.appendChild(header);
-
-    // === GRID ===
-    const grid = document.createElement("div");
-    grid.className = "calendar-grid";
-    days.forEach(d => {
-      const dayName = document.createElement("div");
-      dayName.className = "day-name";
-      dayName.textContent = d;
-      grid.appendChild(dayName);
-    });
-
-    const firstDay = new Date(year, month, 1).getDay();
-    const totalDays = new Date(year, month + 1, 0).getDate();
-    for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement("div"));
-
-    for (let day = 1; day <= totalDays; day++) {
-      const cell = document.createElement("div");
-      cell.className = "day";
-      cell.textContent = day;
-
-      const isAvailable = parsedDates.some(d =>
-        d.getDate() === day && d.getMonth() === month && d.getFullYear() === year
-      );
-
-      if (isAvailable) {
-        cell.classList.add("available");
-        cell.addEventListener("click", () => {
-          document.querySelectorAll(".day.available").forEach(c => c.classList.remove("selected"));
-          cell.classList.add("selected");
-          cell.dataset.selectedDate = `${day} ${monthNames[month]} ${year}`;
-        });
-      }
-      grid.appendChild(cell);
-    }
-    container.appendChild(grid);
-
-    // αλλαγή μηνών
-    document.getElementById("prevMonth").onclick = () => {
-      current.setMonth(current.getMonth() - 1);
-      renderCalendar(current.getMonth(), current.getFullYear());
-    };
-    document.getElementById("nextMonth").onclick = () => {
-      current.setMonth(current.getMonth() + 1);
-      renderCalendar(current.getMonth(), current.getFullYear());
-    };
-  }
-
-  renderCalendar(current.getMonth(), current.getFullYear());
-
-  // Κλείσιμο modal
-  document.querySelector("#bookingModal .close-btn").onclick = () => (modal.style.display = "none");
-  window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
-
-  // Συνέχεια στο booking.html
-  document.getElementById("continueBooking").onclick = () => {
-    const selected = document.querySelector(".day.selected");
-    if (!selected) {
-      alert("Please choose a date!");
-      return;
-    }
-    const chosen = selected.dataset.selectedDate;
-    localStorage.setItem("selectedDate", chosen);
-    localStorage.setItem("selectedCruise", title);
-    window.location.href = "booking.html";
-  };
-}
-
-// --- Ενεργοποίηση του κουμπιού Book Now ---
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".book-btn, .floating-book-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const selectedTitle = localStorage.getItem("selectedPackage");
-      if (!selectedTitle) {
-        alert("No selected package found.");
-        return;
-      }
-
-      // 🔹 Φόρτωση ημερομηνιών από packages.json
-      fetch("data/packages.json")
-        .then(res => res.json())
-        .then(data => {
-          const pkg = Object.values(data).find(p => p.title === selectedTitle);
-          if (!pkg) {
-            alert("Package not found.");
-            return;
-          }
-
-          // Πάρε τις ημερομηνίες από το πεδίο dates (αν υπάρχει)
-          const availableDates = pkg.dates || [];
-          const title = pkg.title || "Cruise Package";
-
-          showCalendarModal(title, availableDates);
-        })
-        .catch(err => {
-          console.error("❌ Error loading packages.json:", err);
-          alert("Error loading package data.");
-        });
-    });
-  });
 });
 </script>
 

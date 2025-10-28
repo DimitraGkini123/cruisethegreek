@@ -406,7 +406,7 @@
 
   "Celestyal Three Continents": {
     "title": "Celestyal Three Continents",
-    "image": "images/cruises/three_continents.jpg",
+    "image": "images/three-continents.png",
     "tag": "CRUISE ONLY",
     "route": "Piraeus,Greece|Alexandria,Egypt|Limassol,Cyprus|Rhodes,Greece|Kusadasi,Turkey|Athens,Greece",
     "duration": "7 days / 6 nights",
@@ -422,7 +422,7 @@
     "ship": "Celestyal Discovery",
     "company": "Celestyal Cruises",
     "gallery": [
-      "images/alexandria.jpg",
+      "images/alexandria.jpeg",
       "images/limassol.jpg",
       "images/rhodes.jpg",
       "images/kusadasi.jpg"
@@ -448,7 +448,7 @@
         "desc": "Excursion to the Great Pyramids of Giza and the Sphinx.",
         "arrival": "07:00",
         "departureTime": "22:00",
-        "image": "images/egypt.jpg"
+        "image": "images/alexandria.jpeg"
       },
       {
         "day": 3,
@@ -456,7 +456,7 @@
         "desc": "Explore the medieval castle and local wineries.",
         "arrival": "10:00",
         "departureTime": "18:00",
-        "image": "images/cyprus.jpg"
+        "image": "images/limassol.jpg"
       },
       {
         "day": 4,
@@ -480,7 +480,7 @@
         "desc": "Relax onboard and enjoy the Mediterranean views.",
         "arrival": "",
         "departureTime": "",
-        "image": "images/sea.jpg"
+        "image": "images/atsea.jpg"
       },
       {
         "day": 7,
