@@ -1115,6 +1115,23 @@ document.addEventListener("DOMContentLoaded", () => {
         itineraryContainer.innerHTML = "<p>No itinerary available for this cruise.</p>";
       }
 
+      if (window.innerWidth <= 768) {
+  document.querySelectorAll(".timeline-item").forEach(item => {
+    const text = item.querySelector(".text p");
+    if (!text) return;
+
+    const indicator = document.createElement("div");
+    indicator.className = "expand-indicator";
+    indicator.textContent = "Tap to read more ▼";
+    item.querySelector(".text").appendChild(indicator);
+
+    item.addEventListener("click", () => {
+      const expanded = item.classList.toggle("expanded");
+      indicator.textContent = expanded ? "Tap to collapse ▲" : "Tap to read more ▼";
+    });
+  });
+}
+
       // === Αποθήκευση πλοίου και φόρτωση δεδομένων ===
       if (pkg.ship) {
         loadShipDetails(pkg.ship);
