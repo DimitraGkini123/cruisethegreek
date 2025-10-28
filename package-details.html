@@ -706,6 +706,16 @@
   </div>
 </footer>
 
+<!-- === Booking Calendar Modal === -->
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3 id="bookingTitle"></h3>
+    <div id="calendarContainer"></div>
+    <button id="continueBooking">Continue Booking</button>
+  </div>
+</div>
+
 <!-- ================================== Scripts ====================================== -->
  <!-- ===== Lightbox Script ===== -->
   <script>
@@ -1549,7 +1559,174 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+  // === Book Now buttons handler ===
+  document.addEventListener("click", async e => {
+    const btn = e.target.closest(".book-btn, .floating-book-btn");
+    if (!btn) return;
+
+    const card = btn.closest(".card");
+    let packageTitle = "Cruise Package";
+
+    if (card) {
+      packageTitle =
+        card.querySelector(".package-title, .cruise-title")?.textContent.trim() || "Cruise Package";
+    } else {
+      packageTitle =
+        document.querySelector(".package-title, .cruise-title")?.textContent.trim() ||
+        localStorage.getItem("selectedPackage") ||
+        "Cruise Package";
+    }
+
+    try {
+      const res = await fetch("data/packages.json");
+      const data = await res.json();
+      const allPackages = Object.values(data);
+      const pkg = allPackages.find(
+        p => p.title?.trim().toLowerCase() === packageTitle.trim().toLowerCase()
+      );
+
+      if (!pkg || !pkg.dates?.length) {
+        alert("Δεν υπάρχουν διαθέσιμες ημερομηνίες για αυτό το πακέτο.");
+        return;
+      }
+
+      // ✅ Αποθήκευση τίτλου & ημερομηνιών
+      localStorage.setItem("selectedPackage", pkg.title);
+      localStorage.setItem("availableDates", JSON.stringify(pkg.dates));
+
+      // Εμφάνιση ημερολογίου
+      showCalendarModal(pkg.title, pkg.dates);
+    } catch (err) {
+      console.error("Σφάλμα φόρτωσης packages.json:", err);
+      alert("Σφάλμα κατά τη φόρτωση των διαθέσιμων ημερομηνιών.");
+    }
+  });
+
+
+  // === Calendar modal ===
+  function showCalendarModal(title, availableDates) {
+    const modal = document.getElementById("bookingModal");
+    const container = document.getElementById("calendarContainer");
+    const titleEl = document.getElementById("bookingTitle");
+    titleEl.textContent = `Book: ${title}`;
+    modal.style.display = "flex";
+
+    const monthMap = {
+      Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+      Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
+    };
+
+    const parsedDates = availableDates.map(d => {
+      const [day, mon, year] = d.split(" ");
+      const month = monthMap[mon];
+      if (month === undefined) return null;
+      return new Date(year, month, parseInt(day));
+    }).filter(Boolean);
+
+    let current = parsedDates.length > 0 ? new Date(parsedDates[0]) : new Date();
+
+    function renderCalendar(month, year) {
+      container.innerHTML = "";
+
+      const monthNames = [
+        "January","February","March","April",
+        "May","June","July","August",
+        "September","October","November","December"
+      ];
+      const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+
+      // === Header ===
+      const header = document.createElement("div");
+      header.className = "calendar-header";
+      header.innerHTML = `
+        <button id="prevMonth">&#10094;</button>
+        <div><strong>${monthNames[month]} ${year}</strong></div>
+        <button id="nextMonth">&#10095;</button>
+      `;
+      container.appendChild(header);
+
+      // === Grid ===
+      const grid = document.createElement("div");
+      grid.className = "calendar-grid";
+
+      // Ονόματα ημερών
+      days.forEach(d => {
+        const dn = document.createElement("div");
+        dn.className = "day-name";
+        dn.textContent = d;
+        grid.appendChild(dn);
+      });
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const totalDays = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement("div"));
+
+      // Ημέρες μήνα
+      for (let day = 1; day <= totalDays; day++) {
+        const cell = document.createElement("div");
+        cell.className = "day";
+        cell.textContent = day;
+
+        const isAvailable = parsedDates.some(d =>
+          d.getDate() === day && d.getMonth() === month && d.getFullYear() === year
+        );
+
+        if (isAvailable) {
+          cell.classList.add("available");
+          cell.addEventListener("click", () => {
+            container.querySelectorAll(".available").forEach(c => c.classList.remove("selected"));
+            cell.classList.add("selected");
+            cell.dataset.selectedDate = `${day} ${monthNames[month]} ${year}`;
+          });
+        }
+
+        grid.appendChild(cell);
+      }
+
+      container.appendChild(grid);
+
+      document.getElementById("prevMonth").onclick = () => {
+        current.setMonth(current.getMonth() - 1);
+        renderCalendar(current.getMonth(), current.getFullYear());
+      };
+      document.getElementById("nextMonth").onclick = () => {
+        current.setMonth(current.getMonth() + 1);
+        renderCalendar(current.getMonth(), current.getFullYear());
+      };
+    }
+
+    renderCalendar(current.getMonth(), current.getFullYear());
+
+    // === Κλείσιμο ===
+    const closeBtn = modal.querySelector(".close-btn");
+    closeBtn.onclick = () => (modal.style.display = "none");
+    window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+
+    // === Συνέχεια κράτησης ===
+    document.getElementById("continueBooking").onclick = () => {
+      const selected = container.querySelector(".selected");
+      if (!selected) {
+        alert("Please choose a date!");
+        return;
+      }
+
+      const chosen = selected.dataset.selectedDate;
+      const packageTitle = document.getElementById("bookingTitle").textContent.replace("Book: ", "");
+
+      // ✅ αποθήκευση σωστά για booking.html
+      localStorage.setItem("selectedDate", chosen);
+      localStorage.setItem("selectedPackage", packageTitle);
+
+      // Μετάβαση
+      window.location.href = "booking.html";
+    };
+  }
+});
+</script>
 
 
 </body>
