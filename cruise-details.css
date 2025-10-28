@@ -69,26 +69,58 @@ body {
   margin-bottom: 12px;
   letter-spacing: 0.5px;
 }
+/* ===== Cruise Meta Section ===== */
 .cruise-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  color: #444;
-  font-size: 13px;
+  align-items: center;
+  gap: 12px 25px;            /* οριζόντιο & κάθετο διάστημα */
+  color: #0f2f44;
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin-top: 10px;
 }
+
+/* κάθε info κομμάτι */
 .cruise-meta span {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-right: 16px;
-  margin-bottom: 8px;
   color: #0f2f44;
+  font-weight: 500;
 }
 
+/* τα icons */
 .cruise-meta i {
   color: #ff6600;
-  width: 18px;
+  font-size: 15px;
+  width: 20px;
   text-align: center;
+}
+
+/* τα spans με route να είναι σε πλήρες πλάτος */
+.cruise-meta span:nth-child(4),
+.cruise-meta span:nth-child(5) {
+  flex: 1 1 100%;
+}
+
+/* highlight για το ship name */
+.cruise-meta #cruiseShip {
+  font-weight: 700;
+  color: #004d73;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .cruise-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cruise-meta span {
+    margin-right: 0;
+  }
 }
 
 

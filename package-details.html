@@ -274,9 +274,7 @@
       </div>
     </div>
   </div>
-
-  <style>
-    /* ===== Combined Section ===== */
+<style>
 /* ===== Combined Section ===== */
 .combined-section {
   margin-top: 40px;
@@ -295,16 +293,16 @@
   margin-bottom: 25px;
 }
 
+/* 🔹 Κεντρική διάταξη 2 στηλών (Hotels / Tours) */
 .combined-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 🔸 2 στήλες: Hotels | Tours */
+  grid-template-columns: 1fr 1fr;
   gap: 40px;
-  flex-wrap: wrap;
   align-items: start;
   justify-content: center;
 }
 
-/* Hotel section κάθετο */
+/* ===== HOTEL CONTAINER ===== */
 #hotelContainer {
   display: flex;
   flex-direction: column;
@@ -312,124 +310,87 @@
   gap: 25px;
 }
 
-/* Tours section οριζόντιο layout */
+/* ===== TOURS CONTAINER ===== */
 #toursContainer {
   display: flex;
-  flex-wrap: wrap;              /* 🔸 όταν υπάρχουν >4, πάνε σε επόμενη σειρά */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
-  max-width: 1400px;
+  gap: 22px;
+  width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
-/*  Κάθε tour card ίδιο μέγεθος και στοίχιση */
-.tour-card {
-  flex: 1 1 calc(25% - 25px);   /* 4 ανά σειρά */
-  max-width: 320px;
-  min-width: 260px;
-  height: 410px;
-}
-
-@media (max-width: 1200px) {
-  .tour-card {
-    flex: 1 1 calc(33.33% - 25px); /* 3 ανά σειρά */
-  }
-}
-
-@media (max-width: 900px) {
-  .tour-card {
-    flex: 1 1 calc(50% - 25px); /* 2 ανά σειρά */
-  }
-}
-
-@media (max-width: 600px) {
-  .tour-card {
-    flex: 1 1 100%; /* 1 ανά σειρά */
-  }
-}
-@media (max-width: 600px) {
-  .combined-container {
-    flex-direction: column;  /* 🔸 Το κάνει κάθετο */
-    align-items: center;     /* 🔸 Κεντράρει */
-  }
-
-  .hotel-card {
-    order: 1; /* 🔸 πρώτο */
-    width: 100%;
-    max-width: 95%;
-  }
-
-  .tour-card {
-    order: 2; /* 🔸 έρχονται μετά */
-    width: 100%;
-    max-width: 95%;
-  }
-}
-/* ===== Κοινό στυλ για όλες τις κάρτες ===== */
+/* ===== ΚΑΡΤΕΣ ===== */
 .hotel-card,
 .tour-card {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 410px;
-  width: 100%;
-  max-width: 340px;
+  flex: 1 1 calc(25% - 22px); /* ✅ 4 κάρτες ανά σειρά */
+  min-width: 260px;
+  max-width: 280px;
   display: flex;
   flex-direction: column;
-  flex: 1 1 calc(25% - 25px);
+  justify-content: space-between; /* κρατάει το κουμπί πάντα κάτω */
+  height: 390px; /* ελεγχόμενο ύψος */
 }
 
 .hotel-card:hover,
 .tour-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* Εικόνα */
 .hotel-card img,
 .tour-card img {
   width: 100%;
-  height: 200px;
+  height: 160px;
   object-fit: cover;
 }
 
+/* Περιεχόμενο */
 .hotel-info,
 .tour-info {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px 20px 20px;
+  padding: 14px 16px 18px;
+  flex-grow: 1;
+  text-align: left;
 }
 
 .hotel-info h3,
 .tour-info h3 {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 700;
   color: #002b45;
   margin-bottom: 6px;
-  margin-top: -4px;
   line-height: 1.3;
 }
 
 .hotel-description,
 .tour-description {
-  font-size: 13px;
+  font-size: 12.8px;
   color: #555;
-  margin-bottom: 2px;
-  margin-top: -6px;
-  min-height: 45px;
+  line-height: 1.4;
+  flex-grow: 1;
+  margin-bottom: 6px;
 }
 
+/* Λεπτομέρειες */
 .hotel-details,
 .tour-details {
-  font-size: 13px;
+  font-size: 12.3px;
   color: #777;
   display: flex;
   justify-content: space-between;
-  margin-top: -5px;
-  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 6px 0 8px;
 }
 
 .hotel-details i,
@@ -438,24 +399,11 @@
   margin-right: 4px;
 }
 
-.tour-details .included {
-  color: #2e8b57;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-weight: 600;
-}
-
-.tour-details .included i {
-  color: #2ecc71;
-  font-size: 14px;
-}
-
+/* Footer */
 .hotel-footer,
 .tour-footer {
   border-top: 1px solid #eee;
-  padding-top: 10px;
-  margin-top: auto;
+  padding-top: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -465,18 +413,19 @@
 .tour-footer .price {
   font-weight: 600;
   color: #e67e22;
+  font-size: 14px;
 }
 
-/* Κοινό κουμπί */
+/* Κουμπιά */
 .learn-btn,
 .explore-btn {
   background: linear-gradient(90deg, #ff6600, #ff8533);
   color: white;
   border: none;
   border-radius: 25px;
-  padding: 7px 16px;
+  padding: 7px 15px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -487,8 +436,30 @@
   transform: translateY(-2px);
 }
 
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+@media (max-width: 1200px) {
+  .tour-card {
+    flex: 1 1 calc(33.33% - 22px); /* 3 ανά σειρά */
+  }
+}
 
-  </style>
+@media (max-width: 900px) {
+  .combined-container {
+    grid-template-columns: 1fr;
+  }
+  .tour-card {
+    flex: 1 1 calc(50% - 22px); /* 2 ανά σειρά */
+  }
+}
+
+@media (max-width: 600px) {
+  .tour-card {
+    flex: 1 1 100%; /* 1 ανά σειρά */
+  }
+}
+</style>
+
+
 </section>
 
    <!-- ===== Pricelist ===== -->
