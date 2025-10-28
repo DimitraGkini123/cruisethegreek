@@ -61,6 +61,7 @@
     "language": "English",
     "price": "€65",
     "location": "Cape Sounion, Greece",
+     "dates": ["22 Mar 2026", "30 Mar 2026"],
     "freeCancellation": true,
     "about": [
       "Travel along the picturesque Saronic Gulf and admire the sea views.",
