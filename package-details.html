@@ -931,7 +931,7 @@ document.querySelectorAll(".tab").forEach(tab => {
 
 
 <script>
-function loadExcursions(shipName) {
+ function loadExcursions(shipName) {
   const tabsContainer = document.getElementById("tabs");
   const tabContents = document.getElementById("tabContents");
   const modal = document.getElementById("excursionModal");
@@ -1013,8 +1013,9 @@ function loadExcursions(shipName) {
   window.addEventListener("click", e => {
     if (e.target === modal) modal.style.display = "none";
   });
-}
+ }
 </script>
+
 
 
 
