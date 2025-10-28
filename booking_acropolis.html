@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athens Acropolis Tour Booking | CruiseTheGreek</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="acropolis.css">
+  <style>
+    
+    body {
+
+      font-family: "Poppins", sans-serif;
+      background: #f9fafb;
+      color: #002b45;
+      margin: 0;
+    }
+
+    .booking-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 40px 10%;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .booking-content {
+      flex: 2;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    .booking-content h2 {
+      text-align: center;
+      border-bottom: 2px solid #ff6600;
+      padding-bottom: 8px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 18px 0;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #002b45;
+      margin-bottom: 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccd6dd;
+      border-radius: 8px;
+      font-size: 15px;
+      background: #fff;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #ff6600;
+      box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.2);
+    }
+
+    .passenger-section {
+      background: #f8f9fb;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+
+    .passenger-section h4 {
+      color: #ff6600;
+      margin-top: 0;
+    }
+
+    .next-btn {
+      display: block;
+      margin: 25px auto 0;
+      background: #ff6600;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .next-btn:hover {
+      background: #e05500;
+    }
+
+    /* === Summary === */
+    .booking-right {
+      flex: 1;
+      max-width: 380px;
+      position: sticky;
+      top: 90px;
+    }
+
+    .booking-summary {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0, 43, 69, 0.12);
+      padding: 24px;
+    }
+
+    .summary-image img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+      color: #002b45;
+      font-size: 14.5px;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ff6600;
+      margin-top: 10px;
+      border-top: 2px solid #ff6600;
+      padding-top: 10px;
+    }
+
+    @media (max-width: 992px) {
+      .booking-layout {
+        flex-direction: column;
+        padding: 30px 6%;
+        gap: 30px;
+      }
+      .booking-right {
+        position: static;
+        max-width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+    <div class="logo">CruiseTheGreek.com</div>
+
+    <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+      <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+      <li><a href="tours.html">TOURS</a></li>
+      <li><a href="ships.html">CRUISE SHIPS</a></li>
+      <li><a href="destinations.html">DESTINATIONS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="faqs.html" class="active">FAQ</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<main class="booking-layout">
+  <div class="booking-content">
+    <h2>Passenger Details</h2>
+
+    <div class="form-group">
+      <div style="flex:1;">
+        <label for="adults">Adults</label>
+        <select id="adults">
+          <option value="1">1 Adult</option>
+          <option value="2" selected>2 Adults</option>
+          <option value="3">3 Adults</option>
+          <option value="4">4 Adults</option>
+        </select>
+      </div>
+      <div style="flex:1;">
+        <label for="children">Children</label>
+        <select id="children">
+          <option value="0" selected>0 Children</option>
+          <option value="1">1 Child</option>
+          <option value="2">2 Children</option>
+          <option value="3">3 Children</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="passengerForms"></div>
+
+    <button class="next-btn" id="confirmBookingBtn">Confirm Booking</button>
+  </div>
+
+  <div class="booking-right">
+    <div class="booking-summary">
+      <h3 style="text-align:center; border-bottom:2px solid #ff6600; padding-bottom:6px;">Your Tour Summary</h3>
+      <div class="summary-image"><img src="images/acropolis1.jpg" alt="Athens Acropolis"></div>
+      <div class="summary-item"><span>Tour:</span> <span>Athens Acropolis Guided Tour</span></div>
+      <div class="summary-item"><span>Duration:</span> <span>3 hours</span></div>
+      <div class="summary-item"><span>Start Time:</span> <span>09:00 / 17:00</span></div>
+      <div class="summary-item"><span>Location:</span> <span>Acropolis Metro Station</span></div>
+      <div class="summary-item"><span>Selected Date:</span> <span id="summaryDate">–</span></div>
+      <div class="summary-item"><span>Price per person:</span> <span id="summaryPricePer">€55</span></div>
+      <div class="summary-item"><span>Adults:</span> <span id="summaryAdults">2</span></div>
+      <div class="summary-item"><span>Children:</span> <span id="summaryChildren">0</span></div>
+      <div class="total">Total: <span id="summaryTotal">€110</span></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 CruiseTheGreek.com — Experience Greece like never before 🇬🇷</p>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const PRICE_PER_PERSON = 55;
+
+  // === Elements ===
+  const adultsSelect = document.getElementById("adults");
+  const childrenSelect = document.getElementById("children");
+  const container = document.getElementById("passengerForms");
+
+  const summaryDate = document.getElementById("summaryDate");
+  const summaryAdults = document.getElementById("summaryAdults");
+  const summaryChildren = document.getElementById("summaryChildren");
+  const summaryTotal = document.getElementById("summaryTotal");
+
+  // === Load selected date from localStorage ===
+  const chosenDate = localStorage.getItem("selectedDate");
+  if (chosenDate) summaryDate.textContent = chosenDate;
+
+  // === Update Summary + Dynamic Forms ===
+  function updateSummary() {
+    const adults = parseInt(adultsSelect.value);
+    const children = parseInt(childrenSelect.value);
+    const total = adults + children;
+
+    summaryAdults.textContent = adults;
+    summaryChildren.textContent = children;
+    summaryTotal.textContent = `€${(total * PRICE_PER_PERSON).toFixed(2)}`;
+
+    // Regenerate passenger forms
+    container.innerHTML = "";
+    for (let i = 1; i <= total; i++) {
+      const type = i <= adults ? "Adult" : "Child";
+      const section = document.createElement("div");
+      section.className = "passenger-section";
+      section.innerHTML = `
+        <h4>${type} ${i}</h4>
+        <div class="form-group">
+          <div><label>First Name</label><input type="text" required></div>
+          <div><label>Last Name</label><input type="text" required></div>
+        </div>
+        <div class="form-group">
+          <div><label>Nationality</label><input type="text" required></div>
+          <div><label>Date of Birth</label><input type="date" required></div>
+        </div>
+        <div class="form-group">
+          <div><label>Phone</label><input type="tel" placeholder="+30 ..." required></div>
+          <div><label>Email</label><input type="email" required></div>
+        </div>
+      `;
+      container.appendChild(section);
+    }
+  }
+
+  // === Listeners ===
+  adultsSelect.addEventListener("change", updateSummary);
+  childrenSelect.addEventListener("change", updateSummary);
+  updateSummary();
+
+  // === Confirm Booking ===
+  document.getElementById("confirmBookingBtn").addEventListener("click", () => {
+    alert("✅ Booking confirmed for Athens Acropolis Tour!");
+    localStorage.clear();
+    window.location.href = "index.html";
+  });
+});
+</script>
+
+</body>
+</html>

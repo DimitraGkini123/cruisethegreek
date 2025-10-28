@@ -1,0 +1,490 @@
+
+/* ===== NAVBAR GENERAL ===== */
+header {
+  top: 0;
+  z-index: 1000;       /* να είναι πάντα πάνω από τα υπόλοιπα */
+  background-color: #002b45; /* ίδιο χρώμα με το navbar */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #002b45;
+  padding: 6px 20px;
+  color: white;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+@media (max-width: 768px) {
+  header {
+    position: sticky;
+    top: 0;
+  }
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff6600;
+}
+
+/* ===== MOBILE MENU ===== */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    z-index: 1100;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: #002b45;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 10px 0;
+  }
+}
+
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f9fafb;
+  color: #002b45;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 55vh; /* πιο κοντό banner */
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 🔹 χωρίς σκοτείνιασμα */
+  filter: none;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  font-size: 40px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.hero-overlay p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+/* Προαιρετικά: αν η φωτογραφία είναι πολύ φωτεινή, ελαφρύ περίγραμμα στα γράμματα */
+.hero-overlay h1,
+.hero-overlay p {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.book-btn {
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.book-btn:hover {
+  background: linear-gradient(90deg, #ff8533, #ffa366);
+  transform: translateY(-2px);
+}
+
+/* ===== OVERVIEW ===== */
+.overview {
+  max-width: 900px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.overview h2 {
+  font-size: 28px;
+  color: #ff6600;
+  margin-bottom: 15px;
+}
+
+.overview p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.highlight {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.highlight i {
+  color: #ff6600;
+  font-size: 18px;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+  background: #fff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 26px;
+  color: #002b45;
+  margin-bottom: 30px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ===== LIGHTBOX ===== */
+#lightbox {
+  position: fixed;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.8);
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+}
+
+#lightbox.active {
+  display: flex;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+/* ===== DETAILS ===== */
+.details {
+  background: #f4f6f8;
+  padding: 60px 10%;
+}
+
+.details h2 {
+  color: #002b45;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.info p {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.info i {
+  color: #ff6600;
+  margin-right: 8px;
+}
+
+.book-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.book-card h3 {
+  margin-bottom: 10px;
+  color: #002b45;
+}
+
+.book-card p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  background: #002b45;
+  color: white;
+  padding: 25px 0;
+  font-size: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-overlay h1 {
+    font-size: 30px;
+  }
+}
+
+/* ===== Overview Header with Sticky Price ===== */
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+/* Sticky box for price + button */
+.sticky-price {
+  position: sticky;        /* ✅ παραμένει ορατό στο scroll */
+  top: 20px;               /* πόσο κάτω από το πάνω μέρος του viewport */
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+.price-tag {
+  font-size: 17px;
+  font-weight: 700;
+  color: #002b45;
+}
+
+/* μικρότερο κουμπί */
+.book-btn.small {
+  padding: 8px 16px;
+  font-size: 14px;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  border-radius: 25px;
+  border: none;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.book-btn.small:hover {
+  background: linear-gradient(90deg, #ff8533, #ffa366);
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .overview-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sticky-price {
+    position: static; /* ❗ σε κινητό να μη “κολλάει” */
+    box-shadow: none;
+    background: none;
+    padding: 0;
+  }
+
+  .price-tag {
+    font-size: 16px;
+    color: #ff6600;
+  }
+}
+/* ===== Calendar Modal ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 420px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ff6600;
+  color: white;
+  padding: 10px;
+  border-radius: 6px 6px 0 0;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 10px;
+}
+
+.calendar-grid div {
+  padding: 8px;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.calendar-grid .day-name {
+  font-weight: bold;
+  background: #f0f0f0;
+}
+
+.calendar-grid .day {
+  background: #f9f9f9;
+}
+
+.calendar-grid .available {
+  background: #ff6600;
+  color: white;
+  cursor: pointer;
+}
+
+.calendar-grid .available:hover {
+  background: #ff8533;
+}
+
+.calendar-grid .selected {
+  outline: 3px solid #002b45;
+}
+
+#continueBooking {
+  margin-top: 20px;
+  background: linear-gradient(90deg, #ff6600, #ff8533);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#continueBooking:hover {
+  background: linear-gradient(90deg, #ff8533, #ffa366);
+}
+

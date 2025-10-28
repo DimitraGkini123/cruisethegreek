@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athens Acropolis Tour | CruiseTheGreek</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="acropolis.css">
+
+</head>
+
+<body>
+
+    <header>
+  <nav class="navbar">
+    <div class="logo">CruiseTheGreek.com</div>
+
+    <!-- Αυτό το κουμπί θα φαίνεται μόνο σε κινητά -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="results.html?type=cruise_only">CRUISES</a></li>
+      <li><a href="results.html?type=cruise_package">CRUISE PACKAGES</a></li>
+      <li><a href="tours.html">TOURS</a></li>
+      <li><a href="ships.html">CRUISE SHIPS</a></li>
+      <li><a href="destinations.html">DESTINATIONS</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="faqs.html" class="active">FAQ</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<!-- ===== Hero Section ===== -->
+<section class="hero">
+  <img src="images/acropolis1.jpg" alt="Acropolis of Athens">
+
+  <!-- 🔹 Κεντρικός τίτλος -->
+  <div class="hero-overlay">
+    <h1>Athens Acropolis Guided Tour</h1>
+    <p>Walk through history at the birthplace of democracy</p>
+  </div>
+</section>
+<section class="overview">
+  <div class="overview-header">
+    <h2>Tour Overview</h2>
+    <!-- 🔹 Sticky Price Box -->
+    <div class="sticky-price">
+      <span class="price-tag">€55 / person</span>
+      <a href="#book" class="book-btn small">Book Now</a>
+    </div>
+  </div>
+
+  <p>
+    Discover the glory of ancient Athens with a professional licensed guide.
+    Visit the Acropolis — home to the Parthenon, the Erechtheion, and the Temple of Athena Nike.
+    Enjoy breathtaking panoramic views of the city and learn about Greek civilization and mythology.
+  </p>
+
+  <div class="highlights">
+    <div class="highlight"><i class="fa-solid fa-landmark"></i> Guided Acropolis Visit</div>
+    <div class="highlight"><i class="fa-solid fa-user-tie"></i> Licensed Archaeologist Guide</div>
+    <div class="highlight"><i class="fa-solid fa-clock"></i> Duration: 3 hours</div>
+    <div class="highlight"><i class="fa-solid fa-language"></i> English, French, Spanish</div>
+  </div>
+</section>
+
+
+<!-- ===== Gallery ===== -->
+<section class="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <img src="images/acropolis1.jpg" alt="Parthenon">
+    <img src="images/view-from.jpg" alt="View from Acropolis">
+    <img src="images/erexteion.jpg" alt="Erechtheion">
+    <img src="images/propulaia.jpg" alt="Propylaea Entrance">
+  </div>
+</section>
+
+<!-- ===== Details ===== -->
+<section id="book" class="details">
+  <h2>Tour Details</h2>
+  <div class="details-grid">
+    <div class="info">
+      <p><i class="fa-solid fa-calendar-days"></i> Daily Departures</p>
+      <p><i class="fa-solid fa-clock"></i> Starts at 09:00 & 17:00</p>
+      <p><i class="fa-solid fa-map-pin"></i> Meeting Point: Acropolis Metro Station</p>
+      <p><i class="fa-solid fa-euro-sign"></i> Price: <strong>€55 / person</strong></p>
+    </div>
+
+    <div class="book-card">
+      <h3>Ready to Explore?</h3>
+      <p>Secure your spot now and walk in the footsteps of ancient Athenians.</p>
+      <button class="book-btn">Reserve Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <p>© 2025 CruiseTheGreek.com — Experience Greece like never before 🇬🇷</p>
+</footer>
+
+<!-- === Booking Calendar Modal === -->
+<div id="bookingModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3 id="bookingTitle">Book: Athens Acropolis Tour</h3>
+    <div id="calendarContainer"></div>
+    <button id="continueBooking">Continue Booking</button>
+  </div>
+</div>
+
+
+<!-- ===== Lightbox Script ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const imgs = document.querySelectorAll(".gallery-grid img");
+  const lightbox = document.createElement("div");
+  lightbox.id = "lightbox";
+  document.body.appendChild(lightbox);
+
+  imgs.forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.classList.add("active");
+      const imgClone = document.createElement("img");
+      imgClone.src = img.src;
+      while (lightbox.firstChild) lightbox.removeChild(lightbox.firstChild);
+      lightbox.appendChild(imgClone);
+    });
+  });
+
+  lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("active");
+  });
+});
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const availableDates = ["28 Oct 2025", "2 Nov 2025", "10 Nov 2025", "16 Nov 2025"];
+
+  document.querySelectorAll(".book-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      showCalendarModal("Athens Acropolis Tour", availableDates);
+    });
+  });
+
+  function showCalendarModal(title, availableDates) {
+    const modal = document.getElementById("bookingModal");
+    const container = document.getElementById("calendarContainer");
+    const titleEl = document.getElementById("bookingTitle");
+
+    titleEl.textContent = `Book: ${title}`;
+    modal.style.display = "flex";
+
+    const monthMap = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5,
+                       Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+
+    const parsedDates = availableDates.map(d => {
+      const [day, mon, year] = d.split(" ");
+      const month = monthMap[mon];
+      return new Date(year, month, parseInt(day));
+    });
+
+    let current = new Date(parsedDates[0]);
+
+    function renderCalendar(month, year) {
+      container.innerHTML = "";
+      const monthNames = ["January","February","March","April","May","June","July",
+                          "August","September","October","November","December"];
+      const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+
+      const header = document.createElement("div");
+      header.className = "calendar-header";
+      header.innerHTML = `
+        <button id="prevMonth">&#10094;</button>
+        <div><strong>${monthNames[month]} ${year}</strong></div>
+        <button id="nextMonth">&#10095;</button>
+      `;
+      container.appendChild(header);
+
+      const grid = document.createElement("div");
+      grid.className = "calendar-grid";
+      days.forEach(d => {
+        const dn = document.createElement("div");
+        dn.className = "day-name";
+        dn.textContent = d;
+        grid.appendChild(dn);
+      });
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const totalDays = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < firstDay; i++) grid.appendChild(document.createElement("div"));
+
+      for (let day = 1; day <= totalDays; day++) {
+        const cell = document.createElement("div");
+        cell.className = "day";
+        cell.textContent = day;
+
+        const isAvailable = parsedDates.some(d =>
+          d.getDate() === day && d.getMonth() === month && d.getFullYear() === year
+        );
+
+        if (isAvailable) {
+          cell.classList.add("available");
+          cell.addEventListener("click", () => {
+            document.querySelectorAll(".calendar-grid .available").forEach(c => c.classList.remove("selected"));
+            cell.classList.add("selected");
+            cell.dataset.selectedDate = `${day} ${monthNames[month]} ${year}`;
+          });
+        }
+        grid.appendChild(cell);
+      }
+
+      container.appendChild(grid);
+
+      document.getElementById("prevMonth").onclick = () => {
+        current.setMonth(current.getMonth() - 1);
+        renderCalendar(current.getMonth(), current.getFullYear());
+      };
+      document.getElementById("nextMonth").onclick = () => {
+        current.setMonth(current.getMonth() + 1);
+        renderCalendar(current.getMonth(), current.getFullYear());
+      };
+    }
+
+    renderCalendar(current.getMonth(), current.getFullYear());
+
+    // Κλείσιμο modal
+    document.querySelector(".close-btn").onclick = () => (modal.style.display = "none");
+    window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+
+    // Συνέχεια κράτησης
+    document.getElementById("continueBooking").onclick = () => {
+      const selected = document.querySelector(".calendar-grid .selected");
+      if (!selected) {
+        alert("Please choose a date!");
+        return;
+      }
+      const chosen = selected.dataset.selectedDate;
+      localStorage.setItem("selectedDate", chosen);
+      localStorage.setItem("selectedTour", title);
+      window.location.href = "booking_acropolis.html";
+    };
+  }
+});
+</script>
+
+
+</body>
+</html>

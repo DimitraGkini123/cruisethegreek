@@ -45,7 +45,6 @@
       <li><a href="destinations.html">DESTINATIONS</a></li>
       <li><a href="contact.html">CONTACT</a></li>
       <li><a href="faqs.html" class="active">FAQ</a></li>
-      <li><a href="blog.html" class="active">BLOG</a></li>
     </ul>
   </nav>
 </header>
@@ -59,20 +58,32 @@
     </div>
   </section>
 
+<!-- 🔹 Search Section + Blog -->
 <section class="search-section">
-  <form id="searchForm" class="search-form">
-    <div class="form-group">
-      <label for="cruise-type">Cruise Type</label>
-      <select id="cruise-type" name="cruise_type" required>
-        <option value="">-- Select --</option>
-        <option value="cruise_only">Cruise Only</option>
-        <option value="cruise_package">Cruise Package</option>
-        <option value="cruise_excursion">Cruise Excursion</option>
-        <option value="athens_land_tours">Athens Land Tours</option>
-      </select>
-    </div>
-    <button type="submit" class="search-btn">Search</button>
-  </form>
+  <div class="search-wrapper">
+    <form id="searchForm" class="search-form">
+      <div class="form-group">
+        <label for="cruise-type">Cruise Type</label>
+        <select id="cruise-type" name="cruise_type" required>
+          <option value="">-- Select --</option>
+          <option value="cruise_only">Cruise Only</option>
+          <option value="cruise_package">Cruise Package</option>
+          <option value="cruise_excursion">Cruise Excursion</option>
+          <option value="athens_land_tours">Athens Land Tours</option>
+        </select>
+      </div>
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+
+    <!-- ✨ Blog Card -->
+    <a href="blog.html" class="blog-card">
+      <i class="fa-solid fa-newspaper"></i>
+      <div>
+        <h3>Travel Blog</h3>
+        <p>Read stories & tips from our experts</p>
+      </div>
+    </a>
+  </div>
 </section>
 
 
@@ -117,10 +128,12 @@
   <div class="special-content">
     <h2>Athens Acropolis Cruise Tours</h2>
     <p>Exclusive one-day tour combining the Acropolis and Athens Riviera Cruise.</p>
-    <button class="book-btn">BOOK NOW</button>
+    <div class="special-buttons">
+      <a href="acropolis.html" class="view-btn">View Details</a>
+      <button class="book-btn">Book Now</button>
+    </div>
   </div>
 </section>
-
 
 <!-- ======== PARTNERS SECTION ======== -->
 <section class="partners">
@@ -161,7 +174,6 @@
         <li><a href="destinations.html">DESTINATIONS</a></li>
         <li><a href="contact.html">CONTACT</a></li>
         <li><a href="faqs.html" class="active">FAQ</a></li>
-        <li><a href="blog.html" class="active">BLOG</a></li>
       </ul>
     </div>
 
@@ -569,6 +581,7 @@ document.getElementById("searchForm").addEventListener("submit", function(e) {
   }
 });
 </script>
+
 
 
 

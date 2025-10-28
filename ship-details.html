@@ -543,29 +543,66 @@
         });
       });
 
-    // === Load Cruise Packages with this ship ===
-    fetch("data/packages.json")
-      .then(res => res.json())
-      .then(data => {
-        const allPackages = Object.values(data).filter(p => p.ship === selectedShip);
-        sidePackages.innerHTML = `
-          <h3>Cruise Packages with this Ship</h3>
-          ${allPackages.slice(0, 2).map(p => `
-            <div class="side-card" data-title="${p.title}">
-              <img src="${p.image}" alt="${p.title}">
-              <span>${p.title}</span>
-            </div>
-          `).join("")}
-          <a href="results.html?type=cruise_package" class="view-all-btn">View all</a>
-        `;
+// === Load Cruise Packages with this ship ===
+fetch("data/packages.json")
+  .then(res => res.json())
+  .then(data => {
+    const allPackages = Object.values(data).filter(p => p.ship === selectedShip);
 
-        sidePackages.querySelectorAll(".side-card").forEach(card => {
-          card.addEventListener("click", () => {
-            localStorage.setItem("selectedCruise", card.dataset.title);
-            window.location.href = "cruise_details.html";
-          });
-        });
+    sidePackages.innerHTML = `
+      <h3>Cruise Packages with this Ship</h3>
+      ${allPackages.slice(0, 2).map(p => `
+        <div class="side-card" data-title="${p.title}">
+          <img src="${p.image}" alt="${p.title}">
+          <span>${p.title}</span>
+        </div>
+      `).join("")}
+      <a href="results.html?type=cruise_package" class="view-all-btn">View all</a>
+    `;
+
+    // === Click handler για κάθε package ===
+    sidePackages.querySelectorAll(".side-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const title = card.dataset.title.trim();
+        const selectedPkg = allPackages.find(p => p.title.trim() === title);
+        if (!selectedPkg) {
+          alert("Package not found!");
+          return;
+        }
+
+        // 🔹 Δημιουργία πλήρους αντικειμένου όπως στο άλλο script
+        const packageData = {
+          image: selectedPkg.image || "",
+          title: selectedPkg.title || "Cruise Package",
+          route: selectedPkg.route || "",
+          duration: selectedPkg.duration || "",
+          dates: selectedPkg.dates || [],
+          departure: selectedPkg.departure || "",
+          arrival: selectedPkg.arrival || "",
+          offer: selectedPkg.offer || "",
+          priceOld: selectedPkg.priceOld || "",
+          priceNew: selectedPkg.priceNew || "",
+          ship: selectedPkg.ship || "",
+          company: selectedPkg.company || ""
+        };
+
+        // ✅ Αποθήκευση πλήρων δεδομένων
+        localStorage.setItem("selectedPackage", packageData.title);
+        localStorage.setItem("selectedPackageDetails", JSON.stringify(packageData));
+
+        // ✅ Αποθήκευση πάντα του πλοίου
+        if (packageData.ship) {
+          localStorage.setItem("selectedShip", packageData.ship);
+          console.log("⛴️ Saved selectedShip:", packageData.ship);
+        }
+
+        console.log("📦 Saved package:", packageData.title);
+        window.location.href = "package-details.html";
       });
+    });
+  })
+  .catch(err => console.error("Error loading packages:", err));
+
   });
   </script>
 
