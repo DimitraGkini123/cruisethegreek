@@ -1141,6 +1141,119 @@ header {
   background: linear-gradient(90deg, #ff8533, #ffa366);
 }
 
+/* ===== MOBILE FILTER TOGGLE (τελικό με όμορφο άνοιγμα) ===== */
+@media (max-width: 768px) {
+  .search-filter {
+    width: 100%;
+    position: relative;
+    box-shadow: none;
+    padding: 0;
+    background: none;
+    margin-top: -90px;
+    margin-bottom: 70px;
+    z-index: 2;
+  }
+
+  /* Κρύβουμε το "Refine Your Search" */
+  .search-filter h3 {
+    display: none;
+  }
+
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #002b45;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+  }
+
+  #filter-type-label {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  #filter-toggle {
+    background: #ff6600;
+    color: white;
+    border: none;
+   padding: 2px 7px;          /* 🔸 Μικρότερο padding */
+  border-radius: 18px; 
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.25s ease, transform 0.2s ease;
+  }
+
+  #filter-toggle:hover {
+    background: #e65c00;
+    transform: scale(1.04);
+  }
+
+  /* ✅ Κρυφή αρχικά, εμφανίζεται με smooth transition */
+  .filter-form {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    background: #fff;
+    margin-top: 0;
+    padding: 0 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.35s ease;
+  }
+
+  /* ✅ Όταν ανοίγει */
+  .filter-form.active {
+    max-height: 800px;
+    opacity: 1;
+    padding: 20px 18px;
+    margin-top: 8px;
+  }
+
+  .filter-form .form-group {
+    margin-bottom: 10px;
+  }
+
+  .filter-form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #002b45;
+    margin-bottom: 3px;
+  }
+
+  .filter-form select {
+    padding: 7px 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .search-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 9px 0;
+    border-radius: 20px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #ff6600, #ff8533);
+    border: none;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .search-btn:hover {
+    background: linear-gradient(90deg, #ff8533, #ffa366);
+  }
+}
+
+
+
 /* ----- Right Results Grid (2 per row) ----- */
 .results-grid {
   display: grid;
@@ -1180,19 +1293,13 @@ header {
     flex-direction: column;
     align-items: center;
   }
-
-  .search-filter {
-    width: 100%;
-    max-width: 600px;
-    position: relative;
-    top: 0;
-  }
-
   .results-grid {
     grid-template-columns: 1fr;
     width: 100%;
   }
 }
+
+
 /* ===== Results Banner ===== */
 .results-banner {
   position: relative;
@@ -1321,9 +1428,7 @@ header {
     display: block;
   }
 
-  .search-filter {
-    width: 100%;
-  }
+
 }
 
 

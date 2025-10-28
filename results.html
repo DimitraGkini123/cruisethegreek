@@ -1104,5 +1104,37 @@ function showCalendarModal(title, availableDates) {
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("filter-toggle");
+  const filterForm = document.querySelector(".filter-form");
+  const typeLabel = document.getElementById("filter-type-label");
+
+  // ➤ Toggle εμφάνισης φίλτρου
+  toggleBtn?.addEventListener("click", () => {
+    filterForm.classList.toggle("active");
+  });
+
+  // ➤ Ανάγνωση τύπου από το URL
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get("type");
+
+  // ➤ Εμφάνιση σωστού τίτλου πάνω στο φίλτρο
+  if (typeLabel) {
+    if (type === "cruise_package") {
+      typeLabel.textContent = "Cruise Package";
+    } else if (type === "cruise_only") {
+      typeLabel.textContent = "Cruise Only";
+    } else {
+      typeLabel.textContent = "All Cruises";
+    }
+  }
+});
+</script>
+
+
+
+
+
 </body>
 </html>
