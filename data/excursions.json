@@ -151,6 +151,144 @@
         "priceChildren": "€60",
         "image": "images/excursions/lindos.jpg"
       }
-    ]
-   }
+    ],
+"Spetses": [
+  {
+    "title": "Horse Carriage Tour of Spetses Town",
+    "desc": "Experience the charm of Spetses with a traditional horse-drawn carriage ride through the elegant streets of Dapia and the Old Harbor, lined with neoclassical mansions and bougainvillea.",
+    "priceAdults": "€58",
+    "priceChildren": "€42",
+    "image": "images/excursions/spetses-carriage.jpg"
+  },
+  {
+    "title": "Historical Walk & Bouboulina Museum",
+    "desc": "Take a guided walk through the island’s historic quarter and visit the Bouboulina Museum — home of the legendary heroine of the Greek War of Independence.",
+    "priceAdults": "€64",
+    "priceChildren": "€48",
+    "image": "images/excursions/bouboulina.jpg"
+  }
+],
+
+"Poros": [
+  {
+    "title": "Poros Town Walking Tour",
+    "desc": "Stroll along the scenic waterfront of Poros Town, admire the neoclassical architecture, and climb up to the famous Clock Tower for panoramic views of the harbor and surrounding islands.",
+    "priceAdults": "€52",
+    "priceChildren": "€38",
+    "image": "images/excursions/poros-town.jpg"
+  },
+  {
+    "title": "Monastery of Zoodochos Pigi Visit",
+    "desc": "Discover the beautiful 18th-century monastery nestled in a pine forest overlooking the sea. Learn about its history and enjoy tranquil moments away from the bustling port.",
+    "priceAdults": "€56",
+    "priceChildren": "€40",
+    "image": "images/excursions/poros-monastery.jpg"
+  }
+],
+
+"Hydra": [
+  {
+    "title": "Hydra Town & Coastal Walk",
+    "desc": "Explore the enchanting harbor of Hydra, a car-free island where time stands still. Walk along the coastal path past stone mansions, small chapels, and crystal-clear coves.",
+    "priceAdults": "€62",
+    "priceChildren": "€46",
+    "image": "images/excursions/hydra-coast.jpg"
+  },
+  {
+    "title": "Hydra Art & Heritage Tour",
+    "desc": "Visit the Historical Archives Museum and local art galleries that showcase Hydra’s unique role as a cultural hub for artists and seafarers.",
+    "priceAdults": "€70",
+    "priceChildren": "€52",
+    "image": "images/excursions/hydra-art.jpg"
+  }
+]
+
+   },
+   "Celestyal Journey": {
+  "Mykonos": [
+    {
+      "title": "Walking Tour of Mykonos Town",
+      "desc": "Enjoy a guided walk through the charming narrow streets of Mykonos Town, exploring Little Venice, the iconic windmills, and the whitewashed houses that make this island so photogenic.",
+      "priceAdults": "€69",
+      "priceChildren": "€49",
+      "image": "images/excursions/mykonos-town.jpg"
+    },
+    {
+      "title": "Delos Island Archaeological Tour",
+      "desc": "Sail to the sacred island of Delos, a UNESCO World Heritage Site and birthplace of Apollo and Artemis. Visit the ancient temples, mosaics, and the Terrace of the Lions.",
+      "priceAdults": "€75",
+      "priceChildren": "€55",
+      "image": "images/excursions/delos.jpg"
+    }
+  ],
+
+  "Kusadasi": [
+    {
+      "title": "Ancient Ephesus & the House of Virgin Mary",
+      "desc": "Visit one of the best-preserved ancient cities of the Eastern Mediterranean — Ephesus. Walk through marble streets, admire the Library of Celsus, and visit the peaceful House of the Virgin Mary.",
+      "priceAdults": "€89",
+      "priceChildren": "€69",
+      "image": "images/excursions/ephesus.jpg"
+    },
+    {
+      "title": "Ephesus & Local Market Experience",
+      "desc": "Combine your visit to ancient Ephesus with a guided stop at a local bazaar. Enjoy shopping for leather goods, carpets, and Turkish delights while exploring vibrant Kusadasi life.",
+      "priceAdults": "€75",
+      "priceChildren": "€55",
+      "image": "images/excursions/kusadasi-market.jpg"
+    }
+  ],
+
+  "Patmos": [
+    {
+      "title": "Monastery of St. John & Cave of the Apocalypse",
+      "desc": "Discover the spiritual heart of Patmos. Visit the 11th-century Monastery of St. John and the sacred Cave of the Apocalypse, where St. John is said to have written the Book of Revelation.",
+      "priceAdults": "€72",
+      "priceChildren": "€52",
+      "image": "images/excursions/patmos-monastery.jpg"
+    },
+    {
+      "title": "Scenic Tour of Patmos Villages",
+      "desc": "Enjoy a panoramic drive around the island with stops at picturesque villages and beaches. Experience the serenity of this small yet enchanting island.",
+      "priceAdults": "€58",
+      "priceChildren": "€40",
+      "image": "images/excursions/patmos-villages.jpg"
+    }
+  ],
+
+  "Rhodes": [
+    {
+      "title": "Medieval City of Rhodes Walking Tour",
+      "desc": "Step back in time with a walking tour through the medieval Old Town of Rhodes — a UNESCO World Heritage Site. Visit the Palace of the Grand Master and stroll down the Street of the Knights.",
+      "priceAdults": "€69",
+      "priceChildren": "€49",
+      "image": "images/excursions/rhodes-oldtown.jpg"
+    },
+    {
+      "title": "Lindos Acropolis & Village",
+      "desc": "Travel along the scenic east coast to the village of Lindos. Climb to the ancient Acropolis for breathtaking views over St. Paul's Bay and explore the narrow alleys of the whitewashed town.",
+      "priceAdults": "€80",
+      "priceChildren": "€60",
+      "image": "images/excursions/lindos.jpg"
+    }
+  ],
+
+  "Santorini": [
+    {
+      "title": "Volcano & Hot Springs Cruise",
+      "desc": "Embark on a short boat trip to Nea Kameni volcano and hike up to the crater for spectacular caldera views. Then enjoy a relaxing swim in the sulfur-rich hot springs at Palea Kameni.",
+      "priceAdults": "€79",
+      "priceChildren": "€59",
+      "image": "images/excursions/volcano.jpg"
+    },
+    {
+      "title": "Oia Village & Sunset Experience",
+      "desc": "Visit the picturesque village of Oia, famous for its blue-domed churches and stunning sunset views. Explore art galleries and traditional whitewashed alleys before watching the sun dip into the Aegean.",
+      "priceAdults": "€85",
+      "priceChildren": "€65",
+      "image": "images/excursions/oia-sunset.jpg"
+    }
+  ]
+}
+
 }

@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
         if (cruise.ship) {
         loadShipDetails(cruise.ship);
-        loadExcursions(cruise.ship);
+       loadExcursions(cruise.ship, cruise.route);
       }
     })
     .catch(err => console.error("❌ Error loading cruises.json:", err));
@@ -969,9 +969,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
-
 <script>
-function loadExcursions(shipName) {
+function loadExcursions(shipName, routeString) {
   const tabsContainer = document.getElementById("tabs");
   const tabContents = document.getElementById("tabContents");
   const modal = document.getElementById("excursionModal");
@@ -979,6 +978,11 @@ function loadExcursions(shipName) {
   const modalImage = document.getElementById("modalImage");
   const modalText = document.getElementById("modalText");
   const closeBtn = modal.querySelector(".close-btn");
+
+  // Μετατροπή του route string σε πίνακα νησιών
+  const routeArray = (routeString || "")
+    .split("|")
+    .map(r => r.split(",")[0].trim());
 
   fetch("data/excursions.json")
     .then(res => res.json())
@@ -989,11 +993,21 @@ function loadExcursions(shipName) {
         return;
       }
 
-      const islands = Object.keys(excursions);
+      // ✅ Δείξε μόνο τα islands που υπάρχουν στο route
+      const availableIslands = Object.keys(excursions).filter(island =>
+        routeArray.includes(island)
+      );
+
+      if (availableIslands.length === 0) {
+        tabsContainer.innerHTML = `<p style="text-align:center;">No excursions match this cruise route.</p>`;
+        return;
+      }
+
+      // Δημιουργία tabs
       tabsContainer.innerHTML = "";
       tabContents.innerHTML = "";
 
-      islands.forEach((island, idx) => {
+      availableIslands.forEach((island, idx) => {
         const tabBtn = document.createElement("button");
         tabBtn.className = `tab ${idx === 0 ? "active" : ""}`;
         tabBtn.textContent = island;
@@ -1011,14 +1025,23 @@ function loadExcursions(shipName) {
           const box = document.createElement("div");
           box.className = "excursion-box";
           box.innerHTML = `
-            <h4>${exc.title}</h4>
-            <p>${exc.desc}</p>
-            <div class="excursion-prices">
-              <span><strong>Adults:</strong> ${exc.priceAdults}</span>
-              <span><strong>Children:</strong> ${exc.priceChildren}</span>
+            <img src="${exc.image || 'images/default.jpg'}" alt="${exc.title}">
+            <div class="excursion-info">
+              <h4>${exc.title}</h4>
+              <p>${island}</p>
+              <div class="excursion-details">
+                <span><i class="fa-solid fa-ship"></i> ${shipName}</span>
+              </div>
+              <div class="excursion-footer">
+                <span class="price">${exc.priceAdults}</span>
+                <button class="view-btn">View Details</button>
+              </div>
             </div>
           `;
-          box.addEventListener("click", () => openExcursionModal(exc));
+          box.querySelector(".view-btn").addEventListener("click", e => {
+            e.stopPropagation();
+            openExcursionModal(exc);
+          });
           list.appendChild(box);
         });
 
@@ -1026,7 +1049,7 @@ function loadExcursions(shipName) {
         tabContents.appendChild(tabContent);
       });
 
-      // tab switching
+      // Tab switching
       document.querySelectorAll(".tab").forEach(tab => {
         tab.addEventListener("click", () => {
           document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
@@ -1041,7 +1064,7 @@ function loadExcursions(shipName) {
       tabsContainer.innerHTML = `<p>Error loading excursions data.</p>`;
     });
 
-  // modal behavior
+  // Modal behavior
   function openExcursionModal(exc) {
     modalTitle.textContent = exc.title;
     modalImage.src = exc.image || "images/default.jpg";
@@ -1055,6 +1078,7 @@ function loadExcursions(shipName) {
   });
 }
 </script>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {

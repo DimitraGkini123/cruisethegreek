@@ -13,7 +13,7 @@
     "length": "220 m",
     "speed": "21 knots",
     "decks": [
-      { "name": "Deck 4", "image": "images/decks/journey-deck4.jpg" },
+      { "name": "Deck 4", "image": "images/decks/deck5.gif" },
       { "name": "Deck 5", "image": "images/decks/journey-deck5.jpg" },
       { "name": "Deck 6", "image": "images/decks/journey-deck6.jpg" }
     ]
