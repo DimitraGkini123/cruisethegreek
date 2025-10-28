@@ -77,6 +77,7 @@
 
   <!-- === Sidebar Filters === -->
   <aside class="tours-filter">
+    <button class="close-filter-btn">&times;</button>
     <h3>Filter Your Tour</h3>
 
     <div class="filter-group">
@@ -209,27 +210,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.querySelector(".tours-filter");
   const sortContainer = document.querySelector(".sort-container");
   const overlay = document.getElementById("overlay");
+  const closeFilterBtn = document.querySelector(".close-filter-btn");
 
   // === FILTER BUTTON ===
-  filterBtn.addEventListener("click", () => {
+  filterBtn?.addEventListener("click", () => {
     sidebar.classList.add("active");
     overlay.classList.add("active");
   });
+
   // === SORT BUTTON ===
-  sortBtn.addEventListener("click", () => {
-    // κάνε toggle της κλάσης visible για να εμφανίζεται / κρύβεται
+  sortBtn?.addEventListener("click", () => {
     sortContainer.classList.toggle("visible");
   });
 
-  // === OVERLAY CLOSE ===
-  overlay.addEventListener("click", () => {
+  // === CLOSE FILTER (Χ button) ===
+  closeFilterBtn?.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  // === OVERLAY CLICK (close everything) ===
+  overlay?.addEventListener("click", () => {
     sidebar.classList.remove("active");
     sortContainer.classList.remove("mobile-active");
     overlay.classList.remove("active");
   });
 });
 </script>
-
 
 
 

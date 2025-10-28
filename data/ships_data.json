@@ -53,9 +53,9 @@
     "length": "274.9 m",
     "speed": "20.1 knots",
     "decks": [
-      { "name": "Deck 5", "image": "images/decks/opera-deck5.jpg" },
-      { "name": "Deck 6", "image": "images/decks/opera-deck6.jpg" },
-      { "name": "Deck 7", "image": "images/decks/opera-deck7.jpg" }
+      { "name": "Deck 5", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 6", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 7", "image": "images/decks/deck5.gif" }
     ]
   },
 
@@ -73,9 +73,9 @@
     "length": "293.8 m",
     "speed": "22 knots",
     "decks": [
-      { "name": "Deck 5", "image": "images/decks/musica-5.png" },
-      { "name": "Deck 6", "image": "images/decks/musica-6.png" },
-      { "name": "Deck 7", "image": "images/decks/musica-7.png" }
+      { "name": "Deck 5", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 6", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 7", "image": "images/decks/deck5.gif" }
     ]
   },
 
@@ -93,9 +93,9 @@
     "length": "274.9 m",
     "speed": "20.1 knots",
     "decks": [
-      { "name": "Deck 5", "image": "images/decks/armonia-5.png" },
-      { "name": "Deck 6", "image": "images/decks/armonia-6.png" },
-      { "name": "Deck 7", "image": "images/decks/armonia-7.png" }
+      { "name": "Deck 5", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 6", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 7", "image": "images/decks/deck5.gif" }
     ]
   },
 
@@ -113,9 +113,9 @@
     "length": "294 m",
     "speed": "22.5 knots",
     "decks": [
-      { "name": "Deck 5", "image": "images/decks/viva-5.png" },
-      { "name": "Deck 6", "image": "images/decks/viva-6.png" },
-      { "name": "Deck 7", "image": "images/decks/viva-7.png" }
+      { "name": "Deck 5", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 6", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 7", "image": "images/decks/deck5.gif" }
     ]
   },
 
@@ -133,9 +133,9 @@
     "length": "248 m",
     "speed": "18 knots",
     "decks": [
-      { "name": "Deck 6", "image": "images/decks/explora-6.png" },
-      { "name": "Deck 7", "image": "images/decks/explora-7.png" },
-      { "name": "Deck 8", "image": "images/decks/explora-8.png" }
+      { "name": "Deck 6", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 7", "image": "images/decks/deck5.gif" },
+      { "name": "Deck 8", "image": "images/decks/deck5.gif" }
     ]
   },
   "MSC 2": {

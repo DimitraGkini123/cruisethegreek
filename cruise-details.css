@@ -1299,6 +1299,39 @@ html {
   color: white;
 }
 
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+  .deck-image-container {
+    height: 400px;
+  }
+}
+
+/* ===== Mobile View: κάθετη προβολή με scroll ===== */
+@media (max-width: 600px) {
+  .deck-image-container {
+    height: 480px;
+    overflow-y: scroll;          /* επιτρέπει scroll */
+    overflow-x: hidden;
+    border-radius: 10px;
+  }
+
+  .deck-image {
+    width: 100%;
+    height: auto;
+    transform: none;             /* κανονική κάθετη θέση */
+    cursor: default;
+  }
+
+  .deck-image-container:hover .deck-image {
+    transform: none;             /* απενεργοποίηση zoom σε hover */
+  }
+
+  /* Απόκρυψη φακού στα κινητά */
+  .zoom-btn {
+    display: none;
+  }
+}
+
 /* =====CABINS ===== */
 .cabins-container {
   display: flex;
@@ -1885,9 +1918,6 @@ html {
   }
 }
 
-
-
-
 /* ===== MOBILE MENU ===== */
 .menu-toggle {
   display: none;
@@ -1896,8 +1926,12 @@ html {
   color: white;
   font-size: 26px;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
+.menu-toggle:hover {
+  transform: scale(1.1);
+}
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -1907,14 +1941,16 @@ html {
   .nav-links {
     display: none;
     flex-direction: column;
-    align-items: center;
-    background: #002b45;
+    align-items: flex-start;
     position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    padding: 20px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    top: 25px; /* 🔸 φέρνει το menu πιο πάνω */
+    right: 15px;
+    width: 230px;
+    background: #002b45;
+    padding: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
   }
 
   .nav-links.active {
@@ -1922,7 +1958,21 @@ html {
   }
 
   .nav-links li {
-    padding: 10px 0;
+    width: 100%;
+    padding: 5px 18px;
+  }
+
+  .nav-links li a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 10px;
+    display: block;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links li a:hover {
+    color: #ff8533;
   }
 }
 
