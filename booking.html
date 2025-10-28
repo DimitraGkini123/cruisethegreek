@@ -355,7 +355,18 @@ input[type="date"]:invalid {
   background: linear-gradient(135deg, #ff8a1f, #ff6e00);
   transform: translateY(-1px);
 }
-
+.confirm-excursions-btn{
+  display: block;
+  margin: 25px auto 0;
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 /* === Deck Image (scrollable) === */
 .deck-right {
   position: relative;
@@ -488,8 +499,8 @@ input[type="date"]:invalid {
 .passenger-card {
   background: #f8f9fb;
   border-radius: 10px;
-  padding: 20px;
-  margin: 20px 0;
+  padding: 25px;                     /* ⬆️ περισσότερο padding */
+  margin: 25px 0;                    /* ⬆️ μεγαλύτερο κενό ανάμεσα στα cards */
   box-shadow: 0 1px 6px rgba(0,0,0,0.1);
   text-align: left;
 }
@@ -502,23 +513,28 @@ input[type="date"]:invalid {
 
 .passenger-fields {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));  /* ⬅️ πιο άνετη στήλη */
+  gap: 18px 22px;                    /* ⬆️ μεγαλύτερο gap */
+  margin-top: 15px;
 }
 
 .passenger-fields label {
   display: block;
   font-weight: 600;
   color: #002b45;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .passenger-fields input,
 .passenger-fields select {
   width: 100%;
-  padding: 8px;
+  padding: 10px 12px;                /* ⬆️ πιο άνετα πεδία */
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccd6dd;
+  background: white;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .submit-booking-btn {
@@ -842,7 +858,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const allDates = passengerFields.querySelectorAll('input[type="date"]');
 for (const date of allDates) {
   if (!date.value) {
-    alert("Παρακαλώ συμπληρώστε όλες τις ημερομηνίες γέννησης πριν συνεχίσετε!");
+    alert("Please fill all the dates before proceeding");
     date.focus();
     return;
   }
@@ -1126,10 +1142,7 @@ document.addEventListener("click", (e) => {
   if (e.target.id !== "confirmExcursionsBtn") return;
 
   const selected = JSON.parse(localStorage.getItem("selectedExcursions") || "[]");
-  if (selected.length === 0) {
-    alert("Παρακαλώ επιλέξτε τουλάχιστον μία εκδρομή!");
-    return;
-  }
+
 
   // === Ενημέρωση Summary ===
   let row = document.getElementById("summaryExcursions");
@@ -1165,36 +1178,36 @@ document.addEventListener("click", (e) => {
       <h3>Επιβάτης ${i}</h3>
       <div class="passenger-fields">
         <div>
-          <label>Όνομα</label>
+          <label>First Name</label>
           <input type="text" required>
         </div>
         <div>
-          <label>Επώνυμο</label>
+          <label>Surname</label>
           <input type="text" required>
         </div>
         <div>
-          <label>Φύλο</label>
+          <label>Gender</label>
           <select required>
-            <option value="">Επιλέξτε...</option>
-            <option>Άνδρας</option>
-            <option>Γυναίκα</option>
-            <option>Άλλο</option>
+            <option value="">Choose...</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
           </select>
         </div>
         <div>
-          <label>Ημερομηνία Γέννησης</label>
+          <label>Date of Birth</label>
           <input type="date" required>
         </div>
         <div>
-          <label>Εθνικότητα</label>
+          <label>Nationality</label>
           <input type="text" required>
         </div>
         <div>
-          <label>Χώρα</label>
+          <label>Country</label>
           <input type="text" required>
         </div>
         <div>
-  <label>Τηλέφωνο</label>
+  <label>Phone Number</label>
   <div class="phone-field">
     <select class="phone-prefix" required>
       <option value="+30" selected>🇬🇷 +30</option>
@@ -1226,9 +1239,6 @@ document.addEventListener("click", (e) => {
   );
 }
 
-
-  // === Αφαίρεση προηγούμενου alert ===
-  alert(`✅ Επιλέχθηκαν ${selected.length} εκδρομές! Συμπληρώστε τα στοιχεία επιβατών για να ολοκληρώσετε την κράτηση.`);
 });
 
 </script>

@@ -2229,3 +2229,19 @@ header {
 .calendar-grid .selected {
   outline: 3px solid #002b45;
 }
+/* === Limit results grid width on very large screens === */
+@media (min-width: 1400px) {
+  .results-page {
+    display: flex;
+    justify-content: center;
+  }
+
+  .results-grid {
+    max-width: 1300px;     /* 🔸 μπορείς να το αλλάξεις σε 1200 ή 1400 ανάλογα */
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+}
