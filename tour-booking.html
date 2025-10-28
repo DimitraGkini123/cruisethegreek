@@ -117,6 +117,130 @@
   color: #004c70;
 }
 
+/* ======= RESPONSIVE ======= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .booking-layout {
+    flex-direction: column;
+    padding: 30px 6%;
+    gap: 30px;
+  }
+
+  .booking-content {
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .booking-right {
+    position: static;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .booking-summary {
+    margin-top: 20px;
+    padding: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  .booking-layout {
+    padding: 20px 5%;
+  }
+
+  .booking-content {
+    padding: 20px;
+  }
+
+  .booking-content h2 {
+    font-size: 18px;
+  }
+
+  .form-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input, select {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .next-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .booking-summary {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .summary-image img {
+    height: 130px;
+  }
+
+  .summary-item {
+    font-size: 13.5px;
+  }
+
+  .total {
+    font-size: 16px;
+  }
+
+  /* Navbar για κινητά */
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px 5%;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #002b45;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+}
+
+
   </style>
 </head>
 <body>
